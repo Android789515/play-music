@@ -54,3 +54,39 @@ button {
    --whiteBG: #fff;
    --whiteBorder: solid #d6d6d6 1px;
 }
+
+/* ================== */
+
+.app {
+   min-height: 100vh;
+}
+
+.layout {
+   display: grid;
+   --sideSpace: 1em;
+   grid-template-rows: 3em auto;
+   grid-template-columns: minmax(var(--sideSpace), 1fr) minmax(1em, 100%) minmax(
+         var(--sideSpace),
+         1fr
+      );
+}
+
+.layout > * {
+   grid-column: 2 / -2;
+}
+
+.appHeader {
+   display: flex;
+   justify-content: space-between;
+
+   background: var(--widgetBG);
+   border-bottom: var(--widgetBorder);
+}
+
+.appHeaderLayout {
+   align-items: center;
+}
+
+.appTitle {
+   margin: 0;
+}
