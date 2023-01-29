@@ -26,14 +26,9 @@ function createWindow(): void {
       return { action: 'deny' };
    });
 
-   // Load design document if tweaking design
-   const isDesign = true;
-   if (isDesign) {
-      mainWindow.loadFile(join(__dirname, '../../design/index.html'));
-   }
    // HMR for renderer base on electron-vite cli.
    // Load the remote URL for development or the local html file for production.
-   else if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
+   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
       mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL']);
    } else {
       mainWindow.loadFile(join(__dirname, '../renderer/index.html'));
