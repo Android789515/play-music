@@ -40,3 +40,17 @@ button {
 
    cursor: pointer;
 }
+
+/* ================== */
+
+/*
+   Color Palette:
+   Menu/Widget BG: #f7f7f7
+*/
+
+:root {
+   --widgetBG: #f7f7f7;
+   --widgetBorder: solid #e3e3e3 1px;
+   --whiteBG: #fff;
+   --whiteBorder: solid #d6d6d6 1px;
+}
