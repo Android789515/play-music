@@ -56,12 +56,31 @@ button {
 }
 
 /* ================== */
+/* Defaults */
+.listDefaults {
+   list-style: none;
+   padding: 0;
+}
+
+.buttonDefaults {
+   color: inherit;
+
+   background: 0;
+   padding: 0;
+   border: 0;
+}
+
+.iconButton {
+   cursor: pointer;
+}
+
+/* ================== */
 
 .app {
    min-height: 100vh;
 }
 
-.layout {
+.sectionLayout {
    display: grid;
    --sideSpace: 1em;
    grid-template-rows: 3em auto;
@@ -71,22 +90,53 @@ button {
       );
 }
 
-.layout > * {
+.sectionLayout > * {
    grid-column: 2 / -2;
 }
 
-.appHeader {
-   display: flex;
-   justify-content: space-between;
+/* ================== */
 
+.appHeader {
    background: var(--widgetBG);
    border-bottom: var(--widgetBorder);
 }
 
 .appHeaderLayout {
+   display: flex;
+   justify-content: space-between;
    align-items: center;
 }
 
-.appTitle {
-   margin: 0;
+.libraryNavLayout {
+   display: grid;
+   grid-auto-flow: column;
+   grid-column-gap: 1em;
+}
+
+.directory {
+   font-size: 1.2rem;
+   font-weight: 700;
+   color: #808080;
+}
+
+.currentDirectory {
+   color: inherit;
+}
+
+.libraryNavLink {
+   text-decoration: none;
+   color: inherit;
+}
+
+.settingsIcon {
+   width: 1.4em;
+   height: 100%;
+}
+
+/* ================== */
+
+.appMain {
+}
+
+.appMainLayout {
 }

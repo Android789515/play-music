@@ -17,15 +17,41 @@
       <div id="root">
          <div class="app">
             <div class="appLayout">
-               <header class="appHeader">
-                  <div class="layout appHeaderLayout"></div>
+               <header class="appHeader sectionLayout">
+                  <div class="appHeaderLayout">
+                     <nav class="libraryNav">
+                        <ul class="listDefaults libraryNavLayout">
+                           <li class="directory currentDirectory">
+                              <a href="#" class="libraryNavLink">Library</a>
+                           </li>
+
+                           <li class="directory">
+                              <a href="#" class="libraryNavLink">
+                                 Classic Rock
+                              </a>
+                           </li>
+
+                           <li class="directory overflowDirectory">
+                              <button class="buttonDefaults">
+                                 ...
+                              </button>
+                           </li>
+                        </ul>
+                     </nav>
+
+                     <img class="iconButton settingsIcon" src="assets/icons/settings.svg" alt="Settings" />
+                  </div>
                </header>
+
+               <main class="appMain">
+                  <div class="sectionLayout appMainLayout"></div>
+               </main>
             </div>
          </div>
       </div>
    </body>
 
    <div class="components" style="display: none">
-      <div class="layout"></div>
+      <div class="sectionLayout"></div>
    </div>
 </html>
