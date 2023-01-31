@@ -139,4 +139,24 @@ button {
 }
 
 .appMainLayout {
+   padding: 1.5em 0;
+}
+
+.libraryView {
+   border-collapse: collapse;
+}
+
+.libraryViewColumn,
+.songInfo {
+   text-align: left;
+   vertical-align: baseline;
+
+   padding: 0 .5em .75em .5em;
+}
+
+.song {
+}
+
+.songInfo:not(.songInfo:last-child) {
+   border-right: var(--whiteBGBorder);
 }
