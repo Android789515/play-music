@@ -154,7 +154,7 @@ body {
    width: 1.4em;
    height: 100%;
 
-   border-radius: .25em;
+   border-radius: 0.25em;
 }
 
 /* ================== */
@@ -203,7 +203,7 @@ body {
 }
 
 .song:not(.song:last-child) {
-   margin-bottom: .5em;
+   margin-bottom: 0.5em;
 }
 
 .song:focus,
@@ -218,6 +218,68 @@ body {
 .songTitle,
 .songArtist {
    font-size: 1rem;
+}
+
+/* ================== */
+
+.mediaPlayer {
+   position: fixed;
+   bottom: var(--appSideSpace);
+
+   width: 100%;
+   height: max-content;
+}
+
+.mediaPlayerLayout {
+   padding: 0 var(--appSideSpace);
+}
+
+.mediaControls {
+   display: grid;
+   grid-template-columns: repeat(4, max-content);
+   grid-column-gap: 0.5em;
+
+   margin-bottom: 0.25em;
+}
+
+.mediaControlButton {
+   cursor: pointer;
+
+   padding: 0.5em;
+   border-radius: 0.25em;
+}
+
+.mediaControlButton:focus,
+.mediaControlButton:hover {
+   background: var(--highlight);
+}
+
+.mediaControlButton img {
+   filter: var(--iconColor);
+}
+
+.rewindButton {
+   rotate: 180deg;
+}
+
+.durationBar {
+   cursor: pointer;
+
+   width: 100%;
+   height: 1em;
+
+   background: grey;
+   border-radius: 0.25em;
+}
+
+.durationBarProgress {
+   pointer-events: none;
+
+   width: 65%;
+   height: 100%;
+
+   background: dodgerblue;
+   border-radius: .25em 0 0 .25em;
 }
 
 /* ================== */
