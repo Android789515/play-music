@@ -49,10 +49,27 @@ button {
 */
 
 :root {
+   --textColor: #333;
+   --searchBorder: solid #d6d6d6 1px;
+
+   --highlight: #ebeaf3;
+   --selected: #d9d5d6;
+
+   --iconColor: initial;
+
    --widgetBG: #f7f7f7;
    --widgetBorder: solid #e3e3e3 1px;
-   --whiteBG: #fff;
-   --whiteBGBorder: solid #d6d6d6 1px;
+
+   --BG: #fff;
+
+   /* App Sections */
+   --libraryViewBG: #f1f1f1;
+}
+
+body {
+   color: var(--textColor);
+
+   background: var(--BG);
 }
 
 /* ================== */
@@ -60,6 +77,7 @@ button {
 .listDefaults {
    list-style: none;
    padding: 0;
+   margin: 0;
 }
 
 .buttonDefaults {
@@ -77,21 +95,16 @@ button {
 /* ================== */
 
 .app {
-   min-height: 100vh;
-}
+   /*
+      Use rems to keep it a consistent size
+      regardless of font.
+   */
+   --appSideSpace: 0.75rem;
 
-.sectionLayout {
    display: grid;
-   --sideSpace: 1em;
-   grid-template-rows: 3em auto;
-   grid-template-columns: minmax(var(--sideSpace), 1fr) minmax(1em, 100%) minmax(
-         var(--sideSpace),
-         1fr
-      );
-}
+   grid-template-rows: auto 1fr;
 
-.sectionLayout > * {
-   grid-column: 2 / -2;
+   min-height: 100vh;
 }
 
 /* ================== */
@@ -105,58 +118,128 @@ button {
    display: flex;
    justify-content: space-between;
    align-items: center;
+
+   padding: var(--appSideSpace);
 }
 
-.libraryNavLayout {
+.directories {
    display: grid;
    grid-auto-flow: column;
-   grid-column-gap: 1em;
+   grid-column-gap: 0.5em;
 }
 
 .directory {
    font-size: 1.2rem;
-   font-weight: 700;
-   color: #808080;
+
+   cursor: pointer;
+
+   padding: 0.25em 0.5em;
+   border-radius: 0.25em;
+   margin: 0;
 }
 
-.currentDirectory {
-   color: inherit;
+.directory:focus,
+.directory:hover {
+   background: var(--highlight);
 }
 
-.libraryNavLink {
-   text-decoration: none;
-   color: inherit;
+/* Specificity */
+.directory.currentDirectory {
+   background: var(--selected);
 }
 
 .settingsIcon {
+   filter: var(--iconColor);
+
    width: 1.4em;
    height: 100%;
+
+   border-radius: .25em;
 }
 
 /* ================== */
 
 .appMain {
+   background: var(--BG);
 }
 
 .appMainLayout {
-   padding: 1.5em 0;
+   display: grid;
+   grid-template-columns: 1fr;
+
+   height: 100%;
 }
 
 .libraryView {
-   border-collapse: collapse;
+   padding: 1em var(--appSideSpace);
 }
 
-.libraryViewColumn,
-.songInfo {
+.libraryViewHeaders,
+.song {
    text-align: left;
-   vertical-align: baseline;
 
-   padding: 0 .5em .75em .5em;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-column-gap: 1em;
+}
+
+.libraryViewHeaders {
+   margin-bottom: 1em;
+}
+
+.libraryViewHeader {
+   padding: 0 0.75rem;
+   margin: 0;
 }
 
 .song {
+   padding: 0.5em var(--appSideSpace);
 }
 
-.songInfo:not(.songInfo:last-child) {
-   border-right: var(--whiteBGBorder);
+.song {
+   cursor: pointer;
+
+   border-radius: 0.25em;
+}
+
+.song:not(.song:last-child) {
+   margin-bottom: .5em;
+}
+
+.song:focus,
+.song:hover {
+   background: var(--highlight);
+}
+
+.song > * {
+   margin: 0;
+}
+
+.songTitle,
+.songArtist {
+   font-size: 1rem;
+}
+
+/* ================== */
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+   :root {
+      --textColor: #efefef;
+      --searchBorder: #1e1e1e;
+
+      --highlight: #464646;
+      --selected: #424142;
+
+      --iconColor: invert(100%) sepia(1%) saturate(1420%) hue-rotate(201deg)
+         brightness(117%) contrast(87%);
+
+      --widgetBG: #282828;
+      --widgetBorder: solid #191919 1px;
+
+      --BG: #343535;
+
+      /* App Sections */
+      --libraryViewBG: #2e2f2f;
+   }
 }
