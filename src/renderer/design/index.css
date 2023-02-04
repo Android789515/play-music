@@ -261,6 +261,7 @@ body {
    display: grid;
    grid-template-columns: repeat(4, max-content);
    grid-column-gap: 0.5em;
+   align-items: center;
 
    margin-bottom: 0.25em;
 }
