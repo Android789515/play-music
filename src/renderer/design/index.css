@@ -192,6 +192,18 @@ body {
    margin: 0;
 }
 
+.sortArrowIcon {
+   filter: var(--iconColor);
+
+   width: 0.5em;
+
+   margin-left: .5em;
+}
+
+.sortArrowIconReverse {
+   rotate: 180deg;
+}
+
 .song {
    padding: 0.5em var(--appSideSpace);
 }
