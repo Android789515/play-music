@@ -184,14 +184,13 @@ body {
 }
 
 .libraryViewHeaders {
+   padding: 0 var(--appSideSpace);
    margin-bottom: 1em;
 }
 
 .libraryViewHeader {
    display: flex;
    align-items: baseline;
-
-   padding: 0 0.75rem;
 }
 
 .libraryViewHeader:focus,
