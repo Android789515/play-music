@@ -188,7 +188,18 @@ body {
 }
 
 .libraryViewHeader {
+   display: flex;
+   align-items: baseline;
+
    padding: 0 0.75rem;
+}
+
+.libraryViewHeader:focus,
+.libraryViewHeader:hover {
+   cursor: pointer;
+}
+
+.libraryViewHeaderText {
    margin: 0;
 }
 
