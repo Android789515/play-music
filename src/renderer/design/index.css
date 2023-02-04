@@ -332,4 +332,28 @@ body {
       /* App Sections */
       --libraryViewBG: #2e2f2f;
    }
+
+   .mediaControlButton img {
+      filter: invert(1);
+   }
+
+   /* Alternative to making media controls white */
+
+   /* .mediaControlButton { */
+   /*    background: #fff; */
+   /*    padding: .25em; */
+   /* } */
+
+   /* .stopButton { */
+   /*    padding: .3em; */
+   /* } */
+
+   /* .mediaControlButton:focus, */
+   /* .mediaControlButton:hover { */
+   /*    background: #fff; */
+   /* } */
+
+   /* .mediaControlButton img { */
+   /*    filter: initial; */
+   /* } */
 }
