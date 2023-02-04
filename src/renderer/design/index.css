@@ -233,13 +233,12 @@ body {
    background: var(--highlight);
 }
 
-.song > * {
-   margin: 0;
-}
-
 .songTitle,
-.songArtist {
+.songArtist,
+.songDuration {
    font-size: 1rem;
+
+   margin: 0;
 }
 
 /* ================== */
