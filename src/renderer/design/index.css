@@ -247,14 +247,16 @@ body {
 
 .mediaPlayer {
    position: fixed;
-   bottom: var(--appSideSpace);
+   bottom: 0;
 
    width: 100%;
    height: max-content;
 }
 
 .mediaPlayerLayout {
-   padding: 0 var(--appSideSpace);
+   background: var(--widgetBG);
+   padding: var(--appSideSpace);
+   border-top: var(--widgetBorder);
 }
 
 .mediaControls {
