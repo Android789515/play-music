@@ -258,6 +258,23 @@ body {
    border-top: var(--widgetBorder);
 }
 
+.songPlaying {
+   display: flex;
+   align-items: center;
+
+   margin-bottom: .75em;
+}
+
+.coverArt {
+   width: 3.5em;
+
+   padding: .75em;
+   background: var(--highlight);
+   border-radius: .25em;
+
+   margin-right: 1em;
+}
+
 .mediaControls {
    display: grid;
    grid-template-columns: repeat(4, max-content);
