@@ -171,6 +171,8 @@ body {
 }
 
 .libraryView {
+   height: calc(100% - 10.2125em);
+
    padding: 1em var(--appSideSpace);
 }
 
@@ -245,10 +247,17 @@ body {
 
 .mediaPlayer {
    position: fixed;
-   bottom: 0;
+   bottom: -10.2125em;
 
    width: 100%;
    height: max-content;
+
+   transition: bottom 250ms;
+}
+
+.mediaPlayerOpen,
+.mediaPlayer:active {
+   bottom: 0;
 }
 
 .mediaPlayerLayout {
