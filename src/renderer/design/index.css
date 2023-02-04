@@ -207,7 +207,7 @@ body {
 
    width: 0.5em;
 
-   margin-left: .5em;
+   margin-left: 0.5em;
 }
 
 .sortArrowIconReverse {
@@ -261,22 +261,22 @@ body {
    display: flex;
    align-items: center;
 
-   margin-bottom: .75em;
+   margin-bottom: 0.75em;
 }
 
 .coverArt {
    width: 3.5em;
 
-   padding: .75em;
+   padding: 0.75em;
    background: var(--highlight);
-   border-radius: .25em;
+   border-radius: 0.25em;
 
    margin-right: 1em;
 }
 
 .mediaControls {
    display: grid;
-   grid-template-columns: repeat(4, max-content);
+   grid-template-columns: repeat(5, max-content) 1fr repeat(2, max-content);
    grid-column-gap: 0.5em;
    align-items: center;
 
@@ -288,11 +288,6 @@ body {
 
    padding: 0.5em;
    border-radius: 0.25em;
-}
-
-.stopButton img {
-   /* Stop button is too big normally */
-   width: 1.4em;
 }
 
 .mediaControlButton:focus,
@@ -308,24 +303,70 @@ body {
    rotate: 180deg;
 }
 
-.durationBar {
+.volumeButton {
+   display: grid;
+   grid-template-columns: max-content 4em;
+   align-items: center;
+   grid-column-gap: .5em;
+
+   padding: .2em .5em;
+}
+
+.loopButton {
+   grid-column: -2;
+}
+
+.shuffleButton {
+   grid-column: -1;
+}
+
+.stopIcon {
+   /* Stop button is too big normally */
+   width: 1.4em;
+}
+
+.volumeIcon {
+   width: 2.1em;
+}
+
+.loopIcon,
+.shuffleIcon {
+   width: 1.9em;
+}
+
+.bar {
    cursor: pointer;
 
-   width: 100%;
    height: 1em;
 
    background: var(--selected);
    border-radius: 0.25em;
 }
 
-.durationBarProgress {
+.barValue {
    pointer-events: none;
 
-   width: 65%;
    height: 100%;
 
    background: #ff00e6;
    border-radius: 0.25em 0 0 0.25em;
+}
+
+.volumeBar {
+   width: 100%;
+   height: .75em;
+}
+
+.volume {
+   width: 45%;
+}
+
+.durationBar {
+   width: 100%;
+}
+
+.durationBarProgress {
+   width: 65%;
 }
 
 /* ================== */
