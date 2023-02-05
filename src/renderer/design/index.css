@@ -350,6 +350,10 @@ body {
    grid-column: -1;
 }
 
+.mediaControlButtonIcon {
+   filter: var(--iconColor);
+}
+
 .stopIcon {
    /* Stop button is too big normally */
    width: 1.4em;
@@ -361,8 +365,6 @@ body {
 
 .loopIcon,
 .shuffleIcon {
-   filter: var(--iconColor);
-
    width: 1.9em;
 }
 
