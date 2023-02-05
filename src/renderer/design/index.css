@@ -246,19 +246,11 @@ body {
 /* ================== */
 
 .mediaPlayer {
-   position: fixed;
-   /* bottom: -10.2125em; */
-   bottom: 0;
-
    width: 100%;
-   height: max-content;
-
-   transition: bottom 250ms;
 }
 
 .mediaPlayerOpen,
 .mediaPlayer:active {
-   bottom: 0;
 }
 
 .mediaPlayerLayout {
