@@ -342,6 +342,11 @@ body {
    padding: 0.2em 0.5em;
 }
 
+.volumeButton:focus .volumeBar,
+.volumeButton:hover .volumeBar {
+   background: #d9d4d5;
+}
+
 .loopButton {
    grid-column: -2;
 }
@@ -455,6 +460,8 @@ body {
       --highlight: #464646;
       --selected: #424142;
 
+      /* Bar BG = selected */
+
       --iconColor: invert(1);
 
       --widgetBG: #282828;
@@ -464,5 +471,10 @@ body {
 
       /* App Sections */
       --libraryViewBG: #2e2f2f;
+   }
+
+   .volumeButton:focus .volumeBar,
+   .volumeButton:hover .volumeBar {
+      background: #3a393a;
    }
 }
