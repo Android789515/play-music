@@ -393,6 +393,51 @@ body {
 }
 
 /* ================== */
+@media (min-width: 40.75em) {
+   /* Previous font size: 1.2rem */
+   .directory {
+      font-size: 1.4rem;
+   }
+
+   /* Previous size: 1.4em */
+   .settingsIcon {
+      width: 1.6em;
+   }
+
+   /* Previous font size: 1.17em */
+   .libraryViewHeaderText {
+      font-size: 1.37rem;
+   }
+}
+
+/* Lower song info can be shown at this width */
+@media (min-width: 44.375em) {
+   .songTitle,
+   .songArtist,
+   .songDuration {
+      font-size: 1.2rem;
+   }
+
+   .songPlayingLarge {
+      display: none;
+   }
+
+   .songPlaying {
+      display: grid;
+      grid-template-columns: repeat(3, max-content);
+      justify-content: center;
+      grid-column-gap: 2em;
+   }
+}
+
+@media (min-width: 58.125em) {
+   .songPlaying {
+      /* justify-content: end; */
+      margin-right: 14em;
+   }
+}
+
+/* ================== */
 
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
