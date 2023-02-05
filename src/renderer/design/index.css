@@ -411,8 +411,8 @@ body {
    }
 }
 
-/* Lower song info can be shown at this width */
-@media (min-width: 44.375em) {
+/* Lower song playing can be shown at this width */
+@media (min-width: 48.375em) {
    .songTitle,
    .songArtist,
    .songDuration {
