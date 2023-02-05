@@ -55,6 +55,9 @@ button {
    --highlight: #ebeaf3;
    --selected: #e7e2e3;
 
+   --barBG: var(--selected);
+   --barTrackColor: #ff00e6;
+
    --iconColor: initial;
 
    --widgetBG: #f7f7f7;
@@ -357,7 +360,7 @@ body {
 
    height: 1em;
 
-   background: var(--selected);
+   background: var(--barBG);
    border-radius: 0.25em;
 }
 
@@ -366,7 +369,7 @@ body {
 
    height: 100%;
 
-   background: #ff00e6;
+   background: var(--barTrackColor);
    border-radius: 0.25em 0 0 0.25em;
 }
 
