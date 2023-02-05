@@ -102,9 +102,9 @@ body {
    --appSideSpace: 0.75rem;
 
    display: grid;
-   grid-template-rows: auto 1fr;
+   grid-template-rows: max-content 1fr max-content;
 
-   min-height: 100vh;
+   height: 100vh;
 }
 
 /* ================== */
@@ -160,19 +160,15 @@ body {
 /* ================== */
 
 .appMain {
+   overflow-y: auto;
+
    background: var(--BG);
 }
 
 .appMainLayout {
-   display: grid;
-   grid-template-columns: 1fr;
-
-   height: 100%;
 }
 
 .libraryView {
-   height: calc(100% - 10.2125em);
-
    padding: 1em var(--appSideSpace);
 }
 
@@ -186,8 +182,11 @@ body {
 }
 
 .libraryViewHeaders {
-   padding: 0 var(--appSideSpace);
-   margin-bottom: 1em;
+   position: sticky;
+   top: 0;
+
+   background: var(--BG);
+   padding: var(--appSideSpace);
 }
 
 .libraryViewHeader {
@@ -245,6 +244,14 @@ body {
 
 /* ================== */
 
+.appFooter {
+   align-self: end;
+
+   background: var(--widgetBG);
+   padding: var(--appSideSpace);
+   border-top: var(--widgetBorder);
+}
+
 .mediaPlayer {
    width: 100%;
 }
@@ -254,9 +261,6 @@ body {
 }
 
 .mediaPlayerLayout {
-   background: var(--widgetBG);
-   padding: var(--appSideSpace);
-   border-top: var(--widgetBorder);
 }
 
 .songPlayingLarge {
