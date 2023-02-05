@@ -283,6 +283,14 @@ body {
    margin-right: 1em;
 }
 
+.songInfo {
+   display: none;
+}
+
+.songPlaying .songInfo {
+   display: revert;
+}
+
 .mediaControls {
    display: grid;
    grid-template-columns: repeat(5, max-content) 1fr repeat(2, max-content);
