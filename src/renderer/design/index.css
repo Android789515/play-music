@@ -266,7 +266,7 @@ body {
    border-top: var(--widgetBorder);
 }
 
-.songPlaying {
+.songPlayingLarge {
    display: flex;
    align-items: center;
 
@@ -283,11 +283,11 @@ body {
    margin-right: 1em;
 }
 
-.songInfo {
+.songPlaying {
    display: none;
 }
 
-.songPlaying .songInfo {
+.songPlayingLarge .songPlaying {
    display: revert;
 }
 
