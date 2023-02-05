@@ -416,7 +416,13 @@ body {
    }
 
    .mediaControlButton img {
-      filter: invert(1);
+      /* Lights */
+      /* filter: invert(1); */
+      filter: invert(96%) sepia(6%) saturate(88%) hue-rotate(177deg) brightness(99%) contrast(91%);
+      /* filter: invert(95%) sepia(0%) saturate(3%) hue-rotate(214deg) brightness(89%) contrast(91%); */
+      /* Darks */
+      /* filter: invert(29%) sepia(0%) saturate(490%) hue-rotate(242deg) brightness(87%) contrast(89%); */
+      /* filter: invert(38%) sepia(7%) saturate(45%) hue-rotate(314deg) brightness(93%) contrast(87%); */
    }
 
    /* Alternative to making media controls white */
