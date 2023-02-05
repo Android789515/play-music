@@ -282,8 +282,12 @@ body {
    display: none;
 }
 
-.songPlayingLarge .songPlaying {
-   display: revert;
+.songPlayingTop {
+   display: grid;
+   grid-template-columns: repeat(3, max-content);
+   grid-column-gap: 2em;
+
+   padding: 0 0.5em;
 }
 
 .mediaControls {
@@ -408,7 +412,7 @@ body {
       font-size: 1.2rem;
    }
 
-   .songPlayingLarge {
+   .songPlayingTop {
       display: none;
    }
 
