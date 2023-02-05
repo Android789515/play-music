@@ -69,6 +69,17 @@ button {
    --libraryViewBG: #f1f1f1;
 }
 
+::-webkit-scrollbar {
+   width: .5em;
+
+   background: var(--barBG);
+}
+
+::-webkit-scrollbar-thumb {
+   background: grey;
+   border-radius: .15em;
+}
+
 body {
    color: var(--textColor);
 
