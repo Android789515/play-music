@@ -431,13 +431,6 @@ body {
    }
 }
 
-@media (min-width: 58.125em) {
-   .songPlaying {
-      /* justify-content: end; */
-      margin-right: 14em;
-   }
-}
-
 /* ================== */
 
 /* Dark Mode */
