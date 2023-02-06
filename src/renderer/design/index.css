@@ -310,7 +310,7 @@ body {
 
 .mediaControls {
    display: grid;
-   grid-template-columns: repeat(5, max-content) 1fr repeat(2, max-content);
+   grid-template-columns: repeat(5, max-content) 6fr 1fr repeat(2, max-content);
    grid-column-gap: 0.5em;
    align-items: center;
 
@@ -430,7 +430,7 @@ body {
 }
 
 /* Lower song playing can be shown at this width */
-@media (min-width: 48.375em) {
+@media (min-width: 49em) {
    .songTitle,
    .songArtist,
    .songDuration {
