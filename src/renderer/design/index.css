@@ -306,6 +306,8 @@ body {
    grid-column-gap: 2em;
 
    padding: 0 0.5em;
+
+   margin-bottom: 0.5em;
 }
 
 .mediaControls {
