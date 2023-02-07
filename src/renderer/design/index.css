@@ -55,7 +55,7 @@ button {
    --highlight: #ebeaf3;
    --selected: #e7e2e3;
 
-   --barBG: var(--selected);
+   --barBG: var(--highlight);
    --barTrackColor: #ff00e6;
 
    --iconColor: initial;
