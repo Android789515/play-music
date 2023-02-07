@@ -373,6 +373,8 @@ body {
 
 .mediaControlButtonIcon {
    filter: var(--iconColor);
+
+   /* width: 1em; */
 }
 
 .stopIcon {
@@ -443,16 +445,16 @@ body {
    .libraryViewHeaderText {
       font-size: 1.37rem;
    }
-}
 
-/* Lower song playing can be shown at this width */
-@media (min-width: 49em) {
    .songTitle,
    .songArtist,
    .songDuration {
       font-size: 1.2rem;
    }
+}
 
+/* Lower song playing can be shown at this width */
+@media (min-width: 49em) {
    .songPlayingTop {
       display: none;
    }
