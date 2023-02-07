@@ -374,21 +374,21 @@ body {
 .mediaControlButtonIcon {
    filter: var(--iconColor);
 
-   /* width: 1em; */
+   width: 1.4em;
 }
 
 .stopIcon {
    /* Stop button is too big normally */
-   width: 1.4em;
+   width: 1.3em;
 }
 
 .volumeIcon {
-   width: 2.1em;
+   width: 2em;
 }
 
 .loopIcon,
 .shuffleIcon {
-   width: 1.9em;
+   width: 1.8em;
 }
 
 .bar {
