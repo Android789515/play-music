@@ -451,6 +451,24 @@ body {
    .songDuration {
       font-size: 1.2rem;
    }
+
+   .mediaControlButtonIcon {
+      width: 1.5em;
+   }
+
+   .stopIcon {
+      /* Stop button is too big normally */
+      width: 1.4em;
+   }
+
+   .volumeIcon {
+      width: 2.1em;
+   }
+
+   .loopIcon,
+   .shuffleIcon {
+      width: 1.9em;
+   }
 }
 
 /* Lower song playing can be shown at this width */
