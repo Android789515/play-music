@@ -77,6 +77,10 @@ button {
    border-radius: 0.15em;
 }
 
+::-webkit-scrollbar-thumb:hover {
+   background: #9b9b9b;
+}
+
 body {
    color: var(--textColor);
 
