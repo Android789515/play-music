@@ -156,6 +156,24 @@ body {
    background: var(--selected);
 }
 
+.newTab {
+   padding: .4em;
+   border-radius: .25em;
+}
+
+.newTab:focus,
+.newTab:hover {
+   background: var(--highlight);
+}
+
+.newTab:active {
+   background: var(--selected);
+}
+
+.plusIcon {
+   filter: var(--iconColor);
+}
+
 .settingsIcon {
    filter: var(--iconColor);
 
