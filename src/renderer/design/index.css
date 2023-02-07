@@ -471,6 +471,6 @@ body {
 
    .volumeButton:focus .volumeBar,
    .volumeButton:hover .volumeBar {
-      background: #3a393a;
+      background: #605f60;
    }
 }
