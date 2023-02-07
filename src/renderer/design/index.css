@@ -64,9 +64,6 @@ button {
    --widgetBorder: solid #e3e3e3 1px;
 
    --BG: #fff;
-
-   /* App Sections */
-   --libraryViewBG: #f1f1f1;
 }
 
 ::-webkit-scrollbar {
@@ -466,13 +463,10 @@ body {
 
       --iconColor: invert(1);
 
-      --widgetBG: #282828;
+      --widgetBG: #343535;
       --widgetBorder: solid #191919 1px;
 
-      --BG: #343535;
-
-      /* App Sections */
-      --libraryViewBG: #2e2f2f;
+      --BG: #282828;
    }
 
    .volumeButton:focus .volumeBar,
