@@ -133,13 +133,14 @@ body {
    padding: var(--appSideSpace);
 }
 
-.directories {
+.tabs {
    display: grid;
    grid-auto-flow: column;
    grid-column-gap: 0.5em;
+   align-items: center;
 }
 
-.directory {
+.tab {
    font-size: 1.2rem;
 
    cursor: pointer;
@@ -149,13 +150,13 @@ body {
    margin: 0;
 }
 
-.directory:focus,
-.directory:hover {
+.tab:focus,
+.tab:hover {
    background: var(--highlight);
 }
 
 /* Specificity */
-.directory.currentDirectory {
+.tab.currentTab {
    background: var(--selected);
 }
 
@@ -413,7 +414,7 @@ body {
 /* ================== */
 @media (min-width: 40.75em) {
    /* Previous font size: 1.2rem */
-   .directory {
+   .tab {
       font-size: 1.4rem;
    }
 
