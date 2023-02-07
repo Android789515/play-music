@@ -172,6 +172,8 @@ body {
 
 .plusIcon {
    filter: var(--iconColor);
+
+   width: 1em;
 }
 
 .settingsIcon {
