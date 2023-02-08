@@ -127,8 +127,8 @@ body {
 
 .appHeaderLayout {
    display: grid;
-   grid-template-columns: max-content 1fr max-content;
-   align-items: center;
+   grid-template-columns: max-content max-content 1fr max-content;
+   grid-row-gap: .25em;
 
    padding: var(--appSideSpace);
 }
@@ -181,9 +181,8 @@ body {
 }
 
 .searchField {
-   grid-column: 2;
-
-   display: block;
+   grid-row: 2;
+   grid-column: 1 / -1;
 
    width: 8.65em;
 
@@ -224,8 +223,7 @@ body {
 }
 
 .settingsButton {
-   grid-column: 3;
-   justify-self: end;
+   grid-column: 4;
 }
 
 .settingsIcon {
@@ -488,8 +486,9 @@ body {
       font-size: 1.4rem;
    }
 
+   /* Previous font size: 1rem */
    .searchField {
-      margin-left: 2em;
+      font-size: 1.2rem;
    }
 
    /* Previous size: 1.4em */
@@ -538,6 +537,30 @@ body {
       grid-template-columns: repeat(3, max-content);
       justify-content: center;
       grid-column-gap: 2em;
+   }
+}
+
+@media (min-width: 56.25em) {
+   .searchField {
+      width: 12em;
+   }
+
+   .searchField:focus-within {
+      width: 18em;
+   }
+}
+
+@media (min-width: 93.75em) {
+   .songPlaying {
+      position: absolute;
+      left: 0;
+      right: 0;
+
+      margin: auto;
+   }
+
+   .songPlaying {
+      width: max-content;
    }
 }
 
