@@ -126,8 +126,8 @@ body {
 }
 
 .appHeaderLayout {
-   display: flex;
-   justify-content: space-between;
+   display: grid;
+   grid-template-columns: max-content 1fr max-content;
    align-items: center;
 
    padding: var(--appSideSpace);
@@ -178,6 +178,54 @@ body {
    filter: var(--iconColor);
 
    width: 1em;
+}
+
+.searchField {
+   grid-column: 2;
+
+   display: block;
+
+   width: 8.65em;
+
+   background: var(--selected);
+   padding: .25em .5em;
+   border-radius: .25em;
+   margin: auto;
+
+   transition: width 250ms;
+}
+
+.searchField:focus-within {
+   width: 11.121875em;
+}
+
+.searchFieldLayout {
+   display: flex;
+   align-items: center;
+}
+
+.searchIcon {
+   filter: var(--iconColor);
+
+   width: 1em;
+
+   margin-right: .4em;
+}
+
+.searchFieldInput {
+   color: inherit;
+
+   background: 0;
+   border: 0;
+}
+
+.searchFieldInput:focus {
+   outline: none;
+}
+
+.settingsButton {
+   grid-column: 3;
+   justify-self: end;
 }
 
 .settingsIcon {
@@ -438,6 +486,10 @@ body {
    /* Previous font size: 1.2rem */
    .tab {
       font-size: 1.4rem;
+   }
+
+   .searchField {
+      margin-left: 2em;
    }
 
    /* Previous size: 1.4em */
