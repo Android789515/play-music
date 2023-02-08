@@ -81,6 +81,11 @@ button {
    background: #9b9b9b;
 }
 
+::-webkit-scrollbar:horizontal,
+::-webkit-scrollbar-thumb:horizontal {
+   background: 0;
+}
+
 body {
    color: var(--textColor);
 
