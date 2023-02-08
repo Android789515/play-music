@@ -134,10 +134,15 @@ body {
 }
 
 .tabs {
+   white-space: nowrap;
+
    display: grid;
    grid-auto-flow: column;
+   grid-auto-columns: max-content;
    grid-column-gap: 0.5em;
    align-items: center;
+
+   overflow-x: auto;
 }
 
 .tab {
