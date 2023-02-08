@@ -501,6 +501,11 @@ body {
       font-size: 1.2rem;
    }
 
+   /* Previous size: 1em */
+   .plusIcon {
+      width: 1.2em;
+   }
+
    /* Previous size: 1.4em */
    .settingsIcon {
       width: 1.6em;
