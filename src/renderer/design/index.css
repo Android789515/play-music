@@ -172,9 +172,8 @@ body {
 }
 
 .newTabButton {
-
-   padding: .4em;
-   border-radius: .25em;
+   padding: 0.4em;
+   border-radius: 0.25em;
 }
 
 .newTabButton:focus,
@@ -184,7 +183,6 @@ body {
 
 .newTabButton:active {
    background: var(--selected);
-
 }
 
 .plusIcon {
@@ -242,8 +240,8 @@ body {
    width: 10em;
 
    background: var(--selected);
-   padding: .25em .5em;
-   border-radius: .25em;
+   padding: 0.25em 0.5em;
+   border-radius: 0.25em;
    margin: auto;
 
    transition: width 250ms;
@@ -263,7 +261,7 @@ body {
 
    width: 1em;
 
-   margin-right: .4em;
+   margin-right: 0.4em;
 }
 
 .searchFieldInput {
