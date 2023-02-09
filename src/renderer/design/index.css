@@ -239,7 +239,7 @@ body {
 }
 
 .searchField {
-   width: 8.65em;
+   width: 10em;
 
    background: var(--selected);
    padding: .25em .5em;
@@ -250,7 +250,7 @@ body {
 }
 
 .searchField:focus-within {
-   width: 11.121875em;
+   width: 14em;
 }
 
 .searchFieldLayout {
