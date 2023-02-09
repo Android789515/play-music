@@ -83,7 +83,7 @@ button {
 
 ::-webkit-scrollbar:horizontal,
 ::-webkit-scrollbar-thumb:horizontal {
-   background: 0;
+   /* background: 0; */
 }
 
 body {
@@ -132,7 +132,9 @@ body {
 
 .appHeaderLayout {
    display: grid;
-   grid-template-columns: max-content max-content 1fr max-content;
+   grid-template-columns: fit-content(100%) auto 1fr max-content;
+   grid-column-gap: 1em;
+   align-items: center;
 
    padding: var(--appSideSpace);
 }
@@ -169,18 +171,20 @@ body {
    background: var(--selected);
 }
 
-.newTab {
+.newTabButton {
+
    padding: .4em;
    border-radius: .25em;
 }
 
-.newTab:focus,
-.newTab:hover {
+.newTabButton:focus,
+.newTabButton:hover {
    background: var(--highlight);
 }
 
-.newTab:active {
+.newTabButton:active {
    background: var(--selected);
+
 }
 
 .plusIcon {
@@ -190,7 +194,7 @@ body {
 }
 
 .settingsButton {
-   grid-column: 4;
+   grid-column: -1;
 }
 
 .settingsIcon {
