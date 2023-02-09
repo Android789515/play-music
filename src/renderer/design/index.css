@@ -133,7 +133,6 @@ body {
 .appHeaderLayout {
    display: grid;
    grid-template-columns: max-content max-content 1fr max-content;
-   grid-row-gap: .25em;
 
    padding: var(--appSideSpace);
 }
@@ -190,10 +189,52 @@ body {
    width: 1em;
 }
 
-.searchField {
-   grid-row: 2;
-   grid-column: 1 / -1;
+.settingsButton {
+   grid-column: 4;
+}
 
+.settingsIcon {
+   filter: var(--iconColor);
+
+   width: 1.4em;
+   height: 100%;
+
+   border-radius: 0.25em;
+}
+
+/* ================== */
+
+.appMain {
+   overflow-y: auto;
+
+   background: var(--BG);
+}
+
+.appMainLayout {
+   padding: 0 var(--appSideSpace) 1em var(--appSideSpace);
+}
+
+.libraryView {
+}
+
+.libraryViewHeaders,
+.song {
+   text-align: left;
+
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-column-gap: 1em;
+}
+
+.libraryViewTopBar {
+   position: sticky;
+   top: 0;
+
+   background: var(--BG);
+   padding-top: 1em;
+}
+
+.searchField {
    width: 8.65em;
 
    background: var(--selected);
@@ -232,47 +273,7 @@ body {
    outline: none;
 }
 
-.settingsButton {
-   grid-column: 4;
-}
-
-.settingsIcon {
-   filter: var(--iconColor);
-
-   width: 1.4em;
-   height: 100%;
-
-   border-radius: 0.25em;
-}
-
-/* ================== */
-
-.appMain {
-   overflow-y: auto;
-
-   background: var(--BG);
-}
-
-.appMainLayout {
-}
-
-.libraryView {
-   padding: 1em var(--appSideSpace);
-}
-
-.libraryViewHeaders,
-.song {
-   text-align: left;
-
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   grid-column-gap: 1em;
-}
-
 .libraryViewHeaders {
-   position: sticky;
-   top: 0;
-
    background: var(--BG);
    padding: var(--appSideSpace);
 }

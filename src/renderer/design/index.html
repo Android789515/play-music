@@ -36,22 +36,6 @@
                      />
                   </button>
 
-                  <div class="searchField">
-                     <label class="searchFieldLayout">
-                        <img
-                           class="searchIcon"
-                           src="assets/icons/search.svg"
-                           alt="Search"
-                        />
-
-                        <input
-                           class="searchFieldInput"
-                           placeholder="Search"
-                           type="text"
-                        />
-                     </label>
-                  </div>
-
                   <button class="buttonDefaults settingsButton">
                      <img
                         tabindex="1"
@@ -66,23 +50,41 @@
             <main class="appMain">
                <div class="appMainLayout">
                   <div class="libraryView">
-                     <div class="libraryViewHeaders">
-                        <div class="libraryViewHeader" tabindex="1">
-                           <h3 class="libraryViewHeaderText">Title</h3>
+                     <div class="libraryViewTopBar">
+                        <div class="searchField">
+                           <label class="searchFieldLayout">
+                              <img
+                                 class="searchIcon"
+                                 src="assets/icons/search.svg"
+                                 alt="Search"
+                              />
 
-                           <img
-                              class="sortArrowIcon"
-                              src="assets/icons/up-arrow.svg"
-                              alt="Sort Order"
-                           />
+                              <input
+                                 class="searchFieldInput"
+                                 placeholder="Search"
+                                 type="text"
+                              />
+                           </label>
                         </div>
 
-                        <div class="libraryViewHeader" tabindex="1">
-                           <h3 class="libraryViewHeaderText">Artist</h3>
-                        </div>
+                        <div class="libraryViewHeaders">
+                           <div class="libraryViewHeader" tabindex="1">
+                              <h3 class="libraryViewHeaderText">Title</h3>
 
-                        <div class="libraryViewHeader" tabindex="1">
-                           <h3 class="libraryViewHeaderText">Duration</h3>
+                              <img
+                                 class="sortArrowIcon"
+                                 src="assets/icons/up-arrow.svg"
+                                 alt="Sort Order"
+                              />
+                           </div>
+
+                           <div class="libraryViewHeader" tabindex="1">
+                              <h3 class="libraryViewHeaderText">Artist</h3>
+                           </div>
+
+                           <div class="libraryViewHeader" tabindex="1">
+                              <h3 class="libraryViewHeaderText">Duration</h3>
+                           </div>
                         </div>
                      </div>
 
