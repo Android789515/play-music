@@ -219,15 +219,6 @@ body {
 .libraryView {
 }
 
-.libraryViewHeaders,
-.song {
-   text-align: left;
-
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   grid-column-gap: 1em;
-}
-
 .libraryViewTopBar {
    position: sticky;
    top: 0;
@@ -275,6 +266,15 @@ body {
    outline: none;
 }
 
+.libraryViewHeaders,
+.song {
+   text-align: left;
+
+   display: grid;
+   grid-template-columns: 1fr 1fr .5fr;
+   grid-column-gap: 1em;
+}
+
 .libraryViewHeaders {
    background: var(--BG);
    padding: var(--appSideSpace);
@@ -306,13 +306,14 @@ body {
    rotate: 180deg;
 }
 
-.song {
-   padding: 0.5em var(--appSideSpace);
+.songs {
+
 }
 
 .song {
    cursor: pointer;
 
+   padding: 0.5em var(--appSideSpace);
    border-radius: 0.25em;
 }
 
@@ -331,6 +332,15 @@ body {
    font-size: 1rem;
 
    margin: 0;
+}
+
+.song .songTitle,
+.song .songArtist {
+   display: -webkit-box;
+   -webkit-line-clamp: 2;
+   -webkit-box-orient: vertical;
+
+   overflow: hidden;
 }
 
 /* ================== */
@@ -556,6 +566,11 @@ body {
       justify-content: center;
       grid-column-gap: 2em;
    }
+
+   .song .songTitle,
+   .song .songArtist {
+      max-width: 90%;
+   }
 }
 
 @media (min-width: 56.25em) {
@@ -565,6 +580,11 @@ body {
 
    .searchField:focus-within {
       width: 18em;
+   }
+
+   .song .songTitle,
+   .song .songArtist {
+      max-width: 80%;
    }
 }
 
