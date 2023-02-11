@@ -11,7 +11,7 @@ export default defineConfig({
    },
    renderer: {
       // Design mode
-      root: 'src/renderer/design',
+      // root: 'src/renderer/design',
       resolve: {
          alias: {
             '@renderer': resolve('src/renderer/src'),
