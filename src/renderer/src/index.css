@@ -1,3 +1,41 @@
+:root {
+   --textColor: #333;
+   --searchBorder: solid #d6d6d6 1px;
+
+   --highlight: #ebeaf3;
+   --selected: #e7e2e3;
+
+   --barBG: var(--highlight);
+   --barTrackColor: #ff00e6;
+
+   --iconColor: initial;
+
+   --widgetBG: #f7f7f7;
+   --widgetBorder: solid #e3e3e3 1px;
+
+   --BG: #fff;
+}
+
+::-webkit-scrollbar {
+   width: 0.5em;
+
+   background: var(--barBG);
+}
+
+::-webkit-scrollbar-thumb {
+   background: grey;
+   border-radius: 0.15em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+   background: #9b9b9b;
+}
+
+::-webkit-scrollbar:horizontal,
+::-webkit-scrollbar-thumb:horizontal {
+   /* background: 0; */
+}
+
 * {
    box-sizing: border-box;
 }
@@ -8,6 +46,9 @@ body {
       'Helvetica Neue', sans-serif;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
+   color: var(--textColor);
+
+   background: var(--BG);
 
    margin: 0;
 }
@@ -39,4 +80,23 @@ button {
    font: inherit;
 
    cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+   :root {
+      --textColor: #efefef;
+      --searchBorder: #1e1e1e;
+
+      --highlight: #464646;
+      --selected: #4d4c4d;
+
+      /* Bar BG = selected */
+
+      --iconColor: invert(1);
+
+      --widgetBG: #343535;
+      --widgetBorder: solid #191919 1px;
+
+      --BG: #282828;
+   }
 }
