@@ -8,13 +8,17 @@
   ],
   "compilerOptions": {
      "noUnusedLocals": false,
+     "noUnusedParameters": false,
      "composite": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@renderer/*": [
+       "renderer/*": [
         "src/renderer/src/*"
-      ]
+      ],
+       "components/*": [
+          "src/renderer/src/components/*"
+       ]
     }
   }
 }
