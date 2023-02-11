@@ -1,15 +1,13 @@
-import type { ReactNode } from 'react';
-
 import styles from './AppHeader.module.scss';
 
-interface Props {
-   children: ReactNode;
-}
+import { AppHeaderLayout } from './components'
 
-export const AppHeader = ({ children }: Props) => {
+export const AppHeader = () => {
    return (
       <header className={styles.appHeader}>
-         {children}
+         <AppHeaderLayout>
+
+         </AppHeaderLayout>
       </header>
    );
 };
