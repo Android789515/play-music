@@ -343,8 +343,11 @@ body {
    align-self: end;
 
    background: var(--widgetBG);
-   padding: var(--appSideSpace);
    border-top: var(--widgetBorder);
+}
+
+.appFooterLayout {
+   padding: var(--appSideSpace);
 }
 
 .mediaPlayer {
