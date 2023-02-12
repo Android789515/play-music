@@ -1,8 +1,4 @@
-@use '../../mixins';
-
 .tabs {
-   @include mixins.listDefaults;
-
    white-space: nowrap;
 
    display: grid;
