@@ -1,5 +1,6 @@
 import { List } from 'components/list';
 import { Song } from './components';
+import { SongInfo } from './components';
 
 export const Songs = () => {
    const dummyData = [
@@ -32,12 +33,13 @@ export const Songs = () => {
       const { title, artist, duration } = song;
 
       return (
-         <Song
-            key={index}
-            songTitle={title}
-            songArtist={artist}
-            songDuration={duration}
-         />
+         <Song key={index}>
+            <SongInfo
+               songTitle={title}
+               songArtist={artist}
+               songDuration={duration}
+            />
+         </Song>
       );
    });
 

@@ -1,7 +1,3 @@
-@use 'sass:map';
-
-@use '../../../../breakpoints' as *;
-
 .song {
    text-align: left;
 
@@ -22,45 +18,4 @@
 .song:focus,
 .song:hover {
    background: var(--highlight);
-}
-
-.songTitle,
-.songArtist,
-.songDuration {
-   font-size: 1rem;
-
-   margin: 0;
-}
-
-// Only for songs in the
-// library list
-.song .songTitle,
-.song .songArtist {
-   display: -webkit-box;
-   -webkit-line-clamp: 2;
-   -webkit-box-orient: vertical;
-
-   overflow: hidden;
-}
-
-@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
-   .songTitle,
-   .songArtist,
-   .songDuration {
-      font-size: 1.2rem;
-   }
-}
-
-@media (min-width: map.get($breakpoints, 'scaleUpSongs')) {
-   .song .songTitle,
-   .song .songArtist {
-      max-width: 90%;
-   }
-}
-
-@media (min-width: map.get($breakpoints, 'scaleUpSearchBar')) {
-   .song .songTitle,
-   .song .songArtist {
-      max-width: 80%;
-   }
 }
