@@ -1,0 +1,22 @@
+@use 'sass:map';
+
+@use '../../../breakpoints' as *;
+
+.settingsButton {
+   grid-column: -1;
+}
+
+.settingsIcon {
+   filter: var(--iconColor);
+
+   width: 1.4em;
+   height: 100%;
+
+   border-radius: 0.25em;
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+   .settingsIcon {
+      width: 1.6em;
+   }
+}
