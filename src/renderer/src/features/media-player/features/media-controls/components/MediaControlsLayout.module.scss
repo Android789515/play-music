@@ -1,0 +1,6 @@
+.mediaControlsLayout {
+   display: grid;
+   grid-template-columns: repeat(5, max-content) 6fr 1fr repeat(2, max-content);
+   grid-column-gap: 0.5em;
+   align-items: center;
+}
