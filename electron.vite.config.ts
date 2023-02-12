@@ -16,7 +16,9 @@ export default defineConfig({
          alias: {
             'renderer': resolve('src/renderer/src'),
             'components': resolve('src/renderer/src/components'),
-            'features': resolve('src/renderer/src/features')
+            'features': resolve('src/renderer/src/features'),
+            'utils': resolve('src/renderer/src/utils'),
+            'types': resolve('src/renderer/src/types')
          },
       },
       plugins: [react()],

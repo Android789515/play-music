@@ -21,6 +21,12 @@
        ],
        "features/*": [
           "src/renderer/src/features/*"
+       ],
+       "utils/*": [
+          "src/renderer/src/utils/*"
+       ],
+       "types/*": [
+          "src/renderer/src/types/*"
        ]
     }
   }
