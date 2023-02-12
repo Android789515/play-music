@@ -1,3 +1,7 @@
+@use 'sass:map';
+
+@use '../../../breakpoints' as *;
+
 // TODO - find actual fix
 //  for style overrides
 .newTabButton.newTabButton {
@@ -18,4 +22,10 @@
    filter: var(--iconColor);
 
    width: 1em;
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+   .plusIcon {
+      width: 1.2em;
+   }
 }
