@@ -1,0 +1,19 @@
+.newTabButton {
+   padding: 0.4em;
+   border-radius: 0.25em;
+}
+
+.newTabButton:focus,
+.newTabButton:hover {
+   background: var(--highlight);
+}
+
+.newTabButton:active {
+   background: var(--selected);
+}
+
+.plusIcon {
+   filter: var(--iconColor);
+
+   width: 1em;
+}
