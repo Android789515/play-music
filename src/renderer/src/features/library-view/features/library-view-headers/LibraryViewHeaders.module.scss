@@ -1,0 +1,10 @@
+.libraryViewHeaders {
+   text-align: left;
+
+   display: grid;
+   grid-template-columns: 1fr 1fr 0.5fr;
+   grid-column-gap: 1em;
+
+   background: var(--BG);
+   padding: var(--appSideSpace);
+}
