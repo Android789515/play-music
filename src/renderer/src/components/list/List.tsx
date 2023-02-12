@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import type { CSS_Class } from 'src/renderer/src/types/cssTypes';
+import type { CSS_Class } from 'types/cssTypes';
 
 import styles from './List.module.scss';
 
