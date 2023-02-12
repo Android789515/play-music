@@ -36,6 +36,7 @@
    outline: none;
 }
 
+// TODO - move font size to typography element
 @media (min-width: map.get($breakpoints, 'scaleUpUI')) {
    .searchBar {
       font-size: 1.2rem;
