@@ -1,0 +1,21 @@
+.tab {
+   cursor: pointer;
+
+   padding: 0.25em 0.5em;
+   border-radius: 0.25em;
+}
+
+.tab:focus,
+.tab:hover {
+   background: var(--highlight);
+}
+
+.currentTab {
+   background: var(--selected);
+}
+
+.tabText {
+   font-size: 1.4rem;
+
+   margin: 0;
+}
