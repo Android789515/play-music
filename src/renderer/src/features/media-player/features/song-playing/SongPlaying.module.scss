@@ -1,0 +1,31 @@
+@use 'sass:map';
+
+@use '../../../../../breakpoints' as *;
+
+.songPlaying {
+   display: grid;
+   grid-template-columns: repeat(3, max-content);
+   grid-column-gap: 2em;
+
+   padding: 0 0.5em;
+
+   margin-bottom: 0.5em;
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpSongs')) {
+   .songPlaying {
+      justify-content: center;
+   }
+}
+
+@media (min-width: map.get($breakpoints, 'centerSongPlaying')) {
+   .songPlaying {
+      position: absolute;
+      left: 0;
+      right: 0;
+
+      width: max-content;
+
+      margin: auto;
+   }
+}
