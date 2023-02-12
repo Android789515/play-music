@@ -1,0 +1,53 @@
+@use 'sass:map';
+
+@use '../../../breakpoints' as *;
+
+.searchBar {
+   width: 10em;
+
+   background: var(--selected);
+   padding: 0.25em 0.5em;
+   border-radius: 0.25em;
+   margin: auto;
+
+   transition: width 250ms;
+}
+
+.searchBar:focus-within {
+   width: 14em;
+}
+
+.searchIcon {
+   filter: var(--iconColor);
+
+   width: 1em;
+
+   margin-right: 0.4em;
+}
+
+.searchBarInput {
+   color: inherit;
+
+   background: 0;
+   border: 0;
+}
+
+.searchBarInput:focus {
+   outline: none;
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+   .searchBar {
+      font-size: 1.2rem;
+   }
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpSearchBar')) {
+   .searchBar {
+      width: 12em;
+   }
+
+   .searchBar:focus-within {
+      width: 18em;
+   }
+}
