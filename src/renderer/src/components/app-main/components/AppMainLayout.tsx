@@ -8,7 +8,7 @@ interface Props {
 
 export const AppMainLayout = ({ children }: Props) => {
    return (
-      <div>
+      <div className={styles.appMainLayout}>
          {children}
       </div>
    );
