@@ -18,6 +18,9 @@
       ],
        "components/*": [
           "src/renderer/src/components/*"
+       ],
+       "features/*": [
+          "src/renderer/src/features/*"
        ]
     }
   }
