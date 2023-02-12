@@ -16,11 +16,13 @@ export const LibraryViewHeader = ({ headerText, isSorting }: Props) => {
             {headerText}
          </h3>
 
-         <img
-            className={styles.sortArrowIcon}
-            src={sortIcon}
-            alt={'Sort Order'}
-         />
+         {isSorting && (
+            <img
+               className={styles.sortArrowIcon}
+               src={sortIcon}
+               alt={'Sort Order'}
+            />
+         )}
       </div>
    );
 };
