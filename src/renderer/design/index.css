@@ -147,13 +147,10 @@ body {
 }
 
 .tab {
-   font-size: 1.2rem;
-
    cursor: pointer;
 
    padding: 0.25em 0.5em;
    border-radius: 0.25em;
-   margin: 0;
 }
 
 .tab:focus,
@@ -164,6 +161,12 @@ body {
 /* Specificity */
 .tab.currentTab {
    background: var(--selected);
+}
+
+.tabText {
+   font-size: 1.4rem;
+
+   margin: 0;
 }
 
 .newTabButton {
