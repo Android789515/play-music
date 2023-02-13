@@ -1,6 +1,6 @@
 import { SlideableBar } from 'components/slideableBar';
 
-export const SongDuration = () => {
+export const SongDurationBar = () => {
    return (
       <SlideableBar
          value='65%'
