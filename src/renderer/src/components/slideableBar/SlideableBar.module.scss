@@ -1,0 +1,18 @@
+.bar {
+   cursor: pointer;
+
+   width: 100%;
+   height: 1em;
+
+   background: var(--barBG);
+   border-radius: var(--borderRadiusStandard);
+}
+
+.barValue {
+   pointer-events: none;
+
+   height: 100%;
+
+   background: var(--barTrackColor);
+   border-radius: var(--borderRadiusStandard) 0 0 var(--borderRadiusStandard);
+}
