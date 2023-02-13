@@ -11,23 +11,6 @@
      "noUnusedParameters": false,
      "composite": true,
     "jsx": "react-jsx",
-    "baseUrl": ".",
-    "paths": {
-       "renderer/*": [
-        "src/renderer/src/*"
-      ],
-       "components/*": [
-          "src/renderer/src/components/*"
-       ],
-       "features/*": [
-          "src/renderer/src/features/*"
-       ],
-       "utils/*": [
-          "src/renderer/src/utils/*"
-       ],
-       "types/*": [
-          "src/renderer/src/types/*"
-       ]
-    }
+    "baseUrl": "src/renderer/src"
   }
 }
