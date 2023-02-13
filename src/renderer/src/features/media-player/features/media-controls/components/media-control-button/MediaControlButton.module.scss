@@ -1,0 +1,81 @@
+@use 'sass:map';
+
+@use '../../../../../../../breakpoints' as *;
+
+.mediaControlButton {
+   cursor: pointer;
+
+   padding: 0.5em;
+   border-radius: 0.25em;
+}
+
+.mediaControlButton:focus,
+.mediaControlButton:hover {
+   background: var(--highlight);
+}
+
+.mediaControlButtonIcon {
+   filter: var(--iconColor);
+
+   width: 1.4em;
+}
+
+.rewindButton {
+   rotate: 180deg;
+}
+
+.volumeButton {
+   display: grid;
+   grid-template-columns: max-content 4em;
+   align-items: center;
+   grid-column-gap: 0.5em;
+
+   padding: 0.2em 0.5em;
+}
+
+.volumeButton:focus .volumeBar,
+.volumeButton:hover .volumeBar {
+   background: #d9d4d5;
+}
+
+.loopButton {
+   grid-column: -2;
+}
+
+.shuffleButton {
+   grid-column: -1;
+}
+
+.stopIcon {
+   // Stop button is too big normally
+   width: 1.3em;
+}
+
+.volumeIcon {
+   width: 2em;
+}
+
+.loopIcon,
+.shuffleIcon {
+   width: 1.8em;
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+   .mediaControlButtonIcon {
+      width: 1.5em;
+   }
+
+   .stopIcon {
+      /* Stop button is too big normally */
+      width: 1.4em;
+   }
+
+   .volumeIcon {
+      width: 2.1em;
+   }
+
+   .loopIcon,
+   .shuffleIcon {
+      width: 1.9em;
+   }
+}
