@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import type { VolumeStates } from './volumeTypes';
 
 import mutedIcon from './assets/icons/muted.svg';
@@ -7,7 +9,7 @@ import highVolumeIcon from './assets/icons/high-volume.svg';
 
 import styles from './VolumeButton.module.scss';
 
-import { IconButton } from 'components/icon-button';
+import { MediaControlButton } from '../../components/media-control-button';
 
 interface Props {
    // Low, medium, or high
@@ -15,12 +17,18 @@ interface Props {
 }
 
 export const VolumeButton = ({ volumeState }: Props) => {
+   const [ isHovered, setIsHovered ] = useState(false);
+
    return (
-      <IconButton
-         name='Volume Button'
+      <MediaControlButton
+         name='Volume'
          iconPath={mediumVolumeIcon}
-         buttonStyles={styles.volumeButton}
-         iconStyles={styles.volumeIcon}
-      />
+         restProps={{
+            onMouseEnter: () => setIsHovered(true),
+            onMouseLeave: () => setIsHovered(false)
+         }}
+      >
+
+      </MediaControlButton>
    );
 };

@@ -24,6 +24,15 @@
    rotate: 180deg;
 }
 
+.volumeButton {
+   display: grid;
+   grid-template-columns: max-content 4em;
+   align-items: center;
+   grid-column-gap: 0.5em;
+
+   padding: 0.2em 0.5em;
+}
+
 .loopButton {
    grid-column: -2;
 }
@@ -35,6 +44,10 @@
 .stopIcon {
    // Stop button is too big normally
    width: 1.3em;
+}
+
+.volumeIcon {
+   width: 2em;
 }
 
 .loopIcon,
@@ -50,6 +63,10 @@
    .stopIcon {
       /* Stop button is too big normally */
       width: 1.4em;
+   }
+
+   .volumeIcon {
+      width: 2.1em;
    }
 
    .loopIcon,

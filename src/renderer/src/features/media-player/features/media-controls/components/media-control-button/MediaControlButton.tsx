@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 import { capitalize } from 'utils/string';
 
 import playIcon from './assets/icons/play.svg';
@@ -13,11 +15,32 @@ import { IconButton } from 'components/icon-button';
 
 interface Props {
    name: string;
+   iconPath: string;
+   children?: ReactNode;
+   restProps?: object;
 }
 
-export const MediaControlButton = ({ name }:  Props) => {
+export const MediaControlButton = ({ name, iconPath, children, restProps }: Props) => {
    const getIcon = () => {
-      console.log(shuffleIcon);
+      switch (name.toLocaleLowerCase()) {
+         case 'play': return playIcon;
+         
+         case 'pause': return pauseIcon;
+         
+         case 'stop': return stopIcon;
+
+         // Rewind button class 
+         // rotates it 180 deg
+         case 'rewind': return fastForwardIcon;
+         case 'fast forward': return fastForwardIcon;
+         
+         case 'loop': return loopIcon;
+
+         case 'shuffle': return shuffleIcon;
+
+         // Not used
+         default: return '';
+      }
    };
 
    const getClassName = () => {
@@ -30,16 +53,22 @@ export const MediaControlButton = ({ name }:  Props) => {
 
       return className;
    };
-
+   
    return (
       <IconButton
          name={name}
-         iconPath={`./assets/icons/${getIcon()}.svg`}
+         iconPath={iconPath || getIcon()}
          buttonStyles={`
             ${styles.mediaControlButton}
-            ${styles[getClassName() + 'Button']}
+            ${styles[ getClassName() + 'Button' ]}
          `}
-         iconStyles={styles[getClassName() + 'Icon']}
-      />
+         iconStyles={`
+            ${styles.mediaControlButtonIcon}
+            ${styles[ getClassName() + 'Icon' ]}
+         `}
+         {...restProps}
+      >
+         {children}
+      </IconButton>
    );
 };
