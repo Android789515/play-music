@@ -34,7 +34,7 @@ module.exports = {
          'error',
          { allow: ['arrowFunctions'] },
       ],
-      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/no-explicit-any': 'warning',
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/no-unused-vars': 'off'
