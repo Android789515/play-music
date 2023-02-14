@@ -6,37 +6,32 @@ import { MediaControlsLayout } from './components'
 import { MediaControlButton } from './components/media-control-button';
 import { VolumeButton } from './features/volume-button';
 
+import { SongPlaying } from '../song-playing';
+
 export const MediaControls = () => {
    return (
       <div className={styles.mediaControls}>
          <MediaControlsLayout>
-            <MediaControlButton
-               name='Rewind'
+            <MediaControlButton name='Rewind' />
+
+            <MediaControlButton name='Pause' />
+
+            <MediaControlButton name='Stop' />
+
+            <MediaControlButton name='Fast Forward' />
+
+            <VolumeButton volumeState={VolumeStates.medium} />
+
+            <SongPlaying
+               songTitle='Rondo Alla Turca'
+               songArtist='Mozart'
+               songDuration='3:20'
+               inline
             />
 
-            <MediaControlButton
-               name='Pause'
-            />
+            <MediaControlButton name='Loop' />
 
-            <MediaControlButton
-               name='Stop'
-            />
-
-            <MediaControlButton
-               name='Fast Forward'
-            />
-
-            <VolumeButton
-               volumeState={VolumeStates.medium}
-            />
-
-            <MediaControlButton
-               name='Loop'
-            />
-
-            <MediaControlButton
-               name='Shuffle'
-            />
+            <MediaControlButton name='Shuffle' />
          </MediaControlsLayout>
       </div>
    );

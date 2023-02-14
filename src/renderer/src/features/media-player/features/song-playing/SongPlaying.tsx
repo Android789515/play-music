@@ -6,11 +6,17 @@ interface Props {
    songTitle: string;
    songArtist: string;
    songDuration: string;
+   inline?: boolean;
 }
 
-export const SongPlaying = ({ songTitle, songArtist, songDuration }: Props) => {
+export const SongPlaying = ({ songTitle, songArtist, songDuration, inline }: Props) => {
    return (
-      <div className={styles.songPlaying}>
+      <div
+         className={`
+            ${styles.songPlaying}
+            ${inline ? styles.songPlayingInline : ''}
+         `}
+      >
          <SongInfo
             songTitle={songTitle}
             songArtist={songArtist}
