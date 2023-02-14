@@ -9,6 +9,11 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "conventionalCommits.scopes": [
-    "gitignore"
+    "gitignore",
+    "root",
+    "configuration",
+    "components",
+    "media-player",
+    "songs"
   ]
 }
