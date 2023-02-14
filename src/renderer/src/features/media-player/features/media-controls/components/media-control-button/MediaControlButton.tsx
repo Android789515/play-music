@@ -15,7 +15,7 @@ import { IconButton } from 'components/icon-button';
 
 interface Props {
    name: string;
-   iconPath: string;
+   iconPath?: string;
    children?: ReactNode;
    [ prop: string ]: any;
 }
