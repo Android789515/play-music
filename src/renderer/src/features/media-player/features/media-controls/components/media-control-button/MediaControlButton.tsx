@@ -17,10 +17,10 @@ interface Props {
    name: string;
    iconPath: string;
    children?: ReactNode;
-   restProps?: object;
+   [ prop: string ]: any;
 }
 
-export const MediaControlButton = ({ name, iconPath, children, restProps }: Props) => {
+export const MediaControlButton = ({ name, iconPath, children, ...rest }: Props) => {
    const getIcon = () => {
       switch (name.toLocaleLowerCase()) {
          case 'play': return playIcon;
@@ -66,7 +66,7 @@ export const MediaControlButton = ({ name, iconPath, children, restProps }: Prop
             ${styles.mediaControlButtonIcon}
             ${styles[ getClassName() + 'Icon' ]}
          `}
-         {...restProps}
+         {...rest}
       >
          {children}
       </IconButton>
