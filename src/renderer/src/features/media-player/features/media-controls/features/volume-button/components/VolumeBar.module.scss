@@ -1,13 +1,20 @@
-.volumeBar {
+$volumeBarSmoothing: calc(var(--borderRadiusStandard) - 0.1em);
+
+.volumeBar.volumeBar {
    height: 0.75em;
-   $volumeBarSmoothing: var(--borderRadiusStandard) - 0.1em;
    border-radius: $volumeBarSmoothing;
 }
 
-.volumeBarHighContrast {
+.volumeBarHighContrast.volumeBarHighContrast {
    background: #d9d4d5;
 }
 
-.volume {
+.volume.volume {
    border-radius: $volumeBarSmoothing 0 0 $volumeBarSmoothing;
+}
+
+@media (prefers-color-scheme: dark) {
+   .volumeBarHighContrast.volumeBarHighContrast {
+      background: #605f60;
+   }
 }
