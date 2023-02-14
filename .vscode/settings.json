@@ -15,6 +15,7 @@
     "components",
     "media-player",
     "songs",
-    "design"
+    "design",
+    "library-view"
   ]
 }
