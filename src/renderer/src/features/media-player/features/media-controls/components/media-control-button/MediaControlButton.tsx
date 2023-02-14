@@ -1,5 +1,12 @@
 import { capitalize } from 'utils/string';
 
+import playIcon from './assets/icons/play.svg';
+import pauseIcon from './assets/icons/pause.svg';
+import stopIcon from './assets/icons/stop.svg';
+import fastForwardIcon from './assets/icons/fast-forward.svg';
+import loopIcon from './assets/icons/loop.svg';
+import shuffleIcon from './assets/icons/shuffle.svg';
+
 import styles from './MediaControlButton.module.scss';
 
 import { IconButton } from 'components/icon-button';
@@ -9,12 +16,8 @@ interface Props {
 }
 
 export const MediaControlButton = ({ name }:  Props) => {
-   const getFilename = () => {
-      const filename = name.split(' ')
-                           .join('-')
-                           .toLowerCase();
-
-      return filename;
+   const getIcon = () => {
+      console.log(shuffleIcon);
    };
 
    const getClassName = () => {
@@ -31,7 +34,7 @@ export const MediaControlButton = ({ name }:  Props) => {
    return (
       <IconButton
          name={name}
-         iconPath={`./assets/icons/${getFilename()}.svg`}
+         iconPath={`./assets/icons/${getIcon()}.svg`}
          buttonStyles={`
             ${styles.mediaControlButton}
             ${styles[getClassName() + 'Button']}
