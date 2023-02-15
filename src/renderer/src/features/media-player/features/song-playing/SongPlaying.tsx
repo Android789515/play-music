@@ -1,6 +1,6 @@
 import styles from './SongPlaying.module.scss';
 
-import { SongInfo } from 'features/songs/components';
+import { SongInfo } from 'features/library-view/songs/components';
 
 interface Props {
    songTitle: string;
@@ -9,7 +9,12 @@ interface Props {
    inline?: boolean;
 }
 
-export const SongPlaying = ({ songTitle, songArtist, songDuration, inline }: Props) => {
+export const SongPlaying = ({
+   songTitle,
+   songArtist,
+   songDuration,
+   inline,
+}: Props) => {
    return (
       <div
          className={`

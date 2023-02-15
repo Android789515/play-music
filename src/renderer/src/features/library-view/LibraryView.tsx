@@ -1,5 +1,5 @@
 import { LibraryViewTopBar } from './components/library-view-top-bar';
-import { Songs } from 'features/songs';
+import { Songs } from './songs';
 
 export const LibraryView = () => {
    return (
