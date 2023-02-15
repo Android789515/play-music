@@ -6,7 +6,7 @@
 //  for style overrides
 .newTabButton.newTabButton {
    padding: 0.4em;
-   border-radius: 0.25em;
+   border-radius: var(--borderRadiusStandard);
 }
 
 .newTabButton:focus,

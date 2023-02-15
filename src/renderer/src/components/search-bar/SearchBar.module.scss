@@ -7,7 +7,7 @@
 
    background: var(--selected);
    padding: 0.25em 0.5em;
-   border-radius: 0.25em;
+   border-radius: var(--borderRadiusStandard);
    margin: auto;
 
    transition: width 250ms;
