@@ -1,14 +1,37 @@
+import { useEffect } from 'react';
+
+import { useTabs } from './api';
+
 import styles from './Tabs.module.scss';
 
 import { List } from 'components/list';
 import { Tab } from './components';
 
 export const Tabs = () => {
+   const { getTabs, setCurrentTab } = useTabs();
+
+   useEffect(() => {
+      const onlyOneTab = getTabs().length === 1;
+
+      if (onlyOneTab) {
+         setCurrentTab(getTabs()[0]);
+      }
+   }, []);
+
+   const TabComponents = getTabs().map(tab => {
+      return (
+         <Tab
+            key={tab.id}
+            tab={tab}
+            currentTab={tab.isCurrent}
+            setCurrentTab={setCurrentTab}
+         />
+      );
+   });
+
    return (
       <List customStyles={styles.tabs}>
-         <Tab currentTab tabText={'Library'} />
-
-         <Tab tabText={'Classic Rock'} />
+         {TabComponents}
       </List>
    );
 };
