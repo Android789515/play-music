@@ -21,6 +21,7 @@
     "dependencies",
     "types",
     "utils",
-    "tabs"
+    "tabs",
+    "app"
   ]
 }
