@@ -18,6 +18,7 @@
     "design",
     "library-view",
     "styles",
-    "dependencies"
+    "dependencies",
+    "types"
   ]
 }
