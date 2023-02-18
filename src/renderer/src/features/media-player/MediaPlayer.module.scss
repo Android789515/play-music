@@ -1,5 +1,9 @@
 .mediaPlayer {
    width: 100%;
+
+   background: var(--widgetBG);
+   padding: var(--appSideSpace);
+   border-top: var(--widgetBorder);
 }
 
 .mediaPlayerOpen,

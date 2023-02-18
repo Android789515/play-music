@@ -7,7 +7,7 @@ import { SongDurationBar } from './features/media-controls/features/song-duratio
 
 export const MediaPlayer = () => {
    return (
-      <div className={styles.mediaPlayer}>
+      <footer className={styles.mediaPlayer}>
          <MediaPlayerLayout>
             <SongPlaying
                songTitle='Rondo Alla Turca'
@@ -19,6 +19,6 @@ export const MediaPlayer = () => {
 
             <SongDurationBar />
          </MediaPlayerLayout>
-      </div>
+      </footer>
    );
 };
