@@ -14,14 +14,14 @@ module.exports = {
       sourceType: 'module',
       ecmaVersion: 2021,
    },
-   plugins: ['@typescript-eslint'],
+   plugins: ['@typescript-eslint', 'react-hooks'],
    extends: [
       'eslint:recommended',
       'plugin:react/recommended',
       'plugin:react/jsx-runtime',
       'plugin:@typescript-eslint/recommended',
       'plugin:@typescript-eslint/eslint-recommended',
-      'prettier'
+      'prettier',
    ],
    rules: {
       '@typescript-eslint/ban-ts-comment': [
@@ -37,7 +37,15 @@ module.exports = {
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/no-var-requires': 'off',
-      '@typescript-eslint/no-unused-vars': 'off'
+      '@typescript-eslint/no-unused-vars': 'off',
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': [
+         'warn',
+         {
+            additionalHooks:
+               '(useRecoilCallback|useRecoilTransaction_UNSTABLE)',
+         },
+      ],
    },
    overrides: [
       {
