@@ -1,3 +1,5 @@
+import { RecoilRoot } from 'recoil';
+
 import styles from './App.module.scss';
 
 import { AppHeader } from 'components/app-header';
@@ -6,12 +8,14 @@ import { AppFooter } from 'components/app-footer';
 
 export const App = () => {
    return (
-      <div className={styles.app}>
-         <AppHeader />
+      <RecoilRoot>
+         <div className={styles.app}>
+            <AppHeader />
 
-         <AppMain />
+            <AppMain />
 
-         <AppFooter />
-      </div>
+            <AppFooter />
+         </div>
+      </RecoilRoot>
    );
 };
