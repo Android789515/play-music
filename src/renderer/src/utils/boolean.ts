@@ -6,8 +6,12 @@ interface ConditionsBuilder {
 
 export const testConditions = (conditionsBuilder: ConditionsBuilder) => {
    const conditionTests = Object.values(conditionsBuilder);
-
-   return conditionTests.every(conditionTest => {
+   const doesTestPass = (conditionTest: ConditionTest) => {
       return conditionTest() === true;
-   });
+   }
+
+   return {
+      all: () => conditionTests.every(doesTestPass),
+      any: () => conditionTests.some(doesTestPass)
+   };
 };
