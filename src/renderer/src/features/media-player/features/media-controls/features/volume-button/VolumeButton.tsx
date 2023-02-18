@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import type { VolumeStates } from './volumeTypes';
 
@@ -17,10 +17,6 @@ interface Props {
 
 export const VolumeButton = ({ volumeState }: Props) => {
    const [ isHovered, setIsHovered ] = useState(false);
-
-   useEffect(() => {
-      console.log(isHovered);
-   }, [isHovered]);
 
    return (
       <MediaControlButton
