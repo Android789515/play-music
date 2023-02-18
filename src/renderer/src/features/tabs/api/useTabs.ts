@@ -2,7 +2,7 @@ import { useRecoilState } from 'recoil';
 import { tabsState } from '../stores';
 
 import type { Tab } from '../types';
-import { mapOverSet } from 'utils/set';
+import { mapOverSet, filterSet } from 'utils/set';
 import { testConditions } from 'utils/boolean';
 
 export const useTabs = () => {
@@ -40,11 +40,12 @@ export const useTabs = () => {
 
    const closeTab = (tabToClose: Tab) => {
       setTabs(prevTabs => {
-         return mapOverSet(prevTabs, (tab: Tab) => {
+         return filterSet(prevTabs, (tab: Tab) => {
+            // Tabs to keep
             return testConditions({
-               isTabToClose: () => tab.id === tabToClose.id,
-               isNotPermanentTab: () => !tab.isPermanent,
-            });
+               isPermanent: () => tab.isPermanent || false,
+               notTabToClose: () => tab.id !== tabToClose.id
+            }).any();
          });
       });
    };
