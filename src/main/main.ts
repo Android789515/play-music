@@ -1,6 +1,8 @@
-import { app, shell, BrowserWindow } from 'electron';
 import { join } from 'path';
+
+import { app, shell, BrowserWindow } from 'electron';
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
+
 import icon from '../../resources/icon.png?asset';
 
 function createWindow(): void {
