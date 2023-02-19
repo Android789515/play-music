@@ -18,7 +18,8 @@ export default defineConfig({
             'components': resolve('src/renderer/src/components'),
             'features': resolve('src/renderer/src/features'),
             'utils': resolve('src/renderer/src/utils'),
-            'types': resolve('src/renderer/src/types')
+            'types': resolve('src/renderer/src/types'),
+            'hooks': resolve('src/renderer/src/hooks'),
          },
       },
       plugins: [react()],
