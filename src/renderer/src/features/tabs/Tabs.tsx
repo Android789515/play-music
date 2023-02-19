@@ -16,7 +16,7 @@ export const Tabs = () => {
       if (onlyOneTab) {
          setCurrentTab(getTabs()[0]);
       }
-   }, []);
+   }, [getTabs().length]);
 
    const TabComponents = getTabs().map(tab => {
       return (
