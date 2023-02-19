@@ -35,7 +35,8 @@ export const useTabs = () => {
    };
 
    const openTab = (tab: Tab) => {
-      setTabs(prevTabs => new Set([...prevTabs, tab]));
+      setTabs(prevTabs => new Set([ ...prevTabs, tab ]));
+      setCurrentTab(tab);
    };
 
    const closeTab = (tabToClose: Tab) => {
