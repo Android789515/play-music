@@ -1,0 +1,16 @@
+.contextMenuItem {
+   cursor: pointer;
+
+   padding: .25em .5em;
+
+   border-radius: var(--borderRadiusStandard);
+}
+
+.contextMenuItem:focus,
+.contextMenuItem:hover {
+   background: var(--highlight);
+}
+
+.contextMenuItem:active {
+   background: var(--selected);
+}
