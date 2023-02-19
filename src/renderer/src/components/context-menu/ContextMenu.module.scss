@@ -1,0 +1,16 @@
+.contextMenu {
+   position: absolute;
+
+   z-index: 1;
+}
+
+.contextMenuLayout {
+   display: grid;
+   grid-template-columns: 12ch;
+   grid-row-gap: .5em;
+
+   padding: var(--appSideSpace);
+   background: var(--BG);
+   border: var(--widgetBorder);
+   border-radius: var(--borderRadiusStandard);
+}
