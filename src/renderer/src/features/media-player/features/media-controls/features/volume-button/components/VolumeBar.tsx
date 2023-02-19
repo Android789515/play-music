@@ -3,10 +3,10 @@ import styles from './VolumeBar.module.scss';
 import { SlideableBar } from 'components/slideableBar';
 
 interface Props {
-   volumeButtonHover?: boolean;
+   increaseContrast?: boolean;
 }
 
-export const VolumeBar = ({ volumeButtonHover }: Props) => {
+export const VolumeBar = ({ increaseContrast: volumeButtonHover }: Props) => {
    return (
       <SlideableBar
          value='45%'

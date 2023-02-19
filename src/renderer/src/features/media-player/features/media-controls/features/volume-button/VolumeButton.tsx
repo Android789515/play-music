@@ -18,15 +18,19 @@ interface Props {
 export const VolumeButton = ({ volumeState }: Props) => {
    const [ isHovered, setIsHovered ] = useState(false);
 
+   const [ isFocused, setIsFocused ] = useState(false);
+
    return (
       <MediaControlButton
          name='Volume'
          iconPath={mediumVolumeIcon}
          onMouseEnter={() => setIsHovered(true)}
          onMouseLeave={() => setIsHovered(false)}
+         onFocus={() => setIsFocused(true)}
+         onBlur={() => setIsFocused(false)}
       >
          <VolumeBar
-            volumeButtonHover={isHovered}
+            increaseContrast={isHovered || isFocused}
          />
       </MediaControlButton>
    );
