@@ -23,6 +23,7 @@
     "utils",
     "tabs",
     "app",
-    "main-process"
+    "main-process",
+    "context-menu"
   ]
 }
