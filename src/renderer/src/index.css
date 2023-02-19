@@ -8,6 +8,8 @@
    --barBG: var(--highlight);
    --barTrackColor: #ff00e6;
 
+   --volumeBarHighContrast: #d9d4d5;
+
    --iconColor: initial;
 
    --widgetBG: #f7f7f7;
@@ -94,6 +96,8 @@ button {
       --selected: #4d4c4d;
 
       /* Bar BG = selected */
+
+      --volumeBarHighContrast: #605f60;
 
       --iconColor: invert(1);
 
