@@ -24,6 +24,10 @@
    background: var(--highlight);
 }
 
+.song:active {
+   background: var(--selected);
+}
+
 .song > h4 {
    display: -webkit-box;
    -webkit-line-clamp: 2;
