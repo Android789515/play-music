@@ -49,6 +49,8 @@ body {
    -moz-osx-font-smoothing: grayscale;
    color: var(--textColor);
 
+   user-select: none;
+
    background: var(--BG);
 
    margin: 0;
