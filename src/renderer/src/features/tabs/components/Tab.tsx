@@ -6,6 +6,8 @@ import { capitalize } from 'utils/string';
 
 import styles from './Tab.module.scss';
 
+import { useShowContextMenu, ContextMenu } from 'components/context-menu';
+
 interface Props {
    tab: TabType;
    currentTab?: boolean;
@@ -14,6 +16,8 @@ interface Props {
 }
 
 export const Tab = ({ tab, currentTab, setCurrentTab, closeTab }: Props) => {
+   const { isContextMenuShown, openContextMenu, closeContextMenu } = useShowContextMenu();
+
    const handleClick = (event: MouseEvent) => {
       switch (event.button) {
          case MouseButtons.left:
@@ -24,22 +28,39 @@ export const Tab = ({ tab, currentTab, setCurrentTab, closeTab }: Props) => {
             closeTab(tab);
             break;
          
+         case MouseButtons.right:
+            openContextMenu();
+            break;
+         
          default:
             break;
       }
    };
 
+   const contextMenuStructure = {
+      'Rename': () => {}
+   };
+
    return (
-      <li
-         className={`
-            ${styles.tab}
-            ${currentTab ? styles.currentTab : ''}
-         `}
-         onMouseDown={handleClick}
-      >
-         <h2 tabIndex={1} className={styles.tabText}>
-            {capitalize(tab.name)}
-         </h2>
+      <li>
+         <div
+            className={`
+               ${styles.tab}
+               ${currentTab ? styles.currentTab : ''}
+            `}
+            onMouseUp={handleClick}
+         >
+            <h2 tabIndex={1} className={styles.tabText}>
+               {capitalize(tab.name)}
+            </h2>
+         </div>
+
+         { isContextMenuShown() &&
+            <ContextMenu
+               structure={contextMenuStructure}
+               closeContextMenu={closeContextMenu}
+            />
+         }
       </li>
    );
 };
