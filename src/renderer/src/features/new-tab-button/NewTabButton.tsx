@@ -18,7 +18,7 @@ export const NewTabButton = () => {
    };
 
    const openBlankTab = () => {
-      const newTab = { id: newUUID(), name: 'New Tab' };
+      const newTab = { id: newUUID(), name: 'New Tab', collection: [] };
 
       openTab(newTab);
 
