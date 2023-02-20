@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { v4 as newUUID } from 'uuid';
 
 import { useTabs } from 'features/tabs';
@@ -10,8 +9,6 @@ import { IconButton } from 'components/icon-button';
 import { Structure, useShowContextMenu, ContextMenu } from 'components/context-menu';
 
 export const NewTabButton = () => {
-   const contextMenuRef = useRef<HTMLDivElement>(null);
-
    const { isContextMenuShown, openContextMenu, closeContextMenu } = useShowContextMenu();
 
    const { openTab } = useTabs();
@@ -45,7 +42,6 @@ export const NewTabButton = () => {
             <ContextMenu
                structure={contextMenuStructure}
                closeContextMenu={closeContextMenu}
-               contextMenuRef={contextMenuRef}
             />
          }
       </div>

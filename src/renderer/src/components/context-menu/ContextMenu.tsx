@@ -1,4 +1,4 @@
-import { RefObject, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 import type { Structure } from './types';
 
@@ -10,10 +10,11 @@ import { ContextMenuItem } from './components';
 interface Props {
    structure: Structure;
    closeContextMenu: () => void;
-   contextMenuRef: RefObject<HTMLDivElement>;
 }
 
-export const ContextMenu = ({ structure, closeContextMenu, contextMenuRef }: Props) => {
+export const ContextMenu = ({ structure, closeContextMenu }: Props) => {
+   const contextMenuRef = useRef<HTMLDivElement>(null);
+
    const focusWhenShown = () => {
       if (contextMenuRef.current) {
          contextMenuRef.current.focus();
