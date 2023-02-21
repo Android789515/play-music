@@ -38,7 +38,7 @@ export const Tab = ({ tab, currentTab, setCurrentTab, closeTab }: Props) => {
    };
 
    const contextMenuStructure = {
-      'Rename': () => {}
+      ...!tab.isPermanent && { 'Rename': () => {} }
    };
 
    return (
