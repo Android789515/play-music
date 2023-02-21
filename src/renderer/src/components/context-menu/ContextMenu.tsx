@@ -33,7 +33,9 @@ export const ContextMenu = ({ structure, closeContextMenu }: Props) => {
       );
    });
 
-   return (
+   const isContextMenuEmpty = Object.keys(structure).length === 0;
+
+   return ( !isContextMenuEmpty ?
       <div
          tabIndex={1}
          className={styles.contextMenu}
@@ -44,5 +46,5 @@ export const ContextMenu = ({ structure, closeContextMenu }: Props) => {
             {ContextMenuActions}
          </List>
       </div>
-   );
+   : null );
 };
