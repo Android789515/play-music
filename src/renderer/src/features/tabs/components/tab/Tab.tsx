@@ -1,7 +1,7 @@
 import type { MouseEvent } from 'react';
 
 import { MouseButtons } from 'types/eventTypes';
-import type { Tab as TabType } from '../types';
+import type { Tab as TabType } from '../../types';
 import { capitalize } from 'utils/string';
 
 import styles from './Tab.module.scss';
@@ -50,7 +50,7 @@ export const Tab = ({ tab, currentTab, setCurrentTab, closeTab }: Props) => {
             `}
             onMouseUp={handleClick}
          >
-            <h2 tabIndex={1} className={styles.tabText}>
+            <h2 tabIndex={1} className={styles.tabName}>
                {capitalize(tab.name)}
             </h2>
          </div>
