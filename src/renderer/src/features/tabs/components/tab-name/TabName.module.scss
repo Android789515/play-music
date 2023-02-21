@@ -1,0 +1,15 @@
+@use 'sass:map';
+
+@use '../../../../breakpoints' as *;
+
+.tabName {
+   font-size: 1.4rem;
+
+   margin: 0;
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+   .tabName {
+      font-size: 1.6rem;
+   }
+}
