@@ -1,4 +1,4 @@
-import type { MouseEvent } from 'react';
+import { MouseEvent, useState } from 'react';
 
 import { MouseButtons } from 'types/eventTypes';
 import type { Tab as TabType } from '../../types';
@@ -38,8 +38,10 @@ export const Tab = ({ tab, currentTab }: Props) => {
       }
    };
 
+   const [ renaming, setRenaming ] = useState(false);
+
    const contextMenuStructure = {
-      ...!tab.isPermanent && { 'Rename': () => {} }
+      ...!tab.isPermanent && { 'Rename': () => setRenaming(true) }
    };
 
    return (
@@ -52,7 +54,10 @@ export const Tab = ({ tab, currentTab }: Props) => {
             onMouseUp={handleClick}
          >
             <TabName
+               tabID={tab.id}
                tabName={tab.name}
+               renaming={renaming}
+               setRenaming={setRenaming}
             />
          </div>
 
