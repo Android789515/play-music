@@ -2,6 +2,7 @@ import type { MouseEvent } from 'react';
 
 import { MouseButtons } from 'types/eventTypes';
 import type { Tab as TabType } from '../../types';
+import { useTabs } from 'features/tabs';
 
 import styles from './Tab.module.scss';
 
@@ -11,12 +12,12 @@ import { TabName } from '../tab-name';
 interface Props {
    tab: TabType;
    currentTab?: boolean;
-   setCurrentTab: (tab: TabType) => void; // Sets state
-   closeTab: (tab: TabType) => void; // Sets state
 }
 
-export const Tab = ({ tab, currentTab, setCurrentTab, closeTab }: Props) => {
+export const Tab = ({ tab, currentTab }: Props) => {
    const { isContextMenuShown, openContextMenu, closeContextMenu } = useShowContextMenu();
+
+   const { setCurrentTab, closeTab } = useTabs();
 
    const handleClick = (event: MouseEvent) => {
       switch (event.button) {

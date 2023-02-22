@@ -8,7 +8,7 @@ import { List } from 'components/list';
 import { Tab } from './components';
 
 export const Tabs = () => {
-   const { getTabs, setCurrentTab, closeTab } = useTabs();
+   const { getTabs, setCurrentTab } = useTabs();
 
    useEffect(() => {
       const onlyOneTab = getTabs().length === 1;
@@ -24,8 +24,6 @@ export const Tabs = () => {
             key={tab.id}
             tab={tab}
             currentTab={tab.isCurrent}
-            setCurrentTab={setCurrentTab}
-            closeTab={closeTab}
          />
       );
    });
