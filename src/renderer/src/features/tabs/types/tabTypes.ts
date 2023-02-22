@@ -9,3 +9,5 @@ export interface Tab {
    isCurrent?: boolean;
    isPermanent?: boolean;
 }
+
+export type TabKey = keyof Tab;

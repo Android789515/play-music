@@ -1,8 +1,9 @@
 import { useRecoilState } from 'recoil';
 import { tabsState } from '../stores';
 
-import type { Tab } from '../types';
-import { mapOverSet, filterSet } from 'utils/set';
+import type { UUID } from 'types/stringTypes';
+import type { Tab, TabKey } from '../types';
+import { easyIterate, mapOverSet, filterSet } from 'utils/set';
 import { testConditions } from 'utils/boolean';
 
 export const useTabs = () => {
@@ -10,6 +11,21 @@ export const useTabs = () => {
 
    const getTabs = () => {
       return [...tabs];
+   };
+
+   const updateTab = (tabID: UUID, payload: { tabKey: TabKey, data: Tab[TabKey] }) => {
+      setTabs(prevTabs => {
+         return easyIterate<Tab>(prevTabs, tabs => {
+            return tabs.map(tab => {
+               const isTabToUpdate = tab.id === tabID;
+               if (isTabToUpdate) {
+                  return { ...tab, [payload.tabKey]: payload.data };
+               }
+
+               return tab;
+            });
+         });
+      });
    };
 
    const clearCurrentTab = () => {
@@ -56,5 +72,6 @@ export const useTabs = () => {
       setCurrentTab,
       openTab,
       closeTab,
+      updateTab,
    };
 };
