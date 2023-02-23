@@ -53,6 +53,7 @@ export const TabName = ({ tabID, tabName, renaming, setRenaming }: Props) => {
             ${renaming ? styles.tabNameRenaming : ''}
          `}
          contentEditable={renaming}
+         suppressContentEditableWarning
          onChange={renameTab}
          onKeyDown={handleKeyDown}
          onBlur={() => setRenaming(false)}
