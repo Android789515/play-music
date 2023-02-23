@@ -5,6 +5,10 @@ import type { UUID } from 'types/stringTypes';
 import type { Tab, TabKey } from '../types';
 import { easyIterate, mapOverSet, filterSet } from 'utils/set';
 import { testConditions } from 'utils/boolean';
+import { updateInArray } from 'utils/array';
+import { useLogValueChange } from 'hooks/useLogValueChange';
+
+import { libraryTab } from '../stores';
 
 export const useTabs = () => {
    const [tabs, setTabs] = useRecoilState(tabsState);
@@ -51,11 +55,31 @@ export const useTabs = () => {
    };
 
    const openTab = (tab: Tab) => {
+      setTabs(prevTabs => {
+         return easyIterate<Tab>(prevTabs, tabs => {
+            return updateInArray(tabs, { ...tab, isOpen: true });
+         });
+      });
+   };
+
+   const closeTab = (tab: Tab) => {
+      setTabs(prevTabs => {
+         return easyIterate<Tab>(prevTabs, tabs => {
+            return updateInArray(tabs, { ...tab, isOpen: false });
+         });
+      });
+
+      setCurrentTab(libraryTab);
+   };
+
+   const createTab = (tab: Tab) => {
       setTabs(prevTabs => new Set([ ...prevTabs, tab ]));
+
+      openTab(tab);
       setCurrentTab(tab);
    };
 
-   const closeTab = (tabToClose: Tab) => {
+   const deleteTab = (tabToClose: Tab) => {
       setTabs(prevTabs => {
          return filterSet(prevTabs, (tab: Tab) => {
             // Tabs to keep
@@ -72,6 +96,8 @@ export const useTabs = () => {
       setCurrentTab,
       openTab,
       closeTab,
+      createTab,
+      deleteTab,
       updateTab,
    };
 };

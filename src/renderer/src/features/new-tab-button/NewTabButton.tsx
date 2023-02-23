@@ -11,22 +11,22 @@ import { Structure, useShowContextMenu, ContextMenu } from 'components/context-m
 export const NewTabButton = () => {
    const { isContextMenuShown, openContextMenu, closeContextMenu } = useShowContextMenu();
 
-   const { openTab } = useTabs();
+   const { openTab, createTab } = useTabs();
 
    const handleClick = () => {
       openContextMenu();
    };
 
-   const openBlankTab = () => {
+   const createBlankTab = () => {
       const newTab = { id: newUUID(), name: 'New Tab', collection: [] };
 
-      openTab(newTab);
+      createTab(newTab);
 
       closeContextMenu();
    };
 
    const contextMenuStructure: Structure = {
-      'New Tab': () => openBlankTab(),
+      'New Tab': () => createBlankTab(),
    };
 
    return (

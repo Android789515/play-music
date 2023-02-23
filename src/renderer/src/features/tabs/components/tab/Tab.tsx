@@ -44,7 +44,7 @@ export const Tab = ({ tab, currentTab }: Props) => {
       ...!tab.isPermanent && { 'Rename': () => setRenaming(true) }
    };
 
-   return (
+   return ( (tab.isOpen || tab.isPermanent) ?
       <li>
          <div
             className={`
@@ -68,5 +68,5 @@ export const Tab = ({ tab, currentTab }: Props) => {
             />
          }
       </li>
-   );
+   : null);
 };

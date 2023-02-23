@@ -6,6 +6,7 @@ export interface Tab {
    id: UUID;
    name: string;
    collection: Song[];
+   isOpen?: boolean;
    isCurrent?: boolean;
    isPermanent?: boolean;
 }
