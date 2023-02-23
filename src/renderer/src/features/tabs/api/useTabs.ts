@@ -68,13 +68,15 @@ export const useTabs = () => {
       setCurrentTab(tab);
    };
 
-   const deleteTab = (tabToClose: Tab) => {
+   const deleteTab = (tabToDelete: Tab) => {
+      setCurrentTab(libraryTab);
+
       return easyTabsIterate(tabs => {
          return tabs.filter(tab => {
             return testConditions({
                isPermanent: () => tab.isPermanent || false,
-               notTabToClose: () => tab.id !== tabToClose.id
-            }).any;
+               notTabToClose: () => tab.id !== tabToDelete.id
+            }).any();
          });
       });
    };
