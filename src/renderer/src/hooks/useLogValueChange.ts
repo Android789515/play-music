@@ -1,7 +1,15 @@
 import { useEffect } from 'react';
 
-export const useLogValueChange = <Type>(valueToTrack: Type) => {
+interface HookOptions {
+   message: string;
+}
+
+export const useLogValueChange = <Type>(valueToTrack: Type, options?: HookOptions) => {
    useEffect(() => {
-      console.log(valueToTrack);
+      if (options?.message) {
+         console.log(options.message);
+      } else {
+         console.log(valueToTrack);
+      }
    }, [valueToTrack]);
 };
