@@ -17,7 +17,7 @@ interface Props {
 export const Tab = ({ tab, currentTab }: Props) => {
    const { isContextMenuShown, openContextMenu, closeContextMenu } = useShowContextMenu();
 
-   const { setCurrentTab, closeTab } = useTabs();
+   const { setCurrentTab, closeTab, deleteTab } = useTabs();
 
    useEffect(() => {
       setCurrentTab(tab);
@@ -45,7 +45,8 @@ export const Tab = ({ tab, currentTab }: Props) => {
    const [ renaming, setRenaming ] = useState(false);
 
    const contextMenuStructure = {
-      ...!tab.isPermanent && { 'Rename': () => setRenaming(true) }
+      ...!tab.isPermanent && { 'Rename': () => setRenaming(true) },
+      ...!tab.isPermanent && { 'Delete': () => deleteTab(tab) }
    };
 
    return ( (tab.isOpen || tab.isPermanent) ?
