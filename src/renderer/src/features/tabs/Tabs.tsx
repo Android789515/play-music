@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import { useTabs } from './api';
 
 import styles from './Tabs.module.scss';
@@ -8,15 +6,7 @@ import { List } from 'components/list';
 import { Tab } from './components';
 
 export const Tabs = () => {
-   const { getTabs, setCurrentTab } = useTabs();
-
-   useEffect(() => {
-      const onlyOneTab = getTabs().length === 1;
-
-      if (onlyOneTab) {
-         setCurrentTab(getTabs()[0]);
-      }
-   }, [getTabs().length]);
+   const { getTabs } = useTabs();
 
    const TabComponents = getTabs().map(tab => {
       return (
