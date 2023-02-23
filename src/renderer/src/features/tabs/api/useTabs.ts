@@ -1,6 +1,7 @@
 import { useRecoilState } from 'recoil';
 import { tabsState } from '../stores';
 
+import type { UUID } from 'types/stringTypes';
 import type { Tab, TabKey } from '../types';
 import { easyIterate } from 'utils/set';
 import { testConditions } from 'utils/boolean';
@@ -12,18 +13,22 @@ import { libraryTab } from '../stores';
 export const useTabs = () => {
    const [tabs, setTabs] = useRecoilState(tabsState);
 
-   useLogValueChange(tabs.size, { message: 'Tabs Changed!' });
-
-   const getTabs = () => {
-      return [...tabs];
-   };
-
    const easyTabsIterate = (callback: (tabs: Tab[]) => Tab[]) => {
       setTabs(prevTabs => {
          return easyIterate<Tab>(prevTabs, tabs => {
             return callback(tabs);
          });
       });
+   };
+
+   useLogValueChange(tabs.size, { message: 'Tabs: ' + tabs.size });
+
+   const getTabs = () => {
+      return [...tabs];
+   };
+
+   const getTab = (tabID: UUID) => {
+      return [...tabs].find(tab => tab.id === tabID);
    };
 
    const updateTab = (tab: Tab, payload: { tabKey: TabKey, data: Tab[TabKey] }) => {
@@ -65,7 +70,6 @@ export const useTabs = () => {
       setTabs(prevTabs => new Set([ ...prevTabs, tab ]));
 
       openTab(tab);
-      setCurrentTab(tab);
    };
 
    const deleteTab = (tabToDelete: Tab) => {
@@ -83,6 +87,7 @@ export const useTabs = () => {
 
    return {
       getTabs,
+      getTab,
       setCurrentTab,
       openTab,
       closeTab,
