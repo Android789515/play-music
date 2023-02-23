@@ -15,13 +15,14 @@ interface Props {
 }
 
 export const TabName = ({ tabID, tabName, renaming, setRenaming }: Props) => {
-   const { updateTab } = useTabs();
+   const { updateTab, getTab } = useTabs();
 
    const renameTab = (event: FormEvent) => {
+      const thisTab = getTab(tabID);
       const updatedTabName = (event.target as HTMLHeadingElement).textContent;
 
-      if (updatedTabName) {
-         updateTab(tabID, { tabKey: 'name', data: updatedTabName });
+      if (updatedTabName && thisTab) {
+         updateTab(thisTab, { tabKey: 'name', data: updatedTabName });
       }
    };
 
