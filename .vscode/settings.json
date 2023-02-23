@@ -25,6 +25,7 @@
     "app",
     "main-process",
     "context-menu",
-    "hooks"
+    "hooks",
+    "preload"
   ]
 }
