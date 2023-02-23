@@ -24,6 +24,7 @@
     "tabs",
     "app",
     "main-process",
-    "context-menu"
+    "context-menu",
+    "hooks"
   ]
 }
