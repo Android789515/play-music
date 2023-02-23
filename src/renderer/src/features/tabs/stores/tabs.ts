@@ -31,14 +31,16 @@ const dummyData = [
    { title: 'Epitome of Hyberbole', artist: 'Standup Chair', duration: '35:23' },
 ];
 
+export const libraryTab = {
+   id: newUUID(),
+   name: 'Library',
+   collection: dummyData,
+   isPermanent: true
+};
+
 export const tabsState = atom<Set<Tab>>({
    key: newNameSpaceUUID('tabs', namespace),
    default: new Set([
-      {
-         id: newUUID(),
-         name: 'Library',
-         collection: dummyData,
-         isPermanent: true
-      }
+      libraryTab
    ])
 });
