@@ -3,6 +3,7 @@ import { useRef, useEffect } from 'react';
 import type { Structure } from './types';
 import { testConditions } from 'utils/boolean';
 import { useGlobalEventListener } from 'hooks/useGlobalEventListener';
+import { useShowContextMenu } from './api';
 
 import styles from './ContextMenu.module.scss';
 
@@ -10,11 +11,12 @@ import { List } from 'components/list';
 import { ContextMenuItem } from './components';
 
 interface Props {
+   nested?: boolean;
    structure: Structure;
    closeContextMenu: () => void;
 }
 
-export const ContextMenu = ({ structure, closeContextMenu }: Props) => {
+export const ContextMenu = ({ nested, structure, closeContextMenu }: Props) => {
    const contextMenuRef = useRef<HTMLDivElement>(null);
 
    const focusWhenShown = () => {
@@ -41,10 +43,14 @@ export const ContextMenu = ({ structure, closeContextMenu }: Props) => {
 
    useGlobalEventListener('mousedown', handleDocumentClick);
 
+   // Use outside the ContextMenuItems
+   const contextMenuMethods = useShowContextMenu();
+
    const ContextMenuActions = Object.entries(structure).map(([ actionName, action ], index) => {
       return (
          <ContextMenuItem
             key={index}
+            contextMenuMethods={contextMenuMethods}
             actionName={actionName}
             action={action}
          />
@@ -56,8 +62,10 @@ export const ContextMenu = ({ structure, closeContextMenu }: Props) => {
    return ( !isContextMenuEmpty ?
       <div
          tabIndex={1}
-         className={styles.contextMenu}
-         onBlur={closeContextMenu}
+         className={`
+            ${styles.contextMenu}
+            ${nested ? styles.nestedContextMenu : ''}
+         `}
          ref={contextMenuRef}
       >
          <List customStyles={styles.contextMenuLayout}>
