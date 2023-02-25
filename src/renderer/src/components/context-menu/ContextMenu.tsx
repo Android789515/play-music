@@ -1,6 +1,8 @@
 import { useRef, useEffect } from 'react';
 
 import type { Structure } from './types';
+import { testConditions } from 'utils/boolean';
+import { useGlobalEventListener } from 'hooks/useGlobalEventListener';
 
 import styles from './ContextMenu.module.scss';
 
@@ -16,18 +18,34 @@ export const ContextMenu = ({ structure, closeContextMenu }: Props) => {
    const contextMenuRef = useRef<HTMLDivElement>(null);
 
    const focusWhenShown = () => {
-      if (contextMenuRef.current) {
-         contextMenuRef.current.focus();
+      const contextMenu = contextMenuRef.current;
+
+      if (contextMenu) {
+         contextMenu.focus();
       }
    };
 
    useEffect(focusWhenShown, []);
 
+   const handleDocumentClick = (event: MouseEvent) => {
+      const contextMenu = contextMenuRef.current;
+      const eventTarget = event.target as HTMLElement;
+
+      if (testConditions({
+         isMounted: () => contextMenu !== undefined,
+         clickedOutsideMenu: () => !contextMenu!.contains(eventTarget)
+      }).all()) {
+         closeContextMenu();
+      }
+   };
+
+   useGlobalEventListener('mousedown', handleDocumentClick);
+
    const ContextMenuActions = Object.entries(structure).map(([ actionName, action ], index) => {
       return (
          <ContextMenuItem
             key={index}
-            itemText={actionName}
+            actionName={actionName}
             action={action}
          />
       );
