@@ -13,10 +13,11 @@ interface Props {
 export const Button = ({ customStyles = '', children, ...rest }: Props) => {
    return (
       <button
+         tabIndex={1}
          className={`
-         ${styles.buttonDefaults}
-         ${customStyles}
-      `}
+            ${styles.buttonDefaults}
+            ${customStyles}
+         `}
          {...rest}
       >
          {children}
