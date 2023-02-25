@@ -11,7 +11,7 @@ import { Structure, useShowContextMenu, ContextMenu } from 'components/context-m
 export const NewTabButton = () => {
    const { isContextMenuShown, openContextMenu, closeContextMenu } = useShowContextMenu();
 
-   const { openTab, createTab } = useTabs();
+   const { createTab } = useTabs();
 
    const handleClick = () => {
       openContextMenu();
