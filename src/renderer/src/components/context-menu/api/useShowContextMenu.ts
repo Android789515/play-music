@@ -1,6 +1,12 @@
 import { useState } from 'react';
 
-export const useShowContextMenu = () => {
+export interface ShowContextMenuHook {
+   isContextMenuShown: () => boolean;
+   openContextMenu: () => void;
+   closeContextMenu: () => void;
+}
+
+export const useShowContextMenu = (): ShowContextMenuHook => {
    const [ isShown, setIsShown ] = useState(false);
 
    const isContextMenuShown = () => isShown;
