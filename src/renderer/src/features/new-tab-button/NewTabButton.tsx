@@ -26,6 +26,9 @@ export const NewTabButton = () => {
    };
 
    const contextMenuStructure: Structure = {
+      'More': {
+         'Test': () => {}
+      },
       'New Tab': () => createBlankTab(),
    };
 
