@@ -9,13 +9,13 @@ export const Tabs = () => {
    const { getTabs } = useTabs();
 
    const TabComponents = getTabs().map(tab => {
-      return (
+      return ( (tab.isOpen || tab.isPermanent) ?
          <Tab
             key={tab.id}
             tab={tab}
             currentTab={tab.isCurrent}
          />
-      );
+      : null);
    });
 
    return (

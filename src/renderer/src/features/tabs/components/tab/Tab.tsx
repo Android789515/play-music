@@ -49,7 +49,7 @@ export const Tab = ({ tab, currentTab }: Props) => {
       ...!tab.isPermanent && { 'Delete': () => deleteTab(tab) }
    };
 
-   return ( (tab.isOpen || tab.isPermanent) ?
+   return (
       <li>
          <div
             className={`
@@ -73,5 +73,5 @@ export const Tab = ({ tab, currentTab }: Props) => {
             />
          }
       </li>
-   : null);
+   );
 };
