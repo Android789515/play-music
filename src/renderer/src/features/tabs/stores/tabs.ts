@@ -1,7 +1,8 @@
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
 import { v3 as newNameSpaceUUID, v4 as newUUID } from 'uuid';
 
 import type { Tab } from '../types';
+import { easyIterate } from 'utils/set';
 
 const namespace = '2aa78176-422b-4105-80c3-c39172040c3c';
 
@@ -43,4 +44,16 @@ export const tabsState = atom<Set<Tab>>({
    default: new Set([
       libraryTab
    ])
+});
+
+export const closedTabs = selector<Set<Tab>>({
+   key: newNameSpaceUUID('closedTabs', namespace),
+   get: ({ get }) => {
+      const closedTabs = easyIterate<Tab>(get(tabsState), (tabs) => {
+         // Permanent tabs are considered always open
+         return tabs.filter(tab => !tab.isOpen && !tab.isPermanent);
+      });
+
+      return closedTabs;
+   }
 });
