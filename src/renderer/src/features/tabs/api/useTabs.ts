@@ -3,21 +3,12 @@ import { tabsState } from '../stores';
 
 import type { UUID } from 'types/stringTypes';
 import type { Tab, TabKey } from '../types';
-import { easyIterate } from 'utils/set';
 import { testConditions } from 'utils/boolean';
 
 import { libraryTab } from '../stores';
 
 export const useTabs = () => {
    const [tabs, setTabs] = useRecoilState(tabsState);
-
-   const easyTabsIterate = (callback: (tabs: Tab[]) => Tab[]) => {
-      setTabs(prevTabs => {
-         return easyIterate<Tab>(prevTabs, tabs => {
-            return callback(tabs);
-         });
-      });
-   };
 
    const getTabs = () => {
       return [...tabs];
@@ -28,8 +19,8 @@ export const useTabs = () => {
    };
 
    const updateTab = (tabToUpdate: Tab, payload: { tabKey: TabKey, data: Tab[TabKey] }) => {
-      return easyTabsIterate(tabs => {
-         return tabs.map(tab => {
+      return setTabs(prevTabs => {
+         return prevTabs.map(tab => {
             const isTabToUpdate = tab.id === tabToUpdate.id;
 
             if (isTabToUpdate) {
@@ -42,8 +33,8 @@ export const useTabs = () => {
    };
 
    const clearCurrentTab = () => {
-      return easyTabsIterate(tabs => {
-         return tabs.map(tab => {
+      return setTabs(prevTabs => {
+         return prevTabs.map(tab => {
             return { ...tab, isCurrent: false };
          });
       });
@@ -51,8 +42,8 @@ export const useTabs = () => {
    const setCurrentTab = (tabToSet: Tab) => {
       clearCurrentTab();
 
-      return easyTabsIterate(tabs => {
-         return tabs.map(tab => {
+      return setTabs(prevTabs => {
+         return prevTabs.map(tab => {
             const isTabToUpdate = tab.id === tabToSet.id;
 
             if (isTabToUpdate) {
@@ -65,8 +56,8 @@ export const useTabs = () => {
    };
 
    const openTab = (tabToOpen: Tab) => {
-      return easyTabsIterate(tabs => {
-         return tabs.map(tab => {
+      return setTabs(prevTabs => {
+         return prevTabs.map(tab => {
             const isTabToUpdate = tab.id === tabToOpen.id;
 
             if (isTabToUpdate) {
@@ -81,8 +72,8 @@ export const useTabs = () => {
    const closeTab = (tabToClose: Tab) => {
       setCurrentTab(libraryTab);
 
-      return easyTabsIterate(tabs => {
-         return tabs.map(tab => {
+      return setTabs(prevTabs => {
+         return prevTabs.map(tab => {
             const isTabToUpdate = tab.id === tabToClose.id;
 
             if (isTabToUpdate) {
@@ -95,7 +86,7 @@ export const useTabs = () => {
    };
 
    const createTab = (tab: Tab) => {
-      setTabs(prevTabs => new Set([ ...prevTabs, tab ]));
+      setTabs(prevTabs => [ ...prevTabs, tab ]);
 
       openTab(tab);
    };
@@ -103,8 +94,8 @@ export const useTabs = () => {
    const deleteTab = (tabToDelete: Tab) => {
       setCurrentTab(libraryTab);
 
-      return easyTabsIterate(tabs => {
-         return tabs.filter(tab => {
+      return setTabs(prevTabs => {
+         return prevTabs.filter(tab => {
             return testConditions({
                isPermanent: () => tab.isPermanent || false,
                notTabToClose: () => tab.id !== tabToDelete.id

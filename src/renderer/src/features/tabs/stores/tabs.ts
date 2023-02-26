@@ -37,20 +37,18 @@ export const libraryTab = {
    isPermanent: true
 };
 
-export const tabsState = atom<Set<Tab>>({
+export const tabsState = atom<Tab[]>({
    key: newNameSpaceUUID('tabs', namespace),
-   default: new Set([
+   default: [
       libraryTab
-   ])
+   ]
 });
 
-export const closedTabs = selector<Set<Tab>>({
+export const closedTabs = selector({
    key: newNameSpaceUUID('closedTabs', namespace),
    get: ({ get }) => {
-      const closedTabs = easyIterate<Tab>(get(tabsState), (tabs) => {
-         // Permanent tabs are considered always open
-         return tabs.filter(tab => !tab.isOpen && !tab.isPermanent);
-      });
+      // Permanent tabs are considered always open
+      const closedTabs = get(tabsState).filter(tab => !tab.isOpen && !tab.isPermanent);
 
       return closedTabs;
    }
