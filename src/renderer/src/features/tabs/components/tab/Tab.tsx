@@ -3,6 +3,7 @@ import { MouseEvent, useEffect, useState } from 'react';
 import { MouseButtons } from 'types/eventTypes';
 import type { Tab as TabType } from '../../types';
 import { useTabs } from 'features/tabs';
+import type { ContextMenuStructure } from 'components/context-menu';
 
 import styles from './Tab.module.scss';
 
@@ -44,10 +45,16 @@ export const Tab = ({ tab, currentTab }: Props) => {
 
    const [ renaming, setRenaming ] = useState(false);
 
-   const contextMenuStructure = {
-      ...!tab.isPermanent && { 'Rename': () => setRenaming(true) },
-      ...!tab.isPermanent && { 'Delete': () => deleteTab(tab) }
-   };
+   const contextMenuStructure: ContextMenuStructure = [
+      ...!tab.isPermanent ? [{
+            name: 'Rename',
+            onClick: () => setRenaming(true)
+         }] : [],
+      ...!tab.isPermanent ? [{
+            name: 'Delete',
+            onClick: () => deleteTab(tab)
+         }] : []
+   ];
 
    return (
       <li>
@@ -69,7 +76,7 @@ export const Tab = ({ tab, currentTab }: Props) => {
 
          { isContextMenuShown() &&
             <ContextMenu
-               structure={contextMenuStructure}
+               menuStructure={contextMenuStructure}
                closeContextMenu={closeContextMenu}
             />
          }

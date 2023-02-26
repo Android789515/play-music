@@ -1,9 +1,8 @@
-import { useRef, useEffect } from 'react';
+import { FocusEvent, useRef, useEffect } from 'react';
 
-import type { Structure } from './types';
-import { testConditions } from 'utils/boolean';
-import { useGlobalEventListener } from 'hooks/useGlobalEventListener';
+import type { ContextMenuStructure } from './types';
 import { useShowContextMenu } from './api';
+import { testConditions } from 'utils/boolean';
 
 import styles from './ContextMenu.module.scss';
 
@@ -12,11 +11,11 @@ import { ContextMenuItem } from './components';
 
 interface Props {
    nested?: boolean;
-   structure: Structure;
+   menuStructure: ContextMenuStructure;
    closeContextMenu: () => void;
 }
 
-export const ContextMenu = ({ nested, structure, closeContextMenu }: Props) => {
+export const ContextMenu = ({ nested, menuStructure, closeContextMenu }: Props) => {
    const contextMenuRef = useRef<HTMLDivElement>(null);
 
    const focusWhenShown = () => {
@@ -41,25 +40,24 @@ export const ContextMenu = ({ nested, structure, closeContextMenu }: Props) => {
       }
    };
 
-   useGlobalEventListener('mousedown', handleDocumentClick);
-
    // Use outside the ContextMenuItems
-   const contextMenuMethods = useShowContextMenu();
+   const nestedMenuMethods = useShowContextMenu();
 
-   const ContextMenuActions = Object.entries(structure).map(([ actionName, action ], index) => {
-      return (
-         <ContextMenuItem
-            key={index}
-            contextMenuMethods={contextMenuMethods}
-            actionName={actionName}
-            action={action}
-         />
-      );
-   });
+   const ContextMenuActions = menuStructure.map((menuItem, index) => {
+         return (
+            <ContextMenuItem
+               key={index}
+               nestedMenuMethods={nestedMenuMethods}
+               closeOuterMenu={closeContextMenu}
+               menuItem={menuItem}
+            />
+         );
+      }
+   );
 
-   const isContextMenuEmpty = Object.keys(structure).length === 0;
+   const isContextMenuEmpty = menuStructure.length === 0;
 
-   return ( !isContextMenuEmpty ?
+   return !isContextMenuEmpty ? (
       <div
          tabIndex={1}
          className={`
@@ -72,5 +70,5 @@ export const ContextMenu = ({ nested, structure, closeContextMenu }: Props) => {
             {ContextMenuActions}
          </List>
       </div>
-   : null );
+   ) : null;
 };

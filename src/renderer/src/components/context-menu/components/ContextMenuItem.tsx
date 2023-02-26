@@ -1,49 +1,58 @@
-import type { MouseEventHandler } from 'react';
+import type { MouseEvent } from 'react';
 
-import type { Structure } from '../types';
+import type {
+   ContextMenuItemWithMenu,
+   OneOfAnyContextMenuItems
+} from '../types';
+import { isContextMenuItemWithMenu, isContextMenuItemWithEvent } from '../utils/typeValidators';
 import type { ShowContextMenuHook } from '../api';
-import { useLogValueChange } from 'hooks/useLogValueChange';
 
 import styles from './ContextMenuItem.module.scss';
 
 import { ContextMenu } from '../ContextMenu';
 
 interface Props {
-   contextMenuMethods: ShowContextMenuHook;
-   actionName: string;
-   action: MouseEventHandler | Structure;
+   nestedMenuMethods: ShowContextMenuHook;
+   closeOuterMenu: () => void;
+   menuItem: OneOfAnyContextMenuItems;
 }
 
-export const ContextMenuItem = ({ contextMenuMethods, actionName, action }: Props) => {
-
-   const hasNestedMenu = typeof action === 'object';
+export const ContextMenuItem = ({ nestedMenuMethods, closeOuterMenu, menuItem }: Props) => {
+   const hasNestedMenu = isContextMenuItemWithMenu(menuItem);
+   const nestedMenuStructure = (menuItem as ContextMenuItemWithMenu).menu;
 
    const {
       isContextMenuShown: isNestedMenuShown,
       openContextMenu: openNestedMenu,
-      closeContextMenu: closeNestedMenu
-   } = contextMenuMethods;
-   
-   useLogValueChange(hasNestedMenu, { message: 'hasNestedMenu: ' + hasNestedMenu });
-   useLogValueChange(isNestedMenuShown(), { message: 'isNestedMenuShown(): ' + isNestedMenuShown() });
-   
+      closeContextMenu: closeNestedMenu,
+   } = nestedMenuMethods;
+
+   const handleClick = (event: MouseEvent) => {
+      if (isContextMenuItemWithEvent(menuItem)) {
+         menuItem.onClick(event);
+         closeOuterMenu();
+      } else if (hasNestedMenu) {
+         openNestedMenu();
+      }
+   };
+
    return (
       <li
          className={styles.contextMenuItem}
          onMouseEnter={hasNestedMenu ? openNestedMenu : closeNestedMenu}
-         onClick={hasNestedMenu ? openNestedMenu : action}
+         onClick={handleClick}
       >
          <p className={styles.contextMenuActionName}>
-            {actionName}
+            {menuItem.name}
          </p>
 
-         { (hasNestedMenu && isNestedMenuShown()) ?
+         {hasNestedMenu && isNestedMenuShown() ? (
             <ContextMenu
                nested
-               structure={action}
-               closeContextMenu={() => {}}
+               menuStructure={nestedMenuStructure}
+               closeContextMenu={closeOuterMenu}
             />
-         : null}
+         ) : null}
       </li>
    );
 };

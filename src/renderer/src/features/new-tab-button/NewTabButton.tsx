@@ -1,17 +1,24 @@
 import { v4 as newUUID } from 'uuid';
+import { useRecoilValue } from 'recoil';
 
+import { closedTabs } from 'features/tabs/stores';
 import { useTabs } from 'features/tabs';
 
 import plusIcon from './assets/icons/plus.svg';
 import styles from './NewTabButton.module.scss';
 
 import { IconButton } from 'components/icon-button';
-import { Structure, useShowContextMenu, ContextMenu } from 'components/context-menu';
+import {
+   ContextMenuStructure,
+   useShowContextMenu,
+   ContextMenu,
+} from 'components/context-menu';
 
 export const NewTabButton = () => {
-   const { isContextMenuShown, openContextMenu, closeContextMenu } = useShowContextMenu();
+   const { isContextMenuShown, openContextMenu, closeContextMenu } =
+      useShowContextMenu();
 
-   const { createTab } = useTabs();
+   const { createTab, openTab } = useTabs();
 
    const handleClick = () => {
       openContextMenu();
@@ -21,16 +28,25 @@ export const NewTabButton = () => {
       const newTab = { id: newUUID(), name: 'New Tab', collection: [] };
 
       createTab(newTab);
-
-      closeContextMenu();
    };
 
-   const contextMenuStructure: Structure = {
-      'More': {
-         'Test': () => {}
+   const closedTabEntries: ContextMenuStructure = [ ...useRecoilValue(closedTabs) ].map(tab => {
+      return {
+         name: tab.name,
+         onClick: () => openTab(tab)
+      };
+   });
+
+   const contextMenuStructure: ContextMenuStructure = [
+      {
+         name: 'Tabs',
+         menu: closedTabEntries
       },
-      'New Tab': () => createBlankTab(),
-   };
+      {
+         name: 'New Tab',
+         onClick: () => createBlankTab()
+      }
+   ];
 
    return (
       <div>
@@ -41,12 +57,12 @@ export const NewTabButton = () => {
             iconStyles={styles.plusIcon}
             onClick={handleClick}
          />
-         { isContextMenuShown() &&
+         {isContextMenuShown() && (
             <ContextMenu
-               structure={contextMenuStructure}
+               menuStructure={contextMenuStructure}
                closeContextMenu={closeContextMenu}
             />
-         }
+         )}
       </div>
    );
 };
