@@ -1,5 +1,21 @@
-import type { MouseEventHandler } from 'react'
+import type { MouseEventHandler } from 'react';
 
-export interface Structure {
-   [ contextMenuAction: string ]: MouseEventHandler | Structure;
+interface ContextMenuItem {
+   name: string;
 }
+
+export interface ContextMenuItemWithMenu extends ContextMenuItem {
+   menu: ContextMenuItem[];
+}
+
+export interface ContextMenuItemWithEvent extends ContextMenuItem {
+   onClick: MouseEventHandler;
+}
+
+export type OneOfAnyContextMenuItems = (
+   ContextMenuItem
+   | ContextMenuItemWithMenu
+   | ContextMenuItemWithEvent
+);
+
+export type ContextMenuStructure = OneOfAnyContextMenuItems[];
