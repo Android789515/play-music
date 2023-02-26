@@ -52,6 +52,7 @@ export const Tab = ({ tab, currentTab }: Props) => {
    return (
       <li>
          <div
+            tabIndex={1}
             className={`
                ${styles.tab}
                ${currentTab ? styles.currentTab : ''}
