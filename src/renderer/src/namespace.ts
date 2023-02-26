@@ -1,0 +1,1 @@
+export const namespace = '2aa78176-422b-4105-80c3-c39172040c3c';

@@ -10,11 +10,10 @@ export default defineConfig({
       plugins: [externalizeDepsPlugin()],
    },
    renderer: {
-      // Design mode
-      // root: 'src/renderer/design',
       resolve: {
          alias: {
             'renderer': resolve('src/renderer/src'),
+            'namespace': resolve('src/renderer/src/namespace.ts'),
             'components': resolve('src/renderer/src/components'),
             'features': resolve('src/renderer/src/features'),
             'utils': resolve('src/renderer/src/utils'),

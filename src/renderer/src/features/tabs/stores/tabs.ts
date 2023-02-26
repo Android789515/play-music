@@ -1,10 +1,8 @@
 import { atom, selector } from 'recoil';
-import { v3 as newNameSpaceUUID, v4 as newUUID } from 'uuid';
+import { v5 as newNameSpaceUUID, v4 as newUUID } from 'uuid';
 
+import { namespace } from 'namespace';
 import type { Tab } from '../types';
-import { easyIterate } from 'utils/set';
-
-const namespace = '2aa78176-422b-4105-80c3-c39172040c3c';
 
 const dummyData = [
    { title: 'Rondo Alla Turca', artist: 'Mozart', duration: '3:20' },
