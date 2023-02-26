@@ -5,8 +5,6 @@ import type { UUID } from 'types/stringTypes';
 import type { Tab, TabKey } from '../types';
 import { easyIterate } from 'utils/set';
 import { testConditions } from 'utils/boolean';
-import { updateInArray } from 'utils/array';
-import { useLogValueChange } from 'hooks/useLogValueChange';
 
 import { libraryTab } from '../stores';
 
@@ -21,8 +19,6 @@ export const useTabs = () => {
       });
    };
 
-   useLogValueChange(tabs.size, { message: 'Tabs: ' + tabs.size });
-
    const getTabs = () => {
       return [...tabs];
    };
@@ -31,9 +27,17 @@ export const useTabs = () => {
       return [...tabs].find(tab => tab.id === tabID);
    };
 
-   const updateTab = (tab: Tab, payload: { tabKey: TabKey, data: Tab[TabKey] }) => {
+   const updateTab = (tabToUpdate: Tab, payload: { tabKey: TabKey, data: Tab[TabKey] }) => {
       return easyTabsIterate(tabs => {
-         return updateInArray(tabs, { ...tab, [payload.tabKey]: payload.data })
+         return tabs.map(tab => {
+            const isTabToUpdate = tab.id === tabToUpdate.id;
+
+            if (isTabToUpdate) {
+               return { ...tab, [ payload.tabKey ]: payload.data };
+            }
+
+            return tab;
+         });
       });
    };
 
@@ -44,25 +48,49 @@ export const useTabs = () => {
          });
       });
    };
-   const setCurrentTab = (tab: Tab) => {
+   const setCurrentTab = (tabToSet: Tab) => {
       clearCurrentTab();
 
       return easyTabsIterate(tabs => {
-         return updateInArray(tabs, { ...tab, isCurrent: true });
+         return tabs.map(tab => {
+            const isTabToUpdate = tab.id === tabToSet.id;
+
+            if (isTabToUpdate) {
+               return { ...tab, isCurrent: true };
+            }
+
+            return tab;
+         });
       });
    };
 
-   const openTab = (tab: Tab) => {
+   const openTab = (tabToOpen: Tab) => {
       return easyTabsIterate(tabs => {
-         return updateInArray(tabs, { ...tab, isOpen: true });
+         return tabs.map(tab => {
+            const isTabToUpdate = tab.id === tabToOpen.id;
+
+            if (isTabToUpdate) {
+               return { ...tab, isOpen: true };
+            }
+
+            return tab;
+         });
       });
    };
 
-   const closeTab = (tab: Tab) => {
+   const closeTab = (tabToClose: Tab) => {
       setCurrentTab(libraryTab);
 
       return easyTabsIterate(tabs => {
-         return updateInArray(tabs, { ...tab, isOpen: false });
+         return tabs.map(tab => {
+            const isTabToUpdate = tab.id === tabToClose.id;
+
+            if (isTabToUpdate) {
+               return { ...tab, isOpen: false };
+            }
+
+            return tab;
+         });
       });
    };
 
