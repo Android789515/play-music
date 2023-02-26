@@ -28,13 +28,13 @@ export const ContextMenu = ({ nested, menuStructure, closeContextMenu }: Props) 
 
    useEffect(focusWhenShown, []);
 
-   const handleDocumentClick = (event: MouseEvent) => {
+   const closeOnBlur = (event: FocusEvent) => {
       const contextMenu = contextMenuRef.current;
-      const eventTarget = event.target as HTMLElement;
+      const focusedTarget = event.relatedTarget as HTMLElement;
 
       if (testConditions({
          isMounted: () => contextMenu !== undefined,
-         clickedOutsideMenu: () => !contextMenu!.contains(eventTarget)
+         focusedOutsideMenu: () => !contextMenu?.contains(focusedTarget)
       }).all()) {
          closeContextMenu();
       }
@@ -64,6 +64,7 @@ export const ContextMenu = ({ nested, menuStructure, closeContextMenu }: Props) 
             ${styles.contextMenu}
             ${nested ? styles.nestedContextMenu : ''}
          `}
+         onBlur={closeOnBlur}
          ref={contextMenuRef}
       >
          <List customStyles={styles.contextMenuLayout}>
