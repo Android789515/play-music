@@ -2,7 +2,7 @@ import type { Dispatch, SetStateAction, KeyboardEvent, FormEvent } from 'react';
 import { useRef, useEffect } from 'react';
 
 import type { UUID } from 'types/stringTypes';
-import { wereKeysPressed } from 'utils/events';
+import { wereKeysPressed, selectAllText } from 'utils/events';
 import { useTabs } from '../../api';
 
 import styles from './TabName.module.scss';
@@ -18,6 +18,10 @@ export const TabName = ({ tabID, tabName, renaming, setRenaming }: Props) => {
    const { updateTab, getTab } = useTabs();
 
    const tabNameRef = useRef<HTMLHeadingElement>(null);
+
+   // Keeps caret from resetting
+   // its position.
+   const tabNameLocal = useRef(tabName);
 
    const renameTab = (event: FormEvent) => {
       const thisTab = getTab(tabID);
@@ -57,12 +61,12 @@ export const TabName = ({ tabID, tabName, renaming, setRenaming }: Props) => {
          `}
          contentEditable={renaming}
          suppressContentEditableWarning
-         onChange={renameTab}
+         onInput={renameTab}
          onKeyDown={handleKeyDown}
          onBlur={() => setRenaming(false)}
          ref={tabNameRef}
       >
-         {tabName}
+         {tabNameLocal.current}
       </h2>
    );
 };
