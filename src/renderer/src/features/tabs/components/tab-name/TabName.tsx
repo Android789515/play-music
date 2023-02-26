@@ -17,6 +17,8 @@ interface Props {
 export const TabName = ({ tabID, tabName, renaming, setRenaming }: Props) => {
    const { updateTab, getTab } = useTabs();
 
+   const tabNameRef = useRef<HTMLHeadingElement>(null);
+
    const renameTab = (event: FormEvent) => {
       const thisTab = getTab(tabID);
       const updatedTabName = (event.target as HTMLHeadingElement).textContent;
@@ -25,8 +27,6 @@ export const TabName = ({ tabID, tabName, renaming, setRenaming }: Props) => {
          updateTab(thisTab, { tabKey: 'name', data: updatedTabName });
       }
    };
-
-   const tabNameRef = useRef<HTMLHeadingElement>(null);
 
    const handleKeyDown = (event: KeyboardEvent) => {
       if (wereKeysPressed(event, [ 'Enter', 'Escape' ])) {
@@ -39,7 +39,10 @@ export const TabName = ({ tabID, tabName, renaming, setRenaming }: Props) => {
    const focusOnRename = () => {
       if (renaming) {
          const element = tabNameRef.current;
+
          element?.focus();
+         
+         selectAllText(element);
       }
    };
 
