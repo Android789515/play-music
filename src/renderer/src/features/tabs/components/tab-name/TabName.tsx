@@ -2,7 +2,7 @@ import type { Dispatch, SetStateAction, KeyboardEvent, FormEvent } from 'react';
 import { useRef, useEffect } from 'react';
 
 import type { UUID } from 'types/stringTypes';
-import { wereKeysPressed, selectAllText } from 'utils/events';
+import { wereKeysPressed, selectAllText } from '@utils/events';
 import { useTabs } from '../../api';
 
 import styles from './TabName.module.scss';

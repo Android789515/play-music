@@ -2,7 +2,7 @@ import { FocusEvent, useRef, useEffect } from 'react';
 
 import type { ContextMenuStructure } from './types';
 import { useShowContextMenu } from './api';
-import { testConditions } from 'utils/boolean';
+import { testConditions } from '@utils/boolean';
 
 import styles from './ContextMenu.module.scss';
 

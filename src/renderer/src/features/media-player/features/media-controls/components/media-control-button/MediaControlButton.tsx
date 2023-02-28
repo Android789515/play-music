@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { capitalize } from 'utils/string';
+import { capitalize } from '@utils/string';
 
 import playIcon from './assets/icons/play.svg';
 import pauseIcon from './assets/icons/pause.svg';

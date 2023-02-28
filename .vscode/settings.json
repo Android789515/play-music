@@ -27,6 +27,7 @@
     "context-menu",
     "hooks",
     "preload",
-    "features"
+    "features",
+    "structure"
   ]
 }

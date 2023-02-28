@@ -3,12 +3,12 @@ import { tabsState } from '../stores';
 
 import type { UUID } from 'types/stringTypes';
 import type { Tab, TabKey } from '../types';
-import { testConditions } from 'utils/boolean';
+import { testConditions } from '@utils/boolean';
 
 import { libraryTab } from '../stores';
 
 export const useTabs = () => {
-   const [tabs, setTabs] = useRecoilState(tabsState);
+   const [ tabs, setTabs ] = useRecoilState(tabsState);
 
    const getTabs = () => {
       return [...tabs];
