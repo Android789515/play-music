@@ -30,8 +30,9 @@ const getSongsFromDir = (songs: PathStat[], path: PathStat): PathStat[] => {
 };
 
 const getSongs = async (): Promise<Song[]> => {
-   const musicFolder = app.getPath('music');
-   const musicDir = readContentsOfDir(musicFolder);
+   const musicDir = readContentsOfDir(
+      app.getPath('music')
+   );
 
    const songFiles = musicDir.contents?.reduce(getSongsFromDir, []) || [];
 
