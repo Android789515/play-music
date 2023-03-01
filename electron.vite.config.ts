@@ -16,7 +16,6 @@ export default defineConfig({
             'namespace': resolve('src/renderer/src/namespace.ts'),
             'components': resolve('src/renderer/src/components'),
             'features': resolve('src/renderer/src/features'),
-            '@src': resolve('src'),
             '@utils': resolve('src/utils'),
             '@globalTypes': resolve('src/types'),
             'types': resolve('src/renderer/src/types'),

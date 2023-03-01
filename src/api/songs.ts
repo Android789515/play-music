@@ -3,7 +3,7 @@ import { parseFile } from 'music-metadata';
 import { v4 as newUUID } from 'uuid';
 
 import type { Song } from './types';
-import { isEmpty } from '@src/utils/array';
+import { isEmpty } from '../utils/array';
 import { formatSongTime } from '../utils/number';
 import { PathStat, formatFileName, readContentsOfDir } from '../utils/files';
 
