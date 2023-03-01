@@ -1,6 +1,6 @@
-import type { UUID } from 'types/stringTypes';
+import type { UUID } from '@globalTypes/stringTypes';
 
-import type { Song } from 'features/library-view/songs';
+import type { Song } from '@src/api/types';
 
 export interface Tab {
    id: UUID;

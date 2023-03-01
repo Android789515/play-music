@@ -1,7 +1,7 @@
 import { useRecoilState } from 'recoil';
 import { tabsState } from '../stores';
 
-import type { UUID } from 'types/stringTypes';
+import type { UUID } from '@globalTypes/stringTypes';
 import type { Tab, TabKey } from '../types';
 import { testConditions } from '@utils/boolean';
 

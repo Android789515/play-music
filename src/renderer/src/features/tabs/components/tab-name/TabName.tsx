@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction, KeyboardEvent, FormEvent } from 'react';
 import { useRef, useEffect } from 'react';
 
-import type { UUID } from 'types/stringTypes';
+import type { UUID } from '@globalTypes/stringTypes';
 import { wereKeysPressed, selectAllText } from '@utils/events';
 import { useTabs } from '../../api';
 
