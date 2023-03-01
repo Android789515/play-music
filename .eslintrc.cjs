@@ -21,7 +21,6 @@ module.exports = {
       'plugin:react/jsx-runtime',
       'plugin:@typescript-eslint/recommended',
       'plugin:@typescript-eslint/eslint-recommended',
-      'prettier',
    ],
    rules: {
       '@typescript-eslint/ban-ts-comment': [
