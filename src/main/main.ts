@@ -1,7 +1,9 @@
 import { join } from 'path';
 
-import { app, shell, BrowserWindow } from 'electron';
+import { app, shell, BrowserWindow, ipcMain } from 'electron';
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
+
+import { getSongsAPI } from '../api/songs';
 
 import icon from '../../resources/icon.png?asset';
 
@@ -20,6 +22,8 @@ function createWindow(): void {
          sandbox: false,
       },
    });
+
+   ipcMain.handle(getSongsAPI.name, getSongsAPI.fn);
 
    mainWindow.on('ready-to-show', () => {
       mainWindow.show();
