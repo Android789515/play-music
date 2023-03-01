@@ -3,7 +3,7 @@
 @use '../../../../breakpoints' as *;
 
 .songTitle,
-.songArtist,
+.songArtists,
 .songDuration {
    font-size: 1rem;
 
@@ -12,7 +12,7 @@
 
 @media (min-width: map.get($breakpoints, 'scaleUpUI')) {
    .songTitle,
-   .songArtist,
+   .songArtists,
    .songDuration {
       font-size: 1.2rem;
    }

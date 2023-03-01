@@ -5,18 +5,18 @@ import { Song } from './components';
 import { SongInfo } from './components';
 
 interface Props {
-   songs: SongType[]
+   songs: SongType[];
 }
 
 export const Songs = ({ songs }: Props) => {
    const SongComponents = songs.map((song, index) => {
-      const { title, artist, duration } = song;
+      const { title, artists, duration } = song;
 
       return (
          <Song key={index}>
             <SongInfo
                songTitle={title}
-               songArtist={artist}
+               songArtists={artists}
                songDuration={duration}
             />
          </Song>
