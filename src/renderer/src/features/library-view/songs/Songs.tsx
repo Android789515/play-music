@@ -1,4 +1,4 @@
-import type { Song as SongType } from '@src/api/types';
+import type { Song as SongType } from '@api/types';
 
 import { List } from 'components/list';
 import { Song } from './components';

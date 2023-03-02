@@ -1,6 +1,6 @@
 import type { UUID } from '@globalTypes/stringTypes';
 
-import type { Song } from '@src/api/types';
+import type { Song } from '@api/types';
 
 export interface Tab {
    id: UUID;
