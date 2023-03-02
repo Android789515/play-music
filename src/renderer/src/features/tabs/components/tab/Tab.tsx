@@ -22,7 +22,9 @@ export const Tab = ({ tab, currentTab }: Props) => {
 
    useEffect(() => {
       setCurrentTab(tab);
-   }, [ setCurrentTab, tab ]);
+      
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
 
    const handleClick = (event: MouseEvent) => {
       switch (event.button) {
