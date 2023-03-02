@@ -7,7 +7,6 @@ import styles from './Button.module.scss';
 interface Props {
    customStyles?: CSS_Class;
    children?: ReactNode;
-   [ prop: string ]: any;
 }
 
 export const Button = ({ customStyles = '', children, ...rest }: Props) => {

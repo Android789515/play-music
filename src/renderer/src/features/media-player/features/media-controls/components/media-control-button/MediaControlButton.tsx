@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, HTMLAttributes } from 'react';
 
 import { capitalize } from '@utils/string';
 
@@ -13,11 +13,10 @@ import styles from './MediaControlButton.module.scss';
 
 import { IconButton } from 'components/icon-button';
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLButtonElement> {
    name: string;
    iconPath?: string;
    children?: ReactNode;
-   [ prop: string ]: any;
 }
 
 export const MediaControlButton = ({ name, iconPath, children, ...rest }: Props) => {
