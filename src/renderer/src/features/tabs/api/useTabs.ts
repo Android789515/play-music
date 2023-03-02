@@ -1,8 +1,9 @@
+import { useCallback } from 'react';
 import { useRecoilState } from 'recoil';
-import { tabsState } from '../stores';
 
 import type { UUID } from '@globalTypes/stringTypes';
 import type { Tab, TabKey } from '../types';
+import { tabsState } from '../stores';
 import { testConditions } from '@utils/boolean';
 
 import { libraryTab } from '../stores';
@@ -10,15 +11,15 @@ import { libraryTab } from '../stores';
 export const useTabs = () => {
    const [ tabs, setTabs ] = useRecoilState(tabsState);
 
-   const getTabs = () => {
-      return [...tabs];
-   };
+   const getTabs = useCallback(() => {
+      return [ ...tabs ];
+   }, [tabs]);
 
-   const getTab = (tabID: UUID) => {
-      return [...tabs].find(tab => tab.id === tabID);
-   };
+   const getTab = useCallback((tabID: UUID) => {
+      return [ ...tabs ].find(tab => tab.id === tabID);
+   }, [tabs]);
 
-   const updateTab = (tabToUpdate: Tab, payload: { tabKey: TabKey, data: Tab[TabKey] }) => {
+   const updateTab = useCallback((tabToUpdate: Tab, payload: { tabKey: TabKey, data: Tab[ TabKey ] }) => {
       return setTabs(prevTabs => {
          return prevTabs.map(tab => {
             const isTabToUpdate = tab.id === tabToUpdate.id;
@@ -30,16 +31,17 @@ export const useTabs = () => {
             return tab;
          });
       });
-   };
+   }, [setTabs]);
 
-   const clearCurrentTab = () => {
+   const clearCurrentTab = useCallback(() => {
       return setTabs(prevTabs => {
          return prevTabs.map(tab => {
             return { ...tab, isCurrent: false };
          });
       });
-   };
-   const setCurrentTab = (tabToSet: Tab) => {
+   }, [setTabs]);
+
+   const setCurrentTab = useCallback((tabToSet: Tab) => {
       clearCurrentTab();
 
       return setTabs(prevTabs => {
@@ -53,9 +55,9 @@ export const useTabs = () => {
             return tab;
          });
       });
-   };
+   }, [setTabs, clearCurrentTab]);
 
-   const openTab = (tabToOpen: Tab) => {
+   const openTab = useCallback((tabToOpen: Tab) => {
       return setTabs(prevTabs => {
          return prevTabs.map(tab => {
             const isTabToUpdate = tab.id === tabToOpen.id;
@@ -67,9 +69,9 @@ export const useTabs = () => {
             return tab;
          });
       });
-   };
+   }, [setTabs]);
 
-   const closeTab = (tabToClose: Tab) => {
+   const closeTab = useCallback((tabToClose: Tab) => {
       setCurrentTab(libraryTab);
 
       return setTabs(prevTabs => {
@@ -83,15 +85,15 @@ export const useTabs = () => {
             return tab;
          });
       });
-   };
+   }, [setTabs, setCurrentTab]);
 
-   const createTab = (tab: Tab) => {
+   const createTab = useCallback((tab: Tab) => {
       setTabs(prevTabs => [ ...prevTabs, tab ]);
 
       openTab(tab);
-   };
+   }, [setTabs, openTab]);
 
-   const deleteTab = (tabToDelete: Tab) => {
+   const deleteTab = useCallback((tabToDelete: Tab) => {
       setCurrentTab(libraryTab);
 
       return setTabs(prevTabs => {
@@ -102,7 +104,7 @@ export const useTabs = () => {
             }).any();
          });
       });
-   };
+   }, [setTabs, setCurrentTab]);
 
    return {
       getTabs,
