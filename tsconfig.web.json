@@ -10,15 +10,21 @@
     "src/api/*.ts"
   ],
   "compilerOptions": {
-     "noUnusedLocals": false,
-     "noUnusedParameters": false,
-     "composite": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "composite": true,
     "jsx": "react-jsx",
     "baseUrl": "src/renderer/src",
     "paths": {
-      "@utils/*": ["../../utils/*"],
-      "@globalTypes/*": ["../../types/*"],
-      "@api/*": ["../../api/*"],
+      "@utils/*": [
+        "../../utils/*"
+      ],
+      "@globalTypes/*": [
+        "../../types/*"
+      ],
+      "@api/*": [
+        "../../api/*"
+      ],
     }
   }
 }

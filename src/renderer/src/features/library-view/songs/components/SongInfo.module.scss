@@ -11,6 +11,7 @@
 }
 
 @media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+
    .songTitle,
    .songArtists,
    .songDuration {

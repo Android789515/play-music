@@ -2,7 +2,7 @@ export const toDoubleDigit = (number: number) => {
    const measurableNumber = String(number);
 
    const isSingleDigit = measurableNumber.length === 1;
-   
+
    const isMoreThanTwoDigits = measurableNumber.length > 2;
 
    if (isSingleDigit) {

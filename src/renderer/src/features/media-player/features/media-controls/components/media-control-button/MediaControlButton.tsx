@@ -23,16 +23,16 @@ export const MediaControlButton = ({ name, iconPath, children, ...rest }: Props)
    const getIcon = () => {
       switch (name.toLocaleLowerCase()) {
          case 'play': return playIcon;
-         
+
          case 'pause': return pauseIcon;
-         
+
          case 'stop': return stopIcon;
 
          // Rewind button class 
          // rotates it 180 deg
          case 'rewind': return fastForwardIcon;
          case 'fast forward': return fastForwardIcon;
-         
+
          case 'loop': return loopIcon;
 
          case 'shuffle': return shuffleIcon;
@@ -52,7 +52,7 @@ export const MediaControlButton = ({ name, iconPath, children, ...rest }: Props)
 
       return className;
    };
-   
+
    return (
       <IconButton
          name={name}

@@ -22,22 +22,22 @@ export const Tab = ({ tab, currentTab }: Props) => {
 
    useEffect(() => {
       setCurrentTab(tab);
-   }, [setCurrentTab, tab]);
+   }, [ setCurrentTab, tab ]);
 
    const handleClick = (event: MouseEvent) => {
       switch (event.button) {
          case MouseButtons.left:
             setCurrentTab(tab);
             break;
-         
+
          case MouseButtons.middle:
             closeTab(tab);
             break;
-         
+
          case MouseButtons.right:
             openContextMenu();
             break;
-         
+
          default:
             break;
       }
@@ -46,14 +46,14 @@ export const Tab = ({ tab, currentTab }: Props) => {
    const [ renaming, setRenaming ] = useState(false);
 
    const contextMenuStructure: ContextMenuStructure = [
-      ...!tab.isPermanent ? [{
-            name: 'Rename',
-            onClick: () => setRenaming(true)
-         }] : [],
-      ...!tab.isPermanent ? [{
-            name: 'Delete',
-            onClick: () => deleteTab(tab)
-         }] : []
+      ...!tab.isPermanent ? [ {
+         name: 'Rename',
+         onClick: () => setRenaming(true)
+      } ] : [],
+      ...!tab.isPermanent ? [ {
+         name: 'Delete',
+         onClick: () => deleteTab(tab)
+      } ] : []
    ];
 
    return (
@@ -74,7 +74,7 @@ export const Tab = ({ tab, currentTab }: Props) => {
             />
          </div>
 
-         { isContextMenuShown() &&
+         {isContextMenuShown() &&
             <ContextMenu
                menuStructure={contextMenuStructure}
                closeContextMenu={closeContextMenu}

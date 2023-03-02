@@ -1,7 +1,7 @@
 type ConditionTest = () => boolean;
 
 interface ConditionsBuilder {
-   [condition: string]: ConditionTest;
+   [ condition: string ]: ConditionTest;
 }
 
 export const testConditions = (conditionsBuilder: ConditionsBuilder) => {

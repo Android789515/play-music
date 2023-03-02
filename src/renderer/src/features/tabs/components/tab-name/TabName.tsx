@@ -45,12 +45,12 @@ export const TabName = ({ tabID, tabName, renaming, setRenaming }: Props) => {
          const element = tabNameRef.current;
 
          element?.focus();
-         
+
          selectAllText(element);
       }
    };
 
-   useEffect(focusOnRename, [renaming]);
+   useEffect(focusOnRename, [ renaming ]);
 
    return (
       <h2

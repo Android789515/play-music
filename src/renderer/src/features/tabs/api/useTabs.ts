@@ -13,11 +13,11 @@ export const useTabs = () => {
 
    const getTabs = useCallback(() => {
       return [ ...tabs ];
-   }, [tabs]);
+   }, [ tabs ]);
 
    const getTab = useCallback((tabID: UUID) => {
       return [ ...tabs ].find(tab => tab.id === tabID);
-   }, [tabs]);
+   }, [ tabs ]);
 
    const updateTab = useCallback((tabToUpdate: Tab, payload: { tabKey: TabKey, data: Tab[ TabKey ] }) => {
       return setTabs(prevTabs => {
@@ -31,7 +31,7 @@ export const useTabs = () => {
             return tab;
          });
       });
-   }, [setTabs]);
+   }, [ setTabs ]);
 
    const clearCurrentTab = useCallback(() => {
       return setTabs(prevTabs => {
@@ -39,7 +39,7 @@ export const useTabs = () => {
             return { ...tab, isCurrent: false };
          });
       });
-   }, [setTabs]);
+   }, [ setTabs ]);
 
    const setCurrentTab = useCallback((tabToSet: Tab) => {
       clearCurrentTab();
@@ -55,7 +55,7 @@ export const useTabs = () => {
             return tab;
          });
       });
-   }, [setTabs, clearCurrentTab]);
+   }, [ setTabs, clearCurrentTab ]);
 
    const openTab = useCallback((tabToOpen: Tab) => {
       return setTabs(prevTabs => {
@@ -69,7 +69,7 @@ export const useTabs = () => {
             return tab;
          });
       });
-   }, [setTabs]);
+   }, [ setTabs ]);
 
    const closeTab = useCallback((tabToClose: Tab) => {
       setCurrentTab(libraryTab);
@@ -85,13 +85,13 @@ export const useTabs = () => {
             return tab;
          });
       });
-   }, [setTabs, setCurrentTab]);
+   }, [ setTabs, setCurrentTab ]);
 
    const createTab = useCallback((tab: Tab) => {
       setTabs(prevTabs => [ ...prevTabs, tab ]);
 
       openTab(tab);
-   }, [setTabs, openTab]);
+   }, [ setTabs, openTab ]);
 
    const deleteTab = useCallback((tabToDelete: Tab) => {
       setCurrentTab(libraryTab);
@@ -104,7 +104,7 @@ export const useTabs = () => {
             }).any();
          });
       });
-   }, [setTabs, setCurrentTab]);
+   }, [ setTabs, setCurrentTab ]);
 
    return {
       getTabs,

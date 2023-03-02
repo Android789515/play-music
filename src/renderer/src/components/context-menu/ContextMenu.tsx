@@ -44,15 +44,15 @@ export const ContextMenu = ({ nested, menuStructure, closeContextMenu }: Props) 
    const nestedMenuMethods = useShowContextMenu();
 
    const ContextMenuActions = menuStructure.map((menuItem, index) => {
-         return (
-            <ContextMenuItem
-               key={index}
-               nestedMenuMethods={nestedMenuMethods}
-               closeOuterMenu={closeContextMenu}
-               menuItem={menuItem}
-            />
-         );
-      }
+      return (
+         <ContextMenuItem
+            key={index}
+            nestedMenuMethods={nestedMenuMethods}
+            closeOuterMenu={closeContextMenu}
+            menuItem={menuItem}
+         />
+      );
+   }
    );
 
    const isContextMenuEmpty = menuStructure.length === 0;

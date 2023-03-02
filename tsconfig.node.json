@@ -7,9 +7,11 @@
     "src/api/*",
     "src/utils/*",
     "src/types/*"
-],
+  ],
   "compilerOptions": {
     "composite": true,
-    "types": ["electron-vite/node"]
+    "types": [
+      "electron-vite/node"
+    ]
   }
 }

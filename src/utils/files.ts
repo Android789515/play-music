@@ -9,7 +9,7 @@ export const isDir = (path: Path) => {
 
 export const formatFileName = (fileName: string): Filename => {
    const fileExtension = '.';
-   const [name] = fileName.split(fileExtension);
+   const [ name ] = fileName.split(fileExtension);
 
    return name;
 };
@@ -58,7 +58,7 @@ const isSupportedAudioFile = (file: Filename) => {
       'wvc',
    ];
 
-   const [_, extension] = file.split('.');
+   const [ _, extension ] = file.split('.');
 
    return supportedFormats.includes(extension);
 };
@@ -86,7 +86,7 @@ export const readContentsOfDir = (startPath: Path): PathStat => {
                },
             ];
          } else if (isSupportedAudioFile(path)) {
-            return [...contents, { name: path, path: fullPath }];
+            return [ ...contents, { name: path, path: fullPath } ];
          } else {
             // Unsupported file
             return contents;

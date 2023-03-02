@@ -14,7 +14,7 @@ module.exports = {
       sourceType: 'module',
       ecmaVersion: 2021,
    },
-   plugins: ['@typescript-eslint', 'react-hooks'],
+   plugins: [ '@typescript-eslint', 'react-hooks' ],
    extends: [
       'eslint:recommended',
       'plugin:react/recommended',
@@ -31,7 +31,7 @@ module.exports = {
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-empty-function': [
          'error',
-         { allow: ['arrowFunctions'] },
+         { allow: [ 'arrowFunctions' ] },
       ],
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-non-null-assertion': 'off',
@@ -53,7 +53,7 @@ module.exports = {
    },
    overrides: [
       {
-         files: ['*.js'],
+         files: [ '*.js' ],
          rules: {
             '@typescript-eslint/explicit-function-return-type': 'off',
          },
