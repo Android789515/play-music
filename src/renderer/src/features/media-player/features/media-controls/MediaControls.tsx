@@ -24,7 +24,7 @@ export const MediaControls = () => {
 
             <SongPlaying
                songTitle='Rondo Alla Turca'
-               songArtist='Mozart'
+               songArtists='Mozart'
                songDuration='3:20'
                inline
             />

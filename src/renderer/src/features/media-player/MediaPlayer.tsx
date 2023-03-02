@@ -11,7 +11,7 @@ export const MediaPlayer = () => {
          <MediaPlayerLayout>
             <SongPlaying
                songTitle='Rondo Alla Turca'
-               songArtist='Mozart'
+               songArtists='Mozart'
                songDuration='3:20'
             />
 

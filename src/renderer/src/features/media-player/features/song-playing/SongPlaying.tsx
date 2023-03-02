@@ -4,14 +4,14 @@ import { SongInfo } from 'features/library-view/songs/components';
 
 interface Props {
    songTitle: string;
-   songArtist: string;
+   songArtists: string;
    songDuration: string;
    inline?: boolean;
 }
 
 export const SongPlaying = ({
    songTitle,
-   songArtist,
+   songArtists,
    songDuration,
    inline,
 }: Props) => {
@@ -24,7 +24,7 @@ export const SongPlaying = ({
       >
          <SongInfo
             songTitle={songTitle}
-            songArtist={songArtist}
+            songArtists={songArtists}
             songDuration={songDuration}
          />
       </div>
