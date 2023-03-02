@@ -18,6 +18,7 @@ export default defineConfig({
             'features': resolve('src/renderer/src/features'),
             '@utils': resolve('src/utils'),
             '@globalTypes': resolve('src/types'),
+            '@api': resolve('src/api'),
             'types': resolve('src/renderer/src/types'),
             'hooks': resolve('src/renderer/src/hooks'),
          },

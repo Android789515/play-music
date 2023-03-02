@@ -17,7 +17,8 @@
     "baseUrl": "src/renderer/src",
     "paths": {
       "@utils/*": ["../../utils/*"],
-      "@globalTypes/*": ["../../types/*"]
+      "@globalTypes/*": ["../../types/*"],
+      "@api/*": ["../../api/*"],
     }
   }
 }
