@@ -29,6 +29,7 @@
     "preload",
     "features",
     "structure",
-    "project"
+    "project",
+    "song-queue"
   ]
 }
