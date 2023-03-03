@@ -1,6 +1,7 @@
 import { v4 as newUUID } from 'uuid';
 import { useRecoilValue } from 'recoil';
 
+import { isEmpty } from '@utils/array';
 import { closedTabs } from 'features/tabs/stores';
 import { useTabs } from 'features/tabs';
 
@@ -38,10 +39,12 @@ export const NewTabButton = () => {
    });
 
    const contextMenuStructure: ContextMenuStructure = [
-      {
-         name: 'Tabs',
-         menu: closedTabEntries
-      },
+      ...!isEmpty(closedTabEntries) ? [
+         {
+            name: 'Tabs',
+            menu: closedTabEntries
+         }
+      ] : [],
       {
          name: 'New Tab',
          onClick: () => createBlankTab()
