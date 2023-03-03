@@ -26,7 +26,6 @@ export const MediaControls = () => {
                songTitle='Rondo Alla Turca'
                songArtists='Mozart'
                songDuration='3:20'
-               inline
             />
 
             <MediaControlButton name='Loop' />

@@ -3,25 +3,11 @@
 @use '../../../../breakpoints' as *;
 
 .songPlaying {
-   display: grid;
-   grid-template-columns: repeat(3, max-content);
-   grid-column-gap: 2em;
-
-   padding: 0 0.5em;
-
-   margin-bottom: 0.5em;
-}
-
-.songPlayingInline {
    display: none;
 }
 
 @media (min-width: map.get($breakpoints, 'scaleUpSongs')) {
    .songPlaying {
-      display: none;
-   }
-
-   .songPlayingInline {
       display: grid;
       grid-template-columns: repeat(3, max-content);
       grid-column-gap: 2em;
@@ -34,7 +20,7 @@
 }
 
 @media (min-width: map.get($breakpoints, 'centerSongPlaying')) {
-   .songPlayingInline {
+   .songPlaying {
       position: absolute;
       left: 0;
       right: 0;
