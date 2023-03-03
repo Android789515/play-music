@@ -13,8 +13,15 @@ export const useSongQueue = () => {
       updateSongQueue(prevQueue => [ ...prevQueue, song ]);
    }, [ updateSongQueue ]);
 
+   const advanceSongQueue = useCallback(() => {
+      updateSongQueue(prevQueue => {
+         return prevQueue.filter((_, index) => index !== 0);
+      });
+   }, [ updateSongQueue ]);
+
    return {
       getSongQueue,
-      queueSong
+      queueSong,
+      advanceSongQueue
    };
 };
