@@ -1,4 +1,5 @@
 import { VolumeStates } from './features/volume-button';
+import { useMediaControls } from './useMediaControls';
 
 import styles from './MediaControls.module.scss';
 
@@ -9,12 +10,17 @@ import { VolumeButton } from './features/volume-button';
 import { SongPlaying } from '../song-playing';
 
 export const MediaControls = () => {
+   const { isPaused, pause, unPause } = useMediaControls();
+
    return (
       <div className={styles.mediaControls}>
          <MediaControlsLayout>
             <MediaControlButton name='Rewind' />
 
-            <MediaControlButton name='Pause' />
+            <MediaControlButton
+               name={isPaused ? 'Play' : 'Pause'}
+               onClick={isPaused ? unPause : pause}
+            />
 
             <MediaControlButton name='Stop' />
 
