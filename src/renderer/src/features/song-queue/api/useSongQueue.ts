@@ -14,10 +14,14 @@ export const useSongQueue = () => {
    }, [ updateSongQueue ]);
 
    const advanceSongQueue = useCallback(() => {
+      const [ nextSong ] = songQueue;
+
       updateSongQueue(prevQueue => {
          return prevQueue.filter((_, index) => index !== 0);
       });
-   }, [ updateSongQueue ]);
+
+      return nextSong;
+   }, [ songQueue, updateSongQueue ]);
 
    return {
       getSongQueue,
