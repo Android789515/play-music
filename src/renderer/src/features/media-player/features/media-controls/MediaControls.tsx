@@ -1,5 +1,6 @@
-import { VolumeStates } from './features/volume-button';
-import { useMediaControls } from './useMediaControls';
+import { Dispatch, SetStateAction, useState, useEffect } from 'react';
+
+import type { Song } from '@api/types';
 
 import styles from './MediaControls.module.scss';
 
@@ -9,8 +10,32 @@ import { VolumeButton } from './features/volume-button';
 
 import { SongPlaying } from '../song-playing';
 
-export const MediaControls = () => {
-   const { isPaused, pause, unPause } = useMediaControls();
+interface Props {
+   songPlaying: Song | null;
+   setSongPlaying: Dispatch<SetStateAction<Song | null>>;
+   playNextSong: () => void;
+}
+
+export const MediaControls = ({ songPlaying, setSongPlaying, playNextSong }: Props) => {
+   const [ isPaused, setIsPaused ] = useState(true);
+
+   const pause = () => setIsPaused(true);
+
+   const unPause = () => setIsPaused(false);
+
+   useEffect(() => {
+      if (songPlaying) {
+         unPause();
+      }
+   }, [ songPlaying ]);
+
+   const stop = () => {
+      pause();
+
+      // Also reset time
+   };
+
+   const [ volume, setVolume ] = useState(.5);
 
    return (
       <div className={styles.mediaControls}>
@@ -22,16 +47,27 @@ export const MediaControls = () => {
                onClick={isPaused ? unPause : pause}
             />
 
-            <MediaControlButton name='Stop' />
+            <MediaControlButton
+               name='Stop'
+               onClick={stop}
+            />
 
-            <MediaControlButton name='Fast Forward' />
+            <MediaControlButton
+               name='Fast Forward'
+               onClick={playNextSong}
+            />
 
-            <VolumeButton volumeState={VolumeStates.medium} />
+            <VolumeButton
+               volume={volume}
+               setVolume={setVolume}
+            />
 
             <SongPlaying
-               songTitle='Rondo Alla Turca'
-               songArtists='Mozart'
-               songDuration='3:20'
+               songPlaying={songPlaying}
+               isPaused={isPaused}
+               volume={volume}
+               isMuted={false}
+               onEnded={playNextSong}
             />
 
             <MediaControlButton name='Loop' />
