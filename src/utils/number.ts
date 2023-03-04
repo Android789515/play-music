@@ -28,5 +28,7 @@ export const formatSongTime = (timeInSeconds: number) => {
       timeInSeconds % 3600
    );
 
-   return `${hours}:${minutes}:${leftOverSeconds}`;
+   const hoursIfPresent = Number(hours) ? `${hours}:` : '';
+
+   return `${hoursIfPresent}${minutes}:${leftOverSeconds}`;
 };
