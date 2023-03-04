@@ -32,3 +32,9 @@ export const formatSongTime = (timeInSeconds: number) => {
 
    return `${hoursIfPresent}${minutes}:${leftOverSeconds}`;
 };
+
+export const within = (number: number, numberRange: [ number, number ]) => {
+   const [ lowerBound, upperBound ] = numberRange;
+
+   return number >= lowerBound && number <= upperBound;
+};
