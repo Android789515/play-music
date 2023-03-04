@@ -16,3 +16,7 @@
    background: var(--barTrackColor);
    border-radius: var(--borderRadiusStandard) 0 0 var(--borderRadiusStandard);
 }
+
+.barValueFull.barValueFull {
+   border-radius: var(--borderRadiusStandard);
+}
