@@ -13,7 +13,7 @@ export const Songs = ({ songs }: Props) => {
       const { title, artists, duration } = song;
 
       return (
-         <Song key={index}>
+         <Song key={index} song={song}>
             <SongInfo
                songTitle={title}
                songArtists={artists}
