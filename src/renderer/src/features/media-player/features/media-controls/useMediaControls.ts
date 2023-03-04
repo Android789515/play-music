@@ -11,9 +11,16 @@ export const useMediaControls = () => {
       setIsPaused(false);
    }, []);
 
+   const stop = useCallback((onStop: () => void) => {
+      pause();
+
+      onStop();
+   }, [ pause ]);
+
    return {
       isPaused,
       pause,
       unPause,
+      stop,
    };
 };
