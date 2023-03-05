@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 
 import type { Song as SongType } from '@api/types';
 import { useSongQueue } from 'features/song-queue/api';
+import { useIsMediaPlayerOpen } from 'features/media-player';
 
 import styles from './Song.module.scss';
 
@@ -15,6 +16,16 @@ interface Props {
 export const Song = ({ song, children }: Props) => {
    const { queueSong } = useSongQueue();
 
+   const { isOpenMediaPlayerOpen, openMediaPlayer } = useIsMediaPlayerOpen();
+
+   const hanndleSongClick = () => {
+      queueSong(song);
+
+      if (!isOpenMediaPlayerOpen()) {
+         openMediaPlayer();
+      }
+   };
+
    return (
       <li
          className={styles.songLayout}
@@ -22,7 +33,7 @@ export const Song = ({ song, children }: Props) => {
          <Button
             tabIndex={1}
             customStyles={styles.song}
-            onClick={() => queueSong(song)}
+            onClick={hanndleSongClick}
          >
             {children}
          </Button>
