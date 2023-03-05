@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useState, useEffect } from 'react';
 
 import type { Song } from '@api/types';
 import { useVolumeControls } from './useVolumeControls';
+import { useIsMediaPlayerOpen } from 'features/media-player/api';
 
 import styles from './MediaControls.module.scss';
 
@@ -30,9 +31,13 @@ export const MediaControls = ({ songPlaying, setSongPlaying, playNextSong }: Pro
       }
    }, [ songPlaying ]);
 
+   const { closeMediaPlayer } = useIsMediaPlayerOpen();
+
    const stop = () => {
       pause();
-
+      setSongPlaying(null);
+      
+      closeMediaPlayer();
       // Also reset time
    };
 
