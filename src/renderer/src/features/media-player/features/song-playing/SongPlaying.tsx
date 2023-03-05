@@ -41,7 +41,7 @@ export const SongPlaying = ({ songPlaying, volume, isPaused, isMuted, ...rest }:
          className={styles.songPlaying}
       >
          <audio
-            src={'file://' + songPlaying?.path}
+            src={'media://' + songPlaying?.path}
             autoPlay
             muted={isMuted}
             ref={audioRef}
