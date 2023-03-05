@@ -9,6 +9,9 @@
     "src/types/*.ts",
     "src/api/*.ts"
   ],
+  "exclude": [
+    "out"
+  ],
   "compilerOptions": {
     "noUnusedLocals": false,
     "noUnusedParameters": false,
