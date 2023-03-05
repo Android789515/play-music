@@ -1,5 +1,6 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { MouseEvent, useState } from 'react';
 
+import { TagNames } from 'types/htmlTypes';
 import { within } from '@utils/number';
 import type { VolumeState } from '../../useVolumeControls';
 
@@ -39,10 +40,19 @@ export const VolumeButton = ({ volumeState, isMuted, toggleMute }: Props) => {
       return highVolumeIcon;
    };
 
+   const handleButtonClick = (event: MouseEvent) => {
+      const element = event.target as HTMLButtonElement;
+
+      if (element.tagName === TagNames.img) {
+         toggleMute();
+      }
+   };
+
    return (
       <MediaControlButton
          name='Volume'
          iconPath={getVolumeIcon()}
+         onClick={handleButtonClick}
          onMouseEnter={() => setIsHovered(true)}
          onMouseLeave={() => setIsHovered(false)}
          onFocus={() => setIsFocused(true)}
