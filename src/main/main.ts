@@ -1,6 +1,6 @@
 import { join } from 'path';
 
-import { app, shell, BrowserWindow, ipcMain } from 'electron';
+import { app, shell, BrowserWindow, ipcMain, protocol } from 'electron';
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 
 import { getSongsAPI } from '../api/songs';
@@ -63,6 +63,17 @@ app.whenReady().then(() => {
       // On macOS, it's common to re-create a window in the app when the
       // dock icon is clicked and there are no other windows open.
       if (BrowserWindow.getAllWindows().length === 0) createWindow();
+   });
+
+   // Media protocol
+   protocol.registerFileProtocol('media', (request, callback) => {
+      const url = request.url.replace('media://', '');
+
+      try {
+         return callback(decodeURIComponent(url));
+      } catch (error) {
+         console.error(error);
+      }
    });
 });
 
