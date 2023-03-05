@@ -17,15 +17,15 @@ export const MediaPlayer = () => {
 
    const hasNextSong = !isEmpty(getSongQueue());
 
-   const playNextSong = () => {
+   const playNextSong = useCallback(() => {
       setSongPlaying(advanceSongQueue());
-   };
+   }, [ advanceSongQueue ]);
 
    useEffect(() => {
       if (hasNextSong && !songPlaying) {
          playNextSong();
       }
-   }, [ hasNextSong, songPlaying, advanceSongQueue ]);
+   }, [ hasNextSong, songPlaying, playNextSong ]);
 
    return (
       <footer className={styles.mediaPlayer}>
