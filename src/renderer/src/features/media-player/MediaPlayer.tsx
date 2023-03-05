@@ -15,17 +15,21 @@ export const MediaPlayer = () => {
 
    const [ songPlaying, setSongPlaying ] = useState<Song | null>(null);
 
-   const hasNextSong = !isEmpty(getSongQueue());
-
    const playNextSong = useCallback(() => {
       setSongPlaying(advanceSongQueue());
    }, [ advanceSongQueue ]);
 
+   const hasNextSong = !isEmpty(getSongQueue());
+
+   // Immediately play the song that was queued
+   // which opened the music player.
    useEffect(() => {
-      if (hasNextSong && !songPlaying) {
+      if (hasNextSong) {
          playNextSong();
       }
-   }, [ hasNextSong, songPlaying, playNextSong ]);
+      
+   // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
 
    return (
       <div className={styles.mediaPlayer}>
