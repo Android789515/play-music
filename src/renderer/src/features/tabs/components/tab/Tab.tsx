@@ -1,4 +1,4 @@
-import { MouseEvent, useCallback, useEffect, useState } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
 
 import { MouseButtons } from 'types/eventTypes';
 import type { Tab as TabType } from '../../types';
@@ -22,7 +22,7 @@ export const Tab = ({ tab, currentTab }: Props) => {
 
    useEffect(() => {
       setCurrentTab(tab);
-      
+
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 

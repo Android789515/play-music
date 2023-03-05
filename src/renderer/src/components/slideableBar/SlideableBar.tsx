@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from 'react';
+import { MouseEvent } from 'react';
 
 import { CSS_Class } from 'types/cssTypes';
 import { useDragBar } from './useDragBar';
@@ -22,7 +22,7 @@ export const SlideableBar = ({ value, setBarValue, barStyles, barValueStyles }: 
       const { left, right } = bar.getBoundingClientRect();
       const barLeft = Math.floor(left);
       const barRight = Math.floor(right);
-      
+
       const barSize = barRight - barLeft;
       const { clientX } = event;
 
