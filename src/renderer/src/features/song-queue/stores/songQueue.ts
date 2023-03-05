@@ -9,3 +9,8 @@ export const songQueueState = atom<Song[]>({
    key: newNameSpaceUUID('songQueue', namespace),
    default: []
 });
+
+export const songHistoryState = atom<Song[]>({
+   key: newNameSpaceUUID('songHistory', namespace),
+   default: []
+});

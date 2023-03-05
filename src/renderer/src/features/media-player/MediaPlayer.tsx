@@ -11,13 +11,26 @@ import { MediaControls } from './features/media-controls';
 import { SongDurationBar } from './features/media-controls/features/song-duration-bar';
 
 export const MediaPlayer = () => {
-   const { getSongQueue, advanceSongQueue } = useSongQueue();
+   const { getSongQueue, advanceSongQueue, queueSongNext, getPreviousSong } = useSongQueue();
 
    const [ songPlaying, setSongPlaying ] = useState<Song | null>(null);
 
-   const playNextSong = useCallback(() => {
-      setSongPlaying(advanceSongQueue());
-   }, [ advanceSongQueue ]);
+   const playNextSong = () => {
+      const nextSong = advanceSongQueue();
+
+      setSongPlaying(nextSong);
+   };
+
+   const playPreviousSong = () => {
+      if (songPlaying) {
+         // Allow user to use next to
+         // go to the song that was playing
+         // before going backwards.
+         queueSongNext(songPlaying);
+      }
+
+      setSongPlaying(getPreviousSong());
+   };
 
    const hasNextSong = !isEmpty(getSongQueue());
 
@@ -38,6 +51,7 @@ export const MediaPlayer = () => {
                songPlaying={songPlaying}
                setSongPlaying={setSongPlaying}
                playNextSong={playNextSong}
+               playPreviousSong={playPreviousSong}
             />
 
             <SongDurationBar />

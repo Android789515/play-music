@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useState, useEffect } from 'react';
 
 import type { Song } from '@api/types';
+import { useSongQueue } from 'features/song-queue/api';
 import { useVolumeControls } from './useVolumeControls';
 import { useIsMediaPlayerOpen } from 'features/media-player/api';
 
@@ -16,9 +17,10 @@ interface Props {
    songPlaying: Song | null;
    setSongPlaying: Dispatch<SetStateAction<Song | null>>;
    playNextSong: () => void;
+   playPreviousSong: () => void;
 }
 
-export const MediaControls = ({ songPlaying, setSongPlaying, playNextSong }: Props) => {
+export const MediaControls = ({ songPlaying, setSongPlaying, playNextSong, playPreviousSong }: Props) => {
    const [ isPaused, setIsPaused ] = useState(true);
 
    const pause = () => setIsPaused(true);
@@ -44,10 +46,23 @@ export const MediaControls = ({ songPlaying, setSongPlaying, playNextSong }: Pro
    const { volumeState, isMuted, toggleMute } = useVolumeControls();
    const [ volume ] = volumeState;
 
+   const { addSongToHistory } = useSongQueue();
+
+   const handleSongEnd = () => {
+      if (songPlaying) {
+         addSongToHistory(songPlaying);
+      }
+
+      playNextSong();
+   };
+
    return (
       <div className={styles.mediaControls}>
          <MediaControlsLayout>
-            <MediaControlButton name='Rewind' />
+            <MediaControlButton
+               name='Rewind'
+               onClick={playPreviousSong}
+            />
 
             <MediaControlButton
                name={isPaused ? 'Play' : 'Pause'}
@@ -61,7 +76,7 @@ export const MediaControls = ({ songPlaying, setSongPlaying, playNextSong }: Pro
 
             <MediaControlButton
                name='Fast Forward'
-               onClick={playNextSong}
+               onClick={handleSongEnd}
             />
 
             <VolumeButton
@@ -75,7 +90,7 @@ export const MediaControls = ({ songPlaying, setSongPlaying, playNextSong }: Pro
                isPaused={isPaused}
                volume={volume}
                isMuted={isMuted}
-               onEnded={playNextSong}
+               onEnded={handleSongEnd}
             />
 
             <MediaControlButton name='Loop' />
