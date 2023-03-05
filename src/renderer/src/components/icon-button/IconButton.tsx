@@ -1,4 +1,4 @@
-import type { ReactNode, HTMLAttributes } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 
 import type { CSS_Class } from 'types/cssTypes';
 
@@ -22,6 +22,7 @@ export const IconButton = ({ name, iconPath, buttonStyles = '', iconStyles, chil
             className={iconStyles}
             src={iconPath}
             alt={name}
+            draggable={false}
          />
 
          {children}
