@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 
 import { within } from '@utils/number';
+import type { VolumeState } from '../../useVolumeControls';
 
 import mutedIcon from './assets/icons/muted.svg';
 import lowVolumeIcon from './assets/icons/low-volume.svg';
@@ -11,17 +12,19 @@ import { MediaControlButton } from '../../components/media-control-button';
 import { VolumeBar } from './components';
 
 interface Props {
-   volume: number;
-   setVolume: Dispatch<SetStateAction<number>>;
+   volumeState: VolumeState;
+   isMuted: boolean;
+   toggleMute: () => void;
 }
 
-export const VolumeButton = ({ volume, setVolume }: Props) => {
+export const VolumeButton = ({ volumeState, isMuted, toggleMute }: Props) => {
    const [ isHovered, setIsHovered ] = useState(false);
 
    const [ isFocused, setIsFocused ] = useState(false);
 
+   const [ volume, setVolume ] = volumeState;
    const getVolumeIcon = () => {
-      if (volume === 0) {
+      if (volume === 0 || isMuted) {
          return mutedIcon;
       }
 

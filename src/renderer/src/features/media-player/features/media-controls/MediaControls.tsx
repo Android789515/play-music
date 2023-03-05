@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useState, useEffect } from 'react';
 
 import type { Song } from '@api/types';
+import { useVolumeControls } from './useVolumeControls';
 
 import styles from './MediaControls.module.scss';
 
@@ -35,7 +36,8 @@ export const MediaControls = ({ songPlaying, setSongPlaying, playNextSong }: Pro
       // Also reset time
    };
 
-   const [ volume, setVolume ] = useState(.5);
+   const { volumeState, isMuted, toggleMute } = useVolumeControls();
+   const [ volume ] = volumeState;
 
    return (
       <div className={styles.mediaControls}>
@@ -58,15 +60,16 @@ export const MediaControls = ({ songPlaying, setSongPlaying, playNextSong }: Pro
             />
 
             <VolumeButton
-               volume={volume}
-               setVolume={setVolume}
+               volumeState={volumeState}
+               isMuted={isMuted}
+               toggleMute={toggleMute}
             />
 
             <SongPlaying
                songPlaying={songPlaying}
                isPaused={isPaused}
                volume={volume}
-               isMuted={false}
+               isMuted={isMuted}
                onEnded={playNextSong}
             />
 
