@@ -6,6 +6,8 @@ import { isMediaPlayerOpenState } from '../stores/mediaPlayer';
 export const useIsMediaPlayerOpen = () => {
    const [ isOpen, setIsOpen ] = useRecoilState(isMediaPlayerOpenState);
 
+   const isOpenMediaPlayerOpen = useCallback(() => isOpen, [ isOpen ]);
+
    const openMediaPlayer = useCallback(() => {
       setIsOpen(true);
    }, [ setIsOpen ]);
@@ -15,7 +17,7 @@ export const useIsMediaPlayerOpen = () => {
    }, [ setIsOpen ]);
 
    return {
-      isOpen,
+      isOpenMediaPlayerOpen,
       openMediaPlayer,
       closeMediaPlayer,
    };
