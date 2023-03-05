@@ -4,7 +4,7 @@ import styles from './App.module.scss';
 
 import { AppHeader } from 'components/app-header';
 import { AppMain } from 'components/app-main';
-import { MediaPlayer } from 'features/media-player';
+import { AppFooter } from 'components/app-footer';
 
 export const App = () => {
    return (
@@ -14,7 +14,7 @@ export const App = () => {
 
             <AppMain />
 
-            <MediaPlayer />
+            <AppFooter />
          </div>
       </RecoilRoot>
    );

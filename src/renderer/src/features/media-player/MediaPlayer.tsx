@@ -28,7 +28,7 @@ export const MediaPlayer = () => {
    }, [ hasNextSong, songPlaying, playNextSong ]);
 
    return (
-      <footer className={styles.mediaPlayer}>
+      <div className={styles.mediaPlayer}>
          <MediaPlayerLayout>
             <MediaControls
                songPlaying={songPlaying}
@@ -38,6 +38,6 @@ export const MediaPlayer = () => {
 
             <SongDurationBar />
          </MediaPlayerLayout>
-      </footer>
+      </div>
    );
 };
