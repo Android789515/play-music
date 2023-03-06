@@ -1,7 +1,8 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import { isEmpty } from '@utils/array';
 import type { Song } from '@api/types';
+import { useSongTime } from './api';
 import { useSongQueue } from 'features/song-queue/api';
 
 import styles from './MediaPlayer.module.scss';
@@ -15,10 +16,25 @@ export const MediaPlayer = () => {
 
    const [ songPlaying, setSongPlaying ] = useState<Song | null>(null);
 
+   const { updateSongTime } = useSongTime();
+
+   // Fixes bug where the song
+   // bar doesn't complete.
+   const setMaxSongTime = () => {
+      if (songPlaying) {
+         updateSongTime(songPlaying.duration);
+      }
+   };
+
    const playNextSong = () => {
+      setMaxSongTime();
+
       const nextSong = advanceSongQueue();
 
-      setSongPlaying(nextSong);
+      if (nextSong) {
+         updateSongTime(0);
+         setSongPlaying(nextSong);
+      }
    };
 
    const playPreviousSong = () => {
