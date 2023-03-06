@@ -52,6 +52,8 @@ export const MediaControls = ({ songPlaying, setSongPlaying, playNextSong, playP
    const { addSongToHistory } = useSongQueue();
 
    const handleSongEnd = () => {
+      pause();
+
       if (songPlaying) {
          addSongToHistory(songPlaying);
       }
