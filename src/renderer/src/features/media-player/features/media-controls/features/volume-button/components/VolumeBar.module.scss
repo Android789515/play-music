@@ -8,11 +8,3 @@ $volumeBarSmoothing: calc(var(--borderRadiusStandard) - 0.1em);
 .volumeBarHighContrast.volumeBarHighContrast {
    background: var(--volumeBarHighContrast);
 }
-
-.volume.volume {
-   border-radius: $volumeBarSmoothing 0 0 $volumeBarSmoothing;
-}
-
-.volumeFull.volumeFull.volumeFull {
-   border-radius: $volumeBarSmoothing;
-}
