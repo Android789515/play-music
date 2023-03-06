@@ -1,9 +1,11 @@
+import { formatSongTime } from '@utils/number';
+
 import styles from './SongInfo.module.scss';
 
 interface Props {
    songTitle: string;
    songArtists: string;
-   songDuration: string;
+   songDuration: number;
 }
 
 export const SongInfo = ({ songTitle, songArtists, songDuration }: Props) => {
@@ -18,7 +20,7 @@ export const SongInfo = ({ songTitle, songArtists, songDuration }: Props) => {
          </h4>
 
          <p className={styles.songDuration}>
-            {songDuration}
+            {formatSongTime(songDuration)}
          </p>
       </>
    );

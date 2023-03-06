@@ -4,7 +4,6 @@ import { v4 as newUUID } from 'uuid';
 
 import type { Song } from './types';
 import { isEmpty } from '../utils/array';
-import { formatSongTime } from '../utils/number';
 import { PathStat, formatFileName, readContentsOfDir } from '../utils/files';
 
 const getArtists = (artists: string[] | undefined) => {
@@ -48,7 +47,7 @@ const getSongs = async (): Promise<Song[]> => {
          id: newUUID(),
          title: title || formatFileName(name),
          artists: getArtists(artists),
-         duration: formatSongTime(duration || 0),
+         duration: duration || 0,
          path,
       };
    });

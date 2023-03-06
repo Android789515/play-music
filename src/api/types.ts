@@ -4,6 +4,6 @@ export interface Song {
    id: UUID;
    title: string;
    artists: string;
-   duration: string;
+   duration: number;
    path: string;
 }
