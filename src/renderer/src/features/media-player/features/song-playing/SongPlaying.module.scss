@@ -6,6 +6,12 @@
    display: none;
 }
 
+.songPlayingTitle {
+   font-size: 1rem;
+
+   margin: 0;
+}
+
 @media (min-width: map.get($breakpoints, 'scaleUpSongs')) {
    .songPlaying {
       display: grid;
@@ -28,5 +34,11 @@
       width: max-content;
 
       margin: auto;
+   }
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+   .songPlayingTitle {
+      font-size: 1.2rem;
    }
 }

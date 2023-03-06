@@ -70,11 +70,9 @@ export const SongPlaying = ({ songPlaying, volume, isPaused, isMuted, ...rest }:
                {...rest}
             />
 
-         <SongInfo
-            songTitle={clipSongTitle()}
-            songArtists={''}
-            songDuration={''}
-         />
+         <h4 className={styles.songPlayingTitle}>
+            {clipSongTitle()}
+         </h4>
       </div>
    );
 };
