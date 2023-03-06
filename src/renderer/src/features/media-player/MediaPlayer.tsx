@@ -70,7 +70,9 @@ export const MediaPlayer = () => {
                playPreviousSong={playPreviousSong}
             />
 
-            <SongDurationBar />
+            <SongDurationBar
+               songPlaying={songPlaying}
+            />
          </MediaPlayerLayout>
       </div>
    );
