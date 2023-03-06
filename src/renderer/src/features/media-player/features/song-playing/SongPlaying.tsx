@@ -6,7 +6,7 @@ import { useSongTime } from 'features/media-player';
 import styles from './SongPlaying.module.scss';
 
 interface Props extends HTMLAttributes<HTMLAudioElement> {
-   songPlaying: Song | null;
+   songPlaying: Song;
    volume: number;
    isPaused: boolean;
    isMuted: boolean;
@@ -32,7 +32,7 @@ export const SongPlaying = ({ songPlaying, volume, isPaused, isMuted, ...rest }:
    useEffect(changeVolume, [ volume ]);
 
    const clipSongTitle = () => {
-      return songPlaying?.title.slice(0, 34) || '';
+      return songPlaying.title.slice(0, 34) || '';
    };
 
    const { songTime, updateSongTime } = useSongTime();
@@ -55,20 +55,20 @@ export const SongPlaying = ({ songPlaying, volume, isPaused, isMuted, ...rest }:
       updateSongTime(element.currentTime);
    };
 
-   console.log(songPlaying?.path);
+   console.log(songPlaying.path);
 
    return (
       <div
          className={styles.songPlaying}
       >
-            <audio
-            src={'media://' + songPlaying?.path}
-               autoPlay
-               muted={isMuted}
-               onTimeUpdate={handleTimeUpdate}
-               ref={audioRef}
-               {...rest}
-            />
+         <audio
+            src={'media://' + songPlaying.path}
+            autoPlay
+            muted={isMuted}
+            onTimeUpdate={handleTimeUpdate}
+            ref={audioRef}
+            {...rest}
+         />
 
          <h4 className={styles.songPlayingTitle}>
             {clipSongTitle()}

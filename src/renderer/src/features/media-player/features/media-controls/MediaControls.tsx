@@ -15,24 +15,25 @@ import { VolumeButton } from './features/volume-button';
 import { SongPlaying } from '../song-playing';
 
 interface Props {
-   songPlaying: Song | null;
+   songPlaying: Song;
    setSongPlaying: Dispatch<SetStateAction<Song | null>>;
    playNextSong: () => void;
    playPreviousSong: () => void;
 }
 
-export const MediaControls = ({ songPlaying, setSongPlaying, playNextSong, playPreviousSong }: Props) => {
+export const MediaControls = ({
+   songPlaying,
+   setSongPlaying,
+   playNextSong,
+   playPreviousSong
+}: Props) => {
    const [ isPaused, setIsPaused ] = useState(true);
 
    const pause = () => setIsPaused(true);
 
    const unPause = () => setIsPaused(false);
 
-   useEffect(() => {
-      if (songPlaying) {
-         unPause();
-      }
-   }, [ songPlaying ]);
+   useEffect(unPause, [ songPlaying ]);
 
    const { closeMediaPlayer } = useIsMediaPlayerOpen();
 
@@ -54,9 +55,7 @@ export const MediaControls = ({ songPlaying, setSongPlaying, playNextSong, playP
    const handleSongEnd = () => {
       pause();
 
-      if (songPlaying) {
-         addSongToHistory(songPlaying);
-      }
+      addSongToHistory(songPlaying);
 
       playNextSong();
    };

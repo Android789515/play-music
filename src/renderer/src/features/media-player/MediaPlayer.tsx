@@ -12,7 +12,12 @@ import { MediaControls } from './features/media-controls';
 import { SongDurationBar } from './features/media-controls/features/song-duration-bar';
 
 export const MediaPlayer = () => {
-   const { getSongQueue, advanceSongQueue, queueSongNext, getPreviousSong } = useSongQueue();
+   const {
+      getSongQueue,
+      advanceSongQueue,
+      queueSongNext,
+      getPreviousSong
+   } = useSongQueue();
 
    const [ songPlaying, setSongPlaying ] = useState<Song | null>(null);
 
@@ -60,7 +65,7 @@ export const MediaPlayer = () => {
    // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
-   return (
+   return ( songPlaying &&
       <div className={styles.mediaPlayer}>
          <MediaPlayerLayout>
             <MediaControls
