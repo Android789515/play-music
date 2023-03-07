@@ -52,7 +52,7 @@ const getSongs = async (): Promise<Song[]> => {
          title: title || formatFileName(name),
          artists: getArtists(artists),
          duration: duration || 0,
-         path,
+         path: encodeURI(path),
       };
    });
 
