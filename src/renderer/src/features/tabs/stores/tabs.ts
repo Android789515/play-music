@@ -1,7 +1,6 @@
 import { atom, selector } from 'recoil';
-import { v5 as newNameSpaceUUID, v4 as newUUID } from 'uuid';
+import { v4 as newUUID } from 'uuid';
 
-import { namespace } from 'namespace';
 import type { Tab } from '../types';
 
 export const libraryTab = {
@@ -12,14 +11,14 @@ export const libraryTab = {
 };
 
 export const tabsState = atom<Tab[]>({
-   key: newNameSpaceUUID('tabs', namespace),
+   key: 'tabs',
    default: [
       libraryTab
    ]
 });
 
 export const closedTabs = selector({
-   key: newNameSpaceUUID('closedTabs', namespace),
+   key: 'closedTabs',
    get: ({ get }) => {
       // Permanent tabs are considered always open
       const closedTabs = get(tabsState).filter(tab => !tab.isOpen && !tab.isPermanent);
