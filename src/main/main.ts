@@ -4,6 +4,7 @@ import { app, shell, BrowserWindow, ipcMain, protocol } from 'electron';
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 
 import { getSongsAPI } from '../api/songs';
+import { mediaProtocol } from './mediaProtocol';
 
 import icon from '../../resources/icon.png?asset';
 
@@ -66,15 +67,7 @@ app.whenReady().then(() => {
    });
 
    // Media protocol
-   protocol.registerFileProtocol('media', (request, callback) => {
-      const url = request.url.replace('media://', '');
-
-      try {
-         return callback(decodeURIComponent(url));
-      } catch (error) {
-         console.error(error);
-      }
-   });
+   protocol.registerFileProtocol('media', mediaProtocol);
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common
