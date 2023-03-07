@@ -63,17 +63,17 @@ const isSupportedAudioFile = (file: Filename) => {
    return supportedFormats.includes(extension);
 };
 
-export interface PathStat {
+export interface PathDetails {
    name: string;
    path: Path;
-   contents?: PathStat[];
+   contents?: PathDetails[];
 }
 
-export const readContentsOfDir = (startPath: Path): PathStat => {
+export const readContentsOfDir = (startPath: Path): PathDetails => {
    const paths = readdirSync(startPath);
 
    const contents = paths
-      .reduce<PathStat[]>((contents, path) => {
+      .reduce<PathDetails[]>((contents, path) => {
          const fullPath = startPath + '/' + path;
 
          if (isDir(fullPath)) {
