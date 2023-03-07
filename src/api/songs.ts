@@ -4,7 +4,7 @@ import { v4 as newUUID } from 'uuid';
 
 import type { Song } from './types';
 import { isEmpty } from '../utils/array';
-import { PathStat, formatFileName, readContentsOfDir } from '../utils/files';
+import { PathDetails, formatFileName, readContentsOfDir } from '../utils/files';
 
 const getArtists = (artists: string[] | undefined) => {
    if (artists && !isEmpty(artists)) {
@@ -14,17 +14,21 @@ const getArtists = (artists: string[] | undefined) => {
    return '';
 };
 
-const getSongsFromDir = (songs: PathStat[], path: PathStat): PathStat[] => {
-   const isPathDir = path.contents !== undefined;
+const getSongsFromDir = (
+   songResults: PathDetails[],
+   pathDetails: PathDetails
+): PathDetails[] => {
+   
+   const isPathDir = pathDetails.contents !== undefined;
 
    if (isPathDir) {
-      const songsInDir = path.contents!.reduce(getSongsFromDir, []);
+      const songsInDir = pathDetails.contents!.reduce(getSongsFromDir, []);
 
-      return [ ...songs, ...songsInDir ];
+      return [ ...songResults, ...songsInDir ];
    } else {
-      const { name, path: fullPath } = path;
+      const { name, path } = pathDetails;
 
-      return [ ...songs, { name, path: fullPath } ];
+      return [ ...songResults, { name, path } ];
    }
 };
 
