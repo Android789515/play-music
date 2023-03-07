@@ -55,8 +55,6 @@ export const SongPlaying = ({ songPlaying, volume, isPaused, isMuted, ...rest }:
       updateSongTime(element.currentTime);
    };
 
-   console.log(songPlaying.path);
-
    return (
       <div
          className={styles.songPlaying}
