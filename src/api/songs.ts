@@ -59,7 +59,9 @@ const getSongs = async (): Promise<Song[]> => {
    return await Promise.all(fileTags);
 };
 
-export const getSongsAPI = {
+export const songsAPI = {
+   getSongs: {
    name: 'getSongs',
    fn: getSongs,
+   },
 };

@@ -1,11 +1,13 @@
 import { contextBridge, ipcRenderer } from 'electron';
 import { electronAPI } from '@electron-toolkit/preload';
 
-import { getSongsAPI } from '../api/songs';
+import { songsAPI } from '../api/songs';
+
+const { getSongs } = songsAPI;
 
 // Custom APIs for renderer
 export const api = {
-   getSongs: () => ipcRenderer.invoke(getSongsAPI.name),
+   getSongs: () => ipcRenderer.invoke(getSongs.name),
 };
 
 // Use `contextBridge` APIs to expose Electron APIs to

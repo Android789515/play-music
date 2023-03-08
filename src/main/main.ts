@@ -3,7 +3,7 @@ import { join } from 'path';
 import { app, shell, BrowserWindow, ipcMain, protocol } from 'electron';
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 
-import { getSongsAPI } from '../api/songs';
+import { songsAPI } from '../api/songs';
 import { mediaProtocol } from './mediaProtocol';
 
 import icon from '../../resources/icon.png?asset';
@@ -24,7 +24,8 @@ function createWindow(): void {
       },
    });
 
-   ipcMain.handle(getSongsAPI.name, getSongsAPI.fn);
+   const { getSongs } = songsAPI;
+   ipcMain.handle(getSongs.name, getSongs.fn);
 
    mainWindow.on('ready-to-show', () => {
       mainWindow.show();
