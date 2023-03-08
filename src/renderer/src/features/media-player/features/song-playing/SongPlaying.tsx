@@ -2,6 +2,7 @@ import { HTMLAttributes, SyntheticEvent, useRef, useEffect } from 'react';
 
 import type { Song } from '@api/types';
 import { useSongTime } from 'features/media-player';
+import { useSongPlaying } from './hooks';
 
 import styles from './SongPlaying.module.scss';
 
@@ -12,47 +13,44 @@ interface Props extends HTMLAttributes<HTMLAudioElement> {
    isMuted: boolean;
 }
 
-export const SongPlaying = ({ songPlaying, volume, isPaused, isMuted, ...rest }: Props) => {
+export const SongPlaying = ({
+   songPlaying,
+   volume,
+   isPaused,
+   isMuted,
+   ...rest
+}: Props) => {
+   
    const audioRef = useRef<HTMLAudioElement>(null);
 
+   const {
+      handlePauseUpdate,
+      changeVolume,
+      syncSongTime,
+   } = useSongPlaying(audioRef.current);
+
    useEffect(() => {
-      if (isPaused) {
-         audioRef.current?.pause();
-      } else {
-         audioRef.current?.play();
-      }
-   }, [ isPaused ]);
+      handlePauseUpdate(isPaused);
+   }, [ isPaused, handlePauseUpdate ]);
 
-   const changeVolume = () => {
-      if (audioRef.current) {
-         audioRef.current.volume = volume;
-      }
-   };
-
-   useEffect(changeVolume, [ volume ]);
-
-   const clipSongTitle = () => {
-      return songPlaying.title.slice(0, 34) || '';
-   };
+   useEffect(() => {
+      changeVolume(volume);
+   }, [ volume, changeVolume ]);
 
    const { songTime, updateSongTime } = useSongTime();
 
    useEffect(() => {
-      const audioElement = audioRef.current;
-      if (audioElement) {
-         const rewind = () => audioElement.currentTime > songTime + 1;
-         const fastForward = () => audioElement.currentTime < songTime - 1;
-
-         if (fastForward() || rewind()) {
-            audioElement.currentTime = songTime;
-         }
-      }
-   }, [ songTime ]);
+      syncSongTime(songTime);
+   }, [ songTime, syncSongTime ]);
 
    const handleTimeUpdate = (event: SyntheticEvent<HTMLAudioElement>) => {
       const element = event.target as HTMLAudioElement;
 
       updateSongTime(element.currentTime);
+   };
+
+   const clipSongTitle = () => {
+      return songPlaying.title.slice(0, 34) || '';
    };
 
    return (
