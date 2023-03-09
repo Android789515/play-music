@@ -1,8 +1,6 @@
 import { MouseEvent, useState } from 'react';
 
 import { TagNames } from 'types/htmlTypes';
-import { within } from '@utils/number';
-import type { VolumeState } from '../../useVolumeControls';
 
 import mutedIcon from './assets/icons/muted.svg';
 import lowVolumeIcon from './assets/icons/low-volume.svg';
@@ -12,30 +10,24 @@ import highVolumeIcon from './assets/icons/high-volume.svg';
 import { MediaControlButton } from '../../components/media-control-button';
 import { VolumeBar } from './components';
 
-interface Props {
-   volumeState: VolumeState;
-   isMuted: boolean;
-   toggleMute: () => void;
-}
 
-export const VolumeButton = ({ volumeState, isMuted, toggleMute }: Props) => {
+export const VolumeButton = () => {
    const [ isHovered, setIsHovered ] = useState(false);
 
    const [ isFocused, setIsFocused ] = useState(false);
 
-   const [ volume, setVolume ] = volumeState;
    const getVolumeIcon = () => {
-      if (volume === 0 || isMuted) {
-         return mutedIcon;
-      }
+      // if (volume === 0 || isMuted) {
+      //    return mutedIcon;
+      // }
 
-      if (within(volume, [ 0, .49 ])) {
-         return lowVolumeIcon;
-      }
+      // if (within(volume, [ 0, .49 ])) {
+      //    return lowVolumeIcon;
+      // }
 
-      if (within(volume, [ .5, .8 ])) {
-         return mediumVolumeIcon;
-      }
+      // if (within(volume, [ .5, .8 ])) {
+      //    return mediumVolumeIcon;
+      // }
 
       return highVolumeIcon;
    };
@@ -44,7 +36,7 @@ export const VolumeButton = ({ volumeState, isMuted, toggleMute }: Props) => {
       const element = event.target as HTMLButtonElement;
 
       if (element.tagName === TagNames.img) {
-         toggleMute();
+         // toggleMute();
       }
    };
 
@@ -60,8 +52,8 @@ export const VolumeButton = ({ volumeState, isMuted, toggleMute }: Props) => {
       >
          <VolumeBar
             increaseContrast={isHovered || isFocused}
-            volume={volume}
-            setVolume={setVolume}
+            volume={.5}
+            setVolume={() => {}}
          />
       </MediaControlButton>
    );
