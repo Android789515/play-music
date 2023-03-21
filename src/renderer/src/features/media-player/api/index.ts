@@ -1,1 +1,1 @@
-export * from './useIsMediaPlayerOpen';
+export * from './useMediaPlayer';
