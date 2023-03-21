@@ -1,3 +1,5 @@
+import { useMediaPlayer } from 'features/media-player';
+
 import styles from './MediaControls.module.scss';
 
 import { MediaControlsLayout } from './components'
@@ -8,6 +10,26 @@ import { SongPlaying } from '../song-playing';
 
 export const MediaControls = () => {
 
+   const {
+      mediaPlayer: { controls: { isPaused } },
+      updateControls,
+      closeMediaPlayer
+   } = useMediaPlayer();
+
+   const pause = () => {
+      updateControls('isPaused', true);
+   };
+
+   const play = () => {
+      updateControls('isPaused', false);
+   };
+
+   const stop = () => {
+      pause();
+      updateControls('time', 0);
+      closeMediaPlayer();
+   };
+
    return (
       <div className={styles.mediaControls}>
          <MediaControlsLayout>
@@ -17,8 +39,8 @@ export const MediaControls = () => {
             />
 
             <MediaControlButton
-               name={'Pause'}
-               onClick={() => {}}
+               name={isPaused ? 'Play' : 'Pause'}
+               onClick={isPaused ? play : pause}
             />
 
             <MediaControlButton
@@ -31,11 +53,9 @@ export const MediaControls = () => {
                onClick={() => {}}
             />
 
-            <VolumeButton
-            />
+            <VolumeButton />
 
-            <SongPlaying
-            />
+            <SongPlaying />
 
             <MediaControlButton name='Loop' />
 
