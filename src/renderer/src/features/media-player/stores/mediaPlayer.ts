@@ -1,6 +1,19 @@
 import { atom } from 'recoil';
 
-export const isMediaPlayerOpenState = atom<boolean>({
-   key: 'isMediaPlayerOpenState',
-   default: false
+import type { MediaPlayerState } from '../types';
+
+export const mediaPlayerState = atom<MediaPlayerState>({
+   key: 'mediaPlayerState',
+   default: {
+      songPlaying: null,
+      isOpen: false,
+      controls: {
+         isPaused: false,
+         loop: false,
+         shuffle: false,
+         volume: .5,
+         isMuted: false,
+         time: 0,
+      },
+   }
 });
