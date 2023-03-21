@@ -7,7 +7,7 @@ import { SongDurationBar } from './features/media-controls/features/song-duratio
 export const MediaPlayer = () => {
 
    return (
-      <div className={styles.mediaPlayer}>
+      <footer className={styles.mediaPlayer}>
          <MediaPlayerLayout>
             <MediaControls
             />
@@ -15,6 +15,6 @@ export const MediaPlayer = () => {
             <SongDurationBar
             />
          </MediaPlayerLayout>
-      </div>
+      </footer>
    );
 };
