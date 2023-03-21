@@ -1,4 +1,5 @@
 import { readdirSync, statSync } from 'fs';
+import { join } from 'path';
 
 import type { Path, Filename } from '../types/fileTypes';
 import { isEmpty } from './array';
@@ -7,14 +8,14 @@ export const isDir = (path: Path) => {
    return statSync(path).isDirectory();
 };
 
-export const formatFileName = (fileName: string): Filename => {
+export const formatFileName = (fileName: string): FileName => {
    const fileExtension = '.';
    const [ name ] = fileName.split(fileExtension);
 
    return name;
 };
 
-const isSupportedAudioFile = (file: Filename) => {
+const isSupportedAudioFile = (file: FileName) => {
    const supportedFormats = [
       '3gp',
       'aiff',
@@ -74,7 +75,7 @@ export const readContentsOfDir = (startPath: Path): PathDetails => {
 
    const contents = paths
       .reduce<PathDetails[]>((contents, path) => {
-         const fullPath = startPath + '/' + path;
+         const fullPath = join(startPath, path);
 
          if (isDir(fullPath)) {
             return [
