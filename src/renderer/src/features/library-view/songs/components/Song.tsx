@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 import type { Song as SongType } from '@api/types';
-import { useIsMediaPlayerOpen } from 'features/media-player';
+import { useMediaPlayer } from 'features/media-player';
 
 import styles from './Song.module.scss';
 
@@ -13,12 +13,14 @@ interface Props {
 }
 
 export const Song = ({ song, children }: Props) => {
-   const { isOpenMediaPlayerOpen, openMediaPlayer } = useIsMediaPlayerOpen();
+   const { mediaPlayer, playSong, openMediaPlayer } = useMediaPlayer();
 
    const hanndleSongClick = () => {
-      if (!isOpenMediaPlayerOpen()) {
+      if (!mediaPlayer.isOpen) {
          openMediaPlayer();
       }
+
+      playSong(song);
    };
 
    return (
