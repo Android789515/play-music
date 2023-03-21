@@ -1,7 +1,7 @@
 import { readdirSync, statSync } from 'fs';
 import { join } from 'path';
 
-import type { Path, Filename } from '../types/fileTypes';
+import type { Path, FileName } from '../types/fileTypes';
 import { isEmpty } from './array';
 
 export const isDir = (path: Path) => {
