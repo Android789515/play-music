@@ -7,7 +7,7 @@ import { SlideableBar } from 'components/slideableBar';
 interface Props {
    increaseContrast?: boolean;
    volume: number;
-   setVolume: Dispatch<SetStateAction<number>>;
+   setVolume: (newVolume: number) => void;
 }
 
 export const VolumeBar = ({ increaseContrast: volumeButtonHover, volume, setVolume }: Props) => {
