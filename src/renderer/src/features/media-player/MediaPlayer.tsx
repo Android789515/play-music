@@ -4,7 +4,7 @@ import styles from './MediaPlayer.module.scss';
 
 import { MediaPlayerLayout } from './components';
 import { MediaControls } from './features/media-controls';
-import { SongDurationBar } from './features/media-controls/features/song-duration-bar';
+import { Speaker } from './features/speaker';
 import { SongDurationBar } from './features/song-duration-bar';
 
 export const MediaPlayer = () => {
@@ -16,7 +16,13 @@ export const MediaPlayer = () => {
    return ( songPlaying &&
       <footer className={styles.mediaPlayer}>
          <MediaPlayerLayout>
-            <MediaControls
+            <MediaControls />
+
+            <Speaker
+               songPath={songPlaying.path}
+               controls={controls}
+               updateAudioTime={currentTime => updateControls('time', currentTime)}
+               onSongEnd={() => { /* Play next song */ }}
             />
 
             <SongDurationBar
