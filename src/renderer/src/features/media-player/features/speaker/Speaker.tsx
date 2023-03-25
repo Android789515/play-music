@@ -1,4 +1,4 @@
-import { SyntheticEvent, useRef, useEffect, useState } from 'react';
+import { SyntheticEvent, useRef, useEffect } from 'react';
 
 import type { Path } from '@globalTypes/fileTypes';
 import type { MediaControls } from 'features/media-player/types';
@@ -46,17 +46,17 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
       }
    };
 
-   const [ audioSource, setAudioSource ] = useState('');
-
+   // The song path is encoded.
+   const audioTrack = 'media://' + decodeURI(songPath);
    const { isMuted } = controls;
-   return ( audioSource ?
+   return (
       <audio
-         src={audioSource}
+         src={audioTrack}
          autoPlay
          muted={isMuted}
          onTimeUpdate={syncAudioTime}
          onEnded={onSongEnd}
          ref={speakerRef}
       />
-   : null );
+   );
 };
