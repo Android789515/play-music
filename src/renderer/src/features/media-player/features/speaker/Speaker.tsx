@@ -28,7 +28,7 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
       }
    };
 
-   useEffect(syncSpeakerWithControls);
+   useEffect(syncSpeakerWithControls, [ controls, speaker ]);
 
    const syncAudioTime = (event: SyntheticEvent<HTMLAudioElement, Event>) => {
       const speaker = event.target as HTMLAudioElement;
