@@ -14,9 +14,8 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
    const speakerRef = useRef<HTMLAudioElement>(null);
    const speaker = speakerRef.current;
 
+   const { isPaused, volume } = controls;
    const syncSpeakerWithControls = () => {
-      const { isPaused, volume } = controls;
-
       if (speaker) {
          speaker.volume = volume;
 
@@ -28,7 +27,7 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
       }
    };
 
-   useEffect(syncSpeakerWithControls, [ controls, speaker ]);
+   useEffect(syncSpeakerWithControls, [ isPaused, volume, speaker ]);
 
    const syncAudioTime = (event: SyntheticEvent<HTMLAudioElement, Event>) => {
       const speaker = event.target as HTMLAudioElement;
