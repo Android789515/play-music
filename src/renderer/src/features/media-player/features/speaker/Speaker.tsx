@@ -19,9 +19,12 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
    }, [ controls.volume ]);
 
    const syncPaused = useCallback((speaker: HTMLAudioElement) => {
-      if (controls.isPaused) {
+      const needToPause = controls.isPaused && !speaker.paused;
+      const needToPlay = !controls.isPaused && speaker.paused;
+
+      if (needToPause) {
          speaker.pause();
-      } else {
+      } else if (needToPlay) {
          speaker.play();
       }
    }, [ controls.isPaused ]);
