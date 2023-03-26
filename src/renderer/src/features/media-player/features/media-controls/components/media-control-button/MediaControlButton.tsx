@@ -5,7 +5,7 @@ import { capitalize } from '@utils/string';
 import playIcon from './assets/icons/play.svg';
 import pauseIcon from './assets/icons/pause.svg';
 import stopIcon from './assets/icons/stop.svg';
-import fastForwardIcon from './assets/icons/fast-forward.svg';
+import nextArrowIcon from './assets/icons/next.svg';
 import loopIcon from './assets/icons/loop.svg';
 import shuffleIcon from './assets/icons/shuffle.svg';
 
@@ -30,8 +30,8 @@ export const MediaControlButton = ({ name, iconPath, children, ...rest }: Props)
 
          // Rewind button class 
          // rotates it 180 deg
-         case 'rewind': return fastForwardIcon;
-         case 'fast forward': return fastForwardIcon;
+         case 'previous': return nextArrowIcon;
+         case 'next': return nextArrowIcon;
 
          case 'loop': return loopIcon;
 

@@ -34,7 +34,7 @@ export const MediaControls = () => {
       <div className={styles.mediaControls}>
          <MediaControlsLayout>
             <MediaControlButton
-               name='Rewind'
+               name='Previous'
                onClick={() => {}}
             />
 
@@ -49,7 +49,7 @@ export const MediaControls = () => {
             />
 
             <MediaControlButton
-               name='Fast Forward'
+               name='Next'
                onClick={() => {}}
             />
 
