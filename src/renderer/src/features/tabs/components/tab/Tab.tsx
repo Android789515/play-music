@@ -7,7 +7,7 @@ import { handleAuxClick } from 'utils/handleAuxClick';
 
 import styles from './Tab.module.scss';
 
-import { useShowContextMenu, ContextMenu } from 'components/context-menu';
+import { useControlContextMenu, ContextMenu } from 'components/context-menu';
 import { TabName } from '../tab-name';
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
 }
 
 export const Tab = ({ tab, currentTab }: Props) => {
-   const { isContextMenuShown, openContextMenu, closeContextMenu } = useShowContextMenu();
+   const { isContextMenuShown, openContextMenu, closeContextMenu } = useControlContextMenu();
 
    const { setCurrentTab, closeTab, deleteTab } = useTabs();
 

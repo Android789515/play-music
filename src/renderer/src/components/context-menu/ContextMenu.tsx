@@ -1,7 +1,7 @@
 import { FocusEvent, useRef, useEffect } from 'react';
 
 import type { ContextMenuStructure } from './types';
-import { useShowContextMenu } from './api';
+import { useControlContextMenu } from './api';
 import { testConditions } from '@utils/boolean';
 
 import styles from './ContextMenu.module.scss';
@@ -42,7 +42,7 @@ export const ContextMenu = ({ shown, nested, menuStructure, closeContextMenu }: 
    };
 
    // Use outside the ContextMenuItems
-   const nestedMenuMethods = useShowContextMenu();
+   const nestedMenuMethods = useControlContextMenu();
 
    const ContextMenuActions = menuStructure.map((menuItem, index) => {
       return (

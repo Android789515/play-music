@@ -1,1 +1,1 @@
-export * from './useShowContextMenu';
+export * from './useControlContextMenu';

@@ -11,12 +11,12 @@ import styles from './NewTabButton.module.scss';
 import { IconButton } from 'components/icon-button';
 import {
    ContextMenuStructure,
-   useShowContextMenu,
+   useControlContextMenu,
    ContextMenu,
 } from 'components/context-menu';
 
 export const NewTabButton = () => {
-   const { isContextMenuShown, openContextMenu, closeContextMenu } = useShowContextMenu();
+   const { isContextMenuShown, openContextMenu, closeContextMenu } = useControlContextMenu();
 
    const { createTab, openTab } = useTabs();
 

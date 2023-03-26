@@ -5,14 +5,14 @@ import type {
    OneOfAnyContextMenuItems
 } from '../types';
 import { isContextMenuItemWithMenu, isContextMenuItemWithEvent } from '../utils/typeValidators';
-import type { ShowContextMenuHook } from '../api';
+import type { ShowContextMenuAPI } from '../api';
 
 import styles from './ContextMenuItem.module.scss';
 
 import { ContextMenu } from '../ContextMenu';
 
 interface Props {
-   nestedMenuMethods: ShowContextMenuHook;
+   nestedMenuMethods: ShowContextMenuAPI;
    closeOuterMenu: () => void;
    menuItem: OneOfAnyContextMenuItems;
 }
