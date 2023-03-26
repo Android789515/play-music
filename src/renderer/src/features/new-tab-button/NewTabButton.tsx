@@ -16,8 +16,7 @@ import {
 } from 'components/context-menu';
 
 export const NewTabButton = () => {
-   const { isContextMenuShown, openContextMenu, closeContextMenu } =
-      useShowContextMenu();
+   const { isContextMenuShown, openContextMenu, closeContextMenu } = useShowContextMenu();
 
    const { createTab, openTab } = useTabs();
 
@@ -57,11 +56,11 @@ export const NewTabButton = () => {
             onClick={openContextMenu}
          />
 
-            <ContextMenu
+         <ContextMenu
             shown={isContextMenuShown()}
-               menuStructure={contextMenuStructure}
-               closeContextMenu={closeContextMenu}
-            />
+            menuStructure={contextMenuStructure}
+            closeContextMenu={closeContextMenu}
+         />
       </div>
    );
 };
