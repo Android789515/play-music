@@ -2,6 +2,7 @@ import { ReactNode, MouseEvent } from 'react';
 
 import type { Song as SongType } from '@api/types';
 import { useMediaPlayer } from 'features/media-player';
+import { useSongQueue } from 'features/song-queue';
 import { handleAuxClick } from 'utils/handleAuxClick';
 
 import styles from './Song.module.scss';
@@ -39,11 +40,17 @@ export const Song = ({ song, children }: Props) => {
       openContextMenu();
    };
 
+   const { queueSong } = useSongQueue();
+
    const songMenu = [
       {
          name: 'Play',
          action: handleSongClick,
-      }
+      },
+      {
+         name: 'Queue',
+         action: () => queueSong(song),
+      },
    ];
 
    return (
