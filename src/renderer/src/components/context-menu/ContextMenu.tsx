@@ -1,4 +1,4 @@
-import { FocusEvent, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 import type { ContextMenuLocation, ContextMenuStructure } from './types';
 import { useControlContextMenu } from './api';
@@ -20,27 +20,27 @@ interface Props {
 export const ContextMenu = ({ shown, nested, location, menuStructure, closeContextMenu }: Props) => {
    const contextMenuRef = useRef<HTMLDivElement>(null);
 
-   const focusWhenShown = () => {
+   const closeOnOutsideClick = (event: MouseEvent) => {
       const contextMenu = contextMenuRef.current;
-
-      if (shown && contextMenu) {
-         contextMenu.focus();
-      }
-   };
-
-   useEffect(focusWhenShown, [ shown ]);
-
-   const closeOnBlur = (event: FocusEvent) => {
-      const contextMenu = contextMenuRef.current;
-      const focusedTarget = event.relatedTarget as HTMLElement;
+      const clickedTarget = event.target as HTMLElement;
 
       if (testConditions({
          isMounted: () => contextMenu !== undefined,
-         focusedOutsideMenu: () => !contextMenu?.contains(focusedTarget),
+         clickedOutsideMenu: () => !contextMenu?.contains(clickedTarget),
       }).all()) {
          closeContextMenu();
       }
    };
+
+   useEffect(() => {
+      document.body.addEventListener('mousedown', closeOnOutsideClick);
+
+      return () => {
+         document.body.removeEventListener('mousedown', closeOnOutsideClick);
+      };
+      
+   // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
 
    // Use outside the ContextMenuItems
    const nestedMenuMethods = useControlContextMenu();
@@ -71,7 +71,6 @@ export const ContextMenu = ({ shown, nested, location, menuStructure, closeConte
             top: location?.y,
             left: location?.x,
          }}
-         onBlur={closeOnBlur}
          ref={contextMenuRef}
       >
          <List customStyles={styles.contextMenuLayout}>
