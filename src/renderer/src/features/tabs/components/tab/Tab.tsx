@@ -1,9 +1,9 @@
-import { MouseEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { MouseButtons } from 'types/eventTypes';
 import type { Tab as TabType } from '../../types';
 import { useTabs } from 'features/tabs';
 import type { ContextMenuStructure } from 'components/context-menu';
+import { handleAuxClick } from 'utils/handleAuxClick';
 
 import styles from './Tab.module.scss';
 
@@ -26,24 +26,11 @@ export const Tab = ({ tab, currentTab }: Props) => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
-   const handleClick = (event: MouseEvent) => {
-      switch (event.button) {
-         case MouseButtons.left:
-            setCurrentTab(tab);
-            break;
-
-         case MouseButtons.middle:
-            closeTab(tab);
-            break;
-
-         case MouseButtons.right:
-            openContextMenu();
-            break;
-
-         default:
-            break;
-      }
-   };
+   const handleClick = handleAuxClick({
+      onLeftClick: () => setCurrentTab(tab),
+      onMiddleClick: () => closeTab(tab),
+      onRightClick: () => openContextMenu(),
+   });
 
    const [ renaming, setRenaming ] = useState(false);
 
@@ -66,7 +53,7 @@ export const Tab = ({ tab, currentTab }: Props) => {
                ${styles.tab}
                ${currentTab ? styles.currentTab : ''}
             `}
-            onMouseUp={handleClick}
+            onClick={handleClick}
          >
             <TabName
                tabID={tab.id}
