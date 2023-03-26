@@ -26,12 +26,6 @@ export const Tab = ({ tab, currentTab }: Props) => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
-   const handleClick = handleAuxClick({
-      onLeftClick: () => setCurrentTab(tab),
-      onMiddleClick: () => closeTab(tab),
-      onRightClick: () => openContextMenu(),
-   });
-
    const [ renaming, setRenaming ] = useState(false);
 
    const contextMenuStructure: ContextMenuStructure = [
@@ -53,7 +47,11 @@ export const Tab = ({ tab, currentTab }: Props) => {
                ${styles.tab}
                ${currentTab ? styles.currentTab : ''}
             `}
-            onClick={handleClick}
+            onMouseUp={handleAuxClick({
+               onLeftClick: () => setCurrentTab(tab),
+               onMiddleClick: () => closeTab(tab),
+               onRightClick: openContextMenu,
+            })}
          >
             <TabName
                tabID={tab.id}
@@ -63,11 +61,11 @@ export const Tab = ({ tab, currentTab }: Props) => {
             />
          </div>
 
-            <ContextMenu
+         <ContextMenu
             shown={isContextMenuShown()}
-               menuStructure={contextMenuStructure}
-               closeContextMenu={closeContextMenu}
-            />
+            menuStructure={contextMenuStructure}
+            closeContextMenu={closeContextMenu}
+         />
       </li>
    );
 };
