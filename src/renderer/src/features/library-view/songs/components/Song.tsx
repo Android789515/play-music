@@ -15,7 +15,7 @@ interface Props {
 export const Song = ({ song, children }: Props) => {
    const { mediaPlayer, playSong, openMediaPlayer } = useMediaPlayer();
 
-   const hanndleSongClick = () => {
+   const handleSongClick = () => {
       if (!mediaPlayer.isOpen) {
          openMediaPlayer();
       }
@@ -30,7 +30,7 @@ export const Song = ({ song, children }: Props) => {
          <Button
             tabIndex={1}
             customStyles={styles.song}
-            onDoubleClick={hanndleSongClick}
+            onDoubleClick={handleSongClick}
          >
             {children}
          </Button>
