@@ -1,4 +1,4 @@
-import { SyntheticEvent, useRef, useEffect } from 'react';
+import { SyntheticEvent, useRef, useCallback, useEffect } from 'react';
 
 import type { Path } from '@globalTypes/fileTypes';
 import type { MediaControls } from 'features/media-player/types';
@@ -14,20 +14,27 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
    const speakerRef = useRef<HTMLAudioElement>(null);
    const speaker = speakerRef.current;
 
-   const { isPaused, volume } = controls;
+   const syncVolume = useCallback((speaker: HTMLAudioElement) => {
+      speaker.volume = controls.volume;
+   }, [ controls.volume ]);
+
+   const syncPaused = useCallback((speaker: HTMLAudioElement) => {
+      if (controls.isPaused) {
+         speaker.pause();
+      } else {
+         speaker.play();
+      }
+   }, [ controls.isPaused ]);
+
    const syncSpeakerWithControls = () => {
       if (speaker) {
-         speaker.volume = volume;
+         syncVolume(speaker);
 
-         if (isPaused) {
-            speaker.pause();
-         } else {
-            speaker.play();
-         }
+         syncPaused(speaker);
       }
    };
 
-   useEffect(syncSpeakerWithControls, [ isPaused, volume, speaker ]);
+   useEffect(syncSpeakerWithControls, [ syncVolume, syncPaused, speaker ]);
 
    const syncAudioTime = (event: SyntheticEvent<HTMLAudioElement, Event>) => {
       const speaker = event.target as HTMLAudioElement;
@@ -47,12 +54,12 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
 
    // The song path is encoded.
    const audioTrack = 'media://' + decodeURI(songPath);
-   const { isMuted } = controls;
+   
    return (
       <audio
          src={audioTrack}
          autoPlay
-         muted={isMuted}
+         muted={controls.isMuted}
          onTimeUpdate={syncAudioTime}
          onEnded={onSongEnd}
          ref={speakerRef}
