@@ -35,7 +35,7 @@ export const ContextMenu = ({ shown, nested, menuStructure, closeContextMenu }: 
 
       if (testConditions({
          isMounted: () => contextMenu !== undefined,
-         focusedOutsideMenu: () => !contextMenu?.contains(focusedTarget)
+         focusedOutsideMenu: () => !contextMenu?.contains(focusedTarget),
       }).all()) {
          closeContextMenu();
       }
