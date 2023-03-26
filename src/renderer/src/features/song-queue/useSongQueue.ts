@@ -25,6 +25,14 @@ export const useSongQueue = () => {
       });
    };
 
+   const getNextSong = () => {
+      const [ nextSong ] = songQueue;
+
+      unQueueSong(songQueue.indexOf(nextSong));
+
+      return nextSong;
+   };
+
    const clearQueue = () => {
       updateSongQueue([]);
    };
@@ -33,6 +41,7 @@ export const useSongQueue = () => {
       songQueue,
       queueSong,
       unQueueSong,
+      getNextSong,
       clearQueue,
    };
 };
