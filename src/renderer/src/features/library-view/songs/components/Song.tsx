@@ -30,7 +30,7 @@ export const Song = ({ song, children }: Props) => {
          <Button
             tabIndex={1}
             customStyles={styles.song}
-            onClick={hanndleSongClick}
+            onDoubleClick={hanndleSongClick}
          >
             {children}
          </Button>
