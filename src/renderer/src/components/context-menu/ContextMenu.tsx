@@ -1,6 +1,6 @@
 import { FocusEvent, useRef, useEffect } from 'react';
 
-import type { ContextMenuStructure } from './types';
+import type { ContextMenuLocation, ContextMenuStructure } from './types';
 import { useControlContextMenu } from './api';
 import { testConditions } from '@utils/boolean';
 
@@ -12,11 +12,12 @@ import { ContextMenuItem } from './components';
 interface Props {
    shown?: boolean;
    nested?: boolean;
+   location?: ContextMenuLocation;
    menuStructure: ContextMenuStructure;
    closeContextMenu: () => void;
 }
 
-export const ContextMenu = ({ shown, nested, menuStructure, closeContextMenu }: Props) => {
+export const ContextMenu = ({ shown, nested, location, menuStructure, closeContextMenu }: Props) => {
    const contextMenuRef = useRef<HTMLDivElement>(null);
 
    const focusWhenShown = () => {
@@ -59,13 +60,17 @@ export const ContextMenu = ({ shown, nested, menuStructure, closeContextMenu }: 
    const isContextMenuEmpty = menuStructure.length === 0;
    const showContextMenu = shown && !isContextMenuEmpty;
 
-   return ( showContextMenu ?
+   return (showContextMenu ?
       <div
          tabIndex={1}
          className={`
             ${styles.contextMenu}
             ${nested ? styles.nestedContextMenu : ''}
          `}
+         style={{
+            top: location?.y,
+            left: location?.x,
+         }}
          onBlur={closeOnBlur}
          ref={contextMenuRef}
       >
@@ -73,5 +78,5 @@ export const ContextMenu = ({ shown, nested, menuStructure, closeContextMenu }: 
             {ContextMenuActions}
          </List>
       </div>
-   : null );
+      : null);
 };
