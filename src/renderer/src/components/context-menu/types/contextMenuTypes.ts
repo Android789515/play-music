@@ -9,7 +9,7 @@ export interface ContextMenuItemWithMenu extends ContextMenuItem {
 }
 
 export interface ContextMenuItemWithEvent extends ContextMenuItem {
-   onClick: MouseEventHandler;
+   action: MouseEventHandler;
 }
 
 export type OneOfAnyContextMenuItems = (

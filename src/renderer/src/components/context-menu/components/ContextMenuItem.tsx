@@ -29,7 +29,7 @@ export const ContextMenuItem = ({ nestedMenuMethods, closeOuterMenu, menuItem }:
 
    const handleClick = (event: MouseEvent) => {
       if (isContextMenuItemWithEvent(menuItem)) {
-         menuItem.onClick(event);
+         menuItem.action(event);
          closeOuterMenu();
       } else if (hasNestedMenu) {
          openNestedMenu();

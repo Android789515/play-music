@@ -13,5 +13,5 @@ export const isContextMenuItemWithMenu = (
 export const isContextMenuItemWithEvent = (
    menuItem: OneOfAnyContextMenuItems
 ): menuItem is ContextMenuItemWithEvent => {
-   return (menuItem as ContextMenuItemWithEvent).onClick !== undefined;
+   return (menuItem as ContextMenuItemWithEvent).action !== undefined;
 };

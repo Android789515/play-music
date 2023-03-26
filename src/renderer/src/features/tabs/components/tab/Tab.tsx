@@ -37,11 +37,11 @@ export const Tab = ({ tab, currentTab }: Props) => {
    const contextMenuStructure: ContextMenuStructure = [
       ...!tab.isPermanent ? [ {
          name: 'Rename',
-         onClick: () => setRenaming(true)
+         action: () => setRenaming(true)
       } ] : [],
       ...!tab.isPermanent ? [ {
          name: 'Delete',
-         onClick: () => deleteTab(tab)
+         action: () => deleteTab(tab)
       } ] : []
    ];
 
