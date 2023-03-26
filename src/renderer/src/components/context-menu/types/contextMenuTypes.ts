@@ -1,5 +1,7 @@
 import type { MouseEventHandler } from 'react';
 
+export type ContextMenuLocation = { x: number, y: number } | null;
+
 interface ContextMenuItem {
    name: string;
 }
