@@ -12,12 +12,12 @@ export default defineConfig({
    renderer: {
       resolve: {
          alias: {
-            'renderer': resolve('src/renderer/src'),
-            'components': resolve('src/renderer/src/components'),
-            'features': resolve('src/renderer/src/features'),
             '@utils': resolve('src/utils'),
             '@globalTypes': resolve('src/types'),
             '@api': resolve('src/api'),
+            'renderer': resolve('src/renderer/src'),
+            'components': resolve('src/renderer/src/components'),
+            'features': resolve('src/renderer/src/features'),
             'types': resolve('src/renderer/src/types'),
             'hooks': resolve('src/renderer/src/hooks'),
          },
