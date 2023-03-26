@@ -1,4 +1,5 @@
 import { useMediaPlayer } from './api';
+import { useSongQueue } from 'features/song-queue';
 
 import styles from './MediaPlayer.module.scss';
 
@@ -10,8 +11,21 @@ import { SongDurationBar } from './features/song-duration-bar';
 export const MediaPlayer = () => {
    const {
       mediaPlayer: { songPlaying, controls },
-      updateControls
+      updateControls,
+      playSong,
    } = useMediaPlayer();
+
+   const { getNextSong } = useSongQueue();
+
+   const handleSongEnd = () => {
+      updateControls('isPaused', true);
+
+      const nextSong = getNextSong();
+
+      if (nextSong) {
+         playSong(nextSong);
+      }
+   };
 
    return ( songPlaying &&
       <footer className={styles.mediaPlayer}>
@@ -22,7 +36,7 @@ export const MediaPlayer = () => {
                songPath={songPlaying.path}
                controls={controls}
                updateAudioTime={currentTime => updateControls('time', currentTime)}
-               onSongEnd={() => { /* Play next song */ }}
+               onSongEnd={handleSongEnd}
             />
 
             <SongDurationBar
