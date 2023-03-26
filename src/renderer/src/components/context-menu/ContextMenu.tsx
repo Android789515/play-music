@@ -10,23 +10,24 @@ import { List } from 'components/list';
 import { ContextMenuItem } from './components';
 
 interface Props {
+   shown?: boolean;
    nested?: boolean;
    menuStructure: ContextMenuStructure;
    closeContextMenu: () => void;
 }
 
-export const ContextMenu = ({ nested, menuStructure, closeContextMenu }: Props) => {
+export const ContextMenu = ({ shown, nested, menuStructure, closeContextMenu }: Props) => {
    const contextMenuRef = useRef<HTMLDivElement>(null);
 
    const focusWhenShown = () => {
       const contextMenu = contextMenuRef.current;
 
-      if (contextMenu) {
+      if (shown && contextMenu) {
          contextMenu.focus();
       }
    };
 
-   useEffect(focusWhenShown, []);
+   useEffect(focusWhenShown, [ shown ]);
 
    const closeOnBlur = (event: FocusEvent) => {
       const contextMenu = contextMenuRef.current;
@@ -56,8 +57,9 @@ export const ContextMenu = ({ nested, menuStructure, closeContextMenu }: Props) 
    );
 
    const isContextMenuEmpty = menuStructure.length === 0;
+   const showContextMenu = shown && !isContextMenuEmpty;
 
-   return !isContextMenuEmpty ? (
+   return ( showContextMenu ?
       <div
          tabIndex={1}
          className={`
@@ -71,5 +73,5 @@ export const ContextMenu = ({ nested, menuStructure, closeContextMenu }: Props) 
             {ContextMenuActions}
          </List>
       </div>
-   ) : null;
+   : null );
 };

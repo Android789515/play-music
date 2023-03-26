@@ -60,12 +60,12 @@ export const NewTabButton = () => {
             iconStyles={styles.plusIcon}
             onClick={handleClick}
          />
-         {isContextMenuShown() && (
+
             <ContextMenu
+            shown={isContextMenuShown()}
                menuStructure={contextMenuStructure}
                closeContextMenu={closeContextMenu}
             />
-         )}
       </div>
    );
 };

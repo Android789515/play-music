@@ -63,12 +63,11 @@ export const Tab = ({ tab, currentTab }: Props) => {
             />
          </div>
 
-         {isContextMenuShown() &&
             <ContextMenu
+            shown={isContextMenuShown()}
                menuStructure={contextMenuStructure}
                closeContextMenu={closeContextMenu}
             />
-         }
       </li>
    );
 };
