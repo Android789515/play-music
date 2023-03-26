@@ -21,10 +21,6 @@ export const NewTabButton = () => {
 
    const { createTab, openTab } = useTabs();
 
-   const handleClick = () => {
-      openContextMenu();
-   };
-
    const createBlankTab = () => {
       const newTab = { id: newUUID(), name: 'New Tab', collection: [] };
 
@@ -58,7 +54,7 @@ export const NewTabButton = () => {
             iconPath={plusIcon}
             buttonStyles={styles.newTabButton}
             iconStyles={styles.plusIcon}
-            onClick={handleClick}
+            onClick={openContextMenu}
          />
 
             <ContextMenu
