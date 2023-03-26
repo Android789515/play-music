@@ -20,6 +20,7 @@ export default defineConfig({
             'features': resolve('src/renderer/src/features'),
             'types': resolve('src/renderer/src/types'),
             'hooks': resolve('src/renderer/src/hooks'),
+            'utils': resolve('src/renderer/src/utils'),
          },
       },
       plugins: [ react() ],
