@@ -55,8 +55,7 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
       }
    };
 
-   // The song path is encoded.
-   const audioTrack = 'media://' + decodeURI(songPath);
+   const audioTrack = 'media://' + songPath;
    
    return (
       <audio
