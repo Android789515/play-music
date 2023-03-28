@@ -46,7 +46,7 @@ export const MediaControls = () => {
       <div className={styles.mediaControls}>
          <MediaControlsLayout>
             <MediaControlButton
-               name='Previous'
+               name='Play Previous'
                onClick={() => {}}
             />
 
@@ -61,7 +61,7 @@ export const MediaControls = () => {
             />
 
             <MediaControlButton
-               name='Next'
+               name='Play Next'
                onClick={playNext}
             />
 
