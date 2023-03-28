@@ -1,4 +1,5 @@
 import { useMediaPlayer } from 'features/media-player';
+import { useSongQueue } from 'features/song-queue';
 
 import styles from './MediaControls.module.scss';
 
@@ -12,6 +13,7 @@ export const MediaControls = () => {
 
    const {
       mediaPlayer: { controls: { isPaused } },
+      playSong,
       updateControls,
       closeMediaPlayer
    } = useMediaPlayer();
@@ -22,6 +24,16 @@ export const MediaControls = () => {
 
    const play = () => {
       updateControls('isPaused', false);
+   };
+
+   const { getNextSong } = useSongQueue();
+
+   const playNext = () => {
+      const nextSong = getNextSong();
+
+      if (nextSong) {
+         playSong(nextSong);
+      }
    };
 
    const stop = () => {
@@ -50,7 +62,7 @@ export const MediaControls = () => {
 
             <MediaControlButton
                name='Next'
-               onClick={() => {}}
+               onClick={playNext}
             />
 
             <VolumeButton />
