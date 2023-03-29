@@ -25,15 +25,15 @@ export const VolumeButton = () => {
          return mutedIcon;
       }
 
-      if (within(volume, [ 0, .49 ])) {
+      if (volume < .4) {
          return lowVolumeIcon;
       }
 
-      if (within(volume, [ .5, .8 ])) {
-         return mediumVolumeIcon;
+      if (volume > .8) {
+         return highVolumeIcon;
       }
 
-      return highVolumeIcon;
+      return mediumVolumeIcon;
    };
 
    const toggleMute = () => {
