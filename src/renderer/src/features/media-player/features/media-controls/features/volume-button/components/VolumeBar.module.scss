@@ -13,6 +13,7 @@ $volumeBarSmoothing: calc(var(--borderRadiusStandard) - 0.1em);
    padding: .5em;
    background: var(--widgetBG);
    border: var(--widgetBorder);
+   border-radius: var(--borderRadiusStandard);
 }
 
 .volumeBar.volumeBar {
