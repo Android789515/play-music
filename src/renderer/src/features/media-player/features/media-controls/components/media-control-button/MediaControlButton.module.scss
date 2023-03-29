@@ -18,10 +18,11 @@
    background: var(--selected);
 }
 
+$iconSize: 1.4em;
 .mediaControlButtonIcon {
    filter: var(--iconColor);
 
-   width: 1.4em;
+   width: $iconSize;
 }
 
 .playPreviousButton {
@@ -34,6 +35,10 @@
    padding: 0.2em 0.5em;
 }
 
+.volumeIcon {
+   width: $iconSize * 2 - .8em;
+}
+
 .loopButton {
    grid-column: -2;
 }
@@ -44,16 +49,12 @@
 
 .stopIcon {
    // Stop button is too big normally
-   width: 1.3em;
-}
-
-.volumeIcon {
-   width: 2em;
+   width: $iconSize - .1em;
 }
 
 .loopIcon,
 .shuffleIcon {
-   width: 1.8em;
+   width: $iconSize + .8em;
 }
 
 .largeScreenButton {
