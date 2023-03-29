@@ -12,7 +12,6 @@ import highVolumeIcon from './assets/icons/high-volume.svg';
 import { MediaControlButton } from '../../components/media-control-button';
 import { VolumeBar } from './components';
 
-
 export const VolumeButton = () => {
    const [ isHovered, setIsHovered ] = useState(false);
 
