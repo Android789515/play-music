@@ -63,7 +63,7 @@ export const VolumeButton = () => {
          onBlur={() => setIsFocused(false)}
       >
          <VolumeBar
-            increaseContrast={isHovered || isFocused}
+            increaseContrast
             volume={volume}
             setVolume={setVolume}
          />
