@@ -10,6 +10,12 @@
    border-radius: var(--borderRadiusStandard);
 }
 
+.verticalBar {
+   display: flex;
+   flex-direction: column;
+   justify-content: end;
+}
+
 .barValue {
    pointer-events: none;
 
