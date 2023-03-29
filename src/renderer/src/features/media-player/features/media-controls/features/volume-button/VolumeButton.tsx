@@ -62,11 +62,13 @@ export const VolumeButton = () => {
          onFocus={() => setIsFocused(true)}
          onBlur={() => setIsFocused(false)}
       >
-         <VolumeBar
-            increaseContrast
-            volume={volume}
-            setVolume={setVolume}
-         />
+         { isHovered || isFocused ?
+            <VolumeBar
+               increaseContrast
+               volume={volume}
+               setVolume={setVolume}
+            />
+         : null }
       </MediaControlButton>
    );
 };
