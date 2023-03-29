@@ -29,10 +29,7 @@
 }
 
 .volumeButton {
-   display: grid;
-   grid-template-columns: max-content 4em;
-   align-items: center;
-   grid-column-gap: 0.5em;
+   position: relative;
 
    padding: 0.2em 0.5em;
 }

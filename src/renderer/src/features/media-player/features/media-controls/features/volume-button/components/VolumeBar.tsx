@@ -11,17 +11,20 @@ interface Props {
 export const VolumeBar = ({ increaseContrast: volumeButtonHover, volume, setVolume }: Props) => {
 
    return (
-      <SlideableBar
-         value={`${volume * 100}%`}
-         setBarValue={barValue => setVolume(barValue / 100)}
-         barStyles={`
-            ${styles.volumeBar}
-            ${volumeButtonHover ? styles.volumeBarHighContrast : ''}
-         `}
-         barValueStyles={`
-            ${styles.volume}
-            ${volume === 1 ? styles.volumeFull : ''}
-         `}
-      />
+      <div className={styles.volumeBarBackground}>
+         <SlideableBar
+            vertical
+            value={`${volume * 100}%`}
+            setBarValue={barValue => setVolume(barValue / 100)}
+            barStyles={`
+               ${styles.volumeBar}
+               ${volumeButtonHover ? styles.volumeBarHighContrast : ''}
+            `}
+            barValueStyles={`
+               ${styles.volume}
+               ${volume === 1 ? styles.volumeFull : ''}
+            `}
+         />
+      </div>
    );
 };
