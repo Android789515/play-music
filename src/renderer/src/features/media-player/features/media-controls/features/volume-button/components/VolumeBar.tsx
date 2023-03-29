@@ -1,5 +1,3 @@
-import type { Dispatch, SetStateAction } from 'react';
-
 import styles from './VolumeBar.module.scss';
 
 import { SlideableBar } from 'components/slideableBar';
