@@ -15,11 +15,12 @@ import { IconButton } from 'components/icon-button';
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
    name: string;
+   largeScreenOnly?: boolean;
    iconPath?: string;
    children?: ReactNode;
 }
 
-export const MediaControlButton = ({ name, iconPath, children, ...rest }: Props) => {
+export const MediaControlButton = ({ name, largeScreenOnly, iconPath, children, ...rest }: Props) => {
    const getIcon = () => {
       switch (name.toLocaleLowerCase()) {
          case 'play': return playIcon;
@@ -60,6 +61,7 @@ export const MediaControlButton = ({ name, iconPath, children, ...rest }: Props)
          buttonStyles={`
             ${styles.mediaControlButton}
             ${styles[ getClassName() + 'Button' ]}
+            ${largeScreenOnly ? styles.largeScreenButton : ''}
          `}
          iconStyles={`
             ${styles.mediaControlButtonIcon}

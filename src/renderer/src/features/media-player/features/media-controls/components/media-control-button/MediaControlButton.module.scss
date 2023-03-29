@@ -56,6 +56,10 @@
    width: 1.8em;
 }
 
+.largeScreenButton {
+   display: none;
+}
+
 @media (min-width: map.get($breakpoints, 'scaleUpUI')) {
    .mediaControlButtonIcon {
       width: 1.5em;

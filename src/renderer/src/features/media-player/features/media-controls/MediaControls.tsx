@@ -47,6 +47,7 @@ export const MediaControls = () => {
          <MediaControlsLayout>
             <MediaControlButton
                name='Play Previous'
+               largeScreenOnly
                onClick={() => {}}
             />
 
@@ -57,6 +58,7 @@ export const MediaControls = () => {
 
             <MediaControlButton
                name='Stop'
+               largeScreenOnly
                onClick={stop}
             />
 
@@ -69,9 +71,15 @@ export const MediaControls = () => {
 
             <SongPlaying />
 
-            <MediaControlButton name='Loop' />
+            <MediaControlButton
+               name='Loop'
+               largeScreenOnly
+            />
 
-            <MediaControlButton name='Shuffle' />
+            <MediaControlButton
+               name='Shuffle'
+               largeScreenOnly
+            />
          </MediaControlsLayout>
       </div>
    );
