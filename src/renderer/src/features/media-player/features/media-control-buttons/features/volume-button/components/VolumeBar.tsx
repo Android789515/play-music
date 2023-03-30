@@ -1,6 +1,6 @@
 import styles from './VolumeBar.module.scss';
 
-import { SlideableBar } from 'components/slideableBar';
+import { SlideableBar } from 'components/slideable-bar';
 
 interface Props {
    increaseContrast?: boolean;
