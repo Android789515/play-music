@@ -1,7 +1,7 @@
 import { useMediaPlayer } from 'features/media-player';
 import { useSongQueue } from 'features/song-queue';
 
-import styles from './MediaControls.module.scss';
+import styles from './MediaControlButtons.module.scss';
 
 import { MediaControlsLayout } from './components'
 import { MediaControlButton } from './components/media-control-button';

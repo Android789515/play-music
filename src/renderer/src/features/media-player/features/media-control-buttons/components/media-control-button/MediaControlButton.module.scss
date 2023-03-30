@@ -18,7 +18,7 @@
    background: var(--selected);
 }
 
-$iconSize: 1.4em;
+$iconSize: 1.2em;
 .mediaControlButtonIcon {
    filter: var(--iconColor);
 
@@ -32,7 +32,7 @@ $iconSize: 1.4em;
 .volumeButton {
    position: relative;
 
-   padding: 0.2em 0.5em;
+   padding: .3em;
 }
 
 .volumeIcon {
