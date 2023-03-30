@@ -1,6 +1,6 @@
 @use 'sass:map';
 
-@use '../../../../breakpoints' as *;
+@use '../../breakpoints.scss' as *;
 
 .songTitle,
 .songArtists,
