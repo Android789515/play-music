@@ -1,3 +1,5 @@
+import styles from './SongDurationBar.module.scss';
+
 import { SlideableBar } from 'components/slideableBar';
 
 interface Props {
@@ -23,6 +25,7 @@ export const SongDurationBar = ({ songDuration, currentTime, setCurrentTime }: P
       <SlideableBar
          value={`${getSongCompletion()}%`}
          setBarValue={handleBarValue}
+         barStyles={styles.songDurationBar}
       />
    );
 };
