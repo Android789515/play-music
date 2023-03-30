@@ -4,6 +4,7 @@ import { useSongQueue } from 'features/song-queue';
 import styles from './MediaPlayer.module.scss';
 
 import { MediaPlayerLayout } from './components';
+import { SongPlaying } from './features/song-playing';
 import { MediaControls } from './features/media-controls';
 import { Speaker } from './features/speaker';
 import { SongDurationBar } from './features/song-duration-bar';
@@ -30,6 +31,8 @@ export const MediaPlayer = () => {
    return ( songPlaying &&
       <footer className={styles.mediaPlayer}>
          <MediaPlayerLayout>
+            <SongPlaying />
+
             <MediaControls />
 
             <Speaker

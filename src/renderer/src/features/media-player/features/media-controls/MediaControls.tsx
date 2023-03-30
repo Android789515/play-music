@@ -7,8 +7,6 @@ import { MediaControlsLayout } from './components'
 import { MediaControlButton } from './components/media-control-button';
 import { VolumeButton } from './features/volume-button';
 
-import { SongPlaying } from '../song-playing';
-
 export const MediaControls = () => {
 
    const {
@@ -68,8 +66,6 @@ export const MediaControls = () => {
             />
 
             <VolumeButton />
-
-            <SongPlaying />
 
             <MediaControlButton
                name='Loop'
