@@ -12,6 +12,7 @@ export interface ContextMenuItemWithMenu extends ContextMenuItem {
 
 export interface ContextMenuItemWithEvent extends ContextMenuItem {
    action: MouseEventHandler;
+   isMainAction?: boolean;
 }
 
 export type OneOfAnyContextMenuItems = (
@@ -21,3 +22,15 @@ export type OneOfAnyContextMenuItems = (
 );
 
 export type ContextMenuStructure = OneOfAnyContextMenuItems[];
+
+export const isContextMenuItemWithMenu = (
+   menuItem: OneOfAnyContextMenuItems
+): menuItem is ContextMenuItemWithMenu => {
+   return (menuItem as ContextMenuItemWithMenu).menu !== undefined;
+};
+
+export const isContextMenuItemWithEvent = (
+   menuItem: OneOfAnyContextMenuItems
+): menuItem is ContextMenuItemWithEvent => {
+   return (menuItem as ContextMenuItemWithEvent).action !== undefined;
+};

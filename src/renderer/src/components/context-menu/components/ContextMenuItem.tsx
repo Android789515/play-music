@@ -1,10 +1,11 @@
 import type { MouseEvent } from 'react';
 
-import type {
+import {
    ContextMenuItemWithMenu,
+   isContextMenuItemWithMenu,
+   isContextMenuItemWithEvent,
    OneOfAnyContextMenuItems
 } from '../types';
-import { isContextMenuItemWithMenu, isContextMenuItemWithEvent } from '../utils/typeValidators';
 import type { ShowContextMenuAPI } from '../api';
 
 import styles from './ContextMenuItem.module.scss';
