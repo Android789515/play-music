@@ -2,7 +2,7 @@
 
 @use '../../breakpoints' as *;
 
-.song {
+.songButton {
    text-align: left;
 
    display: grid;
@@ -17,20 +17,16 @@
    border-radius: var(--borderRadiusStandard);
 }
 
-.songLayout:not(.songLayout:last-child) {
-   margin-bottom: 0.5em;
-}
-
-.song:focus,
-.song:hover {
+.songButton:focus,
+.songButton:hover {
    background: var(--highlight);
 }
 
-.song:active {
+.songButton:active {
    background: var(--selected);
 }
 
-.song > h4 {
+.songButton > h4 {
    display: -webkit-box;
    -webkit-line-clamp: 2;
    -webkit-box-orient: vertical;
@@ -39,13 +35,13 @@
 }
 
 @media (min-width: map.get($breakpoints, 'scaleUpSongs')) {
-   .song > h4 {
+   .songButton > h4 {
       max-width: 90%;
    }
 }
 
 @media (min-width: map.get($breakpoints, 'scaleUpSearchBar')) {
-   .song > h4 {
+   .songButton > h4 {
       max-width: 80%;
    }
 }

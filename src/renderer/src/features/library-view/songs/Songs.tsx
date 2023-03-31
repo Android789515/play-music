@@ -1,7 +1,7 @@
 import type { Song as SongType } from '@api/types';
 
 import { List } from 'components/list';
-import { Song } from 'components/song';
+import { SongButton } from 'components/song-button';
 import { SongInfo } from 'components/song-info';
 
 interface Props {
@@ -13,13 +13,15 @@ export const Songs = ({ songs }: Props) => {
       const { title, artists, duration } = song;
 
       return (
-         <Song key={index} song={song}>
+         <SongButton
+            key={index}
+         >
             <SongInfo
                songTitle={title}
                songArtists={artists}
                songDuration={duration}
             />
-         </Song>
+         </SongButton>
       );
    });
 
