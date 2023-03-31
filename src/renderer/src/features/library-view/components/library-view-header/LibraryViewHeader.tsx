@@ -1,8 +1,8 @@
-import styles from './LibraryViewTopBar.module.scss';
+import styles from './LibraryViewHeader.module.scss';
 
 import { SearchBar } from 'components/search-bar';
 
-export const LibraryViewTopBar = () => {
+export const LibraryViewHeader = () => {
    return (
       <div className={styles.libraryViewTopBar}>
          <SearchBar />
