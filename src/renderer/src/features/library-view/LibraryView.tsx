@@ -1,7 +1,7 @@
 import { useTabs } from 'features/tabs';
 
 import { LibraryViewTopBar } from './components/library-view-top-bar';
-import { Songs } from './songs';
+import { SongList } from './features/song-list';
 
 export const LibraryView = () => {
    const { getTabs } = useTabs();
@@ -18,7 +18,7 @@ export const LibraryView = () => {
       <div>
          <LibraryViewTopBar />
 
-         <Songs
+         <SongList
             songs={getCurrentTabCollection()}
          />
       </div>

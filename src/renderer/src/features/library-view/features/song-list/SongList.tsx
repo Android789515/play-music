@@ -8,7 +8,7 @@ interface Props {
    songs: SongType[];
 }
 
-export const Songs = ({ songs }: Props) => {
+export const SongList = ({ songs }: Props) => {
    const SongComponents = songs.map((song, index) => {
       const { title, artists, duration } = song;
 
