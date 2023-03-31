@@ -1,7 +1,7 @@
 import type { Song as SongType } from '@api/types';
 
 import { List } from 'components/list';
-import { Song } from './components';
+import { Song } from 'components/song';
 import { SongInfo } from 'components/song-info';
 
 interface Props {
