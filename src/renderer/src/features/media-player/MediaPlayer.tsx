@@ -3,6 +3,7 @@ import { useSongQueue } from 'features/song-queue';
 
 import styles from './MediaPlayer.module.scss';
 
+import { Widget } from 'components/widget/Widget';
 import { MediaPlayerLayout } from './components';
 import { MediaControls } from './features/media-control-buttons';
 import { Speaker } from './features/speaker';
@@ -29,24 +30,24 @@ export const MediaPlayer = () => {
 
    return ( songPlaying &&
       <footer className={styles.mediaPlayer}>
-         <MediaPlayerLayout>
-            <></>
+         <Widget borderSide='top'>
+            <MediaPlayerLayout>
+               <MediaControls />
 
-            <MediaControls />
+               <Speaker
+                  songPath={songPlaying.path}
+                  controls={controls}
+                  updateAudioTime={currentTime => updateControls('time', currentTime)}
+                  onSongEnd={handleSongEnd}
+               />
 
-            <Speaker
-               songPath={songPlaying.path}
-               controls={controls}
-               updateAudioTime={currentTime => updateControls('time', currentTime)}
-               onSongEnd={handleSongEnd}
-            />
-
-            <SongDurationBar
-               songDuration={songPlaying.duration}
-               currentTime={controls.time}
-               setCurrentTime={newTime => updateControls('time', newTime)}
-            />
-         </MediaPlayerLayout>
+               <SongDurationBar
+                  songDuration={songPlaying.duration}
+                  currentTime={controls.time}
+                  setCurrentTime={newTime => updateControls('time', newTime)}
+               />
+            </MediaPlayerLayout>
+         </Widget>
       </footer>
    );
 };
