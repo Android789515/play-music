@@ -31,21 +31,23 @@ export const ButtonWithContextMenu = ({ menuStructure = [], children }: Props) =
       openContextMenu();
    };
 
-   const [ { action: mainAction } ] = menuStructure.filter(item => (
+   const doNothing = { action: () => {} };
+
+   const [
+      { action: mainAction } = doNothing
+   ] = menuStructure.filter(item => (
 
       isContextMenuItemWithEvent(item)
       && item.isMainAction
 
    )) as ContextMenuItemWithEvent[];
 
-   const doNothing = () => {};
-
    return (
       <Button
          onMouseUp={handleAuxClick({
             onRightClick: setupContextMenu
          })}
-         onDoubleClick={(mainAction || doNothing)}
+         onDoubleClick={mainAction}
       >
          {children}
 
