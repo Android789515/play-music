@@ -2,8 +2,6 @@ import { ReactNode, MouseEvent } from 'react';
 
 import { handleAuxClick } from 'utils/handleAuxClick';
 
-import styles from './SongButton.module.scss';
-
 import { Button } from 'components/button';
 import {
    ContextMenuStructure,
@@ -14,11 +12,11 @@ import {
 } from 'components/context-menu';
 
 interface Props {
-   contextMenu?: ContextMenuStructure;
+   menuStructure?: ContextMenuStructure;
    children: ReactNode;
 }
 
-export const SongButton = ({ contextMenu = [], children }: Props) => {
+export const ButtonWithContextMenu = ({ menuStructure = [], children }: Props) => {
    const {
       isContextMenuShown,
       openContextMenu,
@@ -33,7 +31,7 @@ export const SongButton = ({ contextMenu = [], children }: Props) => {
       openContextMenu();
    };
 
-   const [ { action: mainAction } ] = contextMenu.filter(item => (
+   const [ { action: mainAction } ] = menuStructure.filter(item => (
 
       isContextMenuItemWithEvent(item)
       && item.isMainAction
@@ -44,7 +42,6 @@ export const SongButton = ({ contextMenu = [], children }: Props) => {
 
    return (
       <Button
-         customStyles={styles.songButton}
          onMouseUp={handleAuxClick({
             onRightClick: setupContextMenu
          })}
@@ -55,7 +52,7 @@ export const SongButton = ({ contextMenu = [], children }: Props) => {
          <ContextMenu
             shown={isContextMenuShown()}
             location={getContextMenuLocation()}
-            menuStructure={contextMenu}
+            menuStructure={menuStructure}
             closeContextMenu={closeContextMenu}
          />
       </Button>

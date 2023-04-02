@@ -1,7 +1,7 @@
 import type { Song as SongType } from '@api/types';
 
 import { List } from 'components/list';
-import { SongButton } from 'components/song-button';
+import { ButtonWithContextMenu } from 'components/button-with-context-menu';
 import { SongInfo } from 'components/song-info';
 
 interface Props {
@@ -13,7 +13,7 @@ export const SongList = ({ songs }: Props) => {
       const { title, artists, duration } = song;
 
       return (
-         <SongButton
+         <ButtonWithContextMenu
             key={index}
          >
             <SongInfo
@@ -21,7 +21,7 @@ export const SongList = ({ songs }: Props) => {
                songArtists={artists}
                songDuration={duration}
             />
-         </SongButton>
+         </ButtonWithContextMenu>
       );
    });
 
