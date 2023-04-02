@@ -1,9 +1,11 @@
 import type { UUID } from '../types/stringTypes';
+import type { Path } from '@globalTypes/fileTypes';
 
 export interface Song {
    id: UUID;
    title: string;
    artists: string;
    duration: number;
-   path: string;
+   path: Path;
+   coverArt?: Path;
 }
