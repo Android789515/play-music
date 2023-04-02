@@ -2,22 +2,6 @@
 
 @use '../../../../../../breakpoints' as *;
 
-.mediaControlButton {
-   cursor: pointer;
-
-   padding: 0.5em;
-   border-radius: var(--borderRadiusStandard);
-}
-
-.mediaControlButton:focus,
-.mediaControlButton:hover {
-   background: var(--highlight);
-}
-
-.mediaControlButton:active {
-   background: var(--selected);
-}
-
 $iconSize: 1.2em;
 .mediaControlButtonIcon {
    filter: var(--iconColor);
