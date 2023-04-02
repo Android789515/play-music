@@ -4,7 +4,7 @@ import { SearchBar } from 'components/search-bar';
 
 export const LibraryViewHeader = () => {
    return (
-      <div className={styles.libraryViewTopBar}>
+      <div className={styles.libraryViewHeader}>
          <SearchBar />
       </div>
    );
