@@ -1,0 +1,11 @@
+.coverArt {
+   width: max-content;
+
+   padding: .75em;
+   background: var(--selected);
+   border-radius: var(--borderRadiusStandard);
+}
+
+.coverArtIcon {
+   filter: var(--iconColor);
+}
