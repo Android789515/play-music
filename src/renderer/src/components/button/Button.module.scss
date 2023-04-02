@@ -7,3 +7,17 @@
    padding: 0;
    border: 0;
 }
+
+.buttonDefaults {
+   padding: 0.5em var(--appSideSpace);
+   border-radius: var(--borderRadiusStandard);
+}
+
+.buttonDefaults:focus,
+.buttonDefaults:hover {
+   background: var(--highlight);
+}
+
+.buttonDefaults:active {
+   background: var(--selected);
+}

@@ -4,16 +4,4 @@
    grid-auto-flow: column;
    grid-column-gap: .75em;
    align-items: center;
-
-   padding: 0.5em var(--appSideSpace);
-   border-radius: var(--borderRadiusStandard);
-}
-
-.song:focus,
-.song:hover {
-   background: var(--highlight);
-}
-
-.song:active {
-   background: var(--selected);
 }
