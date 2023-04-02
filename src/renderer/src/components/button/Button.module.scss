@@ -15,6 +15,10 @@
 
 .buttonDefaults:focus,
 .buttonDefaults:hover {
+   // Already has a focus
+   // indicator below.
+   outline: none;
+
    background: var(--highlight);
 }
 
