@@ -10,7 +10,7 @@ interface Props {
 
 export const SongInfo = ({ songTitle, songArtists, songDuration }: Props) => {
    return (
-      <div>
+      <>
          <h4 className={styles.songTitle}>
             {songTitle}
          </h4>
@@ -22,6 +22,6 @@ export const SongInfo = ({ songTitle, songArtists, songDuration }: Props) => {
          <p className={styles.songDuration}>
             {formatSongTime(songDuration)}
          </p>
-      </div>
+      </>
    );
 };
