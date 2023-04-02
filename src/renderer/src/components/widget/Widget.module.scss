@@ -1,0 +1,25 @@
+.widget {
+   z-index: 2;
+
+   background: var(--widgetBG);
+}
+
+.widgetBorderAll {
+   border: var(--widgetBorder);
+}
+
+.widgetBorderTop {
+   border-top: var(--widgetBorder);
+}
+
+.widgetBorderBottom {
+   border-bottom: var(--widgetBorder);
+}
+
+.widgetBorderLeft {
+   border-left: var(--widgetBorder);
+}
+
+.widgetBorderRight {
+   border-right: var(--widgetBorder);
+}
