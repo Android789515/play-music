@@ -1,4 +1,8 @@
 .contextMenu {
+   // Keeps parent from overriding
+   // text alignment.
+   text-align: left;
+
    position: absolute;
 
    outline: none;
