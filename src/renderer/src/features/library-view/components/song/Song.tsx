@@ -1,5 +1,8 @@
 import type { Song as SongType } from '@api/types';
 
+import { useMediaPlayer } from 'features/media-player';
+import { useSongQueue } from 'features/song-queue';
+
 import styles from './Song.module.scss';
 
 import { ButtonWithContextMenu } from 'components/button-with-context-menu';
@@ -10,16 +13,26 @@ interface Props {
    song: SongType;
 }
 
-export const Song = ({ song: {
-   coverArt,
-   title,
-   artists,
-   duration,
-}
-}: Props) => {
+export const Song = ({ song }: Props) => {
 
+   const { playSong } = useMediaPlayer();
+   const { queueSong } = useSongQueue();
+
+   const songMenu = [
+      {
+         name: 'Play',
+         action: () => playSong(song),
+      },
+      {
+         name: 'Queue',
+         action: () => queueSong(song),
+      }
+   ];
+
+   const { coverArt, title, artists, duration } = song;
    return (
       <ButtonWithContextMenu
+         menuStructure={songMenu}
          customStyles={styles.song}
       >
          <CoverArt
