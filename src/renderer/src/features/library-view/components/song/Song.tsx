@@ -2,6 +2,7 @@ import type { Song as SongType } from '@api/types';
 
 import styles from './Song.module.scss';
 
+import { ButtonWithContextMenu } from 'components/button-with-context-menu';
 import { CoverArt } from 'components/cover-art';
 import { SongInfo } from 'components/song-info';
 
@@ -18,7 +19,9 @@ export const Song = ({ song: {
 }: Props) => {
 
    return (
-      <div className={styles.song}>
+      <ButtonWithContextMenu
+         customStyles={styles.song}
+      >
          <CoverArt
             coverArtLocation={coverArt}
          />
@@ -28,6 +31,6 @@ export const Song = ({ song: {
             songArtists={artists}
             songDuration={duration}
          />
-      </div>
+      </ButtonWithContextMenu>
    );
 };
