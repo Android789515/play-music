@@ -1,5 +1,6 @@
 import { ReactNode, MouseEvent } from 'react';
 
+import type { CSS_Class } from 'types/cssTypes';
 import { handleAuxClick } from 'utils/handleAuxClick';
 
 import { Button } from 'components/button';
@@ -12,11 +13,12 @@ import {
 } from 'components/context-menu';
 
 interface Props {
+   customStyles?: CSS_Class;
    menuStructure?: ContextMenuStructure;
    children: ReactNode;
 }
 
-export const ButtonWithContextMenu = ({ menuStructure = [], children }: Props) => {
+export const ButtonWithContextMenu = ({ customStyles, menuStructure = [], children }: Props) => {
    const {
       isContextMenuShown,
       openContextMenu,
@@ -44,6 +46,7 @@ export const ButtonWithContextMenu = ({ menuStructure = [], children }: Props) =
 
    return (
       <Button
+         customStyles={customStyles}
          onMouseUp={handleAuxClick({
             onRightClick: setupContextMenu
          })}
