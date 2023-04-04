@@ -1,3 +1,3 @@
 export enum TagNames {
-   img = 'IMG'
+   div = 'DIV',
 }

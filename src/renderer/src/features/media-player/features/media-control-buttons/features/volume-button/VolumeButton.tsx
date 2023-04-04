@@ -42,8 +42,9 @@ export const VolumeButton = () => {
 
    const handleButtonClick = (event: MouseEvent) => {
       const element = event.target as HTMLButtonElement;
+      const didNotClickBar = element.tagName !== TagNames.div;
 
-      if (element.tagName === TagNames.img) {
+      if (didNotClickBar) {
          toggleMute();
       }
    };
