@@ -16,7 +16,7 @@ export const SearchBar = () => {
             <input
                className={styles.searchBarInput}
                placeholder='Search'
-               type='text'
+               type='search'
             />
          </SearchBarLayout>
       </div>
