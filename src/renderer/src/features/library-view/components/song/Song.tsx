@@ -21,6 +21,7 @@ export const Song = ({ song }: Props) => {
    const songMenu = [
       {
          name: 'Play',
+         isMainAction: true,
          action: () => playSong(song),
       },
       {
