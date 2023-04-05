@@ -2,6 +2,18 @@
 
 @use '../../breakpoints.scss' as *;
 
+// Note: when changing the font size of
+// song artists also change the max width
+// if needed.
+.mainSongInfo > * {
+   text-align: left;
+   text-overflow: ellipsis;
+
+   white-space: nowrap;
+
+   overflow: hidden;
+}
+
 .songTitle,
 .songArtists,
 .songDuration {
