@@ -5,16 +5,20 @@
 .songTitle,
 .songArtists,
 .songDuration {
-   font-size: 1rem;
-
    margin: 0;
 }
 
 .songTitle {
-   text-align: left;
+   font-size: .9rem;
+}
+
+.songArtists {
+   font-size: .8rem;
+   font-weight: 500;
 }
 
 .songDuration {
+   font-size: .9rem;
    text-align: right;
 }
 
