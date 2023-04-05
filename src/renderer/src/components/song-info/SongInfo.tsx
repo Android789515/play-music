@@ -11,13 +11,15 @@ interface Props {
 export const SongInfo = ({ songTitle, songArtists, songDuration }: Props) => {
    return (
       <>
-         <h4 className={styles.songTitle}>
-            {songTitle}
-         </h4>
+         <div className={styles.mainSongInfo}>
+            <h4 className={styles.songTitle}>
+               {songTitle}
+            </h4>
 
-         <h4 className={styles.songArtists}>
-            {songArtists}
-         </h4>
+            <h4 className={styles.songArtists}>
+               {songArtists}
+            </h4>
+         </div>
 
          <p className={styles.songDuration}>
             {formatSongTime(songDuration)}
