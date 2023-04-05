@@ -20,6 +20,7 @@
 .songDuration {
    font-size: .9rem;
    text-align: right;
+   font-variant-numeric: tabular-nums;
 }
 
 @media (min-width: map.get($breakpoints, 'scaleUpUI')) {
