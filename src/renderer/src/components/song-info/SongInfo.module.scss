@@ -20,7 +20,8 @@
    margin: 0;
 }
 
-.songTitle {
+.songTitle,
+.songDuration {
    font-size: .9rem;
 }
 
@@ -30,9 +31,19 @@
 }
 
 .songDuration {
-   font-size: .9rem;
    text-align: right;
    font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpSongs')) {
+   .songTitle,
+   .songDuration {
+      font-size: 1rem;
+   }
+
+   .songArtists {
+      font-size: .9rem;
+   }
 }
 
 @media (min-width: map.get($breakpoints, 'scaleUpUI')) {
