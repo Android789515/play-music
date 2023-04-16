@@ -2,6 +2,10 @@
 
 @use '../../breakpoints' as *;
 
+.newTabButtonLayout {
+   margin-left: 1em;
+}
+
 // TODO - find actual fix
 //  for style overrides
 .newTabButton.newTabButton {

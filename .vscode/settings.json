@@ -30,6 +30,7 @@
     "features",
     "structure",
     "project",
-    "song-queue"
+    "song-queue",
+    "app-header"
   ]
 }

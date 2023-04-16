@@ -47,7 +47,7 @@ export const NewTabButton = () => {
    ];
 
    return (
-      <div>
+      <div className={styles.newTabButtonLayout}>
          <IconButton
             name={'New Tab Button'}
             iconPath={plusIcon}
