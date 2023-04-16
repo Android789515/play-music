@@ -1,6 +1,5 @@
 import { useTabs } from 'features/tabs';
 
-import { LibraryViewHeader } from './components/library-view-header';
 import { SongList } from './features/song-list';
 
 export const LibraryView = () => {
@@ -16,8 +15,6 @@ export const LibraryView = () => {
 
    return (
       <div>
-         <LibraryViewHeader />
-
          <SongList
             songs={getCurrentTabCollection()}
          />
