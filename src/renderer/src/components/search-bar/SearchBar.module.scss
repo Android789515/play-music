@@ -3,18 +3,15 @@
 @use '../../breakpoints' as *;
 
 .searchBar {
-   width: 10em;
+   width: 7em;
 
    background: var(--selected);
    padding: 0.25em 0.5em;
    border-radius: var(--borderRadiusStandard);
-   margin: auto;
+   margin-left: .5em;
+   margin-right: auto;
 
    transition: width 250ms;
-}
-
-.searchBar:focus-within {
-   width: 14em;
 }
 
 .searchIcon {
@@ -34,6 +31,28 @@
 
 .searchBarInput:focus {
    outline: none;
+}
+
+@media (min-width: 21.875em) {
+   .searchBar {
+      width: 8.5em;
+   }
+}
+
+@media (min-width: 24.375em) {
+   .searchBar:focus-within {
+      width: 11em;
+   }
+}
+
+@media (min-width: 28.125em) {
+   .searchBar {
+      width: 11em;
+   }
+
+   .searchBar:focus-within {
+      width: 14em;
+   }
 }
 
 // TODO - move font size to typography element
