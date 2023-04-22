@@ -65,7 +65,6 @@ export const VolumeButton = () => {
       >
          { isHovered || isFocused ?
             <VolumeBar
-               increaseContrast
                volume={volume}
                setVolume={setVolume}
             />
