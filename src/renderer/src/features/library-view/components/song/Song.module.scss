@@ -1,6 +1,26 @@
+@use 'sass:map';
+
+@use '../../../../breakpoints.scss' as *;
+
 .song {
    display: grid;
    grid-template-columns: max-content 54% auto;
    grid-column-gap: .75em;
    align-items: center;
+}
+
+.song > * {
+   font-size: .9rem;
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpSongs')) {
+   .song > * {
+      font-size: 1rem;
+   }
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+   .song > * {
+      font-size: 1.2rem;
+   }
 }
