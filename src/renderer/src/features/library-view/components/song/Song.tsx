@@ -8,6 +8,7 @@ import styles from './Song.module.scss';
 import { ButtonWithContextMenu } from 'components/button-with-context-menu';
 import { CoverArt } from 'components/cover-art';
 import { SongInfo } from 'components/song-info';
+import { SongDuration } from 'components/song-duration';
 
 interface Props {
    song: SongType;
@@ -43,8 +44,9 @@ export const Song = ({ song }: Props) => {
          <SongInfo
             songTitle={title}
             songArtists={artists}
-            songDuration={duration}
          />
+
+         <SongDuration songDuration={duration} />
       </ButtonWithContextMenu>
    );
 };
