@@ -47,11 +47,11 @@
 
 @media (min-width: 28.125em) {
    .searchBar {
-      width: 11em;
+      width: 12em;
    }
 
    .searchBar:focus-within {
-      width: 14em;
+      width: calc(100% - 1em);
    }
 }
 
@@ -65,9 +65,5 @@
 @media (min-width: map.get($breakpoints, 'scaleUpSearchBar')) {
    .searchBar {
       width: 12em;
-   }
-
-   .searchBar:focus-within {
-      width: 18em;
    }
 }
