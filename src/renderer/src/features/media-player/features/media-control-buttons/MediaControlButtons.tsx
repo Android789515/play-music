@@ -1,8 +1,6 @@
 import { useMediaPlayer } from 'features/media-player';
 import { useSongQueue } from 'features/song-queue';
 
-import styles from './MediaControlButtons.module.scss';
-
 import { MediaControlsLayout } from './components'
 import { MediaControlButton } from './components/media-control-button';
 import { VolumeButton } from './features/volume-button';
@@ -41,7 +39,7 @@ export const MediaControls = () => {
    };
 
    return (
-      <div className={styles.mediaControls}>
+      <div>
          <MediaControlsLayout>
             <MediaControlButton
                name='Play Previous'
