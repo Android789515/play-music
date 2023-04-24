@@ -5,6 +5,7 @@ import styles from './MediaPlayer.module.scss';
 
 import { Widget } from 'components/widget/Widget';
 import { MediaPlayerLayout } from './components';
+import { SongPlaying } from './features/song-playing';
 import { MediaControls } from './features/media-control-buttons';
 import { Speaker } from './features/speaker';
 import { SongDurationBar } from './features/song-duration-bar';
@@ -32,6 +33,10 @@ export const MediaPlayer = () => {
       <footer className={styles.mediaPlayer}>
          <Widget borderSide='top'>
             <MediaPlayerLayout>
+               <SongPlaying
+                  songPlaying={songPlaying}
+               />
+
                <MediaControls />
 
                <Speaker
