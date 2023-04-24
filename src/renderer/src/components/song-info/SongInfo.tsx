@@ -7,7 +7,7 @@ interface Props {
 
 export const SongInfo = ({ songTitle, songArtists }: Props) => {
    return (
-      <div className={styles.mainSongInfo}>
+      <div className={styles.songInfo}>
          <h4 className={styles.songTitle}>
             {songTitle}
          </h4>
