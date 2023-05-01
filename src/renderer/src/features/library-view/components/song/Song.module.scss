@@ -2,7 +2,7 @@
 
 @use '../../../../breakpoints.scss' as *;
 
-.song {
+.songLayout {
    display: grid;
    grid-template-columns: max-content 54% auto;
    grid-column-gap: .75em;

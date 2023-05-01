@@ -35,7 +35,10 @@ export const Song = ({ song }: Props) => {
    return (
       <ButtonWithContextMenu
          menuStructure={songMenu}
-         customStyles={styles.song}
+         customStyles={`
+            ${styles.songLayout}
+            ${styles.song}
+         `}
       >
          <CoverArt
             coverArtLocation={coverArt}
