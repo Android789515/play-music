@@ -47,13 +47,14 @@ export const ContextMenuItem = ({ nestedMenuMethods, closeOuterMenu, menuItem }:
             {menuItem.name}
          </p>
 
-         {hasNestedMenu && isNestedMenuShown() ? (
+         { hasNestedMenu ? (
             <ContextMenu
+               shown={isNestedMenuShown()}
                nested
                menuStructure={nestedMenuStructure}
                closeContextMenu={closeOuterMenu}
             />
-         ) : null}
+         ) : null }
       </li>
    );
 };
