@@ -25,7 +25,7 @@ export const ContextMenu = ({ shown, nested, location, menuStructure, closeConte
       const clickedTarget = event.target as HTMLElement;
 
       if (testConditions({
-         isMounted: () => contextMenu !== undefined,
+         isMounted: () => contextMenu !== null,
          clickedOutsideMenu: () => !contextMenu?.contains(clickedTarget),
       }).all()) {
          closeContextMenu();
