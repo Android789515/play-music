@@ -6,7 +6,7 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 import { songsAPI } from '../api/songs';
 import { mediaProtocol } from './mediaProtocol';
 
-import icon from '../../resources/icon.png?asset';
+import icon from '../../resources/icon-dark.png?asset';
 
 function createWindow(): void {
    // Create the browser window.
