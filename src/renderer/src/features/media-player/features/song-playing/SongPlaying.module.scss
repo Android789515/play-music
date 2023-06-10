@@ -3,15 +3,37 @@
 @use '../../../../breakpoints.scss' as *;
 
 .songPlaying {
+   font-size: .9rem;
+
    display: grid;
-   grid-template-columns: max-content 8ch;
+   grid-template-columns: max-content 35vw;
    grid-column-gap: 1em;
    align-items: center;
 }
 
-.songPlaying {
-   font-size: .9rem;
+ //             Text Truncation                 //
+// =========================================== //
+
+@media (min-width: 25.75em) {
+   .songPlaying {
+      grid-template-columns: max-content 40vw;
+   }
 }
+
+@media (min-width: 29.25em) {
+   .songPlaying {
+      grid-template-columns: max-content 45vw;
+   }
+}
+
+@media (min-width: 32.25em) {
+   .songPlaying {
+      grid-template-columns: max-content 55vw;
+   }
+}
+
+ //           End Text Truncation               //
+// =========================================== //
 
 @media (min-width: map.get($breakpoints, 'scaleUpSongs')) {
    .songPlaying {
