@@ -2,7 +2,7 @@ import { useRecoilState } from 'recoil';
 
 import type { Song } from '@api/types';
 import { SongQueuePositions } from '../types/songQueueTypes';
-import { songQueueState } from './songQueue';
+import { songQueueState } from '../stores/songQueue';
 
 export const useSongQueue = () => {
    const [ songQueue, updateSongQueue ] = useRecoilState(songQueueState);
