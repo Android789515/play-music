@@ -1,2 +1,2 @@
-export * from './songQueueTypes';
+export * from './types';
 export * from './useSongQueue';
