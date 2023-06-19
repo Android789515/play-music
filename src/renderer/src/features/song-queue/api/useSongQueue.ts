@@ -1,7 +1,7 @@
 import { useRecoilState } from 'recoil';
 
 import type { Song } from '@api/types';
-import { SongQueuePositions } from './songQueueTypes';
+import { SongQueuePositions } from '../types/songQueueTypes';
 import { songQueueState } from './songQueue';
 
 export const useSongQueue = () => {
