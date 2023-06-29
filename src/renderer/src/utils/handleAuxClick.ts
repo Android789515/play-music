@@ -10,8 +10,6 @@ interface AuxClickHandlers {
 
 const defaultHandler = () => {};
 
-// Keep as custom hook
-// in case hooks are needed.
 export const handleAuxClick = ({
    onLeftClick = defaultHandler,
    onMiddleClick = defaultHandler,
