@@ -9,6 +9,7 @@ import lowVolumeIcon from './assets/icons/low-volume.svg';
 import mediumVolumeIcon from './assets/icons/medium-volume.svg';
 import highVolumeIcon from './assets/icons/high-volume.svg';
 
+import { WidgetFloater } from 'components/widget-floater';
 import { MediaControlButton } from '../../components/media-control-button';
 import { VolumeBar } from './components';
 
@@ -54,21 +55,26 @@ export const VolumeButton = () => {
    };
 
    return (
-      <MediaControlButton
-         name='Volume'
-         iconPath={getVolumeIcon()}
-         onClick={handleButtonClick}
-         onMouseEnter={() => setIsHovered(true)}
-         onMouseLeave={() => setIsHovered(false)}
-         onFocus={() => setIsFocused(true)}
-         onBlur={() => setIsFocused(false)}
-      >
-         { isHovered || isFocused ?
-            <VolumeBar
-               volume={volume}
-               setVolume={setVolume}
-            />
-         : null }
-      </MediaControlButton>
+      // The whole button needs to be wrapped.
+      // The bar relies on the button for its
+      // positioning.
+      <WidgetFloater>
+         <MediaControlButton
+            name='Volume'
+            iconPath={getVolumeIcon()}
+            onClick={handleButtonClick}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
+         >
+            { isHovered || isFocused ?
+               <VolumeBar
+                  volume={volume}
+                  setVolume={setVolume}
+               />
+               : null }
+         </MediaControlButton>
+      </WidgetFloater>
    );
 };
