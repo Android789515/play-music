@@ -28,8 +28,8 @@ export const SongQueue = () => {
             <SongQueueLayout>
                <SongQueueHeader>
                   <ArrowToggle
-                     onArrowUp={() => setIsExpanded(true)}
-                     onArrowDown={() => setIsExpanded(false)}
+                     isToggled={isExpanded}
+                     onToggle={() => setIsExpanded(isExpanded => !isExpanded)}
                   />
                </SongQueueHeader>
 
