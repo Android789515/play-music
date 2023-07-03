@@ -2,6 +2,8 @@ import type { HTMLAttributes, ReactNode } from 'react';
 
 import type { CSS_Class } from 'types/cssTypes';
 
+import defaultStyles from './IconButton.module.scss';
+
 import { Button } from 'components/button';
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
@@ -15,7 +17,10 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
 export const IconButton = ({ name, iconPath, buttonStyles = '', iconStyles, children, ...rest }: Props) => {
    return (
       <Button
-         customStyles={buttonStyles}
+         customStyles={`
+            ${defaultStyles.iconButton}
+            ${buttonStyles}
+         `}
          {...rest}
       >
          <img
