@@ -1,7 +1,6 @@
 import { MouseEvent, FocusEvent, useState } from 'react';
 
 import { TagNames } from 'types/htmlTypes';
-import { within } from '@utils/number';
 import { useMediaPlayer } from 'features/media-player/api';
 
 import mutedIcon from './assets/icons/muted.svg';
