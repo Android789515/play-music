@@ -2,6 +2,8 @@ import type { ReactNode } from 'react';
 
 import styles from './SongQueueHeader.module.scss';
 
+import { HeaderButtons } from './components';
+
 interface Props {
    children: ReactNode;
 }
@@ -15,7 +17,9 @@ export const SongQueueHeader = ({ children }: Props) => {
             Song Queue
          </h3>
 
-         {children}
+         <HeaderButtons>
+            {children}
+         </HeaderButtons>
       </header>
    );
 };
