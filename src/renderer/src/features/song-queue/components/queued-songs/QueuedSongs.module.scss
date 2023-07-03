@@ -1,0 +1,14 @@
+.queuedSongs {
+   display: grid;
+   grid-row-gap: .5em;
+}
+
+.queuedSongs > * {
+   padding-bottom: .5em;
+   border-bottom: var(--widgetBorder);
+}
+
+.queuedSongs > *:last-of-type {
+   padding-bottom: 0;
+   border: none;
+}
