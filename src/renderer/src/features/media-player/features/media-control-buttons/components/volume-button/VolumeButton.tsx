@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, FocusEvent, useState } from 'react';
 
 import { TagNames } from 'types/htmlTypes';
 import { within } from '@utils/number';
@@ -14,9 +14,28 @@ import { MediaControlButton } from '../media-control-button';
 import { VolumeBar } from './components';
 
 export const VolumeButton = () => {
-   const [isHovered, setIsHovered] = useState(false);
+   const [ isHovered, setIsHovered ] = useState(false);
 
-   const [isFocused, setIsFocused] = useState(false);
+   const [ isFocused, setIsFocused ] = useState(false);
+   
+   const hideVolumeBar = () => {
+      setIsHovered(false);
+
+      setIsFocused(false);
+   };
+
+   const maybeHideVolumeBar = (event: FocusEvent) => {
+      const {
+         currentTarget: previouslyFocused,
+         relatedTarget: nowFocused,
+      } = event;
+
+      if (previouslyFocused.contains(nowFocused)) {
+         return;
+      }
+
+      hideVolumeBar();
+   };
 
    const { mediaPlayer: { controls }, updateControls } = useMediaPlayer();
    const { volume, isMuted } = controls;
@@ -64,16 +83,16 @@ export const VolumeButton = () => {
             iconPath={getVolumeIcon()}
             onClick={handleButtonClick}
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseLeave={hideVolumeBar}
             onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
+            onBlur={maybeHideVolumeBar}
          >
-            {isHovered || isFocused ?
+            { isHovered || isFocused ?
                <VolumeBar
                   volume={volume}
                   setVolume={setVolume}
                />
-               : null}
+               : null }
          </MediaControlButton>
       </WidgetFloater>
    );
