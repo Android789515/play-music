@@ -20,7 +20,8 @@
 }
 
 .songQueue:focus,
-.songQueue:hover {
+.songQueue:hover,
+.songQueuePinned {
    opacity: 1;
 }
 
