@@ -7,7 +7,7 @@
 
    overflow: hidden;
 
-   width: 60%;
+   width: 50%;
 
    background: var(--widgetBG);
    border: var(--widgetBorder);
@@ -15,4 +15,8 @@
 
    $sideSpace: 1em;
    margin: 0 $sideSpace calc($sideSpace - .5em) 0;
+}
+
+.songQueueExpanded {
+   width: 60%;
 }

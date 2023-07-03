@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { isEmpty } from '@utils/array'
 import { useSongQueue } from './api';
 
@@ -15,20 +17,27 @@ export const SongQueue = () => {
 
    const showSongQueue = !isEmpty(songQueue);
 
+   const [ isExpanded, setIsExpanded ] = useState(false);
+
    return ( showSongQueue ?
       <WidgetFloater>
-         <div className={styles.songQueue}>
+         <div className={`
+            ${styles.songQueue}
+            ${isExpanded ? styles.songQueueExpanded : ''}
+         `}>
             <SongQueueLayout>
                <SongQueueHeader>
                   <ArrowToggle
-                     onArrowUp={() => {}}
-                     onArrowDown={() => {}}
+                     onArrowUp={() => setIsExpanded(true)}
+                     onArrowDown={() => setIsExpanded(false)}
                   />
                </SongQueueHeader>
 
-               <QueuedSongs
-                  songQueue={songQueue}
-               />
+               { isExpanded ?
+                  <QueuedSongs
+                     songQueue={songQueue}
+                  />
+               : null }
             </SongQueueLayout>
          </div>
       </WidgetFloater>
