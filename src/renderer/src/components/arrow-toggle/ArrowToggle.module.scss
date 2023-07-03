@@ -1,0 +1,18 @@
+.arrowToggle {
+   width: max-content;
+   
+   padding: 0;
+}
+
+.arrowToggle:focus,
+.arrowToggle:hover {
+   background: none;
+}
+
+.arrowToggleIcon {
+   width: 1.5em;
+}
+
+.arrowToggleIcon_OtherDirection {
+   rotate: 180deg;
+}
