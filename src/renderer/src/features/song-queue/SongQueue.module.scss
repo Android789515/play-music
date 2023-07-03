@@ -6,6 +6,8 @@
    right: 0;
 
    overflow: hidden;
+   
+   opacity: .4;
 
    width: 50%;
 
@@ -15,6 +17,11 @@
 
    $sideSpace: 1em;
    margin: 0 $sideSpace calc($sideSpace - .5em) 0;
+}
+
+.songQueue:focus,
+.songQueue:hover {
+   opacity: 1;
 }
 
 .songQueueExpanded {
