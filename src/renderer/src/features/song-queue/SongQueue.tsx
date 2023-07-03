@@ -19,6 +19,13 @@ export const SongQueue = () => {
 
    const [ isExpanded, setIsExpanded ] = useState(false);
 
+   const renderIfExpanded = (Component: JSX.Element) => {
+      return ( isExpanded
+         ? Component
+         : null
+      );
+   };
+
    return ( showSongQueue ?
       <WidgetFloater>
          <div className={`
@@ -33,11 +40,11 @@ export const SongQueue = () => {
                   />
                </SongQueueHeader>
 
-               { isExpanded ?
+               {renderIfExpanded(
                   <QueuedSongs
                      songQueue={songQueue}
                   />
-               : null }
+               )}
             </SongQueueLayout>
          </div>
       </WidgetFloater>
