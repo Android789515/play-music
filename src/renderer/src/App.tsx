@@ -4,6 +4,7 @@ import styles from './App.module.scss';
 
 import { AppHeader } from 'components/app-header';
 import { AppMain } from 'components/app-main';
+import { SongQueue } from 'features/song-queue';
 import { MediaPlayer } from 'features/media-player';
 
 export const App = () => {
@@ -13,6 +14,8 @@ export const App = () => {
             <AppHeader />
 
             <AppMain />
+
+            <SongQueue />
 
             <MediaPlayer />
          </div>
