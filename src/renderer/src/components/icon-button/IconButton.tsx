@@ -6,6 +6,7 @@ import type { CSS_Class } from 'types/cssTypes';
 import defaultStyles from './IconButton.module.scss';
 
 import { Button } from 'components/button';
+import { Icon } from 'components/icon';
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
    name: string;
@@ -24,11 +25,10 @@ export const IconButton = ({ name, iconPath, buttonStyles = '', iconStyles, chil
          `}
          {...rest}
       >
-         <img
-            className={iconStyles}
-            src={iconPath}
+         <Icon
+            customStyles={iconStyles}
+            iconPath={iconPath}
             alt={name}
-            draggable={false}
          />
 
          {children}
