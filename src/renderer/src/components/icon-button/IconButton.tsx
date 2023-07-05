@@ -1,5 +1,6 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 
+import type { Path } from '@globalTypes/fileTypes';
 import type { CSS_Class } from 'types/cssTypes';
 
 import defaultStyles from './IconButton.module.scss';
@@ -8,7 +9,7 @@ import { Button } from 'components/button';
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
    name: string;
-   iconPath: string;
+   iconPath: Path;
    buttonStyles?: CSS_Class;
    iconStyles: CSS_Class;
    children?: ReactNode;
