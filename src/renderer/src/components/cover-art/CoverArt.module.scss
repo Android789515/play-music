@@ -10,10 +10,6 @@
    border-radius: var(--borderRadiusStandard);
 }
 
-.coverArtIcon {
-   filter: var(--iconColor);
-}
-
 @media (min-width: map.get($breakpoints, 'scaleUpSongs')) {
    .coverArtIcon {
       width: 1.6em;

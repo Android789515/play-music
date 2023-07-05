@@ -4,6 +4,8 @@ import defaultCoverArt from './assets/icons/default-cover-art.svg';
 
 import styles from './CoverArt.module.scss';
 
+import { Icon } from 'components/icon';
+
 interface Props {
    coverArtLocation?: Path;
 }
@@ -11,10 +13,10 @@ interface Props {
 export const CoverArt = ({ coverArtLocation }: Props) => {
    return (
       <div className={styles.coverArt}>
-         <img
-            src={coverArtLocation || defaultCoverArt}
-            alt='Cover art'
-            className={styles.coverArtIcon}
+         <Icon
+            iconPath={coverArtLocation || defaultCoverArt}
+            alt={'Cover Art'}
+            customStyles={styles.coverArtIcon}
          />
       </div>
    );
