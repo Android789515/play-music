@@ -20,6 +20,13 @@ interface Props {
 export const ContextMenu = ({ shown, nested, location, menuStructure, closeContextMenu }: Props) => {
    const contextMenuRef = useRef<HTMLDivElement>(null);
 
+   useEffect(() => {
+      const contextMenu = contextMenuRef.current;
+      if (contextMenu) {
+         adjustLocation(contextMenu);
+      }
+   });
+
    const closeOnOutsideClick = (event: MouseEvent) => {
       const contextMenu = contextMenuRef.current;
       const clickedTarget = event.target as HTMLElement;
@@ -60,7 +67,7 @@ export const ContextMenu = ({ shown, nested, location, menuStructure, closeConte
    const isContextMenuEmpty = menuStructure.length === 0;
    const showContextMenu = shown && !isContextMenuEmpty;
 
-   return (showContextMenu ?
+   return ( showContextMenu ?
       <div
          tabIndex={1}
          className={`
@@ -77,5 +84,39 @@ export const ContextMenu = ({ shown, nested, location, menuStructure, closeConte
             {ContextMenuActions}
          </List>
       </div>
-      : null);
+      : null );
 };
+
+type SideOfMenu = 'left' | 'top';
+
+const shiftIfTooFar = (contextMenu: HTMLDivElement, sideOfMenu: SideOfMenu, distanceFromScreenEdge: number) => {
+   const onePixel = 1;
+
+   if (distanceFromScreenEdge < onePixel) {
+      const sideOfMenuLocation = parseFloat(contextMenu.style[sideOfMenu]);
+      const distancePastScreenEdge = Math.abs(distanceFromScreenEdge);
+
+      contextMenu.style[sideOfMenu] = `${
+         sideOfMenuLocation
+         - distancePastScreenEdge
+      }px`;
+   }
+};
+
+const adjustLocation = (contextMenu: HTMLDivElement) => {
+   const { right, bottom } = contextMenu.getBoundingClientRect();
+
+   const scrollBarWidth = 8;
+   shiftIfTooFar(
+      contextMenu,
+      'left',
+      window.innerWidth - right - scrollBarWidth
+   );
+
+   shiftIfTooFar(
+      contextMenu,
+      'top',
+      window.innerHeight - bottom
+   );
+}
+
