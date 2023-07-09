@@ -1,6 +1,10 @@
 .queuedSongs {
    display: grid;
    grid-row-gap: .5em;
+
+   overflow: auto;
+
+   max-height: 14em;
 }
 
 .queuedSongs > * {
