@@ -4,6 +4,10 @@
 
    overflow: auto;
 
+   // Fix annoying bug where text renders 
+   //outside the song queue because of overflow.
+   -webkit-mask-image: -webkit-radial-gradient(white, black);
+
    max-height: 14em;
 }
 
