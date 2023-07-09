@@ -22,7 +22,10 @@ export const QueuedSongs = ({ songQueue }: Props) => {
 const renderSongs = (songQueue: Song[]) => {
    return songQueue.map((song, index) => {
       return (
-         <li key={song.id + index}>
+         <li
+            key={song.id + index}
+            className={styles.queuedSong}
+         >
             <SongInfo
                songTitle={song.title}
                songArtists={song.artists}

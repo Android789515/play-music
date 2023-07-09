@@ -11,12 +11,12 @@
    max-height: 14em;
 }
 
-.queuedSongs > * {
+.queuedSong {
    padding-bottom: .5em;
    border-bottom: var(--widgetBorder);
 }
 
-.queuedSongs > *:last-of-type {
+.queuedSong:last-of-type {
    padding-bottom: 0;
    border: none;
 }
