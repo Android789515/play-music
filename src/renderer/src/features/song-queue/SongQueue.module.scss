@@ -1,6 +1,4 @@
 .songQueue {
-   font-size: .8rem;
-
    position: absolute;
    bottom: 0;
    right: 0;
@@ -13,7 +11,7 @@
 
    background: var(--widgetBG);
    border: var(--widgetBorder);
-   border-radius: calc(2 * var(--borderRadiusStandard));
+   border-radius: calc(1.2 * var(--borderRadiusStandard));
 
    $sideSpace: 1em;
    margin: 0 $sideSpace calc($sideSpace - .5em) 0;

@@ -1,3 +1,10 @@
 img {
-   width: 1.5em;
+   width: 1.125em;
+}
+
+.headerButtons {
+   display: grid;
+   grid-auto-flow: column;
+   grid-column-gap: .25em;
+   align-items: center;
 }
