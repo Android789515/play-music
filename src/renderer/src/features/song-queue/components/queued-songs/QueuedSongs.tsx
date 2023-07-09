@@ -20,10 +20,10 @@ export const QueuedSongs = ({ songQueue }: Props) => {
 };
 
 const renderSongs = (songQueue: Song[]) => {
-   return songQueue.map(song => {
+   return songQueue.map((song, index) => {
       return (
          <SongInfo
-            key={song.id}
+            key={song.id + index}
             songTitle={song.title}
             songArtists={song.artists}
          />
