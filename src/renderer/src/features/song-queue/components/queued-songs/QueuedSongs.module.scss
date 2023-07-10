@@ -3,6 +3,7 @@
 
    display: grid;
    grid-row-gap: .5em;
+   grid-template-columns: 100%;
 
    overflow: auto;
 
@@ -14,6 +15,8 @@
 }
 
 .queuedSong {
+   max-width: 100%;
+
    padding-bottom: .5em;
    border-bottom: var(--widgetBorder);
 }
@@ -21,8 +24,4 @@
 .queuedSong:last-of-type {
    padding-bottom: 0;
    border: none;
-}
-
-.queuedSong > * {
-   max-width: 20ch;
 }
