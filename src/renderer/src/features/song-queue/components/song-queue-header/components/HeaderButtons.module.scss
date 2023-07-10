@@ -1,3 +1,7 @@
+@use 'sass:map';
+
+@use '../../../../../breakpoints.scss' as *;
+
 img {
    width: 1.125em;
 }
@@ -7,4 +11,16 @@ img {
    grid-auto-flow: column;
    grid-column-gap: .25em;
    align-items: center;
+}
+
+@media (min-width: 25.5em) {
+   img {
+      width: 1.325em;
+   }
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+   img {
+      width: 1.525em;
+   }
 }

@@ -1,3 +1,7 @@
+@use 'sass:map';
+
+@use '../../../../breakpoints.scss' as *;
+
 .queuedSongs {
    font-size: .8rem;
 
@@ -24,4 +28,16 @@
 .queuedSong:last-of-type {
    padding-bottom: 0;
    border: none;
+}
+
+@media (min-width: 25.5em) {
+   .queuedSongs {
+      font-size: 1rem;
+   }
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+   .queuedSongs {
+      font-size: 1.2rem;
+   }
 }

@@ -1,3 +1,7 @@
+@use 'sass:map';
+
+@use '../../../../breakpoints.scss' as *;
+
 .songQueueHeader {
    display: flex;
    justify-content: space-between;
@@ -8,4 +12,16 @@
    font-size: 1.0625rem;
 
    margin: 0;
+}
+
+@media (min-width: 25.5em) {
+   .title {
+      font-size: 1.2625rem;
+   }
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+   .title {
+      font-size: 1.4625rem;
+   }
 }

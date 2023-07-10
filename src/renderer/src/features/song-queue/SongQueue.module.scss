@@ -1,3 +1,7 @@
+@use 'sass:map';
+
+@use '../../breakpoints.scss' as *;
+
 .songQueue {
    position: absolute;
    bottom: 0;
@@ -8,6 +12,7 @@
    opacity: .4;
 
    width: 50%;
+   max-width: 9.875em;
 
    background: var(--widgetBG);
    border: var(--widgetBorder);
@@ -25,4 +30,32 @@
 
 .songQueueExpanded {
    width: 60%;
+   max-width: 12.375em;
+}
+
+@media (min-width: 25.5em) {
+   .songQueue {
+      max-width: 11.125em;
+   }
+
+   .songQueueExpanded {
+      width: 55%;
+      max-width: 16em;
+   }
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+   .songQueue {
+      max-width: 12.375em;
+   }
+
+   .songQueueExpanded {
+      max-width: 20em;
+   }
+}
+
+@media (min-width: 66.5em) {
+   .songQueueExpanded {
+      max-width: 30%;
+   }
 }
