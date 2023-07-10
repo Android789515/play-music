@@ -18,6 +18,10 @@
    max-height: 14em;
 }
 
+.queuedSongs::-webkit-scrollbar {
+   border-radius: .16em;
+}
+
 .queuedSong {
    max-width: 100%;
 
