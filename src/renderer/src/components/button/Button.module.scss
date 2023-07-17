@@ -1,4 +1,4 @@
-.buttonDefaults {
+.button {
    color: inherit;
 
    width: 100%;
@@ -8,13 +8,13 @@
    border: 0;
 }
 
-.buttonDefaults {
+.button {
    padding: 0.5em;
    border-radius: var(--borderRadiusStandard);
 }
 
-.buttonDefaults:focus,
-.buttonDefaults:hover {
+.button:focus,
+.button:hover {
    // Already has a focus
    // indicator below.
    outline: none;
@@ -22,6 +22,6 @@
    background: var(--highlight);
 }
 
-.buttonDefaults:active {
+.button:active {
    background: var(--selected);
 }

@@ -2,7 +2,7 @@ import type { HTMLAttributes, ReactNode } from 'react';
 
 import type { CSS_Class } from 'types/cssTypes';
 
-import styles from './Button.module.scss';
+import defaultStyles from './Button.module.scss';
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
    customStyles?: CSS_Class;
@@ -14,7 +14,7 @@ export const Button = ({ customStyles = '', children, ...rest }: Props) => {
       <button
          tabIndex={1}
          className={`
-            ${styles.buttonDefaults}
+            ${defaultStyles.button}
             ${customStyles}
          `}
          {...rest}
