@@ -12,11 +12,11 @@ export const useTabs = () => {
    const [ tabs, setTabs ] = useRecoilState(tabsState);
 
    const getTabs = useCallback(() => {
-      return [ ...tabs ];
+      return tabs;
    }, [ tabs ]);
 
    const getTab = useCallback((tabID: UUID) => {
-      return [ ...tabs ].find(tab => tab.id === tabID);
+      return tabs.find(tab => tab.id === tabID);
    }, [ tabs ]);
 
    const updateTab = useCallback((tabToUpdate: Tab, payload: { tabKey: TabKey, data: Tab[ TabKey ] }) => {
