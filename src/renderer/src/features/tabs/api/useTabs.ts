@@ -18,6 +18,10 @@ export const useTabs = () => {
    const getTab = useCallback((tabID: UUID) => {
       return tabs.find(tab => tab.id === tabID);
    }, [ tabs ]);
+   
+   const getCurrentTab = useCallback(() => {
+      return tabs.find(tab => tab.isCurrent);
+   }, [ tabs ]);
 
    const updateTab = useCallback((tabToUpdate: Tab, payload: { tabKey: TabKey, data: Tab[ TabKey ] }) => {
       return setTabs(prevTabs => {
@@ -109,6 +113,7 @@ export const useTabs = () => {
    return {
       getTabs,
       getTab,
+      getCurrentTab,
       setCurrentTab,
       openTab,
       closeTab,
