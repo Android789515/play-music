@@ -1,0 +1,21 @@
+.dialogBox {
+   font: inherit;
+   color: inherit;
+
+   display: grid;
+   grid-template-rows: 9fr 1fr;
+
+   position: fixed;
+   top: 25%;
+
+   width: 90vw;
+   height: 50vh;
+
+   z-index: 5;
+
+   background: var(--widgetBG);
+   border-radius: var(--borderRadiusStandard);
+   border: none;
+
+   margin-left: .75em;
+}

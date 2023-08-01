@@ -1,0 +1,17 @@
+.dialogButtons {
+   grid-row: 2;
+
+   display: grid;
+   grid-auto-flow: column;
+   grid-column-gap: 1em;
+   justify-content: end;
+   align-items: center;
+}
+
+.dialogButtons > button {
+   font-size: 1.2rem;
+   font-weight: 700;
+
+   background: var(--selected);
+   padding: .5em .75em;
+}

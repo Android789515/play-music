@@ -7,6 +7,8 @@ import { AppMain } from 'components/app-main';
 import { SongQueue } from 'features/song-queue';
 import { MediaPlayer } from 'features/media-player';
 
+import { Dialog } from 'components/dialog';
+
 export const App = () => {
    return (
       <RecoilRoot>
@@ -16,6 +18,8 @@ export const App = () => {
             <AppMain />
 
             <SongQueue />
+
+            <Dialog />
 
             <MediaPlayer />
          </div>
