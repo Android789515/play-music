@@ -17,11 +17,13 @@ const setOpened = (openedOrNot: boolean) => {
 export const openDialog = setOpened(true);
 export const closeDialog = setOpened(false);
 
-export const setDialogContent = (content: ReactNode, setDialogState: SetterOrUpdater<DialogState>) => {
-   setDialogState(prevState => {
-      return {
-         ...prevState,
-         content
-      };
-   });
+export const setDialogContent = (content: ReactNode) => {
+   return (setDialogState: SetterOrUpdater<DialogState>) => {
+      setDialogState(prevState => {
+         return {
+            ...prevState,
+            content
+         };
+      });
+   };
 };
