@@ -2,6 +2,12 @@
 
 A desktop music player made with Electron, React, and TypeScript.
 
+## Table of Contents
+1. [Goals](#goals)
+2. [Technologies Used](#technologies-used)
+3. [Design](#design)
+4. [Project Setup](#project-setup)
+
 ## Goals
 This project was made to satisfy my needs for a music player on Linux.  I wasn't happy with the options I had, so I decided to make my own application.
 
