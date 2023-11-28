@@ -8,18 +8,19 @@ import defaultStyles from './Dialog.module.scss';
 import { DialogButtons } from './components/dialog-buttons';
 
 export const Dialog = () => {
-   const [ { opened, content }, updateDialog ] = useRecoilState(dialogState);
+   const [{ opened, content, dialogFormID }, updateDialog] = useRecoilState(dialogState);
 
-   return ( opened ?
+   return (opened ?
       <dialog
          className={`
-            ${defaultStyles.dialogBox}
+            ${defaultStyles.dialog}
          `}
          open={opened}
       >
          {content}
 
          <DialogButtons
+            form={dialogFormID}
             onCancel={() => {
                closeDialog(updateDialog);
             }}
@@ -28,5 +29,5 @@ export const Dialog = () => {
             }}
          />
       </dialog>
-   : null );
+      : null);
 };

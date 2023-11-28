@@ -1,23 +1,25 @@
+import type { FormID } from 'types/htmlTypes';
 import styles from './DialogButtons.module.scss';
 
 import { CancelButton } from './CancelButton';
 import { ConfirmButton } from './ConfirmButton';
 
 interface Props {
-   onCancel: () => void;
-   onConfirm: () => void;
+   form?: FormID;
 }
 
-export const DialogButtons = ({ onCancel, onConfirm }: Props) => {
+export const DialogButtons = ({ form, onCancel, onConfirm }: Props) => {
    return (
       <div
          className={styles.dialogButtons}
       >
          <CancelButton
+            form={form}
             onClick={onCancel}
          />
 
          <ConfirmButton
+            form={form}
             onClick={onConfirm}
          />
       </div>

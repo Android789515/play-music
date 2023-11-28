@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { SetterOrUpdater } from 'recoil';
 
+import type { FormID } from 'types/htmlTypes';
 import { DialogState } from './stores';
 
 const setOpened = (openedOrNot: boolean) => {
@@ -17,12 +18,13 @@ const setOpened = (openedOrNot: boolean) => {
 export const openDialog = setOpened(true);
 export const closeDialog = setOpened(false);
 
-export const setDialogContent = (content: ReactNode) => {
+export const setDialogContent = (content: ReactNode, dialogFormID?: FormID) => {
    return (setDialogState: SetterOrUpdater<DialogState>) => {
       setDialogState(prevState => {
          return {
             ...prevState,
-            content
+            content,
+            dialogFormID,
          };
       });
    };
