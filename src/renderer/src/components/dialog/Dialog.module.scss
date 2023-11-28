@@ -6,16 +6,16 @@
    grid-template-rows: 9fr 1fr;
 
    position: fixed;
-   top: 25%;
+   top: 5%;
 
-   width: 90vw;
-   height: 50vh;
+   width: 92.5vw;
+   height: 90vh;
 
    z-index: 5;
 
    background: var(--widgetBG);
    border-radius: var(--borderRadiusStandard);
-   border: none;
+   border: var(--widgetBorder);
 
    margin-left: .75em;
 }
