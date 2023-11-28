@@ -1,24 +1,47 @@
-import plusIcon from './assets/icons/square-rounded-plus.svg';
+import { useRecoilState } from 'recoil';
+
+import { Tab } from 'features/tabs/types';
+import { dialogState } from 'components/dialog/stores';
+import { openDialog, setDialogContent } from 'components/dialog/api';
+import { addToCollectionID } from '../dialogs/add-to-collection';
+
 import styles from './AddStuffButton.module.scss';
 
 import { Button } from 'components/button';
-import { Icon } from 'components/icon';
+import { AddToCollection } from '../dialogs/add-to-collection';
 
-export const AddStuffButton = () => {
+interface Props {
+   tab: Tab
+}
+
+export const AddStuffButton = ({ tab }: Props) => {
+   const [ _, setDialogState ] = useRecoilState(dialogState);
+
+   const isLibraryTab = tab.name === 'Library';
+   const addToCollection = () => {
+      const renderDialog = setDialogContent(
+         isLibraryTab
+            ? <p>Import</p>
+            : <AddToCollection />
+      , isLibraryTab ? '' : addToCollectionID);
+
+      renderDialog(setDialogState);
+
+      openDialog(setDialogState);
+   };
+
    return (
       <Button
          customStyles={styles.addStuffButton}
+         onClick={addToCollection}
       >
-         <Icon
-            customStyles={styles.addStuffIcon}
-            iconPath={plusIcon}
-            alt='Add Stuff'
-         />
-
          <h4
             className={styles.addStuffText}
          >
-            Add Stuff
+            { isLibraryTab
+               ? 'Import'
+               : 'Add to Collection'
+            }
          </h4>
       </Button>
    );
