@@ -1,9 +1,52 @@
-.collectionLayout {
-   
-
+.dialogContent {
    overflow-y: auto;
 }
 
-.collectionLayout > * {
+.dialogContent > * {
    font-size: .8rem;
+}
+
+.collection {
+   height: 100%;
+
+   padding-bottom: 1em;
+}
+
+.collectionLayout {
+   font: inherit;
+   font-size: .9rem;
+   color: inherit;
+
+   max-width: 100%;
+   height: 100%;
+
+   background: inherit;
+
+   padding-right: 1em;
+
+   border: none;
+   outline: none;
+}
+
+.collectionSong {
+   text-overflow: ellipsis;
+   
+   cursor: pointer;
+
+   overflow: hidden;
+
+   padding: .5em .5em;
+
+   border-radius: var(--borderRadiusStandard);
+}
+
+.collectionSong:focus,
+.collectionSong:hover {
+   background: var(--highlight);
+}
+
+// Active state provided by the element tag.
+
+.collectionSong:not(.collection:last-child) {
+   margin-bottom: .5em;
 }

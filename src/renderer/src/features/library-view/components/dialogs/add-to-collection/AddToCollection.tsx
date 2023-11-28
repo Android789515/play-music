@@ -16,7 +16,10 @@ export const AddToCollection = () => {
 
    const SongOptions = library?.map((song, index) => {
       return (
-         <option key={index}>
+         <option
+            key={index}
+            className={styles.collectionSong}
+         >
             {song.title}
          </option>
       );
@@ -47,14 +50,16 @@ export const AddToCollection = () => {
    };
 
    return (
-      <section className={styles.collectionLayout}>
+      <section className={styles.dialogContent}>
          <form
             id={addToCollectionID}
+            className={styles.collection}
             // @ts-ignore onSubmit is
             // a valid HTML listener
             onSubmit={confirmSelectedSongs}
          >
             <select
+               className={styles.collectionLayout}
                multiple
                value={selectedSongs}
                onChange={updateSelectedSongs}
