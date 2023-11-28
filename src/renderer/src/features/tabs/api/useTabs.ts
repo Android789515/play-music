@@ -23,10 +23,10 @@ export const useTabs = () => {
       return tabs.find(tab => tab.isCurrent);
    }, [ tabs ]);
 
-   const updateTab = useCallback((tabToUpdate: Tab, payload: { tabKey: TabKey, data: Tab[ TabKey ] }) => {
+   const updateTab = useCallback((tabToUpdateID: UUID, payload: { tabKey: TabKey, data: Tab[ TabKey ] }) => {
       return setTabs(prevTabs => {
          return prevTabs.map(tab => {
-            const isTabToUpdate = tab.id === tabToUpdate.id;
+            const isTabToUpdate = tab.id === tabToUpdateID;
 
             if (isTabToUpdate) {
                return { ...tab, [ payload.tabKey ]: payload.data };
