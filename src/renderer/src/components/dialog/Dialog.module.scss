@@ -1,4 +1,4 @@
-.dialogBox {
+.dialog {
    font: inherit;
    color: inherit;
 
@@ -18,4 +18,16 @@
    border: none;
 
    margin-left: .75em;
+}
+
+@media (min-width: 22.875em) {
+   .dialog {
+      width: 91vw;
+   }
+}
+
+@media (min-width: 28.125em) {
+   .dialog {
+      margin: auto;
+   }
 }
