@@ -1,3 +1,5 @@
+import type { MouseEvent } from 'react';
+
 import type { FormID } from 'types/htmlTypes';
 import { ButtonTypes } from 'components/button/buttonTypes';
 
@@ -8,6 +10,8 @@ import { ConfirmButton } from './ConfirmButton';
 
 interface Props {
    form?: FormID;
+   onCancel: (event: MouseEvent) => void;
+   onConfirm: (event: MouseEvent) => void;
 }
 
 export const DialogButtons = ({ form, onCancel, onConfirm }: Props) => {
