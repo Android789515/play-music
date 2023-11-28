@@ -1,4 +1,6 @@
 import type { FormID } from 'types/htmlTypes';
+import { ButtonTypes } from 'components/button/buttonTypes';
+
 import styles from './DialogButtons.module.scss';
 
 import { CancelButton } from './CancelButton';
@@ -19,6 +21,7 @@ export const DialogButtons = ({ form, onCancel, onConfirm }: Props) => {
          />
 
          <ConfirmButton
+            type={ButtonTypes.submit}
             form={form}
             onClick={onConfirm}
          />
