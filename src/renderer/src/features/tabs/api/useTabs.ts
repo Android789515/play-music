@@ -53,12 +53,12 @@ export const useTabs = () => {
       });
    }, [ setTabs ]);
 
-   const setCurrentTab = useCallback((tabToSet: Tab) => {
+   const setCurrentTab = useCallback((tabToSetID: UUID) => {
       clearCurrentTab();
 
       setTabs(prevTabs => {
          return prevTabs.map(tab => {
-            const isTabToUpdate = tab.id === tabToSet.id;
+            const isTabToUpdate = tab.id === tabToSetID;
 
             if (isTabToUpdate) {
                return { ...tab, isCurrent: true };

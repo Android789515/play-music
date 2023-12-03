@@ -48,7 +48,7 @@ export const Tab = ({ tab, currentTab }: Props) => {
                ${currentTab ? styles.currentTab : ''}
             `}
             onMouseUp={handleAuxClick({
-               onLeftClick: () => setCurrentTab(tab),
+               onLeftClick: () => setCurrentTab(tab.id),
                onMiddleClick: () => closeTab(tab),
                onRightClick: openContextMenu,
             })}
