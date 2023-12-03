@@ -28,7 +28,7 @@ export const TabName = ({ tabID, tabName, renaming, setRenaming }: Props) => {
       const updatedTabName = (event.target as HTMLHeadingElement).textContent;
 
       if (updatedTabName && thisTab) {
-         updateTab(thisTab, { tabKey: 'name', data: updatedTabName });
+         updateTab(thisTab.id, { tabKey: 'name', data: updatedTabName });
       }
    };
 
