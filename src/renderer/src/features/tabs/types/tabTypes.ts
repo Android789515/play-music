@@ -12,3 +12,4 @@ export interface Tab {
 }
 
 export type TabKey = keyof Tab;
+export type TabData = Tab[TabKey];
