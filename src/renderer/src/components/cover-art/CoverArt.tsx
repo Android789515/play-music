@@ -1,4 +1,5 @@
 import type { Path } from '@globalTypes/fileTypes';
+import type { CSS_Class } from 'types/cssTypes';
 
 import defaultCoverArt from './assets/icons/default-cover-art.svg';
 
@@ -8,15 +9,21 @@ import { Icon } from 'components/icon';
 
 interface Props {
    coverArtLocation?: Path;
+   additionalIconStyles?: CSS_Class;
 }
 
-export const CoverArt = ({ coverArtLocation }: Props) => {
+export const CoverArt = ({ coverArtLocation, additionalIconStyles }: Props) => {
    return (
-      <div className={styles.coverArt}>
+      <div
+         className={styles.coverArt}
+      >
          <Icon
             iconPath={coverArtLocation || defaultCoverArt}
             alt={'Cover Art'}
-            customStyles={styles.coverArtIcon}
+            customStyles={`
+               ${styles.coverArtIcon}
+               ${additionalIconStyles}
+            `}
          />
       </div>
    );
