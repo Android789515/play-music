@@ -29,7 +29,7 @@ export const NewTabButton = () => {
    const closedTabEntries: ContextMenuStructure = [ ...useRecoilValue(closedTabs) ].map(tab => {
       return {
          name: tab.name,
-         action: () => openTab(tab)
+         action: () => openTab(tab.id)
       };
    });
 

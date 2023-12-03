@@ -69,10 +69,10 @@ export const useTabs = () => {
       });
    }, [ setTabs, clearCurrentTab ]);
 
-   const openTab = useCallback((tabToOpen: Tab) => {
+   const openTab = useCallback((tabToOpenID: UUID) => {
       setTabs(prevTabs => {
          return prevTabs.map(tab => {
-            const isTabToUpdate = tab.id === tabToOpen.id;
+            const isTabToUpdate = tab.id === tabToOpenID;
 
             if (isTabToUpdate) {
                return { ...tab, isOpen: true };
@@ -102,7 +102,7 @@ export const useTabs = () => {
    const createTab = useCallback((tab: Tab) => {
       setTabs(prevTabs => [ ...prevTabs, tab ]);
 
-      openTab(tab);
+      openTab(tab.id);
    }, [ setTabs, openTab ]);
 
    const deleteTab = useCallback((tabToDelete: Tab) => {
