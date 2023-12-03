@@ -29,7 +29,7 @@ export const useTabs = () => {
    }, [ tabs ]);
 
    const updateTab = useCallback((tabToUpdateID: UUID, payload: { tabKey: TabKey, data: Tab[ TabKey ] }) => {
-      return setTabs(prevTabs => {
+      setTabs(prevTabs => {
          return prevTabs.map(tab => {
             const isTabToUpdate = tab.id === tabToUpdateID;
 
@@ -43,7 +43,7 @@ export const useTabs = () => {
    }, [ setTabs ]);
 
    const clearCurrentTab = useCallback(() => {
-      return setTabs(prevTabs => {
+      setTabs(prevTabs => {
          return prevTabs.map(tab => {
             return { ...tab, isCurrent: false };
          });
@@ -53,7 +53,7 @@ export const useTabs = () => {
    const setCurrentTab = useCallback((tabToSet: Tab) => {
       clearCurrentTab();
 
-      return setTabs(prevTabs => {
+      setTabs(prevTabs => {
          return prevTabs.map(tab => {
             const isTabToUpdate = tab.id === tabToSet.id;
 
@@ -67,7 +67,7 @@ export const useTabs = () => {
    }, [ setTabs, clearCurrentTab ]);
 
    const openTab = useCallback((tabToOpen: Tab) => {
-      return setTabs(prevTabs => {
+      setTabs(prevTabs => {
          return prevTabs.map(tab => {
             const isTabToUpdate = tab.id === tabToOpen.id;
 
@@ -83,7 +83,7 @@ export const useTabs = () => {
    const closeTab = useCallback((tabToClose: Tab) => {
       setCurrentTab(libraryTab);
 
-      return setTabs(prevTabs => {
+      setTabs(prevTabs => {
          return prevTabs.map(tab => {
             const isTabToUpdate = tab.id === tabToClose.id;
 
@@ -105,7 +105,7 @@ export const useTabs = () => {
    const deleteTab = useCallback((tabToDelete: Tab) => {
       setCurrentTab(libraryTab);
 
-      return setTabs(prevTabs => {
+      setTabs(prevTabs => {
          return prevTabs.filter(tab => {
             return testConditions({
                isPermanent: () => tab.isPermanent || false,
