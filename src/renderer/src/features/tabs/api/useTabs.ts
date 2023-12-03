@@ -1,8 +1,9 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 
 import type { UUID } from '@globalTypes/stringTypes';
 import type { Tab, TabKey } from '../types';
+import { saveData } from 'features/save-data';
 import { tabsState } from '../stores';
 import { testConditions } from '@utils/boolean';
 
@@ -10,6 +11,10 @@ import { libraryTab } from '../stores';
 
 export const useTabs = () => {
    const [ tabs, setTabs ] = useRecoilState(tabsState);
+
+   useEffect(() => {
+      saveData(tabsState.key, JSON.stringify(tabs));
+   }, [ tabs ]);
 
    const getTabs = useCallback(() => {
       return tabs;
