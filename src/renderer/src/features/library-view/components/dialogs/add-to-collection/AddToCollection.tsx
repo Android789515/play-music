@@ -7,6 +7,9 @@ import { libraryTab } from 'features/tabs/stores';
 
 import styles from './AddToCollection.module.scss';
 
+import { CoverArt } from 'components/cover-art';
+import { SongInfo } from 'components/song-info';
+
 export const addToCollectionID = newUUID();
 
 export const AddToCollection = () => {
@@ -33,7 +36,7 @@ export const AddToCollection = () => {
 
       setSelectedSongs(selectedSongs);
    };
-   
+
    const confirmSelectedSongs = (event: FormEvent) => {
       event.preventDefault();
 
@@ -47,6 +50,20 @@ export const AddToCollection = () => {
             data: [ ...currentCollection, ...songsFromLibrary ]
          });
       }
+   };
+
+   const getLastSelectedSongInfo = () => {
+      const lastSelectedSong = selectedSongs[selectedSongs.length - 1];
+
+      if (library) {
+         const songInLibrary = library.find(song => song.title === lastSelectedSong);
+
+         if (songInLibrary) {
+            return songInLibrary
+         }
+      }
+
+      return null;
    };
 
    return (
@@ -67,6 +84,18 @@ export const AddToCollection = () => {
                {SongOptions}
             </select>
          </form>
+
+         {getLastSelectedSongInfo() && <aside className={styles.selectedSongInfo}>
+            <CoverArt
+               coverArtLocation={getLastSelectedSongInfo()!.coverArt}
+               additionalIconStyles={styles.selectedSongCoverArtIcon}
+            />
+
+            <SongInfo
+               songTitle={getLastSelectedSongInfo()!.title}
+               songArtists={getLastSelectedSongInfo()!.artists}
+            />
+         </aside>}
       </section>
    );
 };
