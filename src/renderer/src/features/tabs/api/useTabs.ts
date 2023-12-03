@@ -2,12 +2,15 @@ import { useCallback, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 
 import type { UUID } from '@globalTypes/stringTypes';
-import type { Tab, TabKey } from '../types';
+import type { Tab, TabKey, TabData } from '../types';
 import { saveData } from 'features/save-data';
 import { tabsState } from '../stores';
 import { testConditions } from '@utils/boolean';
 
-import { libraryTab } from '../stores';
+interface TabSlice {
+   key: TabKey;
+   data: TabData | ((data: TabData) => boolean);
+}
 
 export const useTabs = () => {
    const [ tabs, setTabs ] = useRecoilState(tabsState);
@@ -28,13 +31,13 @@ export const useTabs = () => {
       return tabs.find(tab => tab.isCurrent);
    }, [ tabs ]);
 
-   const updateTab = useCallback((tabToUpdateID: UUID, payload: { tabKey: TabKey, data: Tab[ TabKey ] }) => {
+   const updateTab = useCallback((tabToUpdateID: UUID, payload: TabSlice) => {
       setTabs(prevTabs => {
          return prevTabs.map(tab => {
             const isTabToUpdate = tab.id === tabToUpdateID;
 
             if (isTabToUpdate) {
-               return { ...tab, [ payload.tabKey ]: payload.data };
+               return { ...tab, [ payload.key ]: payload.data };
             }
 
             return tab;

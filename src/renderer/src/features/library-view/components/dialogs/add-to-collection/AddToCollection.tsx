@@ -46,7 +46,7 @@ export const AddToCollection = () => {
          const songsFromLibrary = library.filter(song => selectedSongs.includes(song.title));
 
          updateTab(currentTab.id, {
-            tabKey: 'collection',
+            key: 'collection',
             data: [ ...currentCollection, ...songsFromLibrary ]
          });
       }
