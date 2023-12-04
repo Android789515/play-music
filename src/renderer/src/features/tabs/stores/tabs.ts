@@ -4,8 +4,9 @@ import { v4 as newUUID } from 'uuid';
 import type { Tab } from '../types';
 import { loadData } from 'features/save-data';
 
-export const libraryTab = {
-   id: newUUID(),
+export const libraryTrackMark = 'library';
+const libraryTab = {
+   id: newUUID() + libraryTrackMark,
    name: 'Library',
    collection: await window.api.getSongs(),
    isPermanent: true,
