@@ -110,13 +110,21 @@ export const useTabs = () => {
          .indexOf(tabLeftID) - 1;
 
       const previousTab = tabs[previousTabIndex];
-      
+
       setCurrentTab(
          previousTab
             ? previousTab.id
             : getLibraryTab().id
       );
    }, [ tabs, setCurrentTab, getLibraryTab ]);
+   
+   const leaveTab = useCallback((tabLeftID: UUID) => {
+      const didLeaveCurrentTab = getCurrentTab()?.id === tabLeftID;
+
+      if (didLeaveCurrentTab) {
+         switchToNextOpenTab(tabLeftID);
+      }
+   }, [ getCurrentTab, switchToNextOpenTab ]);
 
    const closeTab = useCallback((tabToClose: Tab) => {
       setTabs(prevTabs => {
@@ -131,8 +139,8 @@ export const useTabs = () => {
          });
       });
 
-      switchToNextOpenTab(tabToClose.id);
-   }, [ setTabs, switchToNextOpenTab ]);
+      leaveTab(tabToClose.id);
+   }, [ setTabs, leaveTab ]);
 
    const createTab = useCallback((tab: Tab) => {
       setTabs(prevTabs => [ ...prevTabs, tab ]);
@@ -150,8 +158,8 @@ export const useTabs = () => {
          });
       });
 
-      switchToNextOpenTab(tabToDelete.id);
-   }, [ setTabs, switchToNextOpenTab ]);
+      leaveTab(tabToDelete.id);
+   }, [ setTabs, leaveTab ]);
 
    return {
       getTabs,
