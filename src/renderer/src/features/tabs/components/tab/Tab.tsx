@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import type { Tab as TabType } from '../../types';
 import { useTabs } from 'features/tabs';
@@ -19,12 +19,6 @@ export const Tab = ({ tab, currentTab }: Props) => {
    const { isContextMenuShown, openContextMenu, closeContextMenu } = useControlContextMenu();
 
    const { setCurrentTab, closeTab, deleteTab } = useTabs();
-
-   useEffect(() => {
-      setCurrentTab(tab);
-
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, []);
 
    const [ renaming, setRenaming ] = useState(false);
 

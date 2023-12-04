@@ -100,7 +100,9 @@ export const useTabs = () => {
             return tab;
          });
       });
-   }, [ setTabs ]);
+
+      setCurrentTab(tabToOpenID);
+   }, [ setTabs, setCurrentTab ]);
 
    const closeTab = useCallback((tabToClose: Tab) => {
       setCurrentTab(libraryTab);
