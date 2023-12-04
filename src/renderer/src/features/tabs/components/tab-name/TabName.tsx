@@ -24,7 +24,7 @@ export const TabName = ({ tabID, tabName, renaming, setRenaming }: Props) => {
    const tabNameLocal = useRef(tabName);
 
    const renameTab = (event: FormEvent) => {
-      const thisTab = getTab(tabID);
+      const thisTab = getTab({ key: 'id', data: tabID });
       const updatedTabName = (event.target as HTMLHeadingElement).textContent;
 
       if (updatedTabName && thisTab) {
