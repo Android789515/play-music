@@ -5,7 +5,7 @@ import type { Tab } from '../types';
 import { loadData } from 'features/save-data';
 
 export const libraryTrackMark = 'library';
-const libraryTab = {
+const newLibraryTab = {
    id: newUUID() + libraryTrackMark,
    name: 'Library',
    collection: await window.api.getSongs(),
@@ -31,7 +31,7 @@ export const tabsState = atom<Tab[]>({
    key: keys.tabs,
    default:
       getPreviousTabData()
-      || [ libraryTab ]
+      || [ newLibraryTab ]
 });
 
 export const closedTabs = selector({
