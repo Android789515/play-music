@@ -37,13 +37,10 @@ export const useTabs = () => {
    }, [ tabs ]);
    
    const getLibraryTab = useCallback(() => {
-      return getTab({
-         key: 'id', data: tabID => {
-            return tabID!.toString()
-               .includes(libraryTrackMark);
-         }
+      return tabs.find(tab => {
+         return tab.id.includes(libraryTrackMark);
       })!;
-   }, [ getTab ]);
+   }, [ tabs ]);
 
    const getCurrentTab = useCallback(() => {
       return tabs.find(tab => tab.isCurrent);
