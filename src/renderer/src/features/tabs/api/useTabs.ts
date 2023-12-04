@@ -44,7 +44,7 @@ export const useTabs = () => {
          }
       })!;
    }, [ getTab ]);
-   
+
    const getCurrentTab = useCallback(() => {
       return tabs.find(tab => tab.isCurrent);
    }, [ tabs ]);
@@ -104,9 +104,20 @@ export const useTabs = () => {
       setCurrentTab(tabToOpenID);
    }, [ setTabs, setCurrentTab ]);
 
-   const closeTab = useCallback((tabToClose: Tab) => {
-      setCurrentTab(libraryTab);
+   const switchToNextOpenTab = useCallback((tabLeftID: UUID) => {
+      const previousTabIndex = tabs.map(tab => tab.id)
+         .indexOf(tabLeftID) - 1;
 
+      const previousTab = tabs[previousTabIndex];
+      
+      setCurrentTab(
+         previousTab
+            ? previousTab.id
+            : getLibraryTab().id
+      );
+   }, [ tabs, setCurrentTab, getLibraryTab ]);
+
+   const closeTab = useCallback((tabToClose: Tab) => {
       setTabs(prevTabs => {
          return prevTabs.map(tab => {
             const isTabToUpdate = tab.id === tabToClose.id;
@@ -118,7 +129,9 @@ export const useTabs = () => {
             return tab;
          });
       });
-   }, [ setTabs, setCurrentTab ]);
+
+      switchToNextOpenTab(tabToClose.id);
+   }, [ setTabs, switchToNextOpenTab ]);
 
    const createTab = useCallback((tab: Tab) => {
       setTabs(prevTabs => [ ...prevTabs, tab ]);
@@ -127,8 +140,6 @@ export const useTabs = () => {
    }, [ setTabs, openTab ]);
 
    const deleteTab = useCallback((tabToDelete: Tab) => {
-      setCurrentTab(libraryTab);
-
       setTabs(prevTabs => {
          return prevTabs.filter(tab => {
             return testConditions({
@@ -137,7 +148,9 @@ export const useTabs = () => {
             }).any();
          });
       });
-   }, [ setTabs, setCurrentTab ]);
+
+      switchToNextOpenTab(tabToDelete.id);
+   }, [ setTabs, switchToNextOpenTab ]);
 
    return {
       getTabs,
