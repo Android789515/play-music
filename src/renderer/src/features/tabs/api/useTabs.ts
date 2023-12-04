@@ -105,7 +105,8 @@ export const useTabs = () => {
    }, [ setTabs, setCurrentTab ]);
 
    const switchToNextOpenTab = useCallback((tabLeftID: UUID) => {
-      const previousTabIndex = tabs.map(tab => tab.id)
+      const previousTabIndex = tabs.filter(tab => tab.isOpen)
+         .map(tab => tab.id)
          .indexOf(tabLeftID) - 1;
 
       const previousTab = tabs[previousTabIndex];
