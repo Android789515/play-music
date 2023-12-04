@@ -67,7 +67,8 @@ export const useTabs = () => {
             return tab;
          });
       });
-   }, [ setTabs, clearCurrentTab ]);
+
+   }, [ clearCurrentTab, setTabs ]);
 
    const openTab = useCallback((tabToOpenID: UUID) => {
       setTabs(prevTabs => {
