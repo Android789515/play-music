@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 import type { UUID } from '@globalTypes/stringTypes';
 import type { Tab, TabKey, TabData } from '../types';
 import { saveData } from 'features/save-data';
-import { tabsState } from '../stores';
+import { tabsState, libraryTrackMark } from '../stores';
 import { testConditions } from '@utils/boolean';
 
 interface TabSlice {
@@ -35,6 +35,15 @@ export const useTabs = () => {
          );
       });
    }, [ tabs ]);
+   
+   const getLibraryTab = useCallback(() => {
+      return getTab({
+         key: 'id', data: tabID => {
+            return tabID!.toString()
+               .includes(libraryTrackMark);
+         }
+      })!;
+   }, [ getTab ]);
    
    const getCurrentTab = useCallback(() => {
       return tabs.find(tab => tab.isCurrent);
@@ -131,6 +140,7 @@ export const useTabs = () => {
    return {
       getTabs,
       getTab,
+      getLibraryTab,
       getCurrentTab,
       setCurrentTab,
       openTab,

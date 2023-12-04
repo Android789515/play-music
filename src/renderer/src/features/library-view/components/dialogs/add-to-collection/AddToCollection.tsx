@@ -3,7 +3,6 @@ import { v4 as newUUID } from 'uuid';
 
 import type { UUID } from '@globalTypes/stringTypes';
 import { useTabs } from 'features/tabs';
-import { libraryTab } from 'features/tabs/stores';
 
 import styles from './AddToCollection.module.scss';
 
@@ -13,9 +12,9 @@ import { SongInfo } from 'components/song-info';
 export const addToCollectionID = newUUID();
 
 export const AddToCollection = () => {
-   const { getTab, updateTab, getCurrentTab } = useTabs();
+   const { getLibraryTab, updateTab, getCurrentTab } = useTabs();
 
-   const library = getTab(libraryTab.id)?.collection
+   const library = getLibraryTab().collection;
 
    const SongOptions = library?.map((song, index) => {
       return (
