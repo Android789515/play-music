@@ -10,6 +10,7 @@ const newLibraryTab = {
    name: 'Library',
    collection: await window.api.getSongs(),
    isPermanent: true,
+   isCurrent: true,
 };
 
 const keys = {
