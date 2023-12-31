@@ -23,7 +23,7 @@
       "@electron-toolkit/preload": "^3.0.0",
       "@electron-toolkit/utils": "^3.0.0",
       "electron-updater": "^6.1.7",
-      "music-metadata": "^7.14.0",
+      "music-metadata": "^8.2.0",
       "recoil": "^0.7.7",
       "sass": "^1.69.6",
       "uuid": "^9.0.1",
