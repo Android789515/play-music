@@ -18,21 +18,41 @@ const keys = {
    closedTabs: 'closedTabs',
 };
 
-const getPreviousTabData = () => {
+const refreshLibrary = async (tabData: Tab[]) => {
+   const musicLibrary = await window.api.getSongs();
+   
+   return tabData.map(tab => {
+      const isLibraryTab = tab.id.includes(libraryTrackMark);
+
+      if (isLibraryTab) {
+         const newLibraryTab: Tab = { ...tab, collection: musicLibrary };
+         
+         return newLibraryTab;
+      } else {
+         return tab;
+      }
+   });
+};
+
+const getPreviousTabData = async () => {
    const rawPreviousTabData = loadData(keys.tabs);
 
    if (rawPreviousTabData) {
-      const previousTabData = JSON.parse(rawPreviousTabData);
+      const previousTabData = JSON.parse(rawPreviousTabData) as Tab[];
 
-      return previousTabData;
+      const refreshedTabData = await refreshLibrary(previousTabData);
+      
+      return refreshedTabData;
+   } else {
+      const defaultData = [ newLibraryTab ];
+      
+      return defaultData;
    }
 };
 
 export const tabsState = atom<Tab[]>({
    key: keys.tabs,
-   default:
-      getPreviousTabData()
-      || [ newLibraryTab ]
+   default: getPreviousTabData(),
 });
 
 export const closedTabs = selector({
