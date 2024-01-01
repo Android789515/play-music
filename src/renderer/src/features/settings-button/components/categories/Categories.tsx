@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import type { UUID } from '@globalTypes/stringTypes';
 import type { Category } from './types';
 
@@ -10,24 +8,21 @@ import { Button } from 'components/button';
 
 interface Props {
    categories: Category[];
+   activeCategory: UUID;
+   setActiveCategory: (categoryID: UUID) => void;
 }
 
-export const Categories = ({ categories }: Props) => {
-   const firstCategoryID = categories[0].id;
-   const [ activeCategory, setActiveCategory ] = useState<UUID>(firstCategoryID);
-
-   const isActiveCategory = (categoryID: UUID) => {
-      return activeCategory === categoryID;
-   };
-
+export const Categories = ({ categories, activeCategory, setActiveCategory }: Props) => {
    const renderCategories = (categories: Category[]) => {
       return categories.map(({ id, name }, index) => {
+         const isActiveCategory = activeCategory === id;
+         
          return (
             <li key={index}>
                <Button
                   customStyles={`
                      ${styles.category}
-                     ${isActiveCategory(id) ? styles.activeCategory : ''}
+                     ${isActiveCategory ? styles.activeCategory : ''}
                   `}
                   onClick={() => {
                      setActiveCategory(id);
