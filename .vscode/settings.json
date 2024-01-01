@@ -32,6 +32,7 @@
     "project",
     "song-queue",
     "app-header",
+    "settings",
     "songs-api"
   ]
 }
