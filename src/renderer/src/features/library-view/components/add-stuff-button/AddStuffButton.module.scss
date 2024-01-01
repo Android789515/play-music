@@ -1,3 +1,7 @@
+@use 'sass:map';
+
+@use '../../../../breakpoints.scss' as *;
+
 .addStuffButton {
    font-size: .9rem;
    font-weight: 700;
@@ -19,4 +23,16 @@
 
 .addStuffText {
    margin: 0 1em;
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpSongs')) {
+   .addStuffButton {
+      font-size: 1rem;
+   }
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+   .addStuffButton {
+      font-size: 1.2rem;
+   }
 }
