@@ -1,7 +1,7 @@
 import settingsIcon from './assets/icons/settings.svg';
 import styles from './SettingsButton.module.scss';
 
-import { IconButton } from 'components/icon-button'
+import { IconButton } from 'components/icon-button';
 
 export const SettingsButton = () => {
    return (

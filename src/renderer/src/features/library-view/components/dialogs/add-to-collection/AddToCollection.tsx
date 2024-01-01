@@ -58,7 +58,7 @@ export const AddToCollection = () => {
          const songInLibrary = library.find(song => song.title === lastSelectedSong);
 
          if (songInLibrary) {
-            return songInLibrary
+            return songInLibrary;
          }
       }
 

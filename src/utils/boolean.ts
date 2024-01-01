@@ -8,7 +8,7 @@ export const testConditions = (conditionsBuilder: ConditionsBuilder) => {
    const conditionTests = Object.values(conditionsBuilder);
    const doesTestPass = (conditionTest: ConditionTest) => {
       return conditionTest() === true;
-   }
+   };
 
    return {
       all: () => conditionTests.every(doesTestPass),

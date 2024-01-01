@@ -49,7 +49,7 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
       );
 
       if (shouldSyncToControls) {
-         speaker.currentTime = time
+         speaker.currentTime = time;
       } else {
          updateAudioTime(speaker.currentTime);
       }

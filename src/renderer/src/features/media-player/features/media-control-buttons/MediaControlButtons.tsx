@@ -1,7 +1,7 @@
 import { useMediaPlayer } from 'features/media-player';
 import { useSongQueue } from 'features/song-queue';
 
-import { MediaControlsLayout } from './components'
+import { MediaControlsLayout } from './components';
 import { MediaControlButton } from './components/media-control-button';
 import { VolumeButton } from './components/volume-button';
 

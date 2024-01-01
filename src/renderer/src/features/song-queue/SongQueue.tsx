@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { isEmpty } from '@utils/array'
+import { isEmpty } from '@utils/array';
 import { useSongQueue } from './api';
 
 import styles from './SongQueue.module.scss';

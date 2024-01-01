@@ -23,6 +23,7 @@ module.exports = {
       'plugin:@typescript-eslint/eslint-recommended',
    ],
    rules: {
+      '@typescript-eslint/semi': 'error',
       '@typescript-eslint/ban-ts-comment': [
          'error',
          { 'ts-ignore': 'allow-with-description' },

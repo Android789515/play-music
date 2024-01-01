@@ -118,5 +118,5 @@ const adjustLocation = (contextMenu: HTMLDivElement) => {
       'top',
       window.innerHeight - bottom
    );
-}
+};
 
