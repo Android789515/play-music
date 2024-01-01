@@ -1,0 +1,16 @@
+.categories {
+   font-weight: 700;
+}
+
+.categoriesLayout {
+   display: grid;
+   grid-row-gap: 1em;
+}
+
+.category {
+   padding: .35em .75em;
+}
+
+.activeCategory {
+   background: var(--highlight);
+}
