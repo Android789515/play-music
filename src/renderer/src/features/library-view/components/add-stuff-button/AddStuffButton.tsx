@@ -1,8 +1,5 @@
-import { useRecoilState } from 'recoil';
-
 import { Tab } from 'features/tabs/types';
-import { dialogState } from 'components/dialog/stores';
-import { openDialog, setDialogContent } from 'components/dialog/api';
+import { useDialog } from 'components/dialog/api';
 import { addToCollectionID } from '../dialogs/add-to-collection';
 
 import styles from './AddStuffButton.module.scss';
@@ -15,19 +12,22 @@ interface Props {
 }
 
 export const AddStuffButton = ({ tab }: Props) => {
-   const [ _, setDialogState ] = useRecoilState(dialogState);
+   const { setDialogContent, openDialog } = useDialog();
 
    const isLibraryTab = tab.name === 'Library';
    const addToCollection = () => {
-      const renderDialog = setDialogContent(
-         isLibraryTab
+      setDialogContent({
+         content: (
+            isLibraryTab
             ? <p>Import</p>
             : <AddToCollection />
-      , isLibraryTab ? '' : addToCollectionID);
+         ),
+         dialogFormID: (
+            isLibraryTab ? '' : addToCollectionID
+         ),
+      });
 
-      renderDialog(setDialogState);
-
-      openDialog(setDialogState);
+      openDialog();
    };
 
    return (

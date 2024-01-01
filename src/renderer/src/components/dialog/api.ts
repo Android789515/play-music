@@ -1,31 +1,42 @@
 import type { ReactNode } from 'react';
-import { SetterOrUpdater } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 import type { FormID } from 'types/htmlTypes';
-import { DialogState } from './stores';
+import { dialogState } from './stores';
 
-const setOpened = (openedOrNot: boolean) => {
-   return (setDialogState: SetterOrUpdater<DialogState>) => {
-      setDialogState(prevState => {
+export const useDialog = () => {
+   const [ dialog, setDialog ] = useRecoilState(dialogState);
+
+   const getDialog = () => {
+      return dialog;
+   };
+
+   const setOpened = (openedOrNot: boolean) => {
+      setDialog(prevState => {
          return {
             ...prevState,
             opened: openedOrNot,
          };
       });
    };
-};
 
-export const openDialog = setOpened(true);
-export const closeDialog = setOpened(false);
+   const openDialog = () => setOpened(true);
+   const closeDialog = () => setOpened(false);
 
-export const setDialogContent = (content: ReactNode, dialogFormID?: FormID) => {
-   return (setDialogState: SetterOrUpdater<DialogState>) => {
-      setDialogState(prevState => {
+   const setDialogContent = ({ content, dialogFormID }: { content: ReactNode, dialogFormID?: FormID }) => {
+      setDialog(prevState => {
          return {
             ...prevState,
             content,
             dialogFormID,
          };
       });
+   };
+
+   return {
+      getDialog,
+      openDialog,
+      closeDialog,
+      setDialogContent,
    };
 };

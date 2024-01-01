@@ -1,15 +1,15 @@
-import { useRecoilState } from 'recoil';
 import { useDeferredValue } from 'react';
 
-import { dialogState } from './stores';
-import { closeDialog } from './api';
+import { useDialog } from './api';
 
 import defaultStyles from './Dialog.module.scss';
 
 import { DialogButtons } from './components/dialog-buttons';
 
 export const Dialog = () => {
-   const [{ opened, content, dialogFormID }, updateDialog] = useRecoilState(dialogState);
+   const { getDialog, closeDialog } = useDialog();
+
+   const { opened, content, dialogFormID } = getDialog();
 
    const isOpenedAfterRendering = useDeferredValue(opened);
    return ( isOpenedAfterRendering ?
@@ -24,10 +24,10 @@ export const Dialog = () => {
          <DialogButtons
             form={dialogFormID}
             onCancel={unusedEvent => {
-               closeDialog(updateDialog);
+               closeDialog();
             }}
             onConfirm={unusedEvent => {
-               closeDialog(updateDialog);
+               closeDialog();
             }}
          />
       </dialog>
