@@ -20,7 +20,6 @@ export const DialogButtons = ({ form, onCancel, onConfirm }: Props) => {
          className={styles.dialogButtons}
       >
          <CancelButton
-            form={form}
             onClick={onCancel}
          />
 
