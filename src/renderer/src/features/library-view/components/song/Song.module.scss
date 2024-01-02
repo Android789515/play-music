@@ -4,7 +4,7 @@
 
 .songLayout {
    display: grid;
-   grid-template-columns: max-content 54% auto;
+   grid-template-columns: 2.604166666666667em 54% auto;
    grid-column-gap: .75em;
    align-items: center;
 }
@@ -14,12 +14,20 @@
 }
 
 @media (min-width: map.get($breakpoints, 'scaleUpSongs')) {
+   .songLayout {
+      grid-template-columns: 3.125em 54% auto;
+   }
+   
    .song > * {
       font-size: 1rem;
    }
 }
 
 @media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+   .songLayout {
+      grid-template-columns: 4em 54% auto;
+   }
+   
    .song > * {
       font-size: 1.2rem;
    }
