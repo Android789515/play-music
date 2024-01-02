@@ -1,9 +1,9 @@
 import { app } from 'electron';
 
 import type { Song } from './types';
-
+import type { Path } from '@globalTypes/fileTypes';
 import { readContentsOfDir } from '../utils/files';
-import { getSongsFromDir, createSong } from './helpers';
+import { getSongsFromDir, createSong, createPathToCoverArt } from './helpers';
 
 const getSongs = async (): Promise<Song[]> => {
    const musicDir = readContentsOfDir(
@@ -17,9 +17,17 @@ const getSongs = async (): Promise<Song[]> => {
    return await Promise.all(fileTags);
 };
 
+const loadCoverArt = async (songPath: Path): Promise<Path | null> => {
+   return await createPathToCoverArt(songPath);
+};
+
 export const songsAPI = {
    getSongs: {
       name: 'getSongs',
       fn: getSongs,
+   },
+   loadCoverArt: {
+      name: 'loadCoverArt',
+      fn: loadCoverArt,
    },
 };

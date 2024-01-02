@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 import type { Song as SongType } from '@api/types';
 
 import { useMediaPlayer } from 'features/media-player';
@@ -15,6 +17,16 @@ interface Props {
 }
 
 export const Song = ({ song }: Props) => {
+   
+   const [ coverArt, setCoverArt ] = useState();
+
+   const loadCoverArt = () => {
+      window.api.loadCoverArt(song.path).then(coverArt => {
+         setCoverArt(coverArt);
+      });
+   };
+
+   useEffect(loadCoverArt, [ song.path ]);
 
    const { playSong } = useMediaPlayer();
    const { queueSong } = useSongQueue();
@@ -31,7 +43,7 @@ export const Song = ({ song }: Props) => {
       }
    ];
 
-   const { coverArt, title, artists, duration } = song;
+   const { title, artists, duration } = song;
    return (
       <ButtonWithContextMenu
          menuStructure={songMenu}
