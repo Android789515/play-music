@@ -2,16 +2,39 @@
 
 @use '../../breakpoints.scss' as *;
 
-.coverArt {
-   width: max-content;
+.coverArt,
+.defaultCoverArt {
+   display: grid;
+   justify-content: center;
+   align-items: center;
 
-   padding: .75em;
-   background: var(--defaultCoverArtBG);
+   aspect-ratio: 1;
+
+   overflow: hidden;
+
    border-radius: var(--borderRadiusStandard);
 }
 
+.defaultCoverArt {
+   padding: .75em;
+   background: var(--defaultCoverArtBG);
+}
+
+.coverArt {
+   // Restore cover art colors.
+   filter: invert(1);
+}
+
+.coverArtIcon {
+   object-fit: cover;
+   
+   aspect-ratio: 1;
+
+   width: 100%;
+}
+
 @media (min-width: map.get($breakpoints, 'scaleUpSongs')) {
-   .coverArtIcon {
+   .defaultCoverArtIcon {
       width: 1.6em;
    }
 }
