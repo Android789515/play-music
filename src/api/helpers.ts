@@ -1,6 +1,7 @@
-import { parseFile } from 'music-metadata';
+import { IPicture, parseFile, selectCover } from 'music-metadata';
 import { v4 as newUUID } from 'uuid';
 
+import type { Song } from './types';
 import { isEmpty } from '../utils/array';
 import { PathDetails, formatFileName } from './../utils/files';
 
@@ -12,11 +13,24 @@ export const getArtists = (artists: string[] | undefined) => {
    return '';
 };
 
-export const createSong = async ({ name, path }: PathDetails) => {
+const createPathToCoverArt = (coverArt: IPicture | null) => {
+   if (coverArt) {
+      const { format: mime, data } = coverArt;
+
+      const image = data.toString('base64');
+      return (
+         `data:${mime};base64,${image}`
+      );
+   } else {
+      return null;
+   }
+};
+
+export const createSong = async ({ name, path }: PathDetails): Promise<Song> => {
    const parsedFile = await parseFile(path);
 
    const {
-      common: { title, artists },
+      common: { title, artists, picture },
       format: { duration },
    } = parsedFile;
 
@@ -26,6 +40,7 @@ export const createSong = async ({ name, path }: PathDetails) => {
       artists: getArtists(artists),
       duration: duration || 0,
       path: encodeURI(path),
+      coverArt: createPathToCoverArt(selectCover(picture)),
    };
 };
 

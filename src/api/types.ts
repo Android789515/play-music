@@ -7,5 +7,5 @@ export interface Song {
    artists: string;
    duration: number;
    path: Path;
-   coverArt?: Path;
+   coverArt?: Path | null;
 }
