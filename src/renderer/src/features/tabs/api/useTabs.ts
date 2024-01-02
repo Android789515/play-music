@@ -160,6 +160,7 @@ export const useTabs = () => {
 
    return {
       getTabs,
+      setTabs,
       getTab,
       getLibraryTab,
       getCurrentTab,

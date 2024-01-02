@@ -5,10 +5,10 @@ import type { Tab } from '../types';
 import { loadData } from 'features/save-data';
 
 export const libraryTrackMark = 'library';
-const newLibraryTab = {
+export const newLibraryTab: Tab = {
    id: newUUID() + libraryTrackMark,
    name: 'Library',
-   collection: await window.api.getSongs(),
+   collection: [],
    isPermanent: true,
    isCurrent: true,
 };
@@ -18,41 +18,23 @@ const keys = {
    closedTabs: 'closedTabs',
 };
 
-const refreshLibrary = async (tabData: Tab[]) => {
-   const musicLibrary = await window.api.getSongs();
-   
-   return tabData.map(tab => {
-      const isLibraryTab = tab.id.includes(libraryTrackMark);
+const defaultTabData = [ newLibraryTab ];
 
-      if (isLibraryTab) {
-         const newLibraryTab: Tab = { ...tab, collection: musicLibrary };
-         
-         return newLibraryTab;
-      } else {
-         return tab;
-      }
-   });
-};
-
-const getPreviousTabData = async () => {
+export const getPreviousTabData = () => {
    const rawPreviousTabData = loadData(keys.tabs);
 
    if (rawPreviousTabData) {
       const previousTabData = JSON.parse(rawPreviousTabData) as Tab[];
 
-      const refreshedTabData = await refreshLibrary(previousTabData);
-      
-      return refreshedTabData;
-   } else {
-      const defaultData = [ newLibraryTab ];
-      
-      return defaultData;
+      return previousTabData;
+   } else {      
+      return defaultTabData;
    }
 };
 
 export const tabsState = atom<Tab[]>({
    key: keys.tabs,
-   default: getPreviousTabData(),
+   default: defaultTabData,
 });
 
 export const closedTabs = selector({
