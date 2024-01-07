@@ -27,7 +27,7 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
       } else if (needToPlay) {
          speaker.play();
       }
-   }, [ controls.isPaused ]);
+   }, [ controls ]);
 
    const syncSpeakerWithControls = () => {
       if (speaker) {
