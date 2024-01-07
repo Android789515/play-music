@@ -1,3 +1,61 @@
+@use 'sass:math';
+
+.asyncSpinnerLayout {
+   $size: 4em;
+   width: $size;
+   height: $size;
+}
+
+@function getCircumference($radius) {
+   @return 2 * math.$pi * $radius;
+}
+
 .asyncSpinner {
+   stroke: var(--textColor);
+   stroke-width: .5em;
+   stroke-linecap: round;
+
+   fill: transparent;
+
+   $radius: 1.25em;
+   r: $radius;
+   $circumference: getCircumference($radius);
+   stroke-dasharray: $circumference $circumference;
+
+   $offset: 2em;
+   cx: $offset;
+   cy: $offset;
+   $toCenter: 50%;
+   transform-origin: $toCenter $toCenter;
+
+   // $asyncSpinAnimation: cubic-bezier(1, 0, 0.62, 0.85);
+   // $asyncSpinAnimation: cubic-bezier(.53, .93, .47, .08); better
+   // $asyncSpinAnimation: cubic-bezier(.53, .93, .77, -0.02); even better
+   $asyncSpinAnimation: cubic-bezier(.53, .93, .34, -0.02);
+   $barGrowthAnimation: 1;
    
+   $animationTime: 3.1s;
+   animation: 
+      rotate 2s linear infinite,
+      barGrowth $animationTime $asyncSpinAnimation infinite;
+}
+
+@keyframes rotate {
+   from {
+      rotate: 0deg;
+   }
+
+   to {
+      rotate: 360deg;
+   }
+}
+
+@keyframes barGrowth {
+   from {
+      stroke-dashoffset: 150;
+   }
+
+   to {
+      stroke-dashoffset: -95;
+   }
 }
