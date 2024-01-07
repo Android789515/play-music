@@ -7,6 +7,11 @@ import styles from './LibraryView.module.scss';
 
 import { AddStuffButton } from './components/add-stuff-button';
 import { AsyncSpinner } from 'components/async-spinner';
+const SongCollection = lazy(async () => {
+   const { SongCollection } = await import('./components/song-collection');
+
+   return ({ default: SongCollection });
+});
 
 export const LibraryView = () => {
    const { setTabs, getCurrentTab } = useTabs();
@@ -32,11 +37,6 @@ export const LibraryView = () => {
 
    useEffect(loadTabData, [ setTabs ]);
 
-   const SongCollection = lazy(async () => {
-      const { SongCollection } = await import('./components/song-collection');
-
-      return ({ default: SongCollection });
-   });
    return (
       <div
          className={styles.libraryView}
