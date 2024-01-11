@@ -1,6 +1,5 @@
-import { Tab } from 'features/tabs/types';
-import { useDialog } from 'components/dialog/api';
-import { addToCollectionID } from '../dialogs/add-to-collection';
+import { Tab } from 'features/tabs';
+import { useDialog } from 'components/dialog';
 
 import styles from './AddStuffButton.module.scss';
 
@@ -12,28 +11,31 @@ interface Props {
 }
 
 export const AddStuffButton = ({ tab }: Props) => {
-   const { setDialogContent, openDialog } = useDialog();
 
    const isLibraryTab = tab.name === 'Library';
-   const addToCollection = () => {
-      setDialogContent({
-         content: (
-            isLibraryTab
-            ? <p>Import</p>
-            : <AddToCollection />
-         ),
-         dialogFormID: (
-            isLibraryTab ? '' : addToCollectionID
-         ),
-      });
 
-      openDialog();
+   const { openDialog, closeDialog } = useDialog();
+
+   const openAddStuffDialog = () => {
+      const content = (
+         isLibraryTab
+            ? <p>Import</p>
+            : <AddToCollection
+               currentTab={tab}
+               closeDialog={closeDialog}
+            />
+      );
+
+      openDialog({
+         content,
+         dialogFormID: tab.id,
+      });
    };
 
    return (
       <Button
          customStyles={styles.addStuffButton}
-         onClick={addToCollection}
+         onClick={openAddStuffDialog}
       >
          <h4
             className={styles.addStuffText}

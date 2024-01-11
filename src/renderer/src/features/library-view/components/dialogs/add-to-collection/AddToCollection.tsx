@@ -1,18 +1,21 @@
-import { FormEvent, ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { v4 as newUUID } from 'uuid';
 
 import type { UUID } from '@globalTypes/stringTypes';
-import { useTabs } from 'features/tabs';
+import { Tab, useTabs } from 'features/tabs';
 
 import styles from './AddToCollection.module.scss';
 
 import { CoverArt } from 'components/cover-art';
 import { SongInfo } from 'components/song-info';
 
-export const addToCollectionID = newUUID();
+interface Props {
+   currentTab: Tab;
+   closeDialog: () => void;
+}
 
-export const AddToCollection = () => {
-   const { getLibraryTab, updateTab, getCurrentTab } = useTabs();
+export const AddToCollection = ({ currentTab: { id: tabID, collection }, closeDialog }: Props) => {
+   const { getLibraryTab, updateTab } = useTabs();
 
    const library = getLibraryTab().collection;
 
@@ -36,21 +39,6 @@ export const AddToCollection = () => {
       setSelectedSongs(selectedSongs);
    };
 
-   const confirmSelectedSongs = (event: FormEvent) => {
-      event.preventDefault();
-
-      const currentTab = getCurrentTab();
-      if (currentTab && library) {
-         const currentCollection = currentTab.collection;
-         const songsFromLibrary = library.filter(song => selectedSongs.includes(song.title));
-
-         updateTab(currentTab.id, {
-            key: 'collection',
-            data: [ ...currentCollection, ...songsFromLibrary ]
-         });
-      }
-   };
-
    const getLastSelectedSongInfo = () => {
       const lastSelectedSong = selectedSongs[selectedSongs.length - 1];
 
@@ -65,10 +53,23 @@ export const AddToCollection = () => {
       return null;
    };
 
+   const confirmSelectedSongs = () => {
+      if (library) {
+         const songsFromLibrary = library.filter(song => selectedSongs.includes(song.title));
+
+         updateTab(tabID, {
+            key: 'collection',
+            data: [...collection, ...songsFromLibrary]
+         });
+      }
+
+      closeDialog();
+   };
+
    return (
       <section className={styles.dialogContent}>
          <form
-            id={addToCollectionID}
+            id={tabID}
             className={styles.collection}
             // @ts-ignore onSubmit is
             // a valid HTML listener
