@@ -2,6 +2,7 @@ import { RecoilRoot } from 'recoil';
 
 import styles from './App.module.scss';
 
+import { SettingsProvider } from 'features/settings';
 import { AppHeader } from 'components/app-header';
 import { AppMain } from 'components/app-main';
 import { SongQueue } from 'features/song-queue';
@@ -12,17 +13,19 @@ import { Dialog } from 'components/dialog';
 export const App = () => {
    return (
       <RecoilRoot>
-         <div className={styles.app}>
-            <AppHeader />
+         <SettingsProvider>
+            <div className={styles.app}>
+               <AppHeader />
 
-            <AppMain />
+               <AppMain />
 
-            <SongQueue />
+               <SongQueue />
 
-            <Dialog />
+               <Dialog />
 
-            <MediaPlayer />
-         </div>
+               <MediaPlayer />
+            </div>
+         </SettingsProvider>
       </RecoilRoot>
    );
 };
