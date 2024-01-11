@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { useRecoilState } from 'recoil';
 
 import type { FormID } from 'types/htmlTypes';
-import { dialogState } from './stores';
+import { dialogState } from '../stores';
 
 export const useDialog = () => {
    const [ dialog, setDialog ] = useRecoilState(dialogState);
