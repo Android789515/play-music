@@ -1,4 +1,4 @@
-import { useDialog } from 'components/dialog/api';
+import { useDialog } from 'components/dialog';
 
 import settingsIcon from './assets/icons/settings.svg';
 import styles from './SettingsButton.module.scss';
@@ -7,14 +7,14 @@ import { SettingsDialog } from './components/settings-dialog';
 import { IconButton } from 'components/icon-button';
 
 export const SettingsButton = () => {
-   const { setDialogContent, openDialog } = useDialog();
+   const { openDialog, closeDialog } = useDialog();
 
    const openSettingsDialog = () => {
-      setDialogContent({
-         content: <SettingsDialog />,
-      });
-
-      openDialog();
+      openDialog(
+         <SettingsDialog
+            closeDialog={closeDialog}
+         />
+      );
    };
 
    return (
