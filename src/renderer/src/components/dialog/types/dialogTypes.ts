@@ -16,3 +16,8 @@ export interface DialogState extends DialogContent {
    opened: boolean;
    handlers?: DialogHandlers;
 }
+
+export enum DialogResponses {
+   confirm = 'confirm',
+   cancel = 'cancel',
+}

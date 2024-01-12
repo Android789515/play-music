@@ -1,34 +1,53 @@
-import { useDeferredValue } from 'react';
+import { SyntheticEvent, useDeferredValue } from 'react';
 
+import { DialogResponses } from './types';
 import { useDialog } from './api';
 
-import defaultStyles from './Dialog.module.scss';
+import styles from './Dialog.module.scss';
 
 import { DialogButtons } from './components/dialog-buttons';
 
 export const Dialog = () => {
    const { getDialog, closeDialog } = useDialog();
 
-   const { opened, content, dialogFormID } = getDialog();
+   const { opened, content, dialogFormID, handlers } = getDialog();
 
-   const isOpenedAfterRendering = useDeferredValue(opened);
-   return ( isOpenedAfterRendering ?
+   const handleClose = (event: SyntheticEvent<HTMLDialogElement>) => {
+      if (handlers) {
+         const { onConfirm, onCancel } = handlers;
+
+         const dialog = event.target as HTMLDialogElement;
+
+         const response = dialog.returnValue;
+
+         switch (response) {
+            case DialogResponses.confirm:
+               onConfirm();
+               break;
+
+            case DialogResponses.cancel:
+               onCancel();
+               break;
+
+            default:
+               break;
+         }
+      }
+
+      closeDialog();
+   };
+
+   const deferOpened = useDeferredValue(opened);
+   return ( deferOpened ?
       <dialog
-         className={`
-            ${defaultStyles.dialog}
-         `}
-         open={isOpenedAfterRendering}
+         className={styles.dialog}
+         open={deferOpened}
+         onClose={handleClose}
       >
          {content}
 
          <DialogButtons
             form={dialogFormID}
-            onCancel={unusedEvent => {
-               closeDialog();
-            }}
-            onConfirm={unusedEvent => {
-               closeDialog();
-            }}
          />
       </dialog>
       : null );
