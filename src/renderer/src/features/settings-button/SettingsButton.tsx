@@ -1,3 +1,5 @@
+import { v4 as newUUID } from 'uuid';
+
 import { useDialog } from 'components/dialog';
 
 import settingsIcon from './assets/icons/settings.svg';
@@ -7,14 +9,19 @@ import { SettingsDialog } from './components/settings-dialog';
 import { IconButton } from 'components/icon-button';
 
 export const SettingsButton = () => {
-   const { openDialog, closeDialog } = useDialog();
+   const { openDialog } = useDialog();
 
    const openSettingsDialog = () => {
-      openDialog(
-         <SettingsDialog
-            closeDialog={closeDialog}
-         />
-      );
+      const settingsDialogID = newUUID();
+
+      openDialog({
+         content: (
+            <SettingsDialog
+               formID={settingsDialogID}
+            />
+         ),
+         dialogFormID: settingsDialogID,
+      });
    };
 
    return (

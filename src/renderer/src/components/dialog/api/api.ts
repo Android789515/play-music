@@ -1,6 +1,8 @@
 import { useRecoilState } from 'recoil';
+import { useCallback } from 'react';
 
-import { DialogContent, dialogState } from '../stores';
+import type { DialogContent, DialogHandlers } from '../types';
+import { dialogState } from '../stores';
 
 export const useDialog = () => {
    const [ dialog, setDialog ] = useRecoilState(dialogState);
@@ -13,6 +15,7 @@ export const useDialog = () => {
       setDialog(prevState => {
          return {
             ...prevState,
+            opened: true,
             content,
             dialogFormID,
          };
@@ -23,15 +26,37 @@ export const useDialog = () => {
       setDialog(prevState => {
          return {
             ...prevState,
+            opened: false,
             content: null,
             dialogFormID: undefined,
          };
       });
    };
 
+   const clearHandlers = useCallback(() => {
+      setDialog(prevState => {
+         return {
+            ...prevState,
+            handlers: undefined,
+         };
+      });
+   }, [ setDialog ]);
+
+   const setHandlers = useCallback((handlers: DialogHandlers) => {
+      setDialog(prevState => {
+         return {
+            ...prevState,
+            handlers,
+         };
+      });
+
+      return clearHandlers;
+   }, [ setDialog, clearHandlers ]);
+
    return {
       getDialog,
       openDialog,
       closeDialog,
+      setHandlers,
    };
 };

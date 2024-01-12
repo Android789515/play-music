@@ -7,6 +7,12 @@ export interface DialogContent {
    dialogFormID: FormID | undefined;
 }
 
+export interface DialogHandlers {
+   onConfirm: () => void;
+   onCancel: () => void;
+}
+
 export interface DialogState extends DialogContent {
    opened: boolean;
+   handlers?: DialogHandlers;
 }
