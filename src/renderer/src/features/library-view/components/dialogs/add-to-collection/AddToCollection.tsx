@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react';
-import { v4 as newUUID } from 'uuid';
 
 import type { UUID } from '@globalTypes/stringTypes';
 import { Tab, useTabs } from 'features/tabs';
+import { DialogSubmitter } from 'components/dialog/components/dialog-submitter';
 
 import styles from './AddToCollection.module.scss';
 
@@ -62,18 +62,15 @@ export const AddToCollection = ({ currentTab: { id: tabID, collection }, closeDi
             data: [...collection, ...songsFromLibrary]
          });
       }
-
-      closeDialog();
    };
 
    return (
       <section className={styles.dialogContent}>
-         <form
-            id={tabID}
-            className={styles.collection}
-            // @ts-ignore onSubmit is
-            // a valid HTML listener
-            onSubmit={confirmSelectedSongs}
+         <DialogSubmitter
+            formID={tabID}
+            customStyles={styles.collection}
+            onConfirm={confirmSelectedSongs}
+            onCancel={() => {}}
          >
             <select
                className={styles.collectionLayout}
@@ -83,7 +80,7 @@ export const AddToCollection = ({ currentTab: { id: tabID, collection }, closeDi
             >
                {SongOptions}
             </select>
-         </form>
+         </DialogSubmitter>
 
          {getLastSelectedSongInfo() && <aside className={styles.selectedSongInfo}>
             <CoverArt

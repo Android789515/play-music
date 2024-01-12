@@ -1,20 +1,29 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { v4 as newUUID } from 'uuid';
 
-import type { Category } from '../categories/types';
 import type { UUID } from '@globalTypes/stringTypes';
+import { settingsContext } from 'features/settings/SettingsProvider';
 
 import styles from './SettingsDialog.module.scss';
 
 import { Categories } from '../categories';
 import { GeneralSettings } from '../general-settings';
+import { DialogSubmitter } from 'components/dialog/components/dialog-submitter';
 
-export const SettingsDialog = () => {
+interface Props {
+   formID: UUID;
+}
+
+export const SettingsDialog = ({ formID }: Props) => {
+   const { saveAppliedSettings, revertChangedSettings } = useContext(settingsContext);
+
    const [ categories, _ ] = useState([
       {
          id: newUUID(),
          name: 'General',
-         component: <GeneralSettings />,
+         component: (
+            <GeneralSettings />
+         ),
       },
       {
          id: newUUID(),
@@ -43,6 +52,13 @@ export const SettingsDialog = () => {
       <section
          className={styles.dialogContent}
       >
+         <DialogSubmitter
+            formID={formID}
+            customStyles={styles.submission}
+            onConfirm={saveAppliedSettings}
+            onCancel={revertChangedSettings}
+         />
+
          <Categories
             categories={categories}
             activeCategory={activeCategory}
