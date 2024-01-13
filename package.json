@@ -7,6 +7,9 @@
    "author": "Android789515",
    "homepage": "https://github.com/Android789515/play-music",
    "scripts": {
+      "patch": "npm version patch && git push",
+      "minor": "npm version minor && git push",
+      "major": "npm version major && git push",
       "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
       "typecheck:node": "tsc --noEmit -p tsconfig.node.json --composite false",
       "typecheck:web": "tsc --noEmit -p tsconfig.web.json --composite false",
