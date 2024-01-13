@@ -1,14 +1,14 @@
 .libraryView {
    display: grid;
-   grid-template-rows: auto 1em 1fr;
+   grid-template-rows: auto 1fr;
    grid-template-columns: 100%;
-   grid-row-gap: .25em;
+   grid-row-gap: 1.25em;
 
    height: 100%;
 }
 
 .loadingSpinnerLayout.loadingSpinnerLayout {
-   grid-row: 3;
+   grid-row: 2;
    justify-self: center;
 
    transform: scale(1.125) translateY(1.125em);
