@@ -31,6 +31,33 @@
    outline: none;
 }
 
+.searchBarInput::-webkit-search-cancel-button {
+   -webkit-appearance: none;
+   content: url('./assets/icons/clear.svg');
+
+   filter: var(--matchAppTheme);
+
+   cursor: pointer;
+
+   $size: 1em;
+   width: $size;
+   height: $size;
+
+   padding: .125em;
+   border-radius: var(--borderRadiusStandard);
+
+   margin-right: -.125em;
+}
+
+.searchBarInput::-webkit-search-cancel-button:focus,
+.searchBarInput::-webkit-search-cancel-button:hover {
+   background: var(--searchClearHighlight);
+}
+
+.searchBarInput::-webkit-search-cancel-button:active {
+   background: var(--searchClearSelected);
+}
+
 @media (min-width: 21.875em) {
    .searchBar {
       width: 8.5em;
