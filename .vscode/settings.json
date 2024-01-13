@@ -33,6 +33,7 @@
     "song-queue",
     "app-header",
     "settings",
-    "songs-api"
+    "songs-api",
+    "search"
   ]
 }
