@@ -1,7 +1,7 @@
 import searchIcon from './assets/icons/search.svg';
 import styles from './SearchBar.module.scss';
 
-import { SearchBarLayout } from './components';
+import { SearchBarLayout } from './components/layout';
 import { Icon } from 'components/icon';
 
 export const SearchBar = () => {
