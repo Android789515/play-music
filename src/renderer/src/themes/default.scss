@@ -12,6 +12,8 @@
 
    --matchAppTheme: initial;
 
+   --importButtonBG: #cecece;
+
    --widgetBG: #f7f7f7;
    --widgetBorder: solid #e3e3e3 1px;
    --borderRadiusStandard: 0.25em;
@@ -30,6 +32,8 @@
       /* Bar BG = selected */
 
       --matchAppTheme: invert(1);
+
+      --importButtonBG: #3f3f3f;
 
       --widgetBG: #343535;
       --widgetBorder: solid #191919 1px;
