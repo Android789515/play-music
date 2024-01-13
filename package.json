@@ -1,6 +1,6 @@
 {
    "name": "play-music",
-   "version": "0.8.2-alpha",
+   "version": "0.9.2-alpha",
    "description": "An Electron application with React and TypeScript",
    "type": "module",
    "main": "./out/main/main.js",
@@ -21,13 +21,8 @@
    },
    "devDependencies": {
       "@electron-toolkit/preload": "^3.0.0",
-      "@electron-toolkit/utils": "^3.0.0",
-      "electron-updater": "^6.1.7",
-      "music-metadata": "^8.2.0",
-      "recoil": "^0.7.7",
-      "sass": "^1.69.6",
-      "uuid": "^9.0.1",
       "@electron-toolkit/tsconfig": "^1.0.1",
+      "@electron-toolkit/utils": "^3.0.0",
       "@electron/notarize": "^2.2.0",
       "@types/node": "^20.10.6",
       "@types/react": "^18.2.46",
@@ -38,13 +33,19 @@
       "@vitejs/plugin-react": "^4.2.1",
       "electron": "^28.1.0",
       "electron-builder": "^24.10.0",
+      "electron-updater": "^6.1.7",
       "electron-vite": "^2.0.0-beta.2",
       "eslint": "^8.56.0",
       "eslint-plugin-react": "^7.33.2",
       "eslint-plugin-react-hooks": "^4.6.0",
+      "fuse.js": "^7.0.0",
+      "music-metadata": "^8.2.0",
       "react": "^18.2.0",
       "react-dom": "^18.2.0",
+      "recoil": "^0.7.7",
+      "sass": "^1.69.6",
       "typescript": "^5.3.3",
+      "uuid": "^9.0.1",
       "vite": "^4.0.5"
    }
 }
