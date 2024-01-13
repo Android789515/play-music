@@ -4,6 +4,7 @@ import { AppHeaderLayout } from './components';
 import { Tabs } from 'features/tabs';
 import { NewTabButton } from 'features/new-tab-button';
 
+import { SearchProvider } from 'components/search-bar';
 import { SearchBar } from 'components/search-bar';
 
 import { SettingsButton } from 'features/settings-button';
@@ -17,7 +18,9 @@ export const AppHeader = () => {
 
                <NewTabButton />
 
-               <SearchBar />
+               <SearchProvider
+                  Consumer={SearchBar}
+               />
 
                <SettingsButton />
             </AppHeaderLayout>
