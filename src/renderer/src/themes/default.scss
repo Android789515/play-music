@@ -10,7 +10,7 @@
 
    --defaultCoverArtBG: #dad6d6;
 
-   --iconColor: initial;
+   --matchAppTheme: initial;
 
    --widgetBG: #f7f7f7;
    --widgetBorder: solid #e3e3e3 1px;
@@ -29,7 +29,7 @@
 
       /* Bar BG = selected */
 
-      --iconColor: invert(1);
+      --matchAppTheme: invert(1);
 
       --widgetBG: #343535;
       --widgetBorder: solid #191919 1px;

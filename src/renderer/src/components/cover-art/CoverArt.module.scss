@@ -22,7 +22,7 @@
 
 .coverArt {
    // Restore cover art colors.
-   filter: invert(1);
+   filter: var(--matchAppTheme);
 }
 
 .coverArtIcon {
