@@ -1,8 +1,11 @@
 .setting {
    display: grid;
    grid-template-rows: auto 1fr;
+   grid-row-gap: .75em;
 
    width: 100%;
+
+   padding: .125em;
 }
 
 .settingText {
@@ -11,5 +14,6 @@
 
    display: block;
 
+   padding-bottom: .5em;
    border-bottom: solid 2px #6e6e6e;
 }

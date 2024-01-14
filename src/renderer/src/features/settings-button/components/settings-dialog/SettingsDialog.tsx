@@ -14,19 +14,20 @@ interface Props {
 }
 
 export const SettingsDialog = ({ formID }: Props) => {
-   const { getCurrentSettings, saveAppliedSettings, revertChangedSettings } = useContext(settingsContext);
+   const { getCurrentSettings, changeSetting, saveAppliedSettings, revertChangedSettings } = useContext(settingsContext);
 
    const [ activeCategory, setActiveCategory ] = useState('general');
 
    const categories = Object.entries(getCurrentSettings())
       .map(([ settingSlice, settings ]) => {
          const [ name ] = settingSlice.split('Settings');
-
+         
          return {
             name,
             component: (
                <Settings
                   settings={settings}
+                  changeSetting={changeSetting}
                />
             ),
          };
