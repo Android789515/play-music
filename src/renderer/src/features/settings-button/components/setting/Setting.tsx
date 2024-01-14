@@ -12,7 +12,12 @@ export const Setting = ({ name, children }: Props) => {
       <label
          className={styles.setting}
       >
-         {name}
+         <span
+            className={styles.settingText}
+         >
+            {name}
+         </span>
+
          {children}
       </label>
    );

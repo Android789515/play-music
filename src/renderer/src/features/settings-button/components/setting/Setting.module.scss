@@ -1,3 +1,15 @@
 .setting {
+   display: grid;
+   grid-template-rows: auto 1fr;
 
+   width: 100%;
+}
+
+.settingText {
+   font-weight: 700;
+   text-transform: capitalize;
+
+   display: block;
+
+   border-bottom: solid 2px #6e6e6e;
 }
