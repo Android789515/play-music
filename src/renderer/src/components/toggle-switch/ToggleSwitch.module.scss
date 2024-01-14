@@ -1,0 +1,44 @@
+.toggleSwitch.toggleSwitch {
+   display: grid;
+   align-items: center;
+
+   background: var(--BG);
+}
+
+.toggleSwitch.toggleSwitch > * {
+   grid-row: 1;
+   grid-column: 1;
+}
+
+.toggleSwitchText {
+   font-weight: 700;
+   text-align: right;
+
+   pointer-events: none;
+}
+
+.toggleSwitchKnob {
+   $size: 1em;
+   width: $size;
+   height: $size;
+
+   background: var(--selected);
+   border-radius: var(--borderRadiusStandard);
+
+   transform: scale(1);
+   transition: margin-left 250ms, transform 250ms;
+}
+
+.toggleSwitchKnobRight {
+   background: var(--barTrackColor);
+
+   margin-left: calc(100% - 1em);
+}
+
+.toggleSwitchKnobRight ~ .toggleSwitchText {
+   text-align: left;
+}
+
+.toggleSwitch.toggleSwitch:active .toggleSwitchKnob {
+   transform: scale(.8);
+}
