@@ -1,4 +1,3 @@
-import type { UUID } from '@globalTypes/stringTypes';
 import type { Category } from './types';
 
 import styles from './Categories.module.scss';
@@ -8,14 +7,14 @@ import { Button } from 'components/button';
 
 interface Props {
    categories: Category[];
-   activeCategory: UUID;
-   setActiveCategory: (categoryID: UUID) => void;
+   activeCategory: string;
+   setActiveCategory: (categoryName: string) => void;
 }
 
 export const Categories = ({ categories, activeCategory, setActiveCategory }: Props) => {
    const renderCategories = (categories: Category[]) => {
-      return categories.map(({ id, name }, index) => {
-         const isActiveCategory = activeCategory === id;
+      return categories.map(({ name }, index) => {
+         const isActiveCategory = activeCategory === name;
          
          return (
             <li key={index}>
@@ -25,7 +24,7 @@ export const Categories = ({ categories, activeCategory, setActiveCategory }: Pr
                      ${isActiveCategory ? styles.activeCategory : ''}
                   `}
                   onClick={() => {
-                     setActiveCategory(id);
+                     setActiveCategory(name);
                   }}
                >
                   {name}

@@ -1,5 +1,4 @@
-import { useContext, useMemo, useState } from 'react';
-import { v4 as newUUID } from 'uuid';
+import { useContext, useState } from 'react';
 
 import type { UUID } from '@globalTypes/stringTypes';
 import { settingsContext } from 'features/settings/SettingsProvider';
@@ -17,29 +16,27 @@ interface Props {
 export const SettingsDialog = ({ formID }: Props) => {
    const { getCurrentSettings, saveAppliedSettings, revertChangedSettings } = useContext(settingsContext);
 
-   const categories = useMemo(() => {
-      return Object.entries(getCurrentSettings())
-         .map(([settingSlice, settings]) => {
-            const [name] = settingSlice.split('Settings');
+   const [ activeCategory, setActiveCategory ] = useState('general');
 
-            return {
-               id: newUUID(),
-               name,
-               component: (
-                  <Settings
-                     settings={settings}
-                  />
-               ),
-            };
-         });
-   }, [ getCurrentSettings ]);
+   const categories = Object.entries(getCurrentSettings())
+      .map(([ settingSlice, settings ]) => {
+         const [ name ] = settingSlice.split('Settings');
 
-   const firstCategoryID = categories[0].id;
-   const [ activeCategory, setActiveCategory ] = useState<UUID>(firstCategoryID);
+         return {
+            name,
+            component: (
+               <Settings
+                  settings={settings}
+               />
+            ),
+         };
+      });
+
+   
 
    const renderCategoryContent = (activeCategory: UUID) => {
-      return categories.find(({ id }) => {
-         const isActiveCategory = activeCategory === id;
+      return categories.find(({ name }) => {
+         const isActiveCategory = activeCategory === name;
 
          return isActiveCategory;
       })?.component;
@@ -59,7 +56,7 @@ export const SettingsDialog = ({ formID }: Props) => {
          <Categories
             categories={categories}
             activeCategory={activeCategory}
-            setActiveCategory={id => setActiveCategory(id)}
+            setActiveCategory={name => setActiveCategory(name)}
          />
 
          {renderCategoryContent(activeCategory)}
