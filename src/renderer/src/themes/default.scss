@@ -26,29 +26,27 @@
    --BG: #fff;
 }
 
-@media (prefers-color-scheme: dark) {
-   :root {
-      --textColor: #efefef;
-      --searchBorder: #1e1e1e;
+:root[style*='color-scheme: dark;'] {
+   --textColor: #efefef;
+   --searchBorder: #1e1e1e;
 
-      --highlight: #464646;
-      --selected: #4d4c4d;
+   --highlight: #464646;
+   --selected: #4d4c4d;
 
-      --searchClearHighlight: #999999;
-      --searchClearSelected: #8d8d8d;
+   --searchClearHighlight: #999999;
+   --searchClearSelected: #8d8d8d;
 
-      /* Bar BG = selected */
+   /* Bar BG = selected */
 
-      --matchAppTheme: invert(1);
+   --matchAppTheme: invert(1);
 
-      --importButtonBG: #3f3f3f;
+   --importButtonBG: #3f3f3f;
 
-      --widgetBG: #343535;
-      --widgetBorderColor: #191919;
-      --widgetBorder: solid var(--widgetBorderColor) 1px;
+   --widgetBG: #343535;
+   --widgetBorderColor: #191919;
+   --widgetBorder: solid var(--widgetBorderColor) 1px;
 
-      --BG: #282828;
+   --BG: #282828;
 
-      --defaultCoverArtBG: #5a595a;
-   }
+   --defaultCoverArtBG: #5a595a;
 }
