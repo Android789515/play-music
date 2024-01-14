@@ -4,3 +4,10 @@ export const capitalize = (string: string) => {
 
    return capitalizedFirstLetter + restOfString;
 };
+
+export const splitPascalWord = (word: string) => {
+   const pascalWord = /([A-Z][a-z])/;
+   const addSpaceBefore = ' $1';
+   
+   return word.replace(pascalWord, addSpaceBefore);
+};
