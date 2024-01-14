@@ -13,13 +13,13 @@ export interface Setting<ValueType> {
 export interface GeneralSettingsState {
 }
 
-export enum Theme {
+export enum ColorScheme {
    light = 'light',
    dark = 'dark',
 }
 
 export interface StyleSettingsState {
-   theme: Setting<Theme>,
+   colorScheme: Setting<ColorScheme>,
 }
 
 export interface SettingsState {
