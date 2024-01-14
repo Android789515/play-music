@@ -17,7 +17,6 @@ interface Props {
 export const SettingsProvider = ({ children }: Props) => {
    const defaultSettings: SettingsState = {
       generalSettings: {
-         fontSize: '16px',
       },
    };
 
@@ -44,8 +43,6 @@ export const SettingsProvider = ({ children }: Props) => {
 
    const applyChangedSettings = () => {
       const root = document.documentElement;
-
-      root.style.fontSize = changedSettings.generalSettings.fontSize;
    };
 
    useEffect(applyChangedSettings, [ changedSettings ]);
