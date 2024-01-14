@@ -1,6 +1,8 @@
 import { ReactNode, createContext, useState, useEffect } from 'react';
 
-import { SettingsContext, SettingsState, SettingsStateSlice, SettingsStateValue, Theme } from './types';
+import type { SettingsContext, SettingsState } from './types';
+import type { SettingsStateSlice, SettingsStateValue } from './types';
+import { SettingType, Theme } from './types';
 
 export const settingsContext = createContext<SettingsContext>({
    getCurrentSettings: () => ({} as SettingsState),
@@ -19,7 +21,10 @@ export const SettingsProvider = ({ children }: Props) => {
       generalSettings: {
       },
       styleSettings: {
-         theme: Theme.light,
+         theme: {
+            type: SettingType.toggle,
+            value: Theme.dark,
+         },
       },
    };
 
@@ -47,7 +52,7 @@ export const SettingsProvider = ({ children }: Props) => {
    const applyChangedSettings = () => {
       const root = document.documentElement;
 
-      root.style.colorScheme = changedSettings.styleSettings.theme;
+      root.style.colorScheme = changedSettings.styleSettings.theme.value;
    };
 
    useEffect(applyChangedSettings, [ changedSettings ]);

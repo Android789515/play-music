@@ -1,3 +1,15 @@
+export type SettingsStateSlice = keyof SettingsState;
+export type SettingsStateValue = SettingsState[keyof SettingsState];
+
+export enum SettingType {
+   toggle,
+}
+
+export interface Setting<ValueType> {
+   type: SettingType;
+   value: ValueType;
+}
+
 export interface GeneralSettingsState {
 }
 
@@ -7,11 +19,8 @@ export enum Theme {
 }
 
 export interface StyleSettingsState {
-   theme: Theme,
+   theme: Setting<Theme>,
 }
-
-export type SettingsStateSlice = keyof SettingsState;
-export type SettingsStateValue = SettingsState[keyof SettingsState];
 
 export interface SettingsState {
    generalSettings: GeneralSettingsState;
