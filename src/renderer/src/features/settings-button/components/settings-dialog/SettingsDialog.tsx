@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { v4 as newUUID } from 'uuid';
 
 import type { UUID } from '@globalTypes/stringTypes';
@@ -7,7 +7,7 @@ import { settingsContext } from 'features/settings/SettingsProvider';
 import styles from './SettingsDialog.module.scss';
 
 import { Categories } from '../categories';
-import { GeneralSettings } from '../general-settings';
+import { Settings } from '../settings/Settings';
 import { DialogSubmitter } from 'components/dialog/components/dialog-submitter';
 
 interface Props {
@@ -15,27 +15,24 @@ interface Props {
 }
 
 export const SettingsDialog = ({ formID }: Props) => {
-   const { saveAppliedSettings, revertChangedSettings } = useContext(settingsContext);
+   const { getCurrentSettings, saveAppliedSettings, revertChangedSettings } = useContext(settingsContext);
 
-   const [ categories, _ ] = useState([
-      {
-         id: newUUID(),
-         name: 'General',
-         component: (
-            <GeneralSettings />
-         ),
-      },
-      {
-         id: newUUID(),
-         name: 'Style',
-         component: null,
-      },
-      {
-         id: newUUID(),
-         name: 'About',
-         component: null,
-      },
-   ]);
+   const categories = useMemo(() => {
+      return Object.entries(getCurrentSettings())
+         .map(([settingSlice, settings]) => {
+            const [name] = settingSlice.split('Settings');
+
+            return {
+               id: newUUID(),
+               name,
+               component: (
+                  <Settings
+                     settings={settings}
+                  />
+               ),
+            };
+         });
+   }, [ getCurrentSettings ]);
 
    const firstCategoryID = categories[0].id;
    const [ activeCategory, setActiveCategory ] = useState<UUID>(firstCategoryID);
