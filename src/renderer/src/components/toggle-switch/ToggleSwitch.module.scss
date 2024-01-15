@@ -17,6 +17,12 @@
    pointer-events: none;
 }
 
+:root[style*='color-scheme: dark;'] {
+   .toggleSwitchText {
+      opacity: .4;
+   }
+}
+
 .toggleSwitchKnob {
    $size: 1em;
    width: $size;
