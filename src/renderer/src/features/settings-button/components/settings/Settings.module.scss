@@ -1,4 +1,8 @@
 .settings {
+   display: grid;
+   grid-auto-rows: max-content;
+   grid-row-gap: 1em;
+
    background: var(--BG);
    padding: var(--appSideSpace);
    border-radius: var(--borderRadiusStandard);
