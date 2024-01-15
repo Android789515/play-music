@@ -23,6 +23,8 @@ export const SettingsProvider = ({ children }: Props) => {
       styleSettings: {
          colorScheme: {
             type: SettingType.toggle,
+            options: [...Object.values(ColorScheme)],
+            defaultValue: ColorScheme.light,
             value: ColorScheme.light,
          },
       },

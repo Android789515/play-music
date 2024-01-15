@@ -7,6 +7,8 @@ export enum SettingType {
 
 export interface Setting<ValueType> {
    type: SettingType;
+   options: ValueType[];
+   defaultValue: ValueType;
    value: ValueType;
 }
 
