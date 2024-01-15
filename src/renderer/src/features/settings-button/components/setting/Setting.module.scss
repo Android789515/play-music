@@ -8,6 +8,10 @@
    padding: .125em;
 }
 
+.setting > * {
+   font-size: .93rem;
+}
+
 .settingText {
    font-weight: 700;
    text-transform: capitalize;
@@ -16,4 +20,10 @@
 
    padding-bottom: .5em;
    border-bottom: solid 2px #6e6e6e;
+}
+
+@media (min-width: 20.5em) {
+   .setting > * {
+      font-size: 1rem;
+   }
 }
