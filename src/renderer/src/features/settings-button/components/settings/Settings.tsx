@@ -25,6 +25,7 @@ export const Settings = ({ settings, settingsName, changeSetting }: Props) => {
                      setting={setting}
                      changeSetting={(newValue) => {
                         changeSetting(settingsName, {
+                           ...settings,
                            [subSettingsName]: {
                               ...setting,
                               value: newValue,
