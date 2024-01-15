@@ -5,28 +5,29 @@ import styles from './Settings.module.scss';
 
 import { SettingWidget } from '../setting-widget';
 import { Setting } from '../setting/Setting';
-import { ToggleSwitch } from 'components/toggle-switch';
+import { SettingButton } from '../setting-button';
 
 interface Props {
    settings: SettingsStateValue;
+   settingsName: SettingsStateSlice;
    changeSetting: (slice: SettingsStateSlice, value: SettingsStateValue) => void;
 }
 
-export const Settings = ({ settings, changeSetting }: Props) => {
+export const Settings = ({ settings, settingsName, changeSetting }: Props) => {
    const SettingComponents = Object.entries(settings)
-      .map(([ name, setting ], index) => {
+      .map(([ subSettingsName, setting ], index) => {
          
          return (
             <SettingWidget key={index}>
-               <Setting name={splitPascalWord(name)}>
-                  <ToggleSwitch
-                     isToggled={setting.value === 'dark'}
-                     text={setting.value}
-                     onToggle={(nowDark) => {
-                        changeSetting('styleSettings', {
-                           colorScheme: {
-                              type: setting.type,
-                              value: nowDark ? 'dark' : 'light',
+               <Setting name={splitPascalWord(subSettingsName)}>
+                  <SettingButton
+                     valueType={typeof setting.value}
+                     setting={setting}
+                     changeSetting={(newValue) => {
+                        changeSetting(settingsName, {
+                           [subSettingsName]: {
+                              ...setting,
+                              value: newValue,
                            },
                         });
                      }}

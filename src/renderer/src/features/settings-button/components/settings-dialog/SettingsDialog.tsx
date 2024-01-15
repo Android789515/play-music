@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 
 import type { UUID } from '@globalTypes/stringTypes';
+import type { SettingsStateSlice } from 'features/settings/types';
 import { settingsContext } from 'features/settings/SettingsProvider';
 
 import styles from './SettingsDialog.module.scss';
@@ -27,6 +28,7 @@ export const SettingsDialog = ({ formID }: Props) => {
             component: (
                <Settings
                   settings={settings}
+                  settingsName={settingSlice as SettingsStateSlice}
                   changeSetting={changeSetting}
                />
             ),
