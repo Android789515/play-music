@@ -2,8 +2,20 @@
    display: grid;
    grid-template-columns: 1fr 3fr;
    grid-column-gap: 1em;
+
+   max-width: 65.625em;
 }
 
 .submission {
    display: none;
+}
+
+@media (min-width: 30.625em) {
+   .dialogContent {
+      width: 85vw;
+   }
+
+   dialog:has(.dialogContent) {
+      max-width: max-content;
+   }
 }
