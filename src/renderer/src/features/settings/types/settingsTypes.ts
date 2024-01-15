@@ -21,8 +21,13 @@ export enum ColorScheme {
    dark = 'dark',
 }
 
+export enum Themes {
+   default = 'default',
+}
+
 export interface StyleSettingsState {
    colorScheme: Setting<ColorScheme>,
+   theme: Setting<Themes>,
 }
 
 export interface SettingsState {

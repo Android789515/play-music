@@ -2,7 +2,7 @@ import { ReactNode, createContext, useState, useEffect } from 'react';
 
 import type { SettingsContext, SettingsState } from './types';
 import type { SettingsStateSlice, SettingsStateValue } from './types';
-import { SettingType, ColorScheme } from './types';
+import { SettingType, ColorScheme, Themes } from './types';
 
 export const settingsContext = createContext<SettingsContext>({
    getCurrentSettings: () => ({} as SettingsState),
@@ -26,6 +26,12 @@ export const SettingsProvider = ({ children }: Props) => {
             options: [...Object.values(ColorScheme)],
             defaultValue: ColorScheme.light,
             value: ColorScheme.light,
+         },
+         theme: {
+            type: SettingType.dropDownSelect,
+            options: [...Object.values(Themes)],
+            defaultValue: Themes.default,
+            value: Themes.default,
          },
       },
    };
