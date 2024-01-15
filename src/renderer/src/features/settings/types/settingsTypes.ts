@@ -3,6 +3,7 @@ export type SettingsStateValue = SettingsState[keyof SettingsState];
 
 export enum SettingType {
    toggle,
+   dropDownSelect,
 }
 
 export interface Setting<ValueType> {

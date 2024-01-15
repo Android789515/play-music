@@ -2,6 +2,7 @@ import type { Setting } from 'features/settings/types';
 import { SettingType } from 'features/settings/types';
 
 import { ToggleSwitch } from 'components/toggle-switch';
+import { DropDownSelect } from 'components/drop-down-select';
 
 interface Props<ValueType> {
    valueType: ValueType;
@@ -24,6 +25,19 @@ export const SettingButton = ({ valueType, setting, changeSetting }: Props<typeo
                text={value}
                onToggle={(nowToggled) => {
                   changeSetting(nowToggled ? nonDefaultValue : defaultValue);
+               }}
+            />
+         );
+      }
+      
+      case SettingType.dropDownSelect: {
+         return (
+            <DropDownSelect
+               valueType={valueType}
+               selectedValue={setting.value}
+               options={setting.options}
+               setSelectedValue={(newValue) => {
+                  changeSetting(newValue);
                }}
             />
          );
