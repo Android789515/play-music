@@ -2,6 +2,7 @@ import { contextBridge, ipcRenderer } from 'electron';
 import { electronAPI } from '@electron-toolkit/preload';
 
 import type { Path } from '../types/fileTypes';
+import type { AppInfo } from '../types/appInfoTypes';
 import { songsAPI } from '../api/songs';
 
 const { getSongs, loadCoverArt } = songsAPI;
@@ -19,6 +20,15 @@ if (process.contextIsolated) {
    try {
       contextBridge.exposeInMainWorld('electron', electronAPI);
       contextBridge.exposeInMainWorld('api', api);
+
+      const { node, chrome, electron } = process.versions;
+      contextBridge.exposeInMainWorld('appInfo', {
+         versions: {
+            node,
+            chrome,
+            electron,
+         },
+      } as AppInfo);
    } catch (error) {
       console.error(error);
    }

@@ -1,7 +1,22 @@
 export const AboutSection = () => {
+   const Versions = Object.entries(window.appInfo.versions)
+      .map(([ techName, versionNumber ], index) => {
+         return (
+            <p key={index}>
+               {techName}: {versionNumber}
+            </p>
+         );
+      });
+
    return (
       <section>
-         About
+         <h2>
+            About
+         </h2>
+
+         <p>
+            {Versions}
+         </p>
       </section>
    );
 };
