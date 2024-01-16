@@ -1,35 +1,28 @@
-import type { Category } from './types';
+import type { Category as CategoryType } from './types';
 
 import styles from './Categories.module.scss';
 
 import { List } from 'components/list';
-import { Button } from 'components/button';
+import { Category } from './components/category';
 
 interface Props {
-   categories: Category[];
+   categories: CategoryType[];
    activeCategory: string;
    setActiveCategory: (categoryName: string) => void;
 }
 
 export const Categories = ({ categories, activeCategory, setActiveCategory }: Props) => {
-   const renderCategories = (categories: Category[]) => {
+   const renderCategories = (categories: CategoryType[]) => {
       return categories.map(({ name }, index) => {
          const isActiveCategory = activeCategory === name;
          
          return (
-            <li key={index}>
-               <Button
-                  customStyles={`
-                     ${styles.category}
-                     ${isActiveCategory ? styles.activeCategory : ''}
-                  `}
-                  onClick={() => {
-                     setActiveCategory(name);
-                  }}
-               >
-                  {name}
-               </Button>
-            </li>
+            <Category
+               key={index}
+               categoryName={name}
+               isActiveCategory={isActiveCategory}
+               setActiveCategory={setActiveCategory}
+            />
          );
       });
    };
