@@ -14,9 +14,7 @@ export const AboutSection = () => {
             About
          </h2>
 
-         <p>
-            {Versions}
-         </p>
+         {Versions}
       </section>
    );
 };
