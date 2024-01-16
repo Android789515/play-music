@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
 
 import type { UUID } from '@globalTypes/stringTypes';
-import type { SettingsStateSlice } from 'features/settings/types';
-import { settingsContext } from 'features/settings/SettingsProvider';
+import type { SettingsStateSlice } from 'features/settings-provider/types';
+import { settingsContext } from 'features/settings-provider/SettingsProvider';
 import { aboutSectionName } from '../about-section';
 
 import styles from './SettingsDialog.module.scss';
@@ -24,7 +24,7 @@ export const SettingsDialog = ({ formID }: Props) => {
    const categories = Object.entries(getChangedSettings())
       .map(([ settingSlice, settings ]) => {
          const [ name ] = settingSlice.split('Settings');
-         
+
          return {
             name,
             component: (
@@ -36,8 +36,6 @@ export const SettingsDialog = ({ formID }: Props) => {
             ),
          };
       });
-
-   
 
    const renderCategoryContent = (activeCategory: string) => {
       const isAboutSection = activeCategory === aboutSectionName;

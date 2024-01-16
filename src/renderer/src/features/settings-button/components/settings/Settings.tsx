@@ -1,4 +1,4 @@
-import type { SettingsStateValue, SettingsStateSlice } from 'features/settings/types';
+import type { SettingsStateValue, SettingsStateSlice } from 'features/settings-provider/types';
 import { splitPascalWord } from '@utils/string';
 
 import styles from './Settings.module.scss';
@@ -17,7 +17,7 @@ interface Props {
 export const Settings = ({ settings, settingsName, changeSetting }: Props) => {
    const SettingComponents = Object.entries(settings)
       .map(([ subSettingsName, setting ], index) => {
-         
+
          return (
             <SettingWidget key={index}>
                <Setting name={splitPascalWord(subSettingsName)}>

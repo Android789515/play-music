@@ -2,7 +2,7 @@ import { RecoilRoot } from 'recoil';
 
 import styles from './App.module.scss';
 
-import { SettingsProvider } from 'features/settings';
+import { SettingsProvider } from 'features/settings-provider';
 import { AppHeader } from 'components/app-header';
 import { AppMain } from 'components/app-main';
 import { SongQueue } from 'features/song-queue';

@@ -1,5 +1,5 @@
-import type { Setting } from 'features/settings/types';
-import { SettingType } from 'features/settings/types';
+import type { Setting } from 'features/settings-provider/types';
+import { SettingType } from 'features/settings-provider/types';
 
 import { ToggleSwitch } from 'components/toggle-switch';
 import { DropDownSelect } from 'components/drop-down-select';
@@ -29,7 +29,7 @@ export const SettingButton = ({ valueType, setting, changeSetting }: Props<typeo
             />
          );
       }
-      
+
       case SettingType.dropDownSelect: {
          return (
             <DropDownSelect
