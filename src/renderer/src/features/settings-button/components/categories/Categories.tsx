@@ -1,4 +1,5 @@
 import type { Category as CategoryType } from './types';
+import { aboutSectionName } from '../about-section';
 
 import styles from './Categories.module.scss';
 
@@ -12,15 +13,17 @@ interface Props {
 }
 
 export const Categories = ({ categories, activeCategory, setActiveCategory }: Props) => {
+   const isActiveCategory = (categoryName: string) => {
+      return activeCategory === categoryName;
+   };
+   
    const renderCategories = (categories: CategoryType[]) => {
-      return categories.map(({ name }, index) => {
-         const isActiveCategory = activeCategory === name;
-         
+      return categories.map(({ name }, index) => {         
          return (
             <Category
                key={index}
                categoryName={name}
-               isActiveCategory={isActiveCategory}
+               isActiveCategory={isActiveCategory(name)}
                setActiveCategory={setActiveCategory}
             />
          );
@@ -31,6 +34,12 @@ export const Categories = ({ categories, activeCategory, setActiveCategory }: Pr
       <aside className={styles.categories}>
          <List customStyles={styles.categoriesLayout}>
             {renderCategories(categories)}
+            
+            <Category
+               categoryName={aboutSectionName}
+               isActiveCategory={isActiveCategory(aboutSectionName)}
+               setActiveCategory={setActiveCategory}
+            />
          </List>
       </aside>
    );

@@ -3,12 +3,14 @@ import { useContext, useState } from 'react';
 import type { UUID } from '@globalTypes/stringTypes';
 import type { SettingsStateSlice } from 'features/settings/types';
 import { settingsContext } from 'features/settings/SettingsProvider';
+import { aboutSectionName } from '../about-section';
 
 import styles from './SettingsDialog.module.scss';
 
 import { Categories } from '../categories';
 import { Settings } from '../settings/Settings';
 import { DialogSubmitter } from 'components/dialog/components/dialog-submitter';
+import { AboutSection } from '../about-section';
 
 interface Props {
    formID: UUID;
@@ -37,12 +39,20 @@ export const SettingsDialog = ({ formID }: Props) => {
 
    
 
-   const renderCategoryContent = (activeCategory: UUID) => {
-      return categories.find(({ name }) => {
-         const isActiveCategory = activeCategory === name;
+   const renderCategoryContent = (activeCategory: string) => {
+      const isAboutSection = activeCategory === aboutSectionName;
 
-         return isActiveCategory;
-      })?.component;
+      if (isAboutSection) {
+         return (
+            <AboutSection />
+         );
+      } else {
+         return categories.find(({ name }) => {
+            const isActiveCategory = activeCategory === name;
+
+            return isActiveCategory;
+         })?.component;
+      }
    };
 
    return (
