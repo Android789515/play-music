@@ -8,10 +8,10 @@ interface Props {
 
 export const SettingWidget = ({ children }: Props) => {
    return (
-      <div
+      <li
          className={styles.settingWidget}
       >
          {children}
-      </div>
+      </li>
    );
 };

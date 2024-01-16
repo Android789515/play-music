@@ -3,6 +3,7 @@ import { splitPascalWord } from '@utils/string';
 
 import styles from './Settings.module.scss';
 
+import { List } from 'components/list';
 import { SettingWidget } from '../setting-widget';
 import { Setting } from '../setting/Setting';
 import { SettingButton } from '../setting-button';
@@ -42,7 +43,11 @@ export const Settings = ({ settings, settingsName, changeSetting }: Props) => {
       <section
          className={styles.settings}
       >
-         {SettingComponents}
+         <List
+            customStyles={styles.settingsLayout}
+         >
+            {SettingComponents}
+         </List>
       </section>
    );
 };
