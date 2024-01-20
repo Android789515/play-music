@@ -1,3 +1,5 @@
+import styles from './AboutSection.module.scss';
+
 export const AboutSection = () => {
    const Versions = Object.entries(window.appInfo.versions)
       .map(([ techName, versionNumber ], index) => {
@@ -9,7 +11,9 @@ export const AboutSection = () => {
       });
 
    return (
-      <section>
+      <section
+         className={styles.aboutSection}
+      >
          <h2>
             About
          </h2>
