@@ -1,31 +1,17 @@
 import styles from './Versions.module.scss';
 
 import { List } from 'components/list';
+import { Version } from './components/version';
 
 export const Versions = () => {
    const Versions = Object.entries(window.appInfo.versions)
-      .map(([techName, versionNumber], index) => {
+      .map(([ techName, versionNumber ], index) => {
          return (
-            <li
+            <Version
                key={index}
-               className={styles.version}
-            >
-               <span
-                  className={styles.techName}
-               >
-                  {techName}
-               </span>
-
-               <span>
-                  {': '}
-               </span>
-
-               <span
-                  className={styles.versionNumber}
-               >
-                  {versionNumber}
-               </span>
-            </li>
+               techName={techName}
+               versionNumber={versionNumber}
+            />
          );
       });
    
