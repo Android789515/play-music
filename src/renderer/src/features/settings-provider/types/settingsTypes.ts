@@ -23,6 +23,7 @@ export enum ColorScheme {
 
 export enum Themes {
    default = 'default',
+   nord = 'nord',
 }
 
 export interface StyleSettingsState {

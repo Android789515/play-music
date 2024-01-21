@@ -1,0 +1,50 @@
+:root {
+   --textColor: #2e3440;
+
+   --highlight: #eff3fa;
+   --selected: #e5e9f0;
+
+   --searchClearHighlight: var(--highlight);
+   --searchClearSelected: var(--selected);
+
+   --barBG: var(--highlight);
+   --barTrackColor: #ff00e6;
+
+   --matchAppTheme: initial;
+
+   --widgetBG: #d8dee9;
+   --widgetBorderColor: #c3c9d3;
+   --widgetBorder: solid var(--widgetBorderColor) 1px;
+
+   --importButtonBG: var(--widgetBG);
+
+   --borderRadiusStandard: 0.25em;
+
+   --defaultCoverArtBG: var(--widgetBG);
+
+   --BG: #eceff4;
+}
+
+:root[style*='color-scheme: dark;'] {
+   --textColor: #eceff4;
+
+   --highlight: #4c566a;
+   --selected: #434c5e;
+
+   --searchClearHighlight: var(--highlight);
+   --searchClearSelected: var(--selected);
+
+   /* Bar BG = selected */
+
+   --matchAppTheme: invert(1);
+
+   --widgetBG: #3b4252;
+   --widgetBorderColor: #242933;
+   --widgetBorder: solid var(--widgetBorderColor) 1px;
+
+   --importButtonBG: var(--widgetBG);
+
+   --defaultCoverArtBG: var(--selected);
+
+   --BG: #2e3440;
+}
