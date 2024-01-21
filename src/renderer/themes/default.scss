@@ -1,6 +1,5 @@
 :root {
    --textColor: #333;
-   --searchBorder: solid #d6d6d6 1px;
 
    --highlight: #ebeaf3;
    --selected: #e7e2e3;
@@ -28,7 +27,6 @@
 
 :root[style*='color-scheme: dark;'] {
    --textColor: #efefef;
-   --searchBorder: #1e1e1e;
 
    --highlight: #464646;
    --selected: #4d4c4d;
