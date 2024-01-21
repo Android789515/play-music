@@ -1,0 +1,16 @@
+.versions {
+   display: grid;
+   grid-row-gap: 1em;
+}
+
+.version {
+   text-transform: capitalize;
+}
+
+.techName {
+   font-weight: 700;
+}
+
+.versionNumber {
+   opacity: .7;
+}
