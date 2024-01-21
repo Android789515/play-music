@@ -5,5 +5,6 @@ export interface AppInfo {
       node: Version;
       chrome: Version;
       electron: Version;
+      app: Version;
    },
 }

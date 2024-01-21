@@ -39,6 +39,7 @@ function createWindow(): void {
             node,
             chrome,
             electron,
+            app: app.getVersion(),
          },
       } as AppInfo;
    });
