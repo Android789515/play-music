@@ -3,6 +3,7 @@ import { join } from 'path';
 import { app, shell, BrowserWindow, ipcMain, protocol } from 'electron';
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 
+import type { AppInfo } from '../types/appInfoTypes';
 import { songsAPI } from '../api/songs';
 import { mediaProtocol } from './mediaProtocol';
 
@@ -28,6 +29,18 @@ function createWindow(): void {
    ipcMain.handle(getSongs.name, getSongs.fn);
    ipcMain.handle(loadCoverArt.name, (_, songPath) => {
       return loadCoverArt.fn(songPath);
+   });
+
+   ipcMain.handle('getAppInfo', () => {
+      const { node, chrome, electron } = process.versions;
+
+      return {
+         versions: {
+            node,
+            chrome,
+            electron,
+         },
+      } as AppInfo;
    });
 
    mainWindow.on('ready-to-show', () => {

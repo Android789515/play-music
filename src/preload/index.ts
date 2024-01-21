@@ -2,7 +2,6 @@ import { contextBridge, ipcRenderer } from 'electron';
 import { electronAPI } from '@electron-toolkit/preload';
 
 import type { Path } from '../types/fileTypes';
-import type { AppInfo } from '../types/appInfoTypes';
 import { songsAPI } from '../api/songs';
 
 const { getSongs, loadCoverArt } = songsAPI;
@@ -13,6 +12,10 @@ export const api = {
    loadCoverArt: (songPath: Path) => ipcRenderer.invoke(loadCoverArt.name, songPath),
 };
 
+export const appInfo = {
+   getAppInfo: () => ipcRenderer.invoke('getAppInfo'),
+};
+
 // Use `contextBridge` APIs to expose Electron APIs to
 // renderer only if context isolation is enabled, otherwise
 // just add to the DOM global.
@@ -20,15 +23,8 @@ if (process.contextIsolated) {
    try {
       contextBridge.exposeInMainWorld('electron', electronAPI);
       contextBridge.exposeInMainWorld('api', api);
-
-      const { node, chrome, electron } = process.versions;
-      contextBridge.exposeInMainWorld('appInfo', {
-         versions: {
-            node,
-            chrome,
-            electron,
-         },
-      } as AppInfo);
+      
+      contextBridge.exposeInMainWorld('appInfo', appInfo);
    } catch (error) {
       console.error(error);
    }
@@ -37,4 +33,6 @@ if (process.contextIsolated) {
    window.electron = electronAPI;
    // @ts-ignore (define in dts)
    window.api = api;
+
+   window.appInfo = appInfo;
 }
