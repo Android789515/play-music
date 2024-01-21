@@ -3,7 +3,7 @@ import { join } from 'path';
 import { app, shell, BrowserWindow, ipcMain, protocol } from 'electron';
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 
-import type { AppInfo } from '../types/appInfoTypes';
+import type { AppInfo, VersionInfo } from '../types/appInfoTypes';
 import { songsAPI } from '../api/songs';
 import { mediaProtocol } from './mediaProtocol';
 
@@ -32,15 +32,30 @@ function createWindow(): void {
    });
 
    ipcMain.handle('getAppInfo', () => {
-      const { node, chrome, electron } = process.versions;
+      const versionsToFetch = [
+         'node',
+         'chrome',
+         'electron',
+      ];
+
+      const versions = Object.keys(process.versions)
+         .filter(key => versionsToFetch.includes(key))
+         .toSorted()
+         .map(versionName => {
+            return {
+               name: versionName,
+               version: process.versions[versionName],
+            } as VersionInfo;
+         });
 
       return {
-         versions: {
-            node,
-            chrome,
-            electron,
-            app: app.getVersion(),
-         },
+         versions: [
+            {
+               name: 'app',
+               version: app.getVersion(),
+            },
+            ...versions,
+         ],
       } as AppInfo;
    });
 

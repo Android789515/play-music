@@ -1,10 +1,10 @@
 export type Version = string;
 
+export interface VersionInfo {
+   name: string;
+   version: Version;
+}
+
 export interface AppInfo {
-   versions: {
-      node: Version;
-      chrome: Version;
-      electron: Version;
-      app: Version;
-   },
+   versions: VersionInfo[],
 }

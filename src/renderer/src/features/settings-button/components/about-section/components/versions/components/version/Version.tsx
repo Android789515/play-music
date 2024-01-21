@@ -1,11 +1,11 @@
 import styles from './Version.module.scss';
 
 interface Props {
-   techName: string;
-   versionNumber: string;
+   name: string;
+   version: string;
 }
 
-export const Version = ({ techName, versionNumber }: Props) => {
+export const Version = ({ name, version }: Props) => {
    const separator = ': ';
 
    return (
@@ -13,9 +13,9 @@ export const Version = ({ techName, versionNumber }: Props) => {
          className={styles.version}
       >
          <span
-            className={styles.techName}
+            className={styles.name}
          >
-            {techName}
+            {name}
          </span>
 
          <span>
@@ -25,7 +25,7 @@ export const Version = ({ techName, versionNumber }: Props) => {
          <span
             className={styles.versionNumber}
          >
-            {versionNumber}
+            {version}
          </span>
       </li>
    );

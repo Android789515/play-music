@@ -8,17 +8,17 @@ import { Version } from './components/version';
 const appInfo: AppInfo = await window.appInfo.getAppInfo();
 
 export const Versions = () => {
-   const Versions = Object.entries(appInfo.versions)
-      .map(([ techName, versionNumber ], index) => {
+   const Versions = appInfo.versions
+      .map(({ name, version }, index) => {
          return (
             <Version
                key={index}
-               techName={techName}
-               versionNumber={versionNumber}
+               name={name}
+               version={version}
             />
          );
       });
-   
+
    return (
       <List
          customStyles={styles.versions}
