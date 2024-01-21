@@ -10,17 +10,17 @@
    --barBG: var(--highlight);
    --barTrackColor: #ff00e6;
 
-   --defaultCoverArtBG: #dad6d6;
-
    --matchAppTheme: initial;
-
-   --importButtonBG: #cecece;
 
    --widgetBG: #f7f7f7;
    --widgetBorderColor: #e3e3e3;
    --widgetBorder: solid var(--widgetBorderColor) 1px;
 
+   --importButtonBG: var(--widgetBG);
+
    --borderRadiusStandard: 0.25em;
+
+   --defaultCoverArtBG: #dad6d6;
 
    --BG: #fff;
 }
@@ -38,13 +38,13 @@
 
    --matchAppTheme: invert(1);
 
-   --importButtonBG: #3f3f3f;
-
    --widgetBG: #343535;
    --widgetBorderColor: #191919;
    --widgetBorder: solid var(--widgetBorderColor) 1px;
 
-   --BG: #282828;
+   --importButtonBG: #3f3f3f;
 
    --defaultCoverArtBG: #5a595a;
+
+   --BG: #282828;
 }
