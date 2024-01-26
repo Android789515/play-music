@@ -35,8 +35,6 @@
    -webkit-appearance: none;
    content: url('./assets/icons/clear.svg');
 
-   filter: var(--matchAppTheme);
-
    cursor: pointer;
 
    $size: 1em;
@@ -47,6 +45,12 @@
    border-radius: var(--borderRadiusStandard);
 
    margin-right: -.125em;
+}
+
+:root[style*='color-scheme: dark;'] {
+   .searchBarInput::-webkit-search-cancel-button {
+      content: url('./assets//icons/clear-dark.svg');
+   }
 }
 
 .searchBarInput::-webkit-search-cancel-button:focus,
