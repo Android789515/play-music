@@ -4,8 +4,8 @@
    --highlight: #eff3fa;
    --selected: #e5e9f0;
 
-   --searchClearHighlight: var(--highlight);
-   --searchClearSelected: var(--selected);
+   --searchClearHighlight: #dcdfe6;
+   --searchClearSelected: #d3d5db;
 
    --barBG: var(--highlight);
    --barTrackColor: #ff00e6;
@@ -32,7 +32,7 @@
    --selected: #434c5e;
 
    --searchClearHighlight: var(--highlight);
-   --searchClearSelected: var(--selected);
+   --searchClearSelected: #535e74;
 
    /* Bar BG = selected */
 
