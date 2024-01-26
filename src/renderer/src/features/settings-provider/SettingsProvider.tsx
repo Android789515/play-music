@@ -4,6 +4,8 @@ import type { SettingsContext, SettingsState } from './types';
 import type { SettingsStateSlice, SettingsStateValue } from './types';
 import { SettingType, ColorScheme, Themes } from './types';
 
+import { ThemeProvider } from 'components/theme-provider';
+
 export const settingsContext = createContext<SettingsContext>({
    getCurrentSettings: () => ({} as SettingsState),
    changeSetting: () => {},
@@ -85,6 +87,10 @@ export const SettingsProvider = ({ children }: Props) => {
             saveAppliedSettings,
          }}
       >
+         <ThemeProvider
+            theme={changedSettings.styleSettings.theme.value}
+         />
+
          {children}
       </Provider>
    );
