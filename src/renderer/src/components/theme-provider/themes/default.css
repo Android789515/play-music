@@ -16,7 +16,7 @@
    --widgetBorderColor: #e3e3e3;
    --widgetBorder: solid var(--widgetBorderColor) 1px;
 
-   --importButtonBG: var(--widgetBG);
+   --importButtonBG: var(--selected);
 
    --borderRadiusStandard: 0.25em;
 
@@ -28,13 +28,13 @@
 :root[style*='color-scheme: dark;'] {
    --textColor: #efefef;
 
-   --highlight: #464646;
-   --selected: #4d4c4d;
+   --highlight: #4d4c4d;
+   --selected: #464646;
 
    --searchClearHighlight: #5f5f5f;
    --searchClearSelected: #696969;
 
-   /* Bar BG = selected */
+   --barBG: var(--selected);
 
    --matchAppTheme: invert(1);
 
