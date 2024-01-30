@@ -49,14 +49,13 @@ export const useDialog = () => {
             handlers,
          };
       });
-
-      return clearHandlers;
-   }, [ setDialog, clearHandlers ]);
+   }, [ setDialog ]);
 
    return {
       getDialog,
       openDialog,
       closeDialog,
       setHandlers,
+      clearHandlers,
    };
 };

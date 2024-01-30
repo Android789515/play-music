@@ -8,7 +8,7 @@ import styles from './Dialog.module.scss';
 import { DialogButtons } from './components/dialog-buttons';
 
 export const Dialog = () => {
-   const { getDialog, closeDialog } = useDialog();
+   const { getDialog,clearHandlers, closeDialog } = useDialog();
 
    const { opened, content, dialogFormID, handlers } = getDialog();
 
@@ -32,6 +32,8 @@ export const Dialog = () => {
             default:
                break;
          }
+
+         clearHandlers();
       }
 
       closeDialog();
