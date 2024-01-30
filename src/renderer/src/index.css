@@ -5,6 +5,8 @@
 }
 
 ::-webkit-scrollbar:horizontal {
+   display: none;
+
    height: .5em;
 }
 
