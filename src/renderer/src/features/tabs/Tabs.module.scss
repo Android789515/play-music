@@ -9,3 +9,8 @@
 
    overflow-x: auto;
 }
+
+.tabs:focus::-webkit-scrollbar:horizontal,
+.tabs:hover::-webkit-scrollbar:horizontal {
+   display: revert;
+}
