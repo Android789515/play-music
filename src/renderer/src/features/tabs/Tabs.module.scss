@@ -10,12 +10,12 @@
    overflow-x: auto;
 }
 
-.tabs:focus,
-.tabs:hover {
+.tabs:has(* ~ *):focus,
+.tabs:has(* ~ *):hover {
    padding-bottom: .25em;
 }
 
-.tabs:focus::-webkit-scrollbar:horizontal,
-.tabs:hover::-webkit-scrollbar:horizontal {
+.tabs:has(* ~ *):focus::-webkit-scrollbar:horizontal,
+.tabs:has(* ~ *):hover::-webkit-scrollbar:horizontal {
    display: revert;
 }
