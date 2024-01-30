@@ -1,5 +1,7 @@
 import type { ChangeEvent } from 'react';
 
+import styles from './DropDownSelect.module.scss';
+
 interface Props<ValueType> {
    valueType: ValueType;
    selectedValue: ValueType;
@@ -29,6 +31,7 @@ export const DropDownSelect = ({ valueType, selectedValue, options, setSelectedV
    
    return (
       <select
+         className={styles.dropDownSelect}
          value={selectedValue}
          onChange={onSelect}
       >
