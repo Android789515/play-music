@@ -4,6 +4,10 @@
    background: var(--barBG);
 }
 
+::-webkit-scrollbar:horizontal {
+   height: .5em;
+}
+
 ::-webkit-scrollbar-thumb {
    background: grey;
    border-radius: 0.15em;
