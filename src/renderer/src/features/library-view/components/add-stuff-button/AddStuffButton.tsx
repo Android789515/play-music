@@ -14,7 +14,7 @@ export const AddStuffButton = ({ tab }: Props) => {
 
    const isLibraryTab = tab.name === 'Library';
 
-   const { openDialog, closeDialog } = useDialog();
+   const { openDialog } = useDialog();
 
    const openAddStuffDialog = () => {
       const content = (
@@ -22,7 +22,6 @@ export const AddStuffButton = ({ tab }: Props) => {
             ? <p>Import</p>
             : <AddToCollection
                currentTab={tab}
-               closeDialog={closeDialog}
             />
       );
 

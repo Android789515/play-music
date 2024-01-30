@@ -11,10 +11,9 @@ import { SongInfo } from 'components/song-info';
 
 interface Props {
    currentTab: Tab;
-   closeDialog: () => void;
 }
 
-export const AddToCollection = ({ currentTab: { id: tabID, collection }, closeDialog }: Props) => {
+export const AddToCollection = ({ currentTab: { id: tabID, collection } }: Props) => {
    const { getLibraryTab, updateTab } = useTabs();
 
    const library = getLibraryTab().collection;
