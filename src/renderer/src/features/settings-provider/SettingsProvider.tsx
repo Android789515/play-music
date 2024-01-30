@@ -1,5 +1,6 @@
 import { ReactNode, createContext, useState, useEffect } from 'react';
 
+import { saveData, loadData } from 'features/save-data';
 import type { SettingsContext, SettingsState } from './types';
 import type { SettingsStateSlice, SettingsStateValue } from './types';
 import { SettingType, ColorScheme, Themes } from './types';
@@ -38,7 +39,18 @@ interface Props {
 }
 
 export const SettingsProvider = ({ children }: Props) => {
-   const [ currentSettings, setCurrentSettings ] = useState(defaultSettings);
+   const settingsKey = 'settings';
+
+   const loadSavedSettings = () => {
+      const savedSettings = loadData(settingsKey);
+      if (savedSettings) {
+         return JSON.parse(savedSettings);
+      } else {
+         return defaultSettings;
+      }
+   };
+
+   const [ currentSettings, setCurrentSettings ] = useState(loadSavedSettings());
 
    const [ changedSettings, setChangedSettings ] = useState(currentSettings);
 
@@ -74,6 +86,14 @@ export const SettingsProvider = ({ children }: Props) => {
    const saveAppliedSettings = () => {
       setCurrentSettings(changedSettings);
    };
+
+   const saveCurrentSettings = () => {
+      const settingsToSave = JSON.stringify(currentSettings);
+
+      saveData(settingsKey, settingsToSave);
+   };
+   
+   useEffect(saveCurrentSettings, [ currentSettings ]);
 
    const { Provider } = settingsContext;
 
