@@ -1,8 +1,8 @@
 :root {
    --textColor: #2e3440;
 
-   --highlight: #eff3fa;
-   --selected: #e5e9f0;
+   --highlight: #d8dee9;
+   --selected: #cbd1db;
 
    --searchClearHighlight: #dcdfe6;
    --searchClearSelected: #d3d5db;
@@ -12,15 +12,15 @@
 
    --matchAppTheme: initial;
 
-   --widgetBG: #d8dee9;
+   --widgetBG: #e5e9f0;
    --widgetBorderColor: #c3c9d3;
    --widgetBorder: solid var(--widgetBorderColor) 1px;
 
-   --importButtonBG: var(--widgetBG);
+   --importButtonBG: var(--selected);
 
    --borderRadiusStandard: 0.25em;
 
-   --defaultCoverArtBG: var(--widgetBG);
+   --defaultCoverArtBG: var(--selected);
 
    --BG: #eceff4;
 }
