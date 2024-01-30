@@ -14,30 +14,30 @@ export const settingsContext = createContext<SettingsContext>({
    saveAppliedSettings: () => {},
 });
 
+const defaultSettings: SettingsState = {
+   generalSettings: {
+   },
+   styleSettings: {
+      colorScheme: {
+         type: SettingType.toggle,
+         options: [...Object.values(ColorScheme)],
+         defaultValue: ColorScheme.light,
+         value: ColorScheme.light,
+      },
+      theme: {
+         type: SettingType.dropDownSelect,
+         options: [...Object.values(Themes)],
+         defaultValue: Themes.default,
+         value: Themes.default,
+      },
+   },
+};
+
 interface Props {
    children: ReactNode;
 }
 
 export const SettingsProvider = ({ children }: Props) => {
-   const defaultSettings: SettingsState = {
-      generalSettings: {
-      },
-      styleSettings: {
-         colorScheme: {
-            type: SettingType.toggle,
-            options: [...Object.values(ColorScheme)],
-            defaultValue: ColorScheme.light,
-            value: ColorScheme.light,
-         },
-         theme: {
-            type: SettingType.dropDownSelect,
-            options: [...Object.values(Themes)],
-            defaultValue: Themes.default,
-            value: Themes.default,
-         },
-      },
-   };
-
    const [ currentSettings, setCurrentSettings ] = useState(defaultSettings);
 
    const [ changedSettings, setChangedSettings ] = useState(currentSettings);
