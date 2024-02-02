@@ -6,8 +6,8 @@ export const capitalize = (string: string) => {
 };
 
 export const splitPascalWord = (word: string) => {
-   const pascalWord = /([A-Z][a-z])/;
+   const pascalWord = /([A-Z][a-z])/g;
    const addSpaceBefore = ' $1';
-   
+
    return word.replace(pascalWord, addSpaceBefore);
 };
