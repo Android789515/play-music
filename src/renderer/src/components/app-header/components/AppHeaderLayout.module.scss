@@ -1,7 +1,11 @@
 .appHeaderLayout {
    display: grid;
-   grid-template-columns: fit-content(100%) auto 1fr .5em max-content;
+   grid-template-columns: fit-content(100%) .4fr 1fr max-content;
    align-items: center;
 
    padding: var(--appSideSpace);
+}
+
+.appHeaderLayout > * {
+   justify-self: center;
 }
