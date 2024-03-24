@@ -6,7 +6,7 @@ import { useDialog } from '../../api';
 
 interface Props {
    formID: UUID;
-   customStyles: CSS_Class;
+   customStyles?: CSS_Class;
    children?: ReactNode;
    onConfirm: () => void;
    onCancel: () => void;
@@ -26,7 +26,7 @@ export const DialogSubmitter = ({ formID, customStyles = '', children, onConfirm
    return (
       <form
          id={formID}
-         className={customStyles}
+         className={customStyles || ''}
          action=''
          method='dialog'
          // @ts-ignore onSubmit is valid.
