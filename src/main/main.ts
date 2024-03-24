@@ -25,8 +25,16 @@ function createWindow(): void {
       },
    });
 
-   const { getSongs, loadCoverArt } = songsAPI;
+   const {
+      getSongs,
+      importSongs,
+      loadCoverArt,
+   } = songsAPI;
+
    ipcMain.handle(getSongs.name, getSongs.fn);
+
+   ipcMain.handle(importSongs.name, importSongs.fn);
+
    ipcMain.handle(loadCoverArt.name, (_, songPath) => {
       return loadCoverArt.fn(songPath);
    });

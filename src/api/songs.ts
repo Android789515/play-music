@@ -1,9 +1,11 @@
-import { app } from 'electron';
+import { copyFile } from 'fs';
+import { join, basename } from 'path';
+import { app, dialog } from 'electron';
 
 import type { Song } from './types';
 import type { Path } from '@globalTypes/fileTypes';
 import { readContentsOfDir } from '../utils/files';
-import { getSongsFromDir, createSong, createPathToCoverArt } from './helpers';
+import { getSongsFromDir, createSong, createPathToCoverArt, getOrCreateDir } from './helpers';
 
 const getSongs = async (): Promise<Song[]> => {
    const musicDir = readContentsOfDir(
@@ -17,6 +19,25 @@ const getSongs = async (): Promise<Song[]> => {
    return await Promise.all(fileTags);
 };
 
+const importSongs = async () => {
+   const { filePaths } = await dialog.showOpenDialog({
+      properties: [
+         'openFile',
+         'multiSelections',
+      ],
+   });
+
+   const importedSongsDir = getOrCreateDir(
+      join(app.getPath('music'), '.play-music-imported')
+   );
+
+   filePaths.forEach(path => {
+      const destination = `${importedSongsDir}/${basename(path)}`;
+
+      copyFile(path, destination, () => {});
+   });
+};
+
 const loadCoverArt = async (songPath: Path): Promise<Path | null> => {
    return await createPathToCoverArt(songPath);
 };
@@ -25,6 +46,10 @@ export const songsAPI = {
    getSongs: {
       name: 'getSongs',
       fn: getSongs,
+   },
+   importSongs: {
+      name: 'importSongs',
+      fn: importSongs,
    },
    loadCoverArt: {
       name: 'loadCoverArt',

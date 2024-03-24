@@ -4,11 +4,16 @@ import { electronAPI } from '@electron-toolkit/preload';
 import type { Path } from '../types/fileTypes';
 import { songsAPI } from '../api/songs';
 
-const { getSongs, loadCoverArt } = songsAPI;
+const {
+   getSongs,
+   importSongs,
+   loadCoverArt,
+} = songsAPI;
 
 // Custom APIs for renderer
 export const api = {
    getSongs: () => ipcRenderer.invoke(getSongs.name),
+   importSongs: () => ipcRenderer.invoke(importSongs.name),
    loadCoverArt: (songPath: Path) => ipcRenderer.invoke(loadCoverArt.name, songPath),
 };
 
@@ -23,7 +28,7 @@ if (process.contextIsolated) {
    try {
       contextBridge.exposeInMainWorld('electron', electronAPI);
       contextBridge.exposeInMainWorld('api', api);
-      
+
       contextBridge.exposeInMainWorld('appInfo', appInfo);
    } catch (error) {
       console.error(error);
