@@ -39,16 +39,18 @@ export const AddStuffButton = ({ tab, loadTabData }: Props) => {
    };
 
    const openImportDialog = async () => {
-      const numberOfSongs = await window.api.importSongs();
+      const { numberOfSongs, canceled } = await window.api.importSongs();
 
-      const songPlural = pluralize(numberOfSongs,'Song');
-      const importingToast = toast.loading(`Importing ${songPlural}`);
+      if (!canceled) {
+         const songPlural = pluralize(numberOfSongs,'Song');
+         const importingToast = toast.loading(`Importing ${songPlural}`);
 
-      loadTabData(() => {
-         toast.success(`Successfully Imported ${songPlural}`, {
-            id: importingToast,
+         loadTabData(() => {
+            toast.success(`Successfully Imported ${songPlural}`, {
+               id: importingToast,
+            });
          });
-      });
+      }
    };
 
    const handleButtonClick = () => {

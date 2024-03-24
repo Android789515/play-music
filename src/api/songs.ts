@@ -20,25 +20,30 @@ const getSongs = async (): Promise<Song[]> => {
 };
 
 const importSongs = async () => {
-   const { filePaths: songPaths } = await dialog.showOpenDialog({
+   const { filePaths: songPaths, canceled } = await dialog.showOpenDialog({
       properties: [
          'openFile',
          'multiSelections',
       ],
    });
 
-   const importedSongsDir = getOrCreateDir(
-      join(app.getPath('music'), '.play-music-imported')
-   );
+   if (!canceled) {
+      const importedSongsDir = getOrCreateDir(
+         join(app.getPath('music'), '.play-music-imported')
+      );
 
-   songPaths.forEach(path => {
-      const destination = `${importedSongsDir}/${basename(path)}`;
+      songPaths.forEach(path => {
+         const destination = `${importedSongsDir}/${basename(path)}`;
 
-      copyFile(path, destination, () => {});
-   });
+         copyFile(path, destination, () => {});
+      });
+   }
 
    const numberOfSongs = songPaths.length;
-   return numberOfSongs;
+   return {
+      numberOfSongs,
+      canceled,
+   };
 };
 
 const loadCoverArt = async (songPath: Path): Promise<Path | null> => {
