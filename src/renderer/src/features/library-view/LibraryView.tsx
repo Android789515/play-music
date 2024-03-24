@@ -22,7 +22,7 @@ const SongCollection = lazy(async () => {
 export const LibraryView = () => {
    const { setTabs, getCurrentTab } = useTabs();
 
-   const loadTabData = () => {
+   const loadTabData = (whenLoaded?: () => void) => {
       const previousTabs = getPreviousTabData();
 
       window.api.getSongs().then(songs => {
@@ -38,6 +38,8 @@ export const LibraryView = () => {
                return tab;
             }
          }));
+
+         whenLoaded && whenLoaded();
       });
    };
 

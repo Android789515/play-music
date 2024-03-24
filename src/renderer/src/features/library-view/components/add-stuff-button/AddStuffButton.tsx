@@ -1,3 +1,5 @@
+import toast from 'react-hot-toast';
+
 import { Tab } from 'features/tabs';
 import { useDialog } from 'components/dialog';
 
@@ -8,7 +10,7 @@ import { AddToCollection } from '../dialogs/add-to-collection';
 
 interface Props {
    tab: Tab;
-   loadTabData: () => void;
+   loadTabData: (whenLoaded?: () => void) => void;
 }
 
 export const AddStuffButton = ({ tab, loadTabData }: Props) => {
@@ -30,10 +32,23 @@ export const AddStuffButton = ({ tab, loadTabData }: Props) => {
       });
    };
 
-   const openImportDialog = async () => {
-      await window.api.importSongs();
+   const pluralize = (number: number, word: string) => {
+      return number > 1
+         ? `${number} ${word}s`
+         : word;
+   };
 
-      loadTabData();
+   const openImportDialog = async () => {
+      const numberOfFiles = await window.api.importSongs();
+
+      const filePlural = pluralize(numberOfFiles,'File');
+      const importingToast = toast.loading(`Importing ${filePlural}`);
+
+      loadTabData(() => {
+         toast.success(`Successfully Imported ${filePlural}`, {
+            id: importingToast,
+         });
+      });
    };
 
    const handleButtonClick = () => {

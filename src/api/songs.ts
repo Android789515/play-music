@@ -36,6 +36,9 @@ const importSongs = async () => {
 
       copyFile(path, destination, () => {});
    });
+
+   const numberOfFiles = filePaths.length;
+   return numberOfFiles;
 };
 
 const loadCoverArt = async (songPath: Path): Promise<Path | null> => {
