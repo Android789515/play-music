@@ -10,7 +10,7 @@ import { AddStuffButton } from './components/add-stuff-button';
 import { AsyncSpinner } from 'components/async-spinner';
 const SearchProvider = lazy(async () => {
    const { SearchProvider } = await import('components/search-bar');
-   
+
    return ({ default: SearchProvider });
 });
 const SongCollection = lazy(async () => {
@@ -49,8 +49,9 @@ export const LibraryView = () => {
       >
          { getCurrentTab() !== undefined &&
             <AddStuffButton
-               // Fix tab possibly being undefinded.
+               // Fix tab possibly being undefined.
                tab={getCurrentTab()!}
+               loadTabData={loadTabData}
             />
          }
 

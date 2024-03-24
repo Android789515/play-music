@@ -7,10 +7,11 @@ import { Button } from 'components/button';
 import { AddToCollection } from '../dialogs/add-to-collection';
 
 interface Props {
-   tab: Tab
+   tab: Tab;
+   loadTabData: () => void;
 }
 
-export const AddStuffButton = ({ tab }: Props) => {
+export const AddStuffButton = ({ tab, loadTabData }: Props) => {
 
    const isLibraryTab = tab.name === 'Library';
 
@@ -18,11 +19,9 @@ export const AddStuffButton = ({ tab }: Props) => {
 
    const openAddStuffDialog = () => {
       const content = (
-         isLibraryTab
-            ? <p>Import</p>
-            : <AddToCollection
-               currentTab={tab}
-            />
+         <AddToCollection
+            currentTab={tab}
+         />
       );
 
       openDialog({
@@ -31,10 +30,22 @@ export const AddStuffButton = ({ tab }: Props) => {
       });
    };
 
+   const openImportDialog = async () => {
+      await window.api.importSongs();
+
+      loadTabData();
+   };
+
+   const handleButtonClick = () => {
+      isLibraryTab
+         ? openImportDialog()
+         : openAddStuffDialog();
+   };
+
    return (
       <Button
          customStyles={styles.addStuffButton}
-         onClick={openAddStuffDialog}
+         onClick={handleButtonClick}
       >
          <h4
             className={styles.addStuffText}
