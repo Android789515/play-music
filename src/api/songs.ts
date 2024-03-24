@@ -4,7 +4,7 @@ import { app, dialog } from 'electron';
 
 import type { Song } from './types';
 import type { Path } from '@globalTypes/fileTypes';
-import { readContentsOfDir } from '../utils/files';
+import { readContentsOfDir, supportedFormats } from '../utils/files';
 import { getSongsFromDir, createSong, createPathToCoverArt, getOrCreateDir } from './helpers';
 
 const getSongs = async (): Promise<Song[]> => {
@@ -24,6 +24,12 @@ const importSongs = async () => {
       properties: [
          'openFile',
          'multiSelections',
+      ],
+      filters: [
+         {
+            name: 'Audio',
+            extensions: supportedFormats,
+         }
       ],
    });
 
