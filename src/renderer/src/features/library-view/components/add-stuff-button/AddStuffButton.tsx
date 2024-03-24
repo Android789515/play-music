@@ -39,13 +39,13 @@ export const AddStuffButton = ({ tab, loadTabData }: Props) => {
    };
 
    const openImportDialog = async () => {
-      const numberOfFiles = await window.api.importSongs();
+      const numberOfSongs = await window.api.importSongs();
 
-      const filePlural = pluralize(numberOfFiles,'File');
-      const importingToast = toast.loading(`Importing ${filePlural}`);
+      const songPlural = pluralize(numberOfSongs,'Song');
+      const importingToast = toast.loading(`Importing ${songPlural}`);
 
       loadTabData(() => {
-         toast.success(`Successfully Imported ${filePlural}`, {
+         toast.success(`Successfully Imported ${songPlural}`, {
             id: importingToast,
          });
       });
