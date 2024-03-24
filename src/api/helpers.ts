@@ -1,4 +1,6 @@
-import { IPicture, parseFile, selectCover } from 'music-metadata';
+import { existsSync, mkdirSync } from 'fs';
+
+import { parseFile, selectCover } from 'music-metadata';
 import { v4 as newUUID } from 'uuid';
 
 import type { Path } from '@globalTypes/fileTypes';
@@ -18,7 +20,7 @@ export const createPathToCoverArt = async (songFile: Path) => {
    const { common: { picture } } = await parseFile(decodeURI(songFile));
 
    const coverArt = selectCover(picture);
-   
+
    if (coverArt) {
       const { format: mime, data } = coverArt;
 
@@ -46,6 +48,14 @@ export const createSong = async ({ name, path }: PathDetails): Promise<Song> => 
       duration: duration || 0,
       path: encodeURI(path),
    };
+};
+
+export const getOrCreateDir = (dirPath: Path) => {
+   if (!existsSync(dirPath)) {
+      mkdirSync(dirPath);
+   }
+
+   return dirPath;
 };
 
 export const getSongsFromDir = (
