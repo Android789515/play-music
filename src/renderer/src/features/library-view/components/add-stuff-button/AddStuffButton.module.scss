@@ -6,6 +6,10 @@
    font-size: .9rem;
    font-weight: 700;
 
+   // The button needs a
+   // darker color text
+   color: #000;
+
    display: flex;
    justify-content: center;
    align-items: center;
@@ -23,6 +27,12 @@
 
 .addStuffText {
    margin: 0 1em;
+}
+
+@media (prefers-color-scheme: dark) {
+   .addStuffButton {
+      color: inherit;
+   }
 }
 
 @media (min-width: map.get($breakpoints, 'scaleUpSongs')) {
