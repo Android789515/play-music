@@ -1,9 +1,16 @@
 .category {
    text-transform: capitalize;
+   text-align: left;
 
    padding: .35em .75em;
 }
 
 .activeCategory {
    background: var(--selected);
+}
+
+@media (min-width: 33.75em) {
+   .category {
+      padding-left: 1em;
+   }
 }
