@@ -20,5 +20,8 @@
    }
 }
 
-@media (min-width: 37.5em) {
+@media (min-width: 36.25em) {
+   .dialogContent {
+      grid-template-columns: 7.5em 3fr;
+   }
 }
