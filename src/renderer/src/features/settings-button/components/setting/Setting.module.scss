@@ -13,17 +13,11 @@
 }
 
 .settingText {
-   font-size: 1.1rem;
+   font: inherit;
    font-weight: 700;
    text-transform: capitalize;
 
    display: block;
 
    padding-bottom: .25em;
-}
-
-@media (min-width: 20.5em) {
-   .setting > * {
-      font-size: 1rem;
-   }
 }
