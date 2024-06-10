@@ -24,7 +24,9 @@ export const AboutSection = () => {
       <section
          className={styles.aboutSection}
       >
-         <h2>
+         <h2
+            className={styles.aboutSectionTitle}
+         >
             About
          </h2>
 

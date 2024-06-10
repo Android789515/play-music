@@ -1,18 +1,10 @@
 .subSection {
-   
+
 }
 
 .subSectionName {
+   font-size: 1.25rem;
    text-transform: capitalize;
 
-   padding-bottom: .25em;
-   border-bottom: var(--widgetBorder);
-
-   margin-bottom: .75em;
-}
-
-:root[style*='color-scheme: dark;'] {
-   .subSectionName {
-      border-bottom: solid 2px #6e6e6e;
-   }
+   margin-bottom: .5em;
 }
