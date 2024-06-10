@@ -1,6 +1,17 @@
 .dropDownSelect {
    text-transform: capitalize;
 
-   background: var(--BG);
+   cursor: pointer;
+
+   outline: none;
+
+   padding: .125em .25em;
+   background: var(--selected);
+   border: none;
    border-radius: var(--borderRadiusStandard);
+}
+
+.dropDownSelect:focus,
+.dropDownSelect:hover {
+   background: var(--highlight);
 }
