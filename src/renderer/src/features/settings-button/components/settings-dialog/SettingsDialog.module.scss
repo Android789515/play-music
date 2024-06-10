@@ -25,3 +25,12 @@
       grid-template-columns: 7.5em 3fr;
    }
 }
+
+// TODO - Make a shared breakpoint
+@media (min-width: 51.25em) {
+   .dialogContent {
+      grid-column-gap: 3em;
+
+      padding: .65em 0;
+   }
+}
