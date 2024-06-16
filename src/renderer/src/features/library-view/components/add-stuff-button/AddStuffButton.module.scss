@@ -55,3 +55,12 @@
    }
 }
 
+@media (min-width: 38.5em) {
+   .addStuffButton {
+      display: none;
+   }
+
+   .addStuffButtonHeader {
+      display: block;
+   }
+}
