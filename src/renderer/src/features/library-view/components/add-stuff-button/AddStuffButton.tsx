@@ -1,7 +1,10 @@
+import { useEffect } from 'react';
+import { SetterOrUpdater } from 'recoil';
 import toast from 'react-hot-toast';
 
 import { Tab } from 'features/tabs';
 import { useDialog } from 'components/dialog';
+import { getPreviousTabData, libraryTrackMark } from 'features/tabs/stores';
 
 import styles from './AddStuffButton.module.scss';
 
@@ -10,10 +13,11 @@ import { AddToCollection } from '../dialogs/add-to-collection';
 
 interface Props {
    tab: Tab;
-   loadTabData: (whenLoaded?: () => void) => void;
+   setTabs: SetterOrUpdater<Tab[]>;
+   header?: boolean;
 }
 
-export const AddStuffButton = ({ tab, loadTabData }: Props) => {
+export const AddStuffButton = ({ tab, setTabs, header = false }: Props) => {
 
    const isLibraryTab = tab.name === 'Library';
 
@@ -38,6 +42,29 @@ export const AddStuffButton = ({ tab, loadTabData }: Props) => {
          : word;
    };
 
+   const loadTabData = (whenLoaded?: () => void) => {
+      const previousTabs = getPreviousTabData();
+
+      window.api.getSongs().then(songs => {
+         setTabs(previousTabs.map(tab => {
+            const isLibraryTab = tab.id.includes(libraryTrackMark);
+
+            if (isLibraryTab) {
+               return {
+                  ...tab,
+                  collection: songs,
+               };
+            } else {
+               return tab;
+            }
+         }));
+
+         whenLoaded && whenLoaded();
+      });
+   };
+
+   useEffect(loadTabData, [ setTabs ]);
+
    const openImportDialog = async () => {
       const { numberOfSongs, canceled } = await window.api.importSongs();
 
@@ -61,7 +88,10 @@ export const AddStuffButton = ({ tab, loadTabData }: Props) => {
 
    return (
       <Button
-         customStyles={styles.addStuffButton}
+         customStyles={`
+            ${styles.addStuffButton}
+            ${header ? styles.addStuffButtonHeader : ''}
+         `}
          onClick={handleButtonClick}
       >
          <h4

@@ -13,6 +13,12 @@
    border-radius: var(--borderRadiusStandard);
 }
 
+@media (min-width: 38.5em) {
+   .settingsButton {
+      grid-column: 7;
+   }
+}
+
 @media (min-width: map.get($breakpoints, 'scaleUpUI')) {
    .settingsIcon {
       width: 1.6em;

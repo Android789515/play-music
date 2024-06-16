@@ -43,16 +43,24 @@
    }
 }
 
-@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
-   .addStuffButton {
-      font-size: 1.125rem;
-   }
-}
-
 @media (min-width: 23.4375em) {
    .addStuffButton {
       max-width: 21.4375em;
    }
+}
+
+.addStuffButtonHeader {
+   display: none;
+
+   box-shadow: none;
+
+   position: initial;
+
+   justify-self: left;
+
+   background: var(--selected);
+
+   padding: .6em 0;
 }
 
 @media (min-width: 38.5em) {
@@ -61,6 +69,16 @@
    }
 
    .addStuffButtonHeader {
-      display: block;
+      display: revert;
+
+      grid-column: 5;
+
+      max-width: initial;
+   }
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+   .addStuffButtonHeader {
+      font-size: 1.125rem;
    }
 }

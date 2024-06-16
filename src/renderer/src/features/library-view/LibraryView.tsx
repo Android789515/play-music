@@ -1,8 +1,7 @@
-import { useEffect, lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 
 
 import { useTabs } from 'features/tabs';
-import { getPreviousTabData, libraryTrackMark } from 'features/tabs/stores';
 
 import styles from './LibraryView.module.scss';
 
@@ -22,29 +21,6 @@ const SongCollection = lazy(async () => {
 export const LibraryView = () => {
    const { setTabs, getCurrentTab } = useTabs();
 
-   const loadTabData = (whenLoaded?: () => void) => {
-      const previousTabs = getPreviousTabData();
-
-      window.api.getSongs().then(songs => {
-         setTabs(previousTabs.map(tab => {
-            const isLibraryTab = tab.id.includes(libraryTrackMark);
-
-            if (isLibraryTab) {
-               return {
-                  ...tab,
-                  collection: songs,
-               };
-            } else {
-               return tab;
-            }
-         }));
-
-         whenLoaded && whenLoaded();
-      });
-   };
-
-   useEffect(loadTabData, [ setTabs ]);
-
    const isValidTab = getCurrentTab() !== undefined;
    return (
       <div
@@ -54,7 +30,7 @@ export const LibraryView = () => {
             <AddStuffButton
                // Fix tab possibly being undefined.
                tab={getCurrentTab()!}
-               loadTabData={loadTabData}
+               setTabs={setTabs}
             />
          }
 
