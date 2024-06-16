@@ -16,6 +16,9 @@
    font-weight: 700;
    text-align: right;
 
+   // Fix empty space above font chars
+   margin-top: -3px;
+
    pointer-events: none;
 }
 
