@@ -3,7 +3,7 @@ import { ReactNode, createContext, useState, useEffect } from 'react';
 import { saveData, loadData } from 'features/save-data';
 import type { SettingsContext, SettingsState } from './types';
 import type { SettingsStateSlice, SettingsStateValue } from './types';
-import { SettingType, ColorScheme, Themes } from './types';
+import { SettingType, ImportBehaviour, ColorScheme, Themes } from './types';
 
 import { ThemeProvider } from 'components/theme-provider';
 
@@ -17,6 +17,12 @@ export const settingsContext = createContext<SettingsContext>({
 
 const defaultSettings: SettingsState = {
    generalSettings: {
+      importBehaviour: {
+         type: SettingType.toggle,
+         options: [...Object.values(ImportBehaviour)],
+         defaultValue: ImportBehaviour.copy,
+         value: ImportBehaviour.copy,
+      }
    },
    styleSettings: {
       colorScheme: {
@@ -92,7 +98,7 @@ export const SettingsProvider = ({ children }: Props) => {
 
       saveData(settingsKey, settingsToSave);
    };
-   
+
    useEffect(saveCurrentSettings, [ currentSettings ]);
 
    const { Provider } = settingsContext;

@@ -33,13 +33,13 @@ export enum Themes {
 }
 
 export interface StyleSettingsState {
-   colorScheme: Setting<ColorScheme>,
-   theme: Setting<Themes>,
+   colorScheme: Setting<ColorScheme>;
+   theme: Setting<Themes>;
 }
 
 export interface SettingsState {
    generalSettings: GeneralSettingsState;
-   styleSettings: StyleSettingsState
+   styleSettings: StyleSettingsState;
 }
 
 export interface SettingsContext {
