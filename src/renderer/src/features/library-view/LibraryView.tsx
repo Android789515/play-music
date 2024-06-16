@@ -45,11 +45,12 @@ export const LibraryView = () => {
 
    useEffect(loadTabData, [ setTabs ]);
 
+   const isValidTab = getCurrentTab() !== undefined;
    return (
       <div
          className={styles.libraryView}
       >
-         { getCurrentTab() !== undefined &&
+         { isValidTab &&
             <AddStuffButton
                // Fix tab possibly being undefined.
                tab={getCurrentTab()!}
