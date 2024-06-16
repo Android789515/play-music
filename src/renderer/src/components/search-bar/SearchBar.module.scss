@@ -80,7 +80,7 @@
    }
 
    .searchBar:focus-within {
-      width: calc(100% - 1em);
+      width: 15em;
    }
 }
 
@@ -88,5 +88,27 @@
 @media (min-width: map.get($breakpoints, 'scaleUpUI')) {
    .searchBar {
       font-size: 1.2rem;
+   }
+
+   .searchBar:focus-within {
+      width: 12em;
+   }
+}
+
+@media (min-width: 44.375em) {
+   .searchBar:focus-within {
+      width: 15em;
+   }
+}
+
+@media (min-width: 50.375em) {
+   .searchBar:focus-within {
+      width: 20em;
+   }
+}
+
+@media (min-width: 63.75em) {
+   .searchBar:focus-within {
+      width: 28em;
    }
 }
