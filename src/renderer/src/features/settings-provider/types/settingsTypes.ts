@@ -13,7 +13,13 @@ export interface Setting<ValueType> {
    value: ValueType;
 }
 
+export enum ImportBehaviour {
+   move = 'move',
+   copy = 'copy',
+}
+
 export interface GeneralSettingsState {
+   importBehaviour: Setting<ImportBehaviour>;
 }
 
 export enum ColorScheme {
