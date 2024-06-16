@@ -10,6 +10,8 @@
    // darker color text
    color: #000;
 
+   justify-self: center;
+
    display: flex;
    justify-content: center;
    align-items: center;
@@ -46,3 +48,10 @@
       font-size: 1.125rem;
    }
 }
+
+@media (min-width: 23.4375em) {
+   .addStuffButton {
+      max-width: 21.4375em;
+   }
+}
+
