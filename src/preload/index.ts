@@ -1,7 +1,7 @@
 import { contextBridge, ipcRenderer } from 'electron';
 import { electronAPI } from '@electron-toolkit/preload';
 
-import type { Path } from '../types/fileTypes';
+import { Path, ImportBehaviour } from '../types/fileTypes';
 import { songsAPI } from '../api/songs';
 
 const {
@@ -13,7 +13,7 @@ const {
 // Custom APIs for renderer
 export const api = {
    getSongs: () => ipcRenderer.invoke(getSongs.name),
-   importSongs: () => ipcRenderer.invoke(importSongs.name),
+   importSongs: (importBehaviour: ImportBehaviour) => ipcRenderer.invoke(importSongs.name, importBehaviour),
    loadCoverArt: (songPath: Path) => ipcRenderer.invoke(loadCoverArt.name, songPath),
 };
 

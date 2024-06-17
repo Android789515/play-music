@@ -33,7 +33,7 @@ function createWindow(): void {
 
    ipcMain.handle(getSongs.name, getSongs.fn);
 
-   ipcMain.handle(importSongs.name, importSongs.fn);
+   ipcMain.handle(importSongs.name, (_, importBehaviour) => importSongs.fn(importBehaviour));
 
    ipcMain.handle(loadCoverArt.name, (_, songPath) => {
       return loadCoverArt.fn(songPath);

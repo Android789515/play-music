@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { SetterOrUpdater } from 'recoil';
 import toast from 'react-hot-toast';
 
+import { settingsContext } from 'features/settings-provider';
 import { Tab } from 'features/tabs';
 import { useDialog } from 'components/dialog';
 import { getPreviousTabData, libraryTrackMark } from 'features/tabs/stores';
@@ -65,8 +66,12 @@ export const AddStuffButton = ({ tab, setTabs, header = false }: Props) => {
 
    useEffect(loadTabData, [ setTabs ]);
 
+   const { getCurrentSettings } = useContext(settingsContext);
+
+   const { generalSettings: { importBehaviour } } = getCurrentSettings();
+
    const openImportDialog = async () => {
-      const { numberOfSongs, canceled } = await window.api.importSongs();
+      const { numberOfSongs, canceled } = await window.api.importSongs(importBehaviour.value);
 
       if (!canceled) {
          const songPlural = pluralize(numberOfSongs,'Song');

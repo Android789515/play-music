@@ -1,9 +1,9 @@
-import { copyFile } from 'fs';
+import { copyFile, rename } from 'fs';
 import { join, basename } from 'path';
 import { app, dialog } from 'electron';
 
 import type { Song } from './types';
-import type { Path } from '@globalTypes/fileTypes';
+import { Path, ImportBehaviour } from '../types/fileTypes';
 import { readContentsOfDir, supportedFormats } from '../utils/files';
 import { getSongsFromDir, createSong, createPathToCoverArt, getOrCreateDir } from './helpers';
 
@@ -19,7 +19,7 @@ const getSongs = async (): Promise<Song[]> => {
    return await Promise.all(songTags);
 };
 
-const importSongs = async () => {
+const importSongs = async (importBehaviour: ImportBehaviour) => {
    const { filePaths: songPaths, canceled } = await dialog.showOpenDialog({
       properties: [
          'openFile',
@@ -41,7 +41,11 @@ const importSongs = async () => {
       songPaths.forEach(path => {
          const destination = `${importedSongsDir}/${basename(path)}`;
 
-         copyFile(path, destination, () => {});
+         if (importBehaviour === ImportBehaviour.copy) {
+            copyFile(path, destination, () => {});
+         } else {
+            rename(path, destination, () => {});
+         }
       });
    }
 
