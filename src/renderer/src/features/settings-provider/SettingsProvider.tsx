@@ -19,7 +19,7 @@ export const settingsContext = createContext<SettingsContext>({
 const defaultSettings: SettingsState = {
    generalSettings: {
       importBehaviour: {
-         type: SettingType.toggle,
+         type: SettingType.dropDownSelect,
          options: [...Object.values(ImportBehaviour)],
          defaultValue: ImportBehaviour.copy,
          value: ImportBehaviour.copy,
