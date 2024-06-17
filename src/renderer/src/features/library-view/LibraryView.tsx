@@ -1,6 +1,5 @@
 import { lazy, Suspense } from 'react';
 
-
 import { useTabs } from 'features/tabs';
 
 import styles from './LibraryView.module.scss';
