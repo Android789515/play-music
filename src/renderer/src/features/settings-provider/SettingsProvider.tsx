@@ -3,7 +3,8 @@ import { ReactNode, createContext, useState, useEffect } from 'react';
 import { saveData, loadData } from 'features/save-data';
 import type { SettingsContext, SettingsState } from './types';
 import type { SettingsStateSlice, SettingsStateValue } from './types';
-import { SettingType, ImportBehaviour, ColorScheme, Themes } from './types';
+import { ImportBehaviour } from '@globalTypes/fileTypes';
+import { SettingType, ColorScheme, Themes } from './types';
 
 import { ThemeProvider } from 'components/theme-provider';
 

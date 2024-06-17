@@ -1,3 +1,5 @@
+import { ImportBehaviour } from '@globalTypes/fileTypes';
+
 export type SettingsStateSlice = keyof SettingsState;
 export type SettingsStateValue = SettingsState[keyof SettingsState];
 
@@ -11,11 +13,6 @@ export interface Setting<ValueType> {
    options: ValueType[];
    defaultValue: ValueType;
    value: ValueType;
-}
-
-export enum ImportBehaviour {
-   move = 'move',
-   copy = 'copy',
 }
 
 export interface GeneralSettingsState {
