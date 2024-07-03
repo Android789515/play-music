@@ -1,4 +1,4 @@
-import type { UUID } from '@globalTypes/stringTypes';
+import type { UUID } from '../types/stringTypes';
 
 type LocalStorageKey = UUID;
 
