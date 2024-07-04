@@ -43,8 +43,8 @@ export const AddStuffButton = ({ tab, setTabs, header = false }: Props) => {
          : word;
    };
 
-   const loadTabData = (whenLoaded?: () => void) => {
-      const previousTabs = getPreviousTabData();
+   const loadTabData = async (whenLoaded?: () => void) => {
+      const previousTabs = await getPreviousTabData();
 
       window.api.getSongs().then(songs => {
          setTabs(previousTabs.map(tab => {
@@ -64,7 +64,9 @@ export const AddStuffButton = ({ tab, setTabs, header = false }: Props) => {
       });
    };
 
-   useEffect(loadTabData, [ setTabs ]);
+   useEffect(() => {
+      loadTabData();
+   }, [ setTabs ]);
 
    const { getCurrentSettings } = useContext(settingsContext);
 

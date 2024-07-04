@@ -1,6 +1,5 @@
 import { ReactNode, createContext, useState, useEffect } from 'react';
 
-import { saveData, loadData } from 'features/save-data';
 import type { SettingsContext, SettingsState } from './types';
 import type { SettingsStateSlice, SettingsStateValue } from './types';
 import { ImportBehaviour } from '@globalTypes/fileTypes';
@@ -48,16 +47,18 @@ interface Props {
 export const SettingsProvider = ({ children }: Props) => {
    const settingsKey = 'settings';
 
-   const loadSavedSettings = () => {
-      const savedSettings = loadData(settingsKey);
-      if (savedSettings) {
-         return JSON.parse(savedSettings);
-      } else {
-         return defaultSettings;
-      }
-   };
+   const [ currentSettings, setCurrentSettings ] = useState(defaultSettings);
 
-   const [ currentSettings, setCurrentSettings ] = useState(loadSavedSettings());
+   useEffect(() => {
+      window.api.loadData(settingsKey).then(savedSettings => {
+         setCurrentSettings(
+            savedSettings
+               ? JSON.parse(savedSettings) as SettingsState
+               : defaultSettings
+         );
+      });
+
+   }, []);
 
    const [ changedSettings, setChangedSettings ] = useState(currentSettings);
 
@@ -92,15 +93,11 @@ export const SettingsProvider = ({ children }: Props) => {
 
    const saveAppliedSettings = () => {
       setCurrentSettings(changedSettings);
+
+      const settingsToSave = JSON.stringify(changedSettings);
+
+      window.api.saveData(settingsKey, settingsToSave);
    };
-
-   const saveCurrentSettings = () => {
-      const settingsToSave = JSON.stringify(currentSettings);
-
-      saveData(settingsKey, settingsToSave);
-   };
-
-   useEffect(saveCurrentSettings, [ currentSettings ]);
 
    const { Provider } = settingsContext;
 

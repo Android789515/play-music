@@ -3,7 +3,6 @@ import { useRecoilState } from 'recoil';
 
 import type { UUID } from '@globalTypes/stringTypes';
 import type { Tab, TabKey, TabData } from '../types';
-import { saveData } from 'features/save-data';
 import { tabsState, libraryTrackMark } from '../stores';
 import { testConditions } from '@utils/boolean';
 
@@ -16,7 +15,7 @@ export const useTabs = () => {
    const [ tabs, setTabs ] = useRecoilState(tabsState);
 
    useEffect(() => {
-      saveData(tabsState.key, JSON.stringify(tabs));
+      window.api.saveData(tabsState.key, JSON.stringify(tabs));
    }, [ tabs ]);
 
    const getTabs = useCallback(() => {
@@ -35,7 +34,7 @@ export const useTabs = () => {
          );
       });
    }, [ tabs ]);
-   
+
    const getLibraryTab = useCallback(() => {
       return tabs.find(tab => {
          return tab.id.includes(libraryTrackMark);
@@ -114,7 +113,7 @@ export const useTabs = () => {
             : getLibraryTab().id
       );
    }, [ tabs, setCurrentTab, getLibraryTab ]);
-   
+
    const leaveTab = useCallback((tabLeftID: UUID) => {
       const didLeaveCurrentTab = getCurrentTab()?.id === tabLeftID;
 
