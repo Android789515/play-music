@@ -62,6 +62,12 @@ export const SettingsProvider = ({ children }: Props) => {
 
    const [ changedSettings, setChangedSettings ] = useState(currentSettings);
 
+   const syncSettings = () => {
+      setChangedSettings(currentSettings);
+   };
+
+   useEffect(syncSettings, [ currentSettings ]);
+
    const getCurrentSettings = () => {
       return currentSettings;
    };
