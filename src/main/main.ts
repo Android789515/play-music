@@ -5,6 +5,7 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 
 import type { AppInfo, VersionInfo } from '../types/appInfoTypes';
 import { songsAPI } from '../api/songs';
+import { saveDataAPI } from '../api/saveData';
 import { mediaProtocol } from './mediaProtocol';
 
 import icon from '../../resources/icon-dark.png?asset';
@@ -38,6 +39,11 @@ function createWindow(): void {
    ipcMain.handle(loadCoverArt.name, (_, songPath) => {
       return loadCoverArt.fn(songPath);
    });
+
+   const { saveData, loadData } = saveDataAPI;
+
+   ipcMain.handle(saveData.name, (_, [ storageKey, data ]) => saveData.fn(storageKey, data));
+   ipcMain.handle(loadData.name, (_, storageKey) => loadData.fn(storageKey));
 
    ipcMain.handle('getAppInfo', () => {
       const versionsToFetch = [
