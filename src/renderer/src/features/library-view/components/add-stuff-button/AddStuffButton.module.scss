@@ -77,7 +77,7 @@
    }
 }
 
-@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+@media (min-width: 43.75em) {
    .addStuffButtonHeader {
       font-size: 1.125rem;
    }
