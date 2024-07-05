@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 
 import { useTabs } from 'features/tabs';
 
@@ -18,7 +18,11 @@ const SongCollection = lazy(async () => {
 });
 
 export const LibraryView = () => {
-   const { setTabs, getCurrentTab } = useTabs();
+   const { getCurrentTab, refreshLibrary } = useTabs();
+
+   useEffect(() => {
+      refreshLibrary();
+   }, []);
 
    const isValidTab = getCurrentTab() !== undefined;
    return (
@@ -29,7 +33,6 @@ export const LibraryView = () => {
             <AddStuffButton
                // Fix tab possibly being undefined.
                tab={getCurrentTab()!}
-               setTabs={setTabs}
             />
          }
 
