@@ -1,11 +1,9 @@
-import { useEffect, useContext } from 'react';
-import { SetterOrUpdater } from 'recoil';
+import { useContext } from 'react';
 import toast from 'react-hot-toast';
 
 import { settingsContext } from 'features/settings-provider';
-import { Tab } from 'features/tabs';
+import { useTabs, Tab } from 'features/tabs';
 import { useDialog } from 'components/dialog';
-import { getPreviousTabData, libraryTrackMark } from 'features/tabs/stores';
 
 import styles from './AddStuffButton.module.scss';
 
@@ -14,11 +12,10 @@ import { AddToCollection } from '../dialogs/add-to-collection';
 
 interface Props {
    tab: Tab;
-   setTabs: SetterOrUpdater<Tab[]>;
    header?: boolean;
 }
 
-export const AddStuffButton = ({ tab, setTabs, header = false }: Props) => {
+export const AddStuffButton = ({ tab, header = false }: Props) => {
 
    const isLibraryTab = tab.name === 'Library';
 
@@ -43,30 +40,7 @@ export const AddStuffButton = ({ tab, setTabs, header = false }: Props) => {
          : word;
    };
 
-   const loadTabData = async (whenLoaded?: () => void) => {
-      const previousTabs = await getPreviousTabData();
-
-      window.api.getSongs().then(songs => {
-         setTabs(previousTabs.map(tab => {
-            const isLibraryTab = tab.id.includes(libraryTrackMark);
-
-            if (isLibraryTab) {
-               return {
-                  ...tab,
-                  collection: songs,
-               };
-            } else {
-               return tab;
-            }
-         }));
-
-         whenLoaded && whenLoaded();
-      });
-   };
-
-   useEffect(() => {
-      loadTabData();
-   }, [ setTabs ]);
+   const { refreshLibrary } = useTabs();
 
    const { getCurrentSettings } = useContext(settingsContext);
 
@@ -79,7 +53,7 @@ export const AddStuffButton = ({ tab, setTabs, header = false }: Props) => {
          const songPlural = pluralize(numberOfSongs,'Song');
          const importingToast = toast.loading(`Importing ${songPlural}`);
 
-         loadTabData(() => {
+         refreshLibrary().finally(() => {
             toast.success(`Successfully Imported ${songPlural}`, {
                id: importingToast,
             });
