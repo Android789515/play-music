@@ -33,7 +33,7 @@ export const getPreviousTabData = async () => {
 
 export const tabsState = atom<Tab[]>({
    key: keys.tabs,
-   default: defaultTabData,
+   default: getPreviousTabData(),
 });
 
 export const closedTabs = selector({
