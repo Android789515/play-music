@@ -14,6 +14,27 @@ interface TabSlice {
 export const useTabs = () => {
    const [ tabs, setTabs ] = useRecoilState(tabsState);
 
+   const refreshLibrary = async () => {
+      const songs = await window.api.getSongs();
+
+      setTabs(_ => {
+         const refreshedTabs = tabs.map(tab => {
+            const isLibraryTab = tab.id.includes(libraryTrackMark);
+
+            if (isLibraryTab) {
+               return {
+                  ...tab,
+                  collection: songs,
+               };
+            } else {
+               return tab;
+            }
+         });
+
+         return refreshedTabs;
+      });
+   };
+
    useEffect(() => {
       window.api.saveData(tabsState.key, JSON.stringify(tabs));
    }, [ tabs ]);
@@ -158,6 +179,7 @@ export const useTabs = () => {
    }, [ setTabs, leaveTab ]);
 
    return {
+      refreshLibrary,
       getTabs,
       setTabs,
       getTab,
