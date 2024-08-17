@@ -40,10 +40,15 @@ function createWindow(): void {
       return loadCoverArt.fn(songPath);
    });
 
-   const { saveData, loadData } = saveDataAPI;
+   const { saveData, loadData, deleteData } = saveDataAPI;
 
    ipcMain.handle(saveData.name, (_, [ storageKey, data ]) => saveData.fn(storageKey, data));
    ipcMain.handle(loadData.name, (_, storageKey) => loadData.fn(storageKey));
+   ipcMain.handle(deleteData.name, (_, storageKey) => {
+      deleteData.fn(storageKey);
+
+      mainWindow.reload();
+   });
 
    ipcMain.handle('getAppInfo', () => {
       const versionsToFetch = [

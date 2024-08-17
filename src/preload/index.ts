@@ -12,7 +12,7 @@ const {
    loadCoverArt,
 } = songsAPI;
 
-const { saveData, loadData } = saveDataAPI;
+const { saveData, loadData, deleteData } = saveDataAPI;
 
 // Custom APIs for renderer
 export const api = {
@@ -21,6 +21,7 @@ export const api = {
    loadCoverArt: (songPath: Path) => ipcRenderer.invoke(loadCoverArt.name, songPath),
    saveData: (storageKey: UUID, data: string) => ipcRenderer.invoke(saveData.name, [storageKey, data]),
    loadData: (storageKey: UUID) => ipcRenderer.invoke(loadData.name, storageKey),
+   deleteData: (storageKey: UUID) => ipcRenderer.invoke(deleteData.name, storageKey),
 };
 
 export const appInfo = {
