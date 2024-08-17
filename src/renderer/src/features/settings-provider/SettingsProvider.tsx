@@ -22,7 +22,13 @@ const defaultSettings: SettingsState = {
          options: [...Object.values(ImportBehaviour)],
          defaultValue: ImportBehaviour.copy,
          value: ImportBehaviour.copy,
-      }
+      },
+      resetSettings: {
+         type: SettingType.button,
+         options: [],
+         defaultValue: () => 'Confirm Reset',
+         value: () => window.api.deleteData('settings'),
+      },
    },
    styleSettings: {
       colorScheme: {

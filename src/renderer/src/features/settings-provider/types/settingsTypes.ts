@@ -6,6 +6,7 @@ export type SettingsStateValue = SettingsState[keyof SettingsState];
 export enum SettingType {
    toggle,
    dropDownSelect,
+   button,
 }
 
 export interface Setting<ValueType> {
@@ -17,6 +18,7 @@ export interface Setting<ValueType> {
 
 export interface GeneralSettingsState {
    importBehaviour: Setting<ImportBehaviour>;
+   resetSettings: Setting<() => void>;
 }
 
 export enum ColorScheme {
