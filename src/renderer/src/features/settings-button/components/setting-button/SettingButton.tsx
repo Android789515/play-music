@@ -1,6 +1,8 @@
 import type { Setting } from 'features/settings-provider/types';
 import { SettingType } from 'features/settings-provider/types';
 
+import styles from './SettingButton.module.scss';
+
 import { ToggleSwitch } from 'components/toggle-switch';
 import { DropDownSelect } from 'components/drop-down-select';
 import { Button } from 'components/button';
@@ -47,6 +49,7 @@ export const SettingButton = ({ valueType, setting, changeSetting }: Props<typeo
       case SettingType.button: {
          return (
             <Button
+               customStyles={styles.buttonForSetting}
                onClick={value}
             >
                {defaultValue()}

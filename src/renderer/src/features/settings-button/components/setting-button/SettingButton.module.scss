@@ -1,0 +1,14 @@
+.buttonForSetting.buttonForSetting {
+   font-size: 1rem;
+   font-weight: 700;
+
+   width: max-content;
+
+   background: var(--selected);
+}
+
+.buttonForSetting.buttonForSetting:focus,
+.buttonForSetting.buttonForSetting:hover {
+   color: var(--widgetBG);
+   background: red;
+}
