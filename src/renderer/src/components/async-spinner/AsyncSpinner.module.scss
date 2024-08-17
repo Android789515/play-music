@@ -34,9 +34,9 @@
    $asyncSpinAnimation: cubic-bezier(.53, .93, .34, -0.02);
    $barGrowthAnimation: 1;
    
-   $animationTime: 3.1s;
+   $animationTime: 2.1s;
    animation: 
-      rotate 2s linear infinite,
+      rotate 1.2s linear infinite,
       barGrowth $animationTime $asyncSpinAnimation infinite;
 }
 
