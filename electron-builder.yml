@@ -27,12 +27,11 @@ mac:
       - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
 dmg:
    artifactName: ${name}-${version}.${ext}
+deb:
+   artifactName: ${name}-${version}.${ext}
 linux:
    target:
       - deb
-      - snap
-      - AppImage
-      - flatpak
    maintainer: electronjs.org
    category: Utility
 appImage:
