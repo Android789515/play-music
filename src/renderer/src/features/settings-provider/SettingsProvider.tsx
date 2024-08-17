@@ -57,11 +57,13 @@ export const SettingsProvider = ({ children }: Props) => {
 
    useEffect(() => {
       window.api.loadData(settingsKey).then(savedSettings => {
-         setCurrentSettings(
-            savedSettings
-               ? JSON.parse(savedSettings) as SettingsState
-               : defaultSettings
-         );
+         if (savedSettings) {
+            const parsedSettings = JSON.parse(savedSettings) as SettingsState;
+
+            setCurrentSettings(parsedSettings);
+         } else {
+            setCurrentSettings(defaultSettings);
+         }
       });
 
    }, []);
