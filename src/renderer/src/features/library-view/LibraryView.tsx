@@ -4,10 +4,8 @@ import { useTabs } from 'features/tabs';
 
 import styles from './LibraryView.module.scss';
 
-import { AddStuffButton } from './components/add-stuff-button';
-import { AsyncSpinner } from 'components/async-spinner';
-import { SearchProvider } from 'components/search-bar';
-import { SongCollection } from './components/song-collection';
+import { LibraryContent } from './components/library-content';
+import { LibraryLoading } from './components/library-loading';
 
 export const LibraryView = () => {
    const { getCurrentTab, refreshLibrary } = useTabs();
@@ -25,24 +23,10 @@ export const LibraryView = () => {
          className={styles.libraryView}
       >
          { loaded && currentTab
-            ? (
-               <>
-                  <AddStuffButton
-                     tab={currentTab}
-                  />
-
-                  <SearchProvider
-                     collection={currentTab.collection}
-                     Consumer={SongCollection}
-                  />
-               </>
-            )
-            : <AsyncSpinner
-               customStyles={{
-                  layout: styles.loadingSpinnerLayout,
-                  spinner: styles.loadingSpinner,
-               }}
+            ? <LibraryContent
+               currentTab={currentTab}
             />
+            : <LibraryLoading />
          }
       </div>
    );
