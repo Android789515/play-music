@@ -55,6 +55,22 @@ export const SettingsProvider = ({ children }: Props) => {
 
    const [ currentSettings, setCurrentSettings ] = useState(defaultSettings);
 
+   const hydrateSettings = (settings: SettingsState) => {
+      const { defaultValue, value } = defaultSettings.generalSettings.resetSettings;
+
+      return {
+         ...settings,
+         generalSettings: {
+            ...settings.generalSettings,
+            resetSettings: {
+               ...settings.generalSettings.resetSettings,
+               defaultValue,
+               value,
+            },
+         },
+      };
+   };
+
    useEffect(() => {
       window.api.loadData(settingsKey).then(savedSettings => {
          if (savedSettings) {
@@ -77,7 +93,7 @@ export const SettingsProvider = ({ children }: Props) => {
    useEffect(syncSettings, [ currentSettings ]);
 
    const getCurrentSettings = () => {
-      return currentSettings;
+      return hydrateSettings(currentSettings);
    };
 
    const changeSetting = (slice: SettingsStateSlice, value: SettingsStateValue) => {
@@ -90,7 +106,7 @@ export const SettingsProvider = ({ children }: Props) => {
    };
 
    const getChangedSettings = () => {
-      return changedSettings;
+      return hydrateSettings(changedSettings);
    };
 
    const applyChangedSettings = () => {
