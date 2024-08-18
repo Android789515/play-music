@@ -14,7 +14,7 @@ import { AddStuffButton } from 'features/library-view/components/add-stuff-butto
 import { SettingsButton } from 'features/settings-button';
 
 export const AppHeader = () => {
-   const { getCurrentTab, setTabs } = useTabs();
+   const { getCurrentTab } = useTabs();
 
    return (
       <header>
@@ -30,7 +30,6 @@ export const AppHeader = () => {
 
                <AddStuffButton
                   tab={getCurrentTab()!}
-                  setTabs={setTabs}
                   header
                />
 
