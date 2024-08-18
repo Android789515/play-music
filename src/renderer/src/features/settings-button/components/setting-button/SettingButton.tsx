@@ -47,7 +47,7 @@ export const SettingButton = ({ valueType, setting, changeSetting }: Props<typeo
       }
       
       case SettingType.button: {
-         console.log(options);
+
          const isDangerButton = options.map(option => option())
             .includes('danger');
 
