@@ -43,16 +43,9 @@ export const useTabs = () => {
       return tabs;
    }, [ tabs ]);
 
-   const getTab = useCallback(({ key: keyToMatch, data: predicate }: TabSlice) => {
+   const getTab = useCallback((tabID: UUID) => {
       return tabs.find(tab => {
-         const isFunctionPredicate = typeof predicate === 'function';
-
-         const tabSlice = tab[keyToMatch];
-
-         return ( isFunctionPredicate
-            ? predicate(tabSlice)
-            : tabSlice === predicate
-         );
+         return tab.id === tabID;
       });
    }, [ tabs ]);
 
