@@ -1,4 +1,6 @@
 .appMainLayout {
+   display: grid;
+
    min-height: 100%;
 
    padding: 1em var(--appSideSpace);
