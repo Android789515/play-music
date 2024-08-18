@@ -1,6 +1,6 @@
 {
    "name": "play-music",
-   "version": "0.26.0",
+   "version": "0.26.1",
    "description": "An Electron application with React and TypeScript",
    "type": "module",
    "main": "./out/main/main.js",
