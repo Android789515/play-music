@@ -6,3 +6,9 @@
 
    height: 100%;
 }
+
+@media (min-width: 38.5em) {
+   .libraryView {
+      grid-template-rows: 1fr;
+   }
+}
