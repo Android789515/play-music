@@ -7,8 +7,15 @@
    background: var(--selected);
 }
 
-.buttonForSetting.buttonForSetting:focus,
-.buttonForSetting.buttonForSetting:hover {
+.dangerButton.dangerButton:focus,
+.dangerButton.dangerButton:hover {
    color: var(--widgetBG);
    background: red;
+}
+
+:root[style*='color-scheme: dark;'] {
+   .dangerButton.dangerButton:focus,
+   .dangerButton.dangerButton:hover {
+      color: var(--textColor);
+   }
 }

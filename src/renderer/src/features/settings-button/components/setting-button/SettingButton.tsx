@@ -47,9 +47,16 @@ export const SettingButton = ({ valueType, setting, changeSetting }: Props<typeo
       }
       
       case SettingType.button: {
+         console.log(options);
+         const isDangerButton = options.map(option => option())
+            .includes('danger');
+
          return (
             <Button
-               customStyles={styles.buttonForSetting}
+               customStyles={`
+                  ${styles.buttonForSetting}
+                  ${isDangerButton ? styles.dangerButton : ''}
+               `}
                onClick={value}
             >
                {defaultValue()}

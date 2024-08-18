@@ -25,7 +25,7 @@ const defaultSettings: SettingsState = {
       },
       resetSettings: {
          type: SettingType.button,
-         options: [],
+         options: [ () => 'danger' ],
          defaultValue: () => 'Confirm Reset',
          value: () => window.api.deleteData('settings'),
       },
@@ -56,7 +56,7 @@ export const SettingsProvider = ({ children }: Props) => {
    const [ currentSettings, setCurrentSettings ] = useState(defaultSettings);
 
    const hydrateSettings = (settings: SettingsState) => {
-      const { defaultValue, value } = defaultSettings.generalSettings.resetSettings;
+      const { options, defaultValue, value } = defaultSettings.generalSettings.resetSettings;
 
       return {
          ...settings,
@@ -64,6 +64,7 @@ export const SettingsProvider = ({ children }: Props) => {
             ...settings.generalSettings,
             resetSettings: {
                ...settings.generalSettings.resetSettings,
+               options,
                defaultValue,
                value,
             },
