@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 
 import type { UUID } from '@globalTypes/stringTypes';
@@ -39,27 +39,27 @@ export const useTabs = () => {
       window.api.saveData(tabsState.key, JSON.stringify(tabs));
    }, [ tabs ]);
 
-   const getTabs = useCallback(() => {
+   const getTabs = () => {
       return tabs;
-   }, [ tabs ]);
+   };
 
-   const getTab = useCallback((tabID: UUID) => {
+   const getTab = (tabID: UUID) => {
       return tabs.find(tab => {
          return tab.id === tabID;
       });
-   }, [ tabs ]);
+   };
 
-   const getLibraryTab = useCallback(() => {
+   const getLibraryTab = () => {
       return tabs.find(tab => {
          return tab.id.includes(libraryTrackMark);
       })!;
-   }, [ tabs ]);
+   };
 
-   const getCurrentTab = useCallback(() => {
+   const getCurrentTab = () => {
       return tabs.find(tab => tab.isCurrent);
-   }, [ tabs ]);
+   };
 
-   const updateTab = useCallback((tabToUpdateID: UUID, payload: TabSlice) => {
+   const updateTab = (tabToUpdateID: UUID, payload: TabSlice) => {
       setTabs(prevTabs => {
          return prevTabs.map(tab => {
             const isTabToUpdate = tab.id === tabToUpdateID;
@@ -71,17 +71,17 @@ export const useTabs = () => {
             return tab;
          });
       });
-   }, [ setTabs ]);
+   };
 
-   const clearCurrentTab = useCallback(() => {
+   const clearCurrentTab = () => {
       setTabs(prevTabs => {
          return prevTabs.map(tab => {
             return { ...tab, isCurrent: false };
          });
       });
-   }, [ setTabs ]);
+   };
 
-   const setCurrentTab = useCallback((tabToSetID: UUID) => {
+   const setCurrentTab = (tabToSetID: UUID) => {
       clearCurrentTab();
 
       setTabs(prevTabs => {
@@ -96,9 +96,9 @@ export const useTabs = () => {
          });
       });
 
-   }, [ clearCurrentTab, setTabs ]);
+   };
 
-   const openTab = useCallback((tabToOpenID: UUID) => {
+   const openTab = (tabToOpenID: UUID) => {
       setTabs(prevTabs => {
          return prevTabs.map(tab => {
             const isTabToUpdate = tab.id === tabToOpenID;
@@ -112,31 +112,31 @@ export const useTabs = () => {
       });
 
       setCurrentTab(tabToOpenID);
-   }, [ setTabs, setCurrentTab ]);
+   };
 
-   const switchToNextOpenTab = useCallback((tabLeftID: UUID) => {
+   const switchToNextOpenTab = (tabLeftID: UUID) => {
       const previousTabIndex = tabs.filter(tab => tab.isOpen)
          .map(tab => tab.id)
          .indexOf(tabLeftID) - 1;
 
-      const previousTab = tabs[previousTabIndex];
+      const previousTab = tabs[ previousTabIndex ];
 
       setCurrentTab(
          previousTab
             ? previousTab.id
             : getLibraryTab().id
       );
-   }, [ tabs, setCurrentTab, getLibraryTab ]);
+   };
 
-   const leaveTab = useCallback((tabLeftID: UUID) => {
+   const leaveTab = (tabLeftID: UUID) => {
       const didLeaveCurrentTab = getCurrentTab()?.id === tabLeftID;
 
       if (didLeaveCurrentTab) {
          switchToNextOpenTab(tabLeftID);
       }
-   }, [ getCurrentTab, switchToNextOpenTab ]);
+   };
 
-   const closeTab = useCallback((tabToClose: Tab) => {
+   const closeTab = (tabToClose: Tab) => {
       setTabs(prevTabs => {
          return prevTabs.map(tab => {
             const isTabToUpdate = tab.id === tabToClose.id;
@@ -150,15 +150,15 @@ export const useTabs = () => {
       });
 
       leaveTab(tabToClose.id);
-   }, [ setTabs, leaveTab ]);
+   };
 
-   const createTab = useCallback((tab: Tab) => {
+   const createTab = (tab: Tab) => {
       setTabs(prevTabs => [ ...prevTabs, tab ]);
 
       openTab(tab.id);
-   }, [ setTabs, openTab ]);
+   };
 
-   const deleteTab = useCallback((tabToDelete: Tab) => {
+   const deleteTab = (tabToDelete: Tab) => {
       setTabs(prevTabs => {
          return prevTabs.filter(tab => {
             return testConditions({
@@ -169,7 +169,7 @@ export const useTabs = () => {
       });
 
       leaveTab(tabToDelete.id);
-   }, [ setTabs, leaveTab ]);
+   };
 
    return {
       refreshLibrary,
