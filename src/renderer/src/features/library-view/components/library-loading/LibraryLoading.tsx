@@ -4,7 +4,9 @@ import { AsyncSpinner } from 'components/async-spinner';
 
 export const LibraryLoading = () => {
    return (
-      <>
+      <div
+         className={styles.libraryLoadingLayout}
+      >
          <h1
             className={styles.loadingTitle}
          >
@@ -17,6 +19,6 @@ export const LibraryLoading = () => {
                spinner: styles.loadingSpinner,
             }}
          />
-      </>
+      </div>
    );
 };
