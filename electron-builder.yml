@@ -32,6 +32,7 @@ deb:
 linux:
    target:
       - deb
+      - AppImage
    maintainer: electronjs.org
    category: Utility
 appImage:
