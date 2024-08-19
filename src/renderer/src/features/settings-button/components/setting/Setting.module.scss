@@ -3,8 +3,6 @@
    grid-template-rows: auto 1fr;
    grid-row-gap: .75em;
 
-   pointer-events: none;
-
    width: 100%;
 
    padding: .125em;
@@ -14,7 +12,11 @@
    font-size: .93rem;
 }
 
-.setting > button {
+.setting:has(button) {
+   pointer-events: none;
+}
+
+.setting button {
    pointer-events: all;
 }
 
