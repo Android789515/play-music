@@ -1,5 +1,53 @@
 .songButton {
    display: grid;
-   grid-auto-flow: column;
+   grid-template-columns: 54% 1fr;
    align-items: center;
+}
+
+@media (min-width: 28.75em) {
+   .songButton {
+      grid-template-columns: 70% 1fr;
+   }
+}
+
+@media (min-width: 48.125em) {
+   .songButton {
+      grid-template-columns: 75% 1fr;
+   }
+}
+
+@media (min-width: 60em) {
+   .songButton {
+      grid-template-columns: 80% 1fr;
+   }
+}
+
+@media (min-width: 72.5em) {
+   .songButton {
+      grid-template-columns: 85% 1fr;
+   }
+}
+
+@media (min-width: 100em) {
+   .songButton {
+      grid-template-columns: 90% 1fr;
+   }
+}
+
+@media (min-width: 135.625em) {
+   .songButton {
+      grid-template-columns: 92% 1fr;
+   }
+}
+
+@media (min-width: 157.75em) {
+   .songButton {
+      grid-template-columns: 94% 1fr;
+   }
+}
+
+@media (min-width: 162.125em) {
+   .songButton {
+      grid-template-columns: 1fr 1fr;
+   }
 }
