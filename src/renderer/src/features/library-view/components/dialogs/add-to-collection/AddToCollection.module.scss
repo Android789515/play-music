@@ -56,6 +56,8 @@
 
 .selectedSongInfo {
    grid-column: 3;
+
+   max-width: 24ch;
 }
 
 .selectedSongInfo,
@@ -63,12 +65,14 @@
    display: none;
 }
 
-.selectedSongInfo {}
+.selectedSongInfo {
+   margin: auto;
+}
 
 @media (min-width: 40.9375em) {
    .dialogContent {
       display: grid;
-      grid-template-columns: max-content 1em 1fr;
+      grid-template-columns: 1fr 1em 1fr;
    }
 
    .selectedSongInfo,
@@ -80,18 +84,13 @@
       font-size: 2rem;
 
       align-self: center;
-
-      display: grid;
-      grid-template-rows: max-content max-content;
-      grid-template-columns: minmax(6em, 8em);
-      justify-content: center;
-      align-items: center;
-
-      min-width: 100%;
    }
 
    // Cover art container
    .selectedSongInfo > *:has(.selectedSongCoverArtIcon.selectedSongCoverArtIcon) {      
+      width: max-content;
+      
+      margin: 0 auto 1em auto;
       margin-bottom: 1em;
    }
 
@@ -102,6 +101,8 @@
 
    // Song info text
    .selectedSongInfo > *:not(:has(.selectedSongCoverArtIcon.selectedSongCoverArtIcon)){
+      text-align: center;
+      
       max-width: 100%;
    }
 
@@ -111,14 +112,14 @@
    }
 }
 
-@media (min-width: 43.75em) {
+@media (min-width: 62.5em) {
    // Default cover art icon
    img[src$=".svg"].selectedSongCoverArtIcon.selectedSongCoverArtIcon {
       width: 4em;
    }
 }
 
-@media (min-width: 75em) {
+@media (min-width: 80em) {
    .collection {
       font-size: 1.2rem;
 
@@ -126,12 +127,18 @@
    }
 
    .selectedSongInfo {
-      font-size: 3rem;
+      font-size: 2.5rem;
       grid-template-columns: 8em;
    }
 
    // Song artists text
    .selectedSongInfo > *:not(:has(.selectedSongCoverArtIcon.selectedSongCoverArtIcon)) > *:last-child {
       font-size: 2rem;
+   }
+}
+
+@media (min-width: 100em) {
+   .selectedSongInfo {
+      max-width: 40ch;
    }
 }
