@@ -18,6 +18,7 @@ export interface Setting<ValueType> {
 
 export interface GeneralSettingsState {
    importBehaviour: Setting<ImportBehaviour>;
+   refreshLibrary: Setting<() => void>;
    resetSettings: Setting<() => void>;
 }
 
