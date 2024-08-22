@@ -29,6 +29,7 @@ export default defineConfig({
             '@utils': resolve('src/utils'),
             '@globalTypes': resolve('src/types'),
             '@api': resolve('src/api'),
+            '@resources': resolve('./resources'),
             'renderer': resolve('src/renderer/src'),
             'types': resolve('src/renderer/src/types'),
             'utils': resolve('src/renderer/src/utils'),

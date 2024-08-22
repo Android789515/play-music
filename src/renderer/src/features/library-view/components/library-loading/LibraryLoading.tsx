@@ -1,6 +1,9 @@
 import styles from './LibraryLoading.module.scss';
+import appIconLight from '@resources/icon-light.png';
+import appIconDark from '@resources/icon-dark.png';
 
 import { AnimatedEllipsis } from './components/animated-ellipsis';
+import { Icon } from 'components/icon';
 import { AsyncSpinner } from 'components/async-spinner';
 
 export const LibraryLoading = () => {
@@ -15,6 +18,19 @@ export const LibraryLoading = () => {
       <div
          className={styles.libraryLoadingLayout}
       >
+         <Icon
+            customStyles={styles.loadingIcon}
+            iconPath={appIconLight}
+            alt={'App Icon'}
+         />
+
+         <AsyncSpinner
+            customStyles={{
+               layout: styles.loadingSpinnerLayout,
+               spinner: styles.loadingSpinner,
+            }}
+         />
+
          <h1
             className={styles.loadingTitle}
          >
@@ -23,12 +39,6 @@ export const LibraryLoading = () => {
             {ThreeElipsis}
          </h1>
 
-         <AsyncSpinner
-            customStyles={{
-               layout: styles.loadingSpinnerLayout,
-               spinner: styles.loadingSpinner,
-            }}
-         />
       </div>
    );
 };
