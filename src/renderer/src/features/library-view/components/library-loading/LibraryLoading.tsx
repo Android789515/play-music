@@ -10,7 +10,7 @@ export const LibraryLoading = () => {
          <h1
             className={styles.loadingTitle}
          >
-            Initializing Library...
+            Loading Library...
          </h1>
 
          <AsyncSpinner
