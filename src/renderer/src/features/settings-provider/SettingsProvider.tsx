@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useState, useEffect } from 'react';
 
-import type { SettingsContext, SettingsState } from './types';
+import type { SettingsContext, SettingsState, GeneralSettingsState } from './types';
 import type { SettingsStateSlice, SettingsStateValue } from './types';
 import { ImportBehaviour } from '@globalTypes/fileTypes';
 import { SettingType, ColorScheme, Themes } from './types';
@@ -22,6 +22,12 @@ const defaultSettings: SettingsState = {
          options: [...Object.values(ImportBehaviour)],
          defaultValue: ImportBehaviour.copy,
          value: ImportBehaviour.copy,
+      },
+      refreshLibrary: {
+         type: SettingType.button,
+         options: [],
+         defaultValue: () => 'Confirm',
+         value: () => window.reload(),
       },
       resetSettings: {
          type: SettingType.button,
@@ -56,18 +62,15 @@ export const SettingsProvider = ({ children }: Props) => {
    const [ currentSettings, setCurrentSettings ] = useState(defaultSettings);
 
    const hydrateSettings = (settings: SettingsState) => {
-      const { options, defaultValue, value } = defaultSettings.generalSettings.resetSettings;
+      const refreshLibrary = defaultSettings.generalSettings.refreshLibrary;
+      const resetSettings = defaultSettings.generalSettings.resetSettings;
 
       return {
          ...settings,
          generalSettings: {
             ...settings.generalSettings,
-            resetSettings: {
-               ...settings.generalSettings.resetSettings,
-               options,
-               defaultValue,
-               value,
-            },
+            refreshLibrary,
+            resetSettings,
          },
       };
    };

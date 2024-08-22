@@ -24,6 +24,8 @@ export const api = {
    deleteData: (storageKey: UUID) => ipcRenderer.invoke(deleteData.name, storageKey),
 };
 
+export const reload = () => ipcRenderer.invoke('reload');
+
 export const appInfo = {
    getAppInfo: () => ipcRenderer.invoke('getAppInfo'),
 };
@@ -36,6 +38,8 @@ if (process.contextIsolated) {
       contextBridge.exposeInMainWorld('electron', electronAPI);
       contextBridge.exposeInMainWorld('api', api);
 
+      contextBridge.exposeInMainWorld('reload', reload);
+
       contextBridge.exposeInMainWorld('appInfo', appInfo);
    } catch (error) {
       console.error(error);
@@ -45,6 +49,8 @@ if (process.contextIsolated) {
    window.electron = electronAPI;
    // @ts-ignore (define in dts)
    window.api = api;
+
+   window.reload = reload;
 
    window.appInfo = appInfo;
 }

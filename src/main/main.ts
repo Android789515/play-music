@@ -50,6 +50,10 @@ function createWindow(): void {
       mainWindow.reload();
    });
 
+   ipcMain.handle('reload', () => {
+      mainWindow.reload();
+   });
+
    ipcMain.handle('getAppInfo', () => {
       const versionsToFetch = [
          'node',
