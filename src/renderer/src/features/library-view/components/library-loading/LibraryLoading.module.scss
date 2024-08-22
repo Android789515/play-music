@@ -8,6 +8,8 @@
    display: grid;
    grid-template-rows: 1fr max-content max-content 1fr;
 
+   z-index: 5;
+
    background: var(--BG);
  }
 
