@@ -6,25 +6,26 @@
    right: 0;
    z-index: 5;
 
+   display: grid;
+   grid-template-rows: 1fr max-content 1fr;
+   justify-content: center;
+   align-items: center;
+
    background: var(--BG);
 }
 
-.loadingIcon {
+.loadingIcon.loadingIcon {
+   grid-row: 2;
+   grid-column: 1;
+   justify-self: center;
+
    width: 10em;
 
    filter: revert;
+
+   transition: translate 1s;
 }
 
-.loadingSpinnerLayout.loadingSpinnerLayout {
-   transform: scale(1.125) translateY(1.125em);
-}
-
-.loadingSpinner.loadingSpinner {
-   stroke-width: .4em;
-}
-
-@media (min-width: 33.75em) {
-   .loadingSpinnerLayout.loadingSpinnerLayout {
-      transform: scale(1.4) translateY(1.4em);
-   }
+.loadingIcon.loadingIcon.slowLoad {
+   translate: 0 -4em;
 }

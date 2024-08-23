@@ -14,7 +14,10 @@ export const LibraryLoading = ({ isSlowLoad = false }: Props) => {
          className={styles.libraryLoadingLayout}
       >
          <Icon
-            customStyles={styles.loadingIcon}
+            customStyles={`
+               ${styles.loadingIcon}
+               ${isSlowLoad ? styles.slowLoad : ''}
+            `}
             iconPath={appIconLight}
             alt={'App Icon'}
          />
