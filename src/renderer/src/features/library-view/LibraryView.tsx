@@ -12,8 +12,26 @@ export const LibraryView = () => {
    
    const [ loaded, setLoaded ] = useState(false);
 
-   useEffect(() => {
+   const loadLibrary = () => {
       refreshLibrary().then(() => setLoaded(true));
+   };
+
+   type TimeInMS = number;
+
+   const minLoadingScreenTime: TimeInMS = 1500;
+
+   const [ hasMinTimeElapsed, setHasMinTimeElapsed ] = useState(false);
+
+   const elapseMinLoadingTime = () => {
+      setTimeout(() => {
+         setHasMinTimeElapsed(true);
+      }, minLoadingScreenTime);
+   };
+
+   useEffect(() => {
+      elapseMinLoadingTime();
+
+      loadLibrary();
    }, []);
 
    const currentTab = getCurrentTab();
@@ -22,11 +40,13 @@ export const LibraryView = () => {
       <div
          className={styles.libraryView}
       >
-         { loaded && currentTab
+         { (loaded && hasMinTimeElapsed) && currentTab
             ? <LibraryContent
                currentTab={currentTab}
             />
-            : <LibraryLoading />
+            : <LibraryLoading
+               isSlowLoad={hasMinTimeElapsed}
+            />
          }
       </div>
    );

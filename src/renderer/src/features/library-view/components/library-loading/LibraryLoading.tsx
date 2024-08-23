@@ -10,14 +10,9 @@ interface Props {
 }
 
 export const LibraryLoading = ({ isSlowLoad = false }: Props) => {
-   
-
    return (
       <div
-         className={`
-            ${styles.libraryLoadingLayout}
-            ${isSlowLoad ? styles.slowLoad : ''}
-         `}
+         className={styles.libraryLoadingLayout}
       >
          <Icon
             customStyles={styles.loadingIcon}
@@ -25,20 +20,16 @@ export const LibraryLoading = ({ isSlowLoad = false }: Props) => {
             alt={'App Icon'}
          />
 
-         <AsyncSpinner
-            customStyles={{
-               layout: `
-                  ${styles.loadingSpinnerLayout}
-                  ${isSlowLoad ? styles.slowLoad : ''}
-               `,
-               spinner: styles.loadingSpinner,
-            }}
-         />
+         {isSlowLoad && (<>
+            <AsyncSpinner
+               customStyles={{
+                  layout: styles.loadingSpinnerLayout,
+                  spinner: styles.loadingSpinner,
+               }}
+            />
 
-         <LoadingTitle
-            isSlowLoad={isSlowLoad}
-         />
-
+            <LoadingTitle />
+         </>)}
       </div>
    );
 };

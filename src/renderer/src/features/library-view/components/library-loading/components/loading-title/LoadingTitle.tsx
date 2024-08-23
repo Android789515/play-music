@@ -2,11 +2,7 @@ import styles from './LoadingTitle.module.scss';
 
 import { AnimatedEllipsis } from '../animated-ellipsis';
 
-interface Props {
-   isSlowLoad: boolean;
-}
-
-export const LoadingTitle = ({ isSlowLoad }: Props) => {
+export const LoadingTitle = () => {
    const ThreeElipsis = [ ...Array(3) ].map((_, index) => (
       <AnimatedEllipsis
          key={index}
@@ -16,10 +12,7 @@ export const LoadingTitle = ({ isSlowLoad }: Props) => {
 
    return (
       <h1
-         className={`
-               ${styles.loadingTitle}
-               ${isSlowLoad ? styles.slowLoad : ''}
-            `}
+         className={styles.loadingTitle}
       >
          Loading Library
 

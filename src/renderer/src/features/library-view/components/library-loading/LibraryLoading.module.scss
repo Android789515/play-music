@@ -4,28 +4,18 @@
    bottom: 0;
    left: 0;
    right: 0;
-
-   display: grid;
-   grid-template-rows: 1fr max-content 3em max-content max-content 1.5fr;
-
    z-index: 5;
 
    background: var(--BG);
 }
 
 .loadingIcon {
-   grid-row: 2;
-   justify-self: center;
-
    width: 10em;
 
    filter: revert;
 }
 
 .loadingSpinnerLayout.loadingSpinnerLayout {
-   grid-row: 4;
-   justify-self: center;
-
    transform: scale(1.125) translateY(1.125em);
 }
 
