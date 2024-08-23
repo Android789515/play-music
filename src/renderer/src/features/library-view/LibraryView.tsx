@@ -18,7 +18,7 @@ export const LibraryView = () => {
 
    type TimeInMS = number;
 
-   const minLoadingScreenTime: TimeInMS = 1500;
+   const minLoadingScreenTime: TimeInMS = 2500;
 
    const [ hasMinTimeElapsed, setHasMinTimeElapsed ] = useState(false);
 
