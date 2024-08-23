@@ -12,8 +12,8 @@
 
    translate: 0 6em;
 
-   $delay: 500ms;
-   animation: fade-in 2s $delay linear forwards;
+   $delay: 250ms;
+   animation: fade-in 1s $delay linear forwards;
 }
 
 @keyframes fade-in {
