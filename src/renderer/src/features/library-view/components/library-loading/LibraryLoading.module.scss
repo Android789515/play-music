@@ -22,18 +22,6 @@
    filter: revert;
 }
 
-.loadingTitle {
-   font-size: 1.9rem;
-   font-weight: 700;
-   text-align: center;
-
-   grid-row: 5;
-
-   // Translate to avoid
-   // shifting layout.
-   translate: 0 1em;
-}
-
 .loadingSpinnerLayout.loadingSpinnerLayout {
    grid-row: 4;
    justify-self: center;
@@ -48,9 +36,5 @@
 @media (min-width: 33.75em) {
    .loadingSpinnerLayout.loadingSpinnerLayout {
       transform: scale(1.4) translateY(1.4em);
-   }
-
-   .loadingTitle {
-      translate: 0 1.5em;
    }
 }

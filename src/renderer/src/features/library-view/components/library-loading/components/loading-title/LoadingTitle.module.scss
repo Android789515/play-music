@@ -1,0 +1,21 @@
+.loadingTitle {
+   font-size: 1.9rem;
+   font-weight: 700;
+   text-align: center;
+
+   display: none;
+
+   // Translate to avoid
+   // shifting layout.
+   translate: 0 1em;
+}
+
+.slowLoad {
+   display: revert;
+}
+
+@media (min-width: 33.75em) {
+   .loadingTitle {
+      translate: 0 1.5em;
+   }
+}

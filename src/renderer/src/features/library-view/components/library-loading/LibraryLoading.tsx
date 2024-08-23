@@ -1,22 +1,23 @@
 import styles from './LibraryLoading.module.scss';
 import appIconLight from '@resources/icon-light.png';
-import appIconDark from '@resources/icon-dark.png';
 
-import { AnimatedEllipsis } from './components/animated-ellipsis';
 import { Icon } from 'components/icon';
 import { AsyncSpinner } from 'components/async-spinner';
+import { LoadingTitle } from './components/loading-title';
 
-export const LibraryLoading = () => {
-   const ThreeElipsis = [ ...Array(3) ].map((_, index) => (
-      <AnimatedEllipsis
-         key={index}
-         order={index}
-      />
-   ));
+interface Props {
+   isSlowLoad?: boolean;
+}
+
+export const LibraryLoading = ({ isSlowLoad = false }: Props) => {
+   
 
    return (
       <div
-         className={styles.libraryLoadingLayout}
+         className={`
+            ${styles.libraryLoadingLayout}
+            ${isSlowLoad ? styles.slowLoad : ''}
+         `}
       >
          <Icon
             customStyles={styles.loadingIcon}
@@ -26,18 +27,17 @@ export const LibraryLoading = () => {
 
          <AsyncSpinner
             customStyles={{
-               layout: styles.loadingSpinnerLayout,
+               layout: `
+                  ${styles.loadingSpinnerLayout}
+                  ${isSlowLoad ? styles.slowLoad : ''}
+               `,
                spinner: styles.loadingSpinner,
             }}
          />
 
-         <h1
-            className={styles.loadingTitle}
-         >
-            Loading Library
-
-            {ThreeElipsis}
-         </h1>
+         <LoadingTitle
+            isSlowLoad={isSlowLoad}
+         />
 
       </div>
    );
