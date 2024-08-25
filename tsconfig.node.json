@@ -6,7 +6,8 @@
     "src/preload/*",
     "src/api/*",
     "src/utils/*",
-    "src/types/*"
+    "src/types/*",
+    "resources/*",
   ],
   "compilerOptions": {
     "composite": true,
