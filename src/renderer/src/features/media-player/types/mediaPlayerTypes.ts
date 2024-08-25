@@ -1,3 +1,5 @@
+import type { SyntheticEvent } from 'react';
+
 import type { Song } from '@api/types';
 
 export interface MediaControls {
@@ -17,3 +19,5 @@ export interface MediaPlayerState {
    isOpen: boolean;
    controls: MediaControls;
 }
+
+export type AudioEvent = SyntheticEvent<HTMLAudioElement, Event>;

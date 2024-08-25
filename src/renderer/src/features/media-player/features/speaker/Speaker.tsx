@@ -1,13 +1,13 @@
-import { SyntheticEvent, useRef, useCallback, useEffect } from 'react';
+import { useRef, useCallback, useEffect } from 'react';
 
 import type { Path } from '@globalTypes/fileTypes';
-import type { MediaControls } from 'features/media-player/types';
+import type { MediaControls, AudioEvent } from 'features/media-player/types';
 
 interface Props {
    songPath: Path;
    controls: MediaControls;
    updateAudioTime: (currentTime: number) => void;
-   onSongEnd?: (event: SyntheticEvent<HTMLAudioElement>) => void;
+   onSongEnd?: (event: AudioEvent) => void;
 }
 
 export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Props) => {
@@ -39,7 +39,7 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
 
    useEffect(syncSpeakerWithControls, [ syncVolume, syncPaused, speaker ]);
 
-   const syncAudioTime = (event: SyntheticEvent<HTMLAudioElement, Event>) => {
+   const syncAudioTime = (event: AudioEvent) => {
       const speaker = event.target as HTMLAudioElement;
 
       const { time } = controls;
