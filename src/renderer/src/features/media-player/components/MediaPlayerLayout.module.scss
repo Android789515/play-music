@@ -1,8 +1,32 @@
 .mediaPlayerLayout {
    display: grid;
-   grid-template-columns: repeat(2, 1fr);
+   grid-template-columns: 6em 1fr;
    grid-row-gap: .5em;
    align-items: end;
 
    padding: var(--appSideSpace);
+}
+
+@media (min-width: 24.25em) {
+   .mediaPlayerLayout {
+      grid-template-columns: 10em 1fr;
+   }
+}
+
+@media (min-width: 28.75em) {
+   .mediaPlayerLayout {
+      grid-template-columns: 14em 1fr;
+   }
+}
+
+@media (min-width: 33.625em) {
+   .mediaPlayerLayout {
+      grid-template-columns: 18em 1fr;
+   }
+}
+
+@media (min-width: 38.5em) {
+   .mediaPlayerLayout {
+      grid-template-columns: 21em 1fr;
+   }
 }
