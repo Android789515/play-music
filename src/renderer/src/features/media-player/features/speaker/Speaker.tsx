@@ -1,7 +1,7 @@
-import { useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 
 import type { Path } from '@globalTypes/fileTypes';
-import type { MediaControls, AudioEvent } from 'features/media-player/types';
+import type { MediaControls, AudioEvent, AudioState } from 'features/media-player/types';
 
 interface Props {
    songPath: Path;
@@ -11,8 +11,71 @@ interface Props {
 }
 
 export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Props) => {
-   const speakerRef = useRef<HTMLAudioElement>(null);
+   const speakerRef = useRef<HTMLAudioElement | null>(null);
    const speaker = speakerRef.current;
+
+   const audio = useRef<AudioState | null>(null);
+
+   const cleanupAudio = () => {
+      audio.current = null;
+   };
+
+   const createAudio = () => {
+      if (speaker) {
+         const context = new AudioContext();
+         const analyser = context.createAnalyser();
+         const source = context.createMediaElementSource(speaker);
+
+         source.connect(analyser)
+            .connect(context.destination);
+
+         const length = analyser.frequencyBinCount;
+
+         audio.current = {
+            context,
+            analyser,
+            source,
+            buffer: {
+               length,
+               data: new Uint8Array(length),
+            },
+         };
+      }
+
+      return cleanupAudio;
+   };
+
+   useEffect(createAudio, [ speaker ]);
+
+   const [ animationID, setAnimationID ] = useState(0);
+
+   const updateAudio = () => {
+      if (audio.current) {
+         const { analyser, buffer } = audio.current;
+         const data = new Uint8Array(buffer.length);
+
+         analyser.getByteFrequencyData(data);
+
+         audio.current = {
+            ...audio.current,
+            buffer: {
+               ...buffer,
+               data,
+            },
+         };
+      }
+
+      setAnimationID(
+         requestAnimationFrame(updateAudio)
+      );
+
+      return () => {
+         cancelAnimationFrame(animationID);
+      };
+   };
+
+   // eslint-disable-next-line react-hooks/exhaustive-deps
+   useEffect(updateAudio, []);
 
    const syncVolume = useCallback((speaker: HTMLAudioElement) => {
       speaker.volume = controls.volume;
