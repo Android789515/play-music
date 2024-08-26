@@ -16,10 +16,10 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
    const speakerRef = useRef<HTMLAudioElement | null>(null);
    const speaker = speakerRef.current;
 
-   const audio = useRef<AudioState | null>(null);
+   const [ audio, setAudio ] = useState<AudioState | null>(null);
 
    const cleanupAudio = () => {
-      audio.current = null;
+      setAudio(null);
    };
 
    const createAudio = () => {
@@ -33,7 +33,7 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
 
          const length = analyser.frequencyBinCount;
 
-         audio.current = {
+         setAudio({
             context,
             analyser,
             source,
@@ -41,7 +41,7 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
                length,
                data: new Uint8Array(length),
             },
-         };
+         });
       }
 
       return cleanupAudio;
@@ -52,20 +52,24 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
    const [ animationID, setAnimationID ] = useState(0);
 
    const updateAudio = () => {
-      if (audio.current) {
-         const { analyser, buffer } = audio.current;
-         const data = new Uint8Array(buffer.length);
+      setAudio(prevAudio => {
+         if (prevAudio) {
+            const { analyser, buffer } = prevAudio;
+            const data = new Uint8Array(buffer.length);
 
-         analyser.getByteFrequencyData(data);
+            analyser.getByteFrequencyData(data);
 
-         audio.current = {
-            ...audio.current,
-            buffer: {
-               ...buffer,
-               data,
-            },
-         };
-      }
+            return {
+               ...prevAudio,
+               buffer: {
+                  ...buffer,
+                  data,
+               },
+            };
+         }
+
+         return prevAudio;
+      });
 
       setAnimationID(
          requestAnimationFrame(updateAudio)
@@ -133,9 +137,9 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
             ref={speakerRef}
          />
 
-         { audio.current &&
+         { audio &&
             <SoundVisualizer
-               buffer={audio.current.buffer}
+               buffer={audio.buffer}
             />
          }
       </>
