@@ -3,6 +3,8 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import type { Path } from '@globalTypes/fileTypes';
 import type { MediaControls, AudioEvent, AudioState } from 'features/media-player/types';
 
+import { SoundVisualizer } from '../sound-visualizer';
+
 interface Props {
    songPath: Path;
    controls: MediaControls;
@@ -119,15 +121,23 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
    };
 
    const audioTrack = 'media://' + songPath;
-   
+
    return (
-      <audio
-         src={audioTrack}
-         autoPlay
-         muted={controls.isMuted}
-         onTimeUpdate={syncAudioTime}
-         onEnded={onSongEnd}
-         ref={speakerRef}
-      />
+      <>
+         <audio
+            src={audioTrack}
+            autoPlay
+            muted={controls.isMuted}
+            onTimeUpdate={syncAudioTime}
+            onEnded={onSongEnd}
+            ref={speakerRef}
+         />
+
+         { audio.current &&
+            <SoundVisualizer
+               buffer={audio.current.buffer}
+            />
+         }
+      </>
    );
 };

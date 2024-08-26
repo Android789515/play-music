@@ -29,4 +29,9 @@
    .mediaPlayerLayout {
       grid-template-columns: 21em 1fr;
    }
+
+   .mediaPlayerLayout div:first-child {
+      grid-row: 1;
+      grid-column: 1;
+   }
 }

@@ -1,0 +1,26 @@
+.soundVisualizer {
+   display: none;
+   grid-template-rows: .25em;
+   grid-template-columns: 3.8em 75%;
+
+   z-index: 4;
+
+   pointer-events: none;
+}
+
+.bar {
+   grid-column: 2;
+   max-height: 100%;
+}
+
+.barValue {
+}
+
+@media (min-width: 38.5em) {
+   .soundVisualizer {
+      grid-row: 1;
+      grid-column: 1;
+
+      display: grid;
+   }
+}
