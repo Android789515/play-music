@@ -31,6 +31,8 @@ export const Song = ({ playing, parentFocus, song: { path: songPath, title, arti
    const [ audioData ] = useRecoilState(audioDataState);
 
    const [ coverArtFocus, setCoverArtFocus ] = useState(false);
+   const focus = () => setCoverArtFocus(true);
+   const blur = () => setCoverArtFocus(false);
 
    const desiredContentFocus = parentFocus || coverArtFocus;
    return (
@@ -43,8 +45,10 @@ export const Song = ({ playing, parentFocus, song: { path: songPath, title, arti
       >
          <CoverArt
             coverArtLocation={coverArt}
-            onMouseEnter={() => setCoverArtFocus(true)}
-            onMouseLeave={() => setCoverArtFocus(false)}
+            onMouseEnter={focus}
+            onFocus={focus}
+            onMouseLeave={blur}
+            onBlur={blur}
          />
 
          {playing &&

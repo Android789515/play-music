@@ -31,14 +31,18 @@ export const SongButton = ({ song }: Props) => {
    ];
 
    const [ isButtonFocused, setIsButtonFocused ] = useState(false);
+   const focus = () => setIsButtonFocused(true);
+   const blur = () => setIsButtonFocused(false);
 
    const isThisSongPlaying = songPlaying?.id === song.id;
    return (
       <ButtonWithContextMenu
          menuStructure={songMenu}
          customStyles={styles.songButton}
-         onMouseEnter={() => setIsButtonFocused(true)}
-         onMouseLeave={() => setIsButtonFocused(false)}
+         onMouseEnter={focus}
+         onFocus={focus}
+         onMouseLeave={blur}
+         onBlur={blur}
       >
          <SongComponent
             song={song}
