@@ -1,3 +1,5 @@
+import type { HTMLAttributes } from 'react';
+
 import type { Path } from '@globalTypes/fileTypes';
 import type { CSS_Class } from 'types/cssTypes';
 
@@ -7,12 +9,12 @@ import styles from './CoverArt.module.scss';
 
 import { Icon } from 'components/icon';
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement> {
    coverArtLocation?: Path | null;
    additionalIconStyles?: CSS_Class;
 }
 
-export const CoverArt = ({ coverArtLocation, additionalIconStyles }: Props) => {
+export const CoverArt = ({ coverArtLocation, additionalIconStyles, ...rest }: Props) => {
    return (
       <div
          className={
@@ -20,6 +22,7 @@ export const CoverArt = ({ coverArtLocation, additionalIconStyles }: Props) => {
                ? styles.coverArt
                : styles.defaultCoverArt
          }
+         {...rest}
       >
          <Icon
             iconPath={coverArtLocation || defaultCoverArt}
