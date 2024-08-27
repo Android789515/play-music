@@ -35,6 +35,7 @@ export const MediaPlayer = () => {
             <MediaPlayerLayout>
                <Song
                   song={songPlaying}
+                  playing={!controls.isPaused}
                />
 
                <MediaControls />
