@@ -1,5 +1,9 @@
+@use 'sass:map';
+
+@use '../../../../breakpoints.scss' as *;
+
 .buttonForSetting.buttonForSetting {
-   font-size: 1rem;
+   font-size: .8rem;
    font-weight: 700;
 
    width: max-content;
@@ -22,5 +26,11 @@
    .dangerButton.dangerButton:focus,
    .dangerButton.dangerButton:hover {
       color: var(--textColor);
+   }
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
+   .buttonForSetting.buttonForSetting {
+      font-size: .9rem;
    }
 }
