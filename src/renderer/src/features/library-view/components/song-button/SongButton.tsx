@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import type { Song } from '@api/types';
 import { useMediaPlayer } from 'features/media-player';
 import { useSongQueue } from 'features/song-queue';
@@ -28,15 +30,20 @@ export const SongButton = ({ song }: Props) => {
       }
    ];
 
+   const [ isButtonFocused, setIsButtonFocused ] = useState(false);
+
    const isThisSongPlaying = songPlaying?.id === song.id;
    return (
       <ButtonWithContextMenu
          menuStructure={songMenu}
          customStyles={styles.songButton}
+         onMouseEnter={() => setIsButtonFocused(true)}
+         onMouseLeave={() => setIsButtonFocused(false)}
       >
          <SongComponent
             song={song}
             playing={isThisSongPlaying}
+            parentFocus={isButtonFocused}
          />
 
          <SongDuration
