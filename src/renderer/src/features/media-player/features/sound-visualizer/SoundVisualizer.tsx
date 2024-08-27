@@ -1,48 +1,45 @@
-import { useState, useEffect, useRef } from 'react';
-
 import styles from './SoundVisualizer.module.scss';
 
-import { SlideableBar } from 'components/slideable-bar';
-
 interface Props {
+   shown?: boolean;
    buffer: {
       length: number;
       data: Uint8Array;
    };
 }
 
-export const SoundVisualizer = ({ buffer: { length, data } }: Props) => {
-
-   const getBarHeight = (): `${number}%` => {
-      if (length) {
-
-         for (let index = 0; index < length; index++) {
-            const initialBarHeight = data[ index ];
-
-            const adjustedBarHeight = initialBarHeight > 100
-               ? initialBarHeight / 10
-               : initialBarHeight;
-
-            return `${adjustedBarHeight}%`;
-         }
-
-         return '0%';
-      } else {
-         return '0%';
-      }
-   };
+export const SoundVisualizer = ({ shown, buffer: { length, data } }: Props) => {
+   const barAmountFactor = 128;
 
    return (
       <div
-         className={styles.soundVisualizer}
+         className={`
+            ${styles.soundVisualizer}
+            ${shown ? styles.soundVisualizerShown : ''}
+         `}
       >
-         <div></div>
-         <SlideableBar
-            value={getBarHeight()}
-            setBarValue={() => {}}
-            barStyles={styles.bar}
-            barValueStyles={styles.barValue}
-         />
+         <div
+            className={styles.soundVisualizerLayout}
+            style={{
+               gridTemplateColumns: `repeat(${length / barAmountFactor}, 1fr)`,
+            }}
+         >
+            {[ ...data ].map((piece, index) => {
+               if (index % barAmountFactor === 0) {
+                  return (
+                     <div
+                        key={index}
+                        className={styles.bar}
+                        style={{
+                           height: `${piece / 10}px`,
+                        }}
+                     ></div>
+                  );
+               } else {
+                  return null;
+               }
+            })}
+         </div>
       </div>
    );
 };
