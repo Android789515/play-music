@@ -26,8 +26,4 @@ export interface AudioState {
    context: AudioContext;
    source: MediaElementAudioSourceNode;
    analyser: AnalyserNode;
-   buffer: {
-      length: number;
-      data: Uint8Array;
-   };
 }

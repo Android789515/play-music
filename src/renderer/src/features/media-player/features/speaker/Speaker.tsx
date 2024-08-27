@@ -1,9 +1,9 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 
 import type { Path } from '@globalTypes/fileTypes';
 import type { MediaControls, AudioEvent, AudioState } from 'features/media-player/types';
-
-import { SoundVisualizer } from '../sound-visualizer';
+import { audioDataState } from '../audio-data-state';
 
 interface Props {
    songPath: Path;
@@ -16,10 +16,11 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
    const speakerRef = useRef<HTMLAudioElement | null>(null);
    const speaker = speakerRef.current;
 
-   const [ audio, setAudio ] = useState<AudioState | null>(null);
+   const audio = useRef<AudioState | null>(null);
+   const [ _, setAudioData ] = useRecoilState(audioDataState);
 
    const cleanupAudio = () => {
-      setAudio(null);
+      audio.current = null;
    };
 
    const createAudio = () => {
@@ -33,10 +34,13 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
 
          const length = analyser.frequencyBinCount;
 
-         setAudio({
+         audio.current = {
             context,
             analyser,
             source,
+         };
+
+         setAudioData({
             buffer: {
                length,
                data: new Uint8Array(length),
@@ -47,29 +51,34 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
       return cleanupAudio;
    };
 
-   useEffect(createAudio, [ speaker ]);
+   useEffect(createAudio, [ speaker, setAudioData ]);
 
    const [ animationID, setAnimationID ] = useState(0);
 
    const updateAudio = () => {
-      setAudio(prevAudio => {
-         if (prevAudio) {
-            const { analyser, buffer } = prevAudio;
+      if (audio.current) {
+         const { analyser } = audio.current;
+         setAudioData(prevData => {
+            const { buffer } = prevData;
+
             const data = new Uint8Array(buffer.length);
 
             analyser.getByteFrequencyData(data);
 
             return {
-               ...prevAudio,
+               ...prevData,
                buffer: {
-                  ...buffer,
+                  ...prevData.buffer,
                   data,
                },
             };
-         }
+         });
 
-         return prevAudio;
-      });
+         audio.current = {
+            ...audio.current,
+            analyser,
+         };
+      }
 
       setAnimationID(
          requestAnimationFrame(updateAudio)
@@ -127,21 +136,13 @@ export const Speaker = ({ songPath, controls, updateAudioTime, onSongEnd }: Prop
    const audioTrack = 'media://' + songPath;
 
    return (
-      <>
-         <audio
-            src={audioTrack}
-            autoPlay
-            muted={controls.isMuted}
-            onTimeUpdate={syncAudioTime}
-            onEnded={onSongEnd}
-            ref={speakerRef}
-         />
-
-         { audio &&
-            <SoundVisualizer
-               buffer={audio.buffer}
-            />
-         }
-      </>
+      <audio
+         src={audioTrack}
+         autoPlay
+         muted={controls.isMuted}
+         onTimeUpdate={syncAudioTime}
+         onEnded={onSongEnd}
+         ref={speakerRef}
+      />
    );
 };
