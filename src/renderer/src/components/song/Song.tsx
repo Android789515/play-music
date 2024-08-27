@@ -8,7 +8,7 @@ import styles from './Song.module.scss';
 
 import { CoverArt } from 'components/cover-art';
 import { SongInfo } from 'components/song-info';
-import { SoundVisualizer } from 'features/media-player/features/sound-visualizer';
+import { SoundVisualizer } from 'components/sound-visualizer';
 
 interface Props {
    playing?: boolean;
