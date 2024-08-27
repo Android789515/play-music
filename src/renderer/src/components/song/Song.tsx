@@ -12,10 +12,11 @@ import { SoundVisualizer } from 'components/sound-visualizer';
 
 interface Props {
    playing?: boolean;
+   parentFocus?: boolean;
    song: SongType;
 }
 
-export const Song = ({ playing, song: { path: songPath, title, artists } }: Props) => {
+export const Song = ({ playing, parentFocus, song: { path: songPath, title, artists } }: Props) => {
 
    const [ coverArt, setCoverArt ] = useState();
 
@@ -31,6 +32,7 @@ export const Song = ({ playing, song: { path: songPath, title, artists } }: Prop
 
    const [ coverArtFocus, setCoverArtFocus ] = useState(false);
 
+   const desiredContentFocus = parentFocus || coverArtFocus;
    return (
       <div
          className={`
@@ -47,7 +49,7 @@ export const Song = ({ playing, song: { path: songPath, title, artists } }: Prop
 
          {playing &&
             <SoundVisualizer
-               shown={playing && coverArtFocus}
+               shown={playing && desiredContentFocus}
                buffer={audioData.buffer}
             />
          }
