@@ -11,6 +11,8 @@ interface Props {
 export const SoundVisualizer = ({ shown, buffer: { length, data } }: Props) => {
    const barAmountFactor = 128;
 
+   const barAmount = length / barAmountFactor;
+
    return (
       <div
          className={`
@@ -21,11 +23,12 @@ export const SoundVisualizer = ({ shown, buffer: { length, data } }: Props) => {
          <div
             className={styles.soundVisualizerLayout}
             style={{
-               gridTemplateColumns: `repeat(${length / barAmountFactor}, 1fr)`,
+               gridTemplateColumns: `repeat(${barAmount}, 1fr)`,
             }}
          >
-            {[ ...data ].map((piece, index) => {
-               if (index % barAmountFactor === 0) {
+            {[ ...data ]
+               .filter((_, index) => index % barAmountFactor === 0)
+               .map((piece, index) => {
                   return (
                      <div
                         key={index}
@@ -35,10 +38,7 @@ export const SoundVisualizer = ({ shown, buffer: { length, data } }: Props) => {
                         }}
                      ></div>
                   );
-               } else {
-                  return null;
-               }
-            })}
+               })}
          </div>
       </div>
    );
