@@ -1,4 +1,4 @@
-import { ReactNode, MouseEvent } from 'react';
+import { ReactNode, MouseEvent, type HTMLAttributes } from 'react';
 
 import type { CSS_Class } from 'types/cssTypes';
 import { handleAuxClick } from 'utils/handleAuxClick';
@@ -12,13 +12,13 @@ import {
    ContextMenu
 } from 'components/context-menu';
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLButtonElement> {
    customStyles?: CSS_Class;
    menuStructure?: ContextMenuStructure;
    children: ReactNode;
 }
 
-export const ButtonWithContextMenu = ({ customStyles, menuStructure = [], children }: Props) => {
+export const ButtonWithContextMenu = ({ customStyles, menuStructure = [], children, ...rest }: Props) => {
    const {
       isContextMenuShown,
       openContextMenu,
@@ -51,6 +51,7 @@ export const ButtonWithContextMenu = ({ customStyles, menuStructure = [], childr
             onRightClick: setupContextMenu
          })}
          onDoubleClick={mainAction}
+         {...rest}
       >
          {children}
 
