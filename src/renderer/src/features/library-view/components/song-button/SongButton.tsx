@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const SongButton = ({ song }: Props) => {
-   const { playSong } = useMediaPlayer();
+   const { mediaPlayer: { songPlaying }, playSong } = useMediaPlayer();
    const { queueSong } = useSongQueue();
 
    const songMenu = [
@@ -28,6 +28,7 @@ export const SongButton = ({ song }: Props) => {
       }
    ];
 
+   const isThisSongPlaying = songPlaying?.id === song.id;
    return (
       <ButtonWithContextMenu
          menuStructure={songMenu}
@@ -35,6 +36,7 @@ export const SongButton = ({ song }: Props) => {
       >
          <SongComponent
             song={song}
+            playing={isThisSongPlaying}
          />
 
          <SongDuration
