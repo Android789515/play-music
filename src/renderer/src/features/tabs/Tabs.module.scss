@@ -10,8 +10,7 @@
    overflow-x: auto;
 }
 
-.tabs:has(* ~ *):focus,
-.tabs:has(* ~ *):hover {
+.tabsOverflowing.tabsOverflowing {
    padding-bottom: .25em;
 }
 

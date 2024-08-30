@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+
 import { type Tab as TabType } from './types';
 
 import styles from './Tabs.module.scss';
@@ -10,6 +12,11 @@ interface Props {
 }
 
 export const Tabs = ({ tabs }: Props) => {
+   const tabListRef = useRef<HTMLUListElement | null>(null);
+
+   if (tabListRef.current) {
+      tabListRef.current.classList.add(styles.tabsOverflowing);
+   }
 
    const TabComponents = tabs.map(tab => {
       return ( (tab.isOpen || tab.isPermanent) ?
@@ -22,7 +29,10 @@ export const Tabs = ({ tabs }: Props) => {
    });
 
    return (
-      <List customStyles={styles.tabs}>
+      <List
+         customStyles={styles.tabs}
+         needsRef={tabListRef}
+      >
          {TabComponents}
       </List>
    );
