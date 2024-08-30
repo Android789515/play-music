@@ -14,13 +14,15 @@ import { AddStuffButton } from 'features/library-view/components/add-stuff-butto
 import { SettingsButton } from 'features/settings-button';
 
 export const AppHeader = () => {
-   const { getCurrentTab } = useTabs();
+   const { getTabs, getCurrentTab } = useTabs();
 
    return (
       <header>
          <Widget borderSide='bottom'>
             <AppHeaderLayout>
-               <Tabs />
+               <Tabs
+                  tabs={getTabs()}
+               />
 
                <NewTabButton />
 
