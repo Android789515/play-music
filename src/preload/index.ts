@@ -8,6 +8,7 @@ import { songsAPI } from '../api/songs';
 
 const {
    getSongs,
+   stillExists,
    importSongs,
    loadCoverArt,
 } = songsAPI;
@@ -17,6 +18,7 @@ const { saveData, loadData, deleteData } = saveDataAPI;
 // Custom APIs for renderer
 export const api = {
    getSongs: () => ipcRenderer.invoke(getSongs.name),
+   stillExists: (songPath: Path) => ipcRenderer.invoke(stillExists.name, songPath),
    importSongs: (importBehaviour: ImportBehaviour) => ipcRenderer.invoke(importSongs.name, importBehaviour),
    loadCoverArt: (songPath: Path) => ipcRenderer.invoke(loadCoverArt.name, songPath),
    saveData: (storageKey: UUID, data: string) => ipcRenderer.invoke(saveData.name, [storageKey, data]),

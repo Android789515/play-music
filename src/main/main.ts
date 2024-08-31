@@ -28,11 +28,14 @@ function createWindow(): void {
 
    const {
       getSongs,
+      stillExists,
       importSongs,
       loadCoverArt,
    } = songsAPI;
 
    ipcMain.handle(getSongs.name, getSongs.fn);
+
+   ipcMain.handle(stillExists.name, (_, songPath) => stillExists.fn(songPath));
 
    ipcMain.handle(importSongs.name, (_, importBehaviour) => importSongs.fn(importBehaviour));
 

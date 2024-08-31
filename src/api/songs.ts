@@ -1,4 +1,4 @@
-import { copyFile, rename } from 'fs';
+import { existsSync, copyFile, rename } from 'fs';
 import { join, basename } from 'path';
 import { app, dialog } from 'electron';
 
@@ -17,6 +17,10 @@ const getSongs = async (): Promise<Song[]> => {
    const songTags = songFiles.map(createSong);
 
    return await Promise.all(songTags);
+};
+
+const stillExists = async (songPath: Path) => {
+   return existsSync(songPath);
 };
 
 const importSongs = async (importBehaviour: ImportBehaviour) => {
@@ -64,6 +68,10 @@ export const songsAPI = {
    getSongs: {
       name: 'getSongs',
       fn: getSongs,
+   },
+   stillExists: {
+      name: 'stillExists',
+      fn: stillExists,
    },
    importSongs: {
       name: 'importSongs',
