@@ -12,10 +12,10 @@ import { TabName } from '../tab-name';
 
 interface Props {
    tab: TabType;
-   currentTab?: boolean;
+   isCurrentTab?: boolean;
 }
 
-export const Tab = ({ tab, currentTab }: Props) => {
+export const Tab = ({ tab, isCurrentTab }: Props) => {
    const { isContextMenuShown, openContextMenu, closeContextMenu } = useControlContextMenu();
 
    const { setCurrentTab, closeTab, deleteTab } = useTabs();
@@ -39,7 +39,7 @@ export const Tab = ({ tab, currentTab }: Props) => {
             tabIndex={1}
             className={`
                ${styles.tab}
-               ${currentTab ? styles.currentTab : ''}
+               ${isCurrentTab ? styles.currentTab : ''}
             `}
             onMouseUp={handleAuxClick({
                onLeftClick: () => setCurrentTab(tab.id),

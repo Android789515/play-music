@@ -23,7 +23,7 @@ export const Tabs = ({ tabs }: Props) => {
          <Tab
             key={tab.id}
             tab={tab}
-            currentTab={tab.isCurrent}
+            isCurrentTab={tab.isCurrent}
          />
          : null );
    });
