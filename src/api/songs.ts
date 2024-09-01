@@ -20,7 +20,7 @@ const getSongs = async (): Promise<Song[]> => {
 };
 
 const stillExists = async (songPath: Path) => {
-   return existsSync(songPath);
+   return existsSync(decodeURI(songPath));
 };
 
 const importSongs = async (importBehaviour: ImportBehaviour) => {
