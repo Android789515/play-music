@@ -13,7 +13,7 @@
    border-radius: var(--borderRadiusStandard);
 }
 
-@media (min-width: 38.5em) {
+@media (min-width: map.get($breakpoints, 'largeScreen')) {
    .settingsButton {
       grid-column: 7;
    }

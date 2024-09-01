@@ -11,7 +11,7 @@
    padding: var(--appSideSpace);
 }
 
-@media (min-width: 38.5em) {
+@media (min-width: map.get($breakpoints, 'largeScreen')) {
    .appHeaderLayout {
       grid-template-columns: fit-content(100%) max-content max-content 1em 10em auto max-content;
    }

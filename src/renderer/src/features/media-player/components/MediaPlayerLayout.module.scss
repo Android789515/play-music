@@ -1,3 +1,7 @@
+@use 'sass:map';
+
+@use '../../../breakpoints.scss' as *;
+
 .mediaPlayerLayout {
    display: grid;
    grid-template-columns: 6em 1fr;
@@ -25,7 +29,7 @@
    }
 }
 
-@media (min-width: 38.5em) {
+@media (min-width: map.get($breakpoints, 'largeScreen')) {
    .mediaPlayerLayout {
       grid-template-columns: 21em 1fr;
    }
