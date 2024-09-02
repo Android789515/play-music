@@ -1,3 +1,7 @@
+@use 'sass:map';
+
+@use '../../../breakpoints.scss' as *;
+
 .appMainLayout {
    display: grid;
    grid-template-rows: auto 6em;
@@ -6,4 +10,16 @@
    min-height: 100%;
 
    padding: 1em var(--appSideSpace);
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpSongs')) {
+   .appMainLayout {
+      grid-template-rows: auto 6.5em;
+   }
+}
+
+@media (min-width: 56.125em) {
+   .appMainLayout {
+      grid-template-rows: auto 7em;
+   }
 }
