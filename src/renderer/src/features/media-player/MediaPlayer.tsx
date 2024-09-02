@@ -31,7 +31,7 @@ export const MediaPlayer = () => {
 
    return ( songPlaying &&
       <footer className={styles.mediaPlayer}>
-         <Widget borderSide='top'>
+         <Widget borderSide='all'>
             <MediaPlayerLayout>
                <Song
                   song={songPlaying}

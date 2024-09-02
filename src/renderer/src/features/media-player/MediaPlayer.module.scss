@@ -1,3 +1,13 @@
 .mediaPlayer {
-   width: 100%;
+   position: fixed;
+   left: 50%;
+
+   $halfScrollbarSize: calc(var(--scrollbarSize) / 2);
+
+   translate: calc(-50% - $halfScrollbarSize) 0;
+   bottom: .5em;
+
+   width: 90%;
+
+   border-radius: calc(2.38 * var(--borderRadiusStandard));
 }
