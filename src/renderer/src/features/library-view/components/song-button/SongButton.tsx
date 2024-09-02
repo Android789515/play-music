@@ -15,7 +15,7 @@ interface Props {
 }
 
 export const SongButton = ({ song }: Props) => {
-   const { mediaPlayer: { songPlaying }, playSong } = useMediaPlayer();
+   const { mediaPlayer: { songPlaying, controls }, playSong } = useMediaPlayer();
    const { queueSong } = useSongQueue();
 
    const songMenu = [
@@ -46,7 +46,7 @@ export const SongButton = ({ song }: Props) => {
       >
          <SongComponent
             song={song}
-            playing={isThisSongPlaying}
+            playing={isThisSongPlaying && !controls.isPaused}
             parentFocus={isButtonFocused}
          />
 
