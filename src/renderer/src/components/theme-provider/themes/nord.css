@@ -42,8 +42,6 @@
    --widgetBorderColor: #242933;
    --widgetBorder: solid var(--widgetBorderColor) 1px;
 
-   --importButtonBG: var(--widgetBG);
-
    --defaultCoverArtBG: var(--selected);
 
    --BG: #2e3440;
