@@ -2,13 +2,15 @@
    position: fixed;
    left: 50%;
 
-   $halfScrollbarSize: calc(var(--scrollbarSize) / 2);
-
-   translate: calc(-50% - $halfScrollbarSize) 0;
+   translate: -50% 0;
    bottom: .5em;
 
-   width: 90%;
+   display: grid;
+
+   width: 100%;
    max-width: 41.5em;
 
+   padding-left: var(--appSideSpace);
+   padding-right: calc(var(--appSideSpace) + var(--scrollbarSize));
    border-radius: calc(2.38 * var(--borderRadiusStandard));
 }
