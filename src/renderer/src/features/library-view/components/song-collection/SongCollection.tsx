@@ -44,7 +44,9 @@ export const SongCollection = ({ songs }: Props) => {
    }, [ songs ]);
 
    return (
-      <List>
+      <List
+         customStyles={styles.songCollection}
+      >
          {SongComponents}
       </List>
    );

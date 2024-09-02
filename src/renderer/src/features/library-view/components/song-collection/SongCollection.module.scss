@@ -1,3 +1,9 @@
+.songCollection {
+   background: var(--widgetBG);
+   padding: .5em;
+   border-radius: var(--borderRadiusStandard);
+}
+
 .song:not(.song:last-child) {
    margin-bottom: .25em;
 }
