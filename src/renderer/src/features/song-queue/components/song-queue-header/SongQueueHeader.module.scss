@@ -16,12 +16,6 @@
 
 @media (min-width: 25.5em) {
    .title {
-      font-size: 1.2625rem;
-   }
-}
-
-@media (min-width: map.get($breakpoints, 'scaleUpUI')) {
-   .title {
-      font-size: 1.4625rem;
+      font-size: 1.1625rem;
    }
 }
