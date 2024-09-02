@@ -1,5 +1,5 @@
 :root {
-   --scrollbarSize: .5em;
+   --scrollbarSize: .25em;
 }
 
 ::-webkit-scrollbar {
