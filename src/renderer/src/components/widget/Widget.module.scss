@@ -4,6 +4,10 @@
    background: var(--widgetBG);
 }
 
+.widgetBorderNone {
+   border: none;
+}
+
 .widgetBorderAll {
    border: var(--widgetBorder);
 }

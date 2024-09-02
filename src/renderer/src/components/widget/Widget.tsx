@@ -10,6 +10,7 @@ type BorderSide = (
    | 'left'
    | 'right'
    | 'all'
+   | 'none'
 );
 
 interface Props {
