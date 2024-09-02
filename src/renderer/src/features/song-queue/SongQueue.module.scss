@@ -2,24 +2,31 @@
 
 @use '../../breakpoints.scss' as *;
 
-.songQueue {
+.songQueueArea {
    position: absolute;
-   bottom: 0;
-   right: 0;
+   left: 50%;
+   translate: -50% 0;
+   bottom: 6.2em;
 
+   width: 100%;
+   max-width: 41.5em;
+
+   padding-left: var(--appSideSpace);
+   padding-right: calc(var(--appSideSpace) + var(--scrollbarSize));
+}
+
+.songQueue {
    overflow: hidden;
    
    opacity: .4;
 
-   width: 50%;
    max-width: 9.875em;
 
    background: var(--widgetBG);
    border: var(--widgetBorder);
    border-radius: calc(1.2 * var(--borderRadiusStandard));
 
-   $sideSpace: 1em;
-   margin: 0 $sideSpace calc($sideSpace - .5em) 0;
+   margin-left: auto;
 }
 
 .songQueue:focus,
@@ -29,7 +36,6 @@
 }
 
 .songQueueExpanded {
-   width: 60%;
    max-width: 12.375em;
 }
 
@@ -39,8 +45,13 @@
    }
 
    .songQueueExpanded {
-      width: 55%;
       max-width: 16em;
+   }
+}
+
+@media (min-width: map.get($breakpoints, 'scaleUpSongs')) {
+   .songQueueArea {
+      bottom: 6.7em;
    }
 }
 
@@ -54,8 +65,8 @@
    }
 }
 
-@media (min-width: 66.5em) {
-   .songQueueExpanded {
-      max-width: 30%;
+@media (min-width: 56.125em) {
+   .songQueueArea {
+      bottom: 7.2em;
    }
 }

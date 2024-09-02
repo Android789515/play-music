@@ -5,7 +5,6 @@ import { useSongQueue } from './api';
 
 import styles from './SongQueue.module.scss';
 
-import { WidgetFloater } from 'components/widget-floater';
 import { ArrowToggle } from 'components/arrow-toggle';
 import { PinButton } from './components/pin-button';
 
@@ -30,7 +29,9 @@ export const SongQueue = () => {
    };
 
    return ( showSongQueue ?
-      <WidgetFloater>
+      <div
+         className={styles.songQueueArea}
+      >
          <div className={`
             ${styles.songQueue}
             ${isExpanded ? styles.songQueueExpanded : ''}
@@ -58,6 +59,6 @@ export const SongQueue = () => {
                )}
             </SongQueueLayout>
          </div>
-      </WidgetFloater>
+      </div>
    : null );
 };
