@@ -23,7 +23,7 @@ export const SoundVisualizer = ({ shown, buffer: { length, data } }: Props) => {
          <div
             className={styles.soundVisualizerLayout}
             style={{
-               gridTemplateColumns: `repeat(${barAmount}, 1fr)`,
+               gridTemplateColumns: `repeat(${barAmount}, 2px)`,
             }}
          >
             {[ ...data ]
