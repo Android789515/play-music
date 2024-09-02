@@ -1,5 +1,9 @@
+:root {
+   --scrollbarSize: .5em;
+}
+
 ::-webkit-scrollbar {
-   width: .5em;
+   width: var(--scrollbarSize);
 
    background: var(--barBG);
 }
@@ -7,7 +11,7 @@
 ::-webkit-scrollbar:horizontal {
    display: none;
 
-   height: .5em;
+   height: var(--scrollbarSize);
 }
 
 ::-webkit-scrollbar-thumb {
