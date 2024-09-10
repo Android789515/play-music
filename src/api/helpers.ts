@@ -24,7 +24,7 @@ export const createPathToCoverArt = async (songFile: Path) => {
    if (coverArt) {
       const { format: mime, data } = coverArt;
 
-      const image = data.toString('base64');
+      const image = Buffer.from(data.buffer).toString('base64');
       return (
          `data:${mime};base64,${image}`
       );
