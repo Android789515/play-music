@@ -28,3 +28,7 @@ $volumeBarSmoothing: calc(var(--borderRadiusStandard) - 0.1em);
 .volumeBarHighContrast.volumeBarHighContrast {
    background: var(--volumeBarHighContrast);
 }
+
+.muted.muted {
+   height: 0;
+}

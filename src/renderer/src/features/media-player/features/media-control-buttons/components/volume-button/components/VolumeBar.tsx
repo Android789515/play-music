@@ -8,18 +8,18 @@ interface Props {
 }
 
 export const VolumeBar = ({ volume, setVolume }: Props) => {
+   const volumePercent = volume * 100;
+   const adjustVolume = percentage => percentage < 2 ? 0 : percentage;
 
    return (
       <div className={styles.volumeBarBackground}>
          <SlideableBar
             vertical
-            value={`${volume * 100}%`}
-            setBarValue={barValue => setVolume(barValue / 100)}
+            value={`${adjustVolume(volumePercent)}%`}
+            setBarValue={barValue => {
+               setVolume(adjustVolume(barValue) / 100);
+            }}
             barStyles={styles.volumeBar}
-            barValueStyles={`
-               ${styles.volume}
-               ${volume === 1 ? styles.volumeFull : ''}
-            `}
          />
       </div>
    );
