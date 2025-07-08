@@ -19,6 +19,7 @@ $volumeBarSmoothing: calc(var(--borderRadiusStandard) - 0.1em);
 }
 
 .volumeBar.volumeBar {
+   width: .65em;
    height: 3em;
 
    border-radius: $volumeBarSmoothing;
