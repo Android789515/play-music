@@ -25,7 +25,7 @@ export const formatSongTime = (timeInSeconds: number) => {
    );
 
    const leftOverSeconds = toDoubleDigit(
-      timeInSeconds % 3600
+      Math.floor(timeInSeconds % 3600)
    );
 
    const hoursIfPresent = Number(hours) ? `${hours}:` : '';
