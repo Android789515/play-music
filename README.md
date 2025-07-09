@@ -27,19 +27,26 @@ This is also my second large scale application which I will showcase on my portf
 ## Design
 #### I designed and built this app from scratch.  No UI libraries were used.
 
-### Mobile
-![Mobile](./screenshots/mobile.png)
+### Small View
+![Mobile](./screenshots/Small%20View.png)
 
-### Media Player
-![Media Player](./screenshots/media-player.png)
+### Context Menu
+![Context Menu](./screenshots/Context%20Menu.png)
 
 ### Song Queue
-![Song Queue](./screenshots/song-queue.png)
+![Song Queue](./screenshots/Song%20Queue.png)
 
-### Unpinned and unfocused
-![Song Queue Unfocused](./screenshots/song-queue-unfocused.png)
+### Fuzzy Search
+![Fuzzy Search](./screenshots/Fuzzy%20Search.png)
 
-### Screenshots at larger sizes TBA
+### Larger View
+![Larger View](./screenshots/Larger%20View.png)
+
+### Light Color Scheme (Default Theme)
+![Light Default](./screenshots/Theme%20and%20Color%20Scheme.png)
+
+### Dark Color Scheme (Default Theme)
+![Dark Default](./screenshots/Dark%20Default.png)
 
 ## Project Setup
 
